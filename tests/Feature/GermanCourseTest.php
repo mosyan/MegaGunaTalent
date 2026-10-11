@@ -90,4 +90,21 @@ class GermanCourseTest extends TestCase
         $response->assertSee(route('home'), false);
         $response->assertSee(route('blog.index'), false);
     }
+
+    public function test_enrollment_validation_errors_when_required_fields_empty(): void
+    {
+        $response = $this->post(route('enroll.store'), []);
+
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'message']);
+    }
+
+    public function test_robots_txt_contains_disallow_rules_and_sitemap(): void
+    {
+        $response = $this->get(route('robots'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Disallow: /admin/');
+        $response->assertSee('Disallow: /login');
+        $response->assertSee('Sitemap:');
+    }
 }

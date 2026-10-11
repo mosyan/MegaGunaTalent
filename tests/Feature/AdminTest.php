@@ -212,4 +212,89 @@ class AdminTest extends TestCase
         $this->assertNotNull($blog);
         $this->assertEquals($customDate->format('Y-m-d H:i'), $blog->published_at->format('Y-m-d H:i'));
     }
+
+    public function test_non_admin_user_cannot_access_admin_panel(): void
+    {
+        $regularUser = User::factory()->create([
+            'role' => 'student',
+            'is_admin' => false,
+        ]);
+
+        $response = $this->actingAs($regularUser)->get(route('admin.dashboard'));
+        $response->assertRedirect(route('admin.login'));
+        $response->assertSessionHasErrors('email');
+        $this->assertGuest();
+    }
+
+    public function test_admin_cannot_delete_category_with_active_blogs(): void
+    {
+        $category = BlogCategory::create(['name' => 'Grammar Topics', 'slug' => 'grammar-topics']);
+        Blog::create([
+            'title' => 'Sample Article',
+            'slug' => 'sample-article',
+            'category_id' => $category->id,
+            'author_id' => $this->adminUser->id,
+            'content' => '<p>Article body.</p>',
+            'status' => 'published',
+        ]);
+
+        $response = $this->actingAs($this->adminUser)->delete(route('admin.blog-categories.destroy', $category));
+        $response->assertSessionHas('error');
+        $this->assertDatabaseHas('blog_categories', ['id' => $category->id]);
+    }
+
+    public function test_admin_can_delete_empty_category(): void
+    {
+        $category = BlogCategory::create(['name' => 'Empty Category', 'slug' => 'empty-category']);
+
+        $response = $this->actingAs($this->adminUser)->delete(route('admin.blog-categories.destroy', $category));
+        $response->assertRedirect(route('admin.blog-categories.index'));
+        $this->assertDatabaseMissing('blog_categories', ['id' => $category->id]);
+    }
+
+    public function test_admin_can_delete_blog_article(): void
+    {
+        $category = BlogCategory::create(['name' => 'News', 'slug' => 'news']);
+        $blog = Blog::create([
+            'title' => 'Article to Delete',
+            'slug' => 'article-to-delete',
+            'category_id' => $category->id,
+            'author_id' => $this->adminUser->id,
+            'content' => '<p>Delete me.</p>',
+            'status' => 'published',
+        ]);
+
+        $response = $this->actingAs($this->adminUser)->delete(route('admin.blogs.destroy', $blog));
+        $response->assertRedirect(route('admin.blogs.index'));
+        $this->assertDatabaseMissing('blogs', ['id' => $blog->id]);
+    }
+
+    public function test_admin_cannot_change_password_with_incorrect_current_password(): void
+    {
+        $response = $this->actingAs($this->adminUser)->put(route('admin.profile.password'), [
+            'current_password' => 'wrong-pass',
+            'password' => 'newSecretPass123!',
+            'password_confirmation' => 'newSecretPass123!',
+        ]);
+
+        $response->assertSessionHasErrors('current_password');
+    }
+
+    public function test_admin_cannot_change_password_with_unconfirmed_password(): void
+    {
+        $response = $this->actingAs($this->adminUser)->put(route('admin.profile.password'), [
+            'current_password' => 'password',
+            'password' => 'newSecretPass123!',
+            'password_confirmation' => 'differentPass!',
+        ]);
+
+        $response->assertSessionHasErrors('password');
+    }
+
+    public function test_admin_logout_clears_session(): void
+    {
+        $response = $this->actingAs($this->adminUser)->post(route('admin.logout'));
+        $response->assertRedirect(route('admin.login'));
+        $this->assertGuest();
+    }
 }

@@ -143,4 +143,30 @@ class BlogTest extends TestCase
         $response->assertSee('Admin Only Secret Draft');
         $response->assertSee('Draft Mode');
     }
+
+    public function test_public_blog_search_finds_matching_articles(): void
+    {
+        Blog::create([
+            'title' => 'Ausbildung Nursing in Germany',
+            'slug' => 'ausbildung-nursing-in-germany',
+            'category_id' => $this->category->id,
+            'author_id' => $this->author->id,
+            'excerpt' => 'Vocational training guide for healthcare in Germany.',
+            'content' => '<p>Healthcare training steps.</p>',
+            'tags' => 'Ausbildung, Nursing, Healthcare',
+            'status' => 'published',
+            'published_at' => now(),
+        ]);
+
+        $response = $this->get(route('blog.index', ['search' => 'Nursing']));
+        $response->assertStatus(200);
+        $response->assertSee('Ausbildung Nursing in Germany');
+    }
+
+    public function test_public_blog_shows_no_results_when_query_unmatched(): void
+    {
+        $response = $this->get(route('blog.index', ['search' => 'NonExistentTopic9999']));
+        $response->assertStatus(200);
+        $response->assertSee('No articles found');
+    }
 }
