@@ -89,7 +89,7 @@
 
                             <!-- Beginner -->
                             <a href="{{ route('programs.show', 'beginner') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
-                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                <div class="w-9 h-9 rounded-lg bg-[#fdc04f] border border-[#fcae26] flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform shadow-sm">
                                     <img src="{{ asset('images/shape-beginner.svg') }}" alt="Beginner" class="h-full w-auto object-contain">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -103,7 +103,7 @@
 
                             <!-- Intermediate -->
                             <a href="{{ route('programs.show', 'intermediate') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
-                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                <div class="w-9 h-9 rounded-lg bg-[#fdc04f] border border-[#fcae26] flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform shadow-sm">
                                     <img src="{{ asset('images/shape-intermediate.svg') }}" alt="Intermediate" class="h-full w-auto object-contain">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -117,7 +117,7 @@
 
                             <!-- Advanced -->
                             <a href="{{ route('programs.show', 'advanced') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
-                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                <div class="w-9 h-9 rounded-lg bg-[#fdc04f] border border-[#fcae26] flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform shadow-sm">
                                     <img src="{{ asset('images/shape-advanced.svg') }}" alt="Advanced" class="h-full w-auto object-contain">
                                 </div>
                                 <div class="flex-1 min-w-0">

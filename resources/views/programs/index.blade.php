@@ -102,7 +102,7 @@
                     <div class="space-y-6">
                         <!-- Icon & Level Badge -->
                         <div class="flex items-center justify-between">
-                            <div class="w-16 h-16 rounded-xl bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
+                            <div class="w-16 h-16 rounded-2xl bg-[#fdc04f] border-2 border-[#fcae26] flex items-center justify-center p-2.5 shadow-lg shadow-[#fdc04f]/25 group-hover:scale-110 group-hover:bg-[#fcae26] transition-all">
                                 <img src="{{ asset($p['icon']) }}" alt="{{ $p['title'] }}" class="h-10 w-auto object-contain">
                             </div>
                             <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase bg-[#fdc04f] text-[#321f47]">

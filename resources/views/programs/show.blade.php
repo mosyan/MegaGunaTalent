@@ -365,7 +365,7 @@
                 @foreach($otherPrograms as $other)
                     <a href="{{ route('programs.show', $other['slug']) }}" 
                        class="group p-8 rounded-2xl bg-[#2C0B1E]/80 border-2 border-[#fdc04f]/25 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 shadow-xl flex items-start gap-6">
-                        <div class="w-16 h-16 shrink-0 flex items-center justify-center p-2 rounded-xl bg-black/40 border border-[#fdc04f]/30 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 shrink-0 flex items-center justify-center p-2.5 rounded-2xl bg-[#fdc04f] border-2 border-[#fcae26] shadow-lg shadow-[#fdc04f]/25 group-hover:scale-110 group-hover:bg-[#fcae26] transition-all">
                             <img src="{{ asset($other['icon']) }}" alt="{{ $other['title'] }}" class="h-10 w-auto object-contain">
                         </div>
                         <div class="space-y-2">
