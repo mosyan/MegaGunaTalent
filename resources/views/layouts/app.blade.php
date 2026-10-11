@@ -35,6 +35,9 @@
 </head>
 <body class="bg-[#321f47] text-white font-arsenal antialiased selection:bg-[#fdc04f] selection:text-[#321f47] overflow-x-hidden min-h-screen flex flex-col justify-between">
 
+    @php
+        $isLightHeader = View::hasSection('header_theme') && trim($__env->yieldContent('header_theme')) === 'light';
+    @endphp
     <!-- Top Navigation Overlay -->
     <header class="absolute top-0 left-0 right-0 z-40 px-6 sm:px-12 md:px-16 pt-6 sm:pt-10 flex items-center justify-between">
         <!-- Logo -->
@@ -52,18 +55,18 @@
 
         <!-- Desktop Navigation & Hamburger -->
         <div class="flex items-center space-x-6 sm:space-x-8">
-            <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold text-white tracking-wide">
-                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">Home</a>
-                <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">About Us</a>
+            <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold tracking-wide {{ $isLightHeader ? 'bg-white/85 backdrop-blur-md px-6 py-2 rounded-full border border-amber-300/60 shadow-lg shadow-amber-950/5 text-[#2C0B1E]' : 'text-white' }}">
+                <a href="{{ route('home') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('home') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">Home</a>
+                <a href="{{ route('about') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('about') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">About Us</a>
                 
                 <!-- Programs Hover Dropdown (Clickable Parent + Auto Hover Submenu) -->
                 <div class="relative group">
                     <a href="{{ route('programs.index') }}" 
-                       class="inline-flex items-center gap-1.5 py-2 hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}"
+                       class="inline-flex items-center gap-1.5 py-2 {{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('programs.*') ? ($isLightHeader ? 'text-[#B45309] font-black' : 'text-[#fdc04f]') : '' }}"
                        aria-haspopup="true"
                        aria-expanded="false">
                         <span>Programs</span>
-                        <svg class="w-3.5 h-3.5 text-[#fdc04f] transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5 {{ $isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]' }} transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </a>
@@ -129,8 +132,8 @@
                     </div>
                 </div>
 
-                <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">Blog</a>
-                <a href="{{ route('enroll') }}" class="bg-[#fdc04f] text-[#321f47] px-4 py-2 rounded-full font-bold hover:bg-[#fcae26] transition-colors shadow-md text-sm">Enroll Now</a>
+                <a href="{{ route('blog.index') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('blog.*') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">Blog</a>
+                <a href="{{ route('enroll') }}" class="{{ $isLightHeader ? 'bg-[#2C0B1E] text-[#fdc04f] hover:bg-[#43122f]' : 'bg-[#fdc04f] text-[#321f47] hover:bg-[#fcae26]' }} px-5 py-2 rounded-full font-bold transition-all shadow-md text-sm">Enroll Now</a>
             </nav>
 
             <!-- Hamburger Menu Button -->
@@ -138,10 +141,10 @@
                     type="button"
                     aria-label="Toggle navigation menu"
                     aria-expanded="false"
-                    class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#fdc04f] hover:bg-[#fcae26] active:scale-95 text-[#321f47] flex flex-col items-center justify-center gap-1.5 shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#fdc04f]/40">
-                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-1"></span>
-                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-opacity duration-300 menu-bar-2"></span>
-                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-3"></span>
+                    class="w-12 h-12 sm:w-14 sm:h-14 rounded-full {{ $isLightHeader ? 'bg-[#2C0B1E] hover:bg-[#43122f] text-[#fdc04f] ring-2 ring-amber-300/50' : 'bg-[#fdc04f] hover:bg-[#fcae26] text-[#321f47]' }} active:scale-95 flex flex-col items-center justify-center gap-1.5 shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#fdc04f]/40">
+                <span class="w-6 h-0.5 {{ $isLightHeader ? 'bg-[#fdc04f]' : 'bg-[#321f47]' }} rounded-full transition-transform duration-300 menu-bar-1"></span>
+                <span class="w-6 h-0.5 {{ $isLightHeader ? 'bg-[#fdc04f]' : 'bg-[#321f47]' }} rounded-full transition-opacity duration-300 menu-bar-2"></span>
+                <span class="w-6 h-0.5 {{ $isLightHeader ? 'bg-[#fdc04f]' : 'bg-[#321f47]' }} rounded-full transition-transform duration-300 menu-bar-3"></span>
             </button>
         </div>
     </header>
