@@ -23,6 +23,7 @@ Route::get('/enroll-now', [GermanCourseController::class, 'enroll'])->name('enro
 Route::post('/enroll-now', [GermanCourseController::class, 'storeEnrollment'])
     ->middleware('throttle:10,1')
     ->name('enroll.store');
+Route::get('/about', [GermanCourseController::class, 'about'])->name('about');
 
 // Public Article Blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

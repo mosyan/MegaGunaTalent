@@ -31,6 +31,7 @@
     <!-- Styles & Scripts via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+    @stack('meta')
 </head>
 <body class="bg-[#321f47] text-white font-arsenal antialiased selection:bg-[#fdc04f] selection:text-[#321f47] overflow-x-hidden min-h-screen flex flex-col justify-between">
 
@@ -49,16 +50,27 @@
             @endif
         </a>
 
-        <!-- Hamburger Menu Button -->
-        <button id="menu-toggle-btn" 
-                type="button"
-                aria-label="Toggle navigation menu"
-                aria-expanded="false"
-                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#fdc04f] hover:bg-[#fcae26] active:scale-95 text-[#321f47] flex flex-col items-center justify-center gap-1.5 shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#fdc04f]/40">
-            <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-1"></span>
-            <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-opacity duration-300 menu-bar-2"></span>
-            <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-3"></span>
-        </button>
+        <!-- Desktop Navigation & Hamburger -->
+        <div class="flex items-center space-x-6 sm:space-x-8">
+            <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold text-white tracking-wide">
+                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">Home</a>
+                <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">About Us</a>
+                <a href="{{ route('home') }}#programs" class="hover:text-[#fdc04f] transition-colors">Programs</a>
+                <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">Blog</a>
+                <a href="{{ route('enroll') }}" class="bg-[#fdc04f] text-[#321f47] px-4 py-2 rounded-full font-bold hover:bg-[#fcae26] transition-colors shadow-md text-sm">Enroll Now</a>
+            </nav>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle-btn" 
+                    type="button"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#fdc04f] hover:bg-[#fcae26] active:scale-95 text-[#321f47] flex flex-col items-center justify-center gap-1.5 shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#fdc04f]/40">
+                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-1"></span>
+                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-opacity duration-300 menu-bar-2"></span>
+                <span class="w-6 h-0.5 bg-[#321f47] rounded-full transition-transform duration-300 menu-bar-3"></span>
+            </button>
+        </div>
     </header>
 
     <!-- Slide-over Drawer Menu -->
@@ -77,19 +89,23 @@
 
             <!-- Navigation Links -->
             <nav class="mt-10 flex flex-col space-y-6 text-xl sm:text-2xl font-bold font-arsenal">
-                <a href="{{ route('home') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors">
+                <a href="{{ route('home') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">
                     <span>Home</span>
+                    <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+                <a href="{{ route('about') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">
+                    <span>About Us / Profil</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
                 <a href="{{ route('home') }}#programs" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors">
                     <span>Our Programs</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
-                <a href="{{ route('blog.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors">
+                <a href="{{ route('blog.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">
                     <span>Article Blog</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
-                <a href="{{ route('enroll') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors">
+                <a href="{{ route('enroll') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('enroll') ? 'text-[#fdc04f]' : '' }}">
                     <span>Enroll Now</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
@@ -133,6 +149,19 @@
     <!-- Global Footer -->
     <footer class="bg-[#321f47] text-[#fdc04f] py-10 px-6 sm:px-12 border-t border-[#fdc04f]/20">
         <div class="max-w-6xl mx-auto flex flex-col items-center justify-center text-center space-y-6">
+            <!-- Footer Navigation -->
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm sm:text-base font-bold font-arsenal tracking-wide text-white/90">
+                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors">Home</a>
+                <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
+                <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors">About Us</a>
+                <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
+                <a href="{{ route('home') }}#programs" class="hover:text-[#fdc04f] transition-colors">Programs</a>
+                <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
+                <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors">Article Blog</a>
+                <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
+                <a href="{{ route('enroll') }}" class="hover:text-[#fdc04f] transition-colors">Enroll Now</a>
+            </div>
+
             <!-- Copyright -->
             <p class="font-arsenal text-lg sm:text-xl font-normal text-[#fdc04f] tracking-wide">
                 {{ $footerCopyright }}
@@ -214,5 +243,6 @@
             }
         });
     </script>
+    @stack('scripts')
 </body>
 </html>

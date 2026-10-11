@@ -53,6 +53,14 @@ class GermanCourseController extends Controller
     }
 
     /**
+     * Display the About Us page (LPK Profile, Vision-Mission, Founder, & Facilities).
+     */
+    public function about(): View
+    {
+        return view('about');
+    }
+
+    /**
      * Store a new enrollment submission.
      */
     public function storeEnrollment(Request $request): RedirectResponse

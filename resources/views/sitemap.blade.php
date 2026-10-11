@@ -7,6 +7,11 @@
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>{{ route('about') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>{{ route('enroll') }}</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
