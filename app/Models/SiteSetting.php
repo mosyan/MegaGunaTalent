@@ -78,4 +78,22 @@ class SiteSetting extends Model
             Cache::forget('site_setting:'.$key);
         }
     }
+
+    /**
+     * Get an asset setting URL with fallback to default asset.
+     */
+    public static function assetUrl(string $key, ?string $default = null): ?string
+    {
+        $val = static::get($key);
+
+        if (! $val) {
+            return $default;
+        }
+
+        if (str_starts_with($val, 'http://') || str_starts_with($val, 'https://')) {
+            return $val;
+        }
+
+        return asset($val);
+    }
 }

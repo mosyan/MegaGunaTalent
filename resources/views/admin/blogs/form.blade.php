@@ -245,6 +245,17 @@
                 </div>
 
                 <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Publish Date (Optional)</label>
+                    <input 
+                        type="datetime-local" 
+                        name="published_at" 
+                        value="{{ old('published_at', isset($blog) && $blog->published_at ? $blog->published_at->format('Y-m-d\TH:i') : '') }}"
+                        class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white text-xs focus:outline-none focus:ring-1 focus:ring-[#E2B842]"
+                    >
+                    <p class="text-[11px] text-slate-400 mt-1">Leave empty to set publication time automatically upon publishing.</p>
+                </div>
+
+                <div>
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Category</label>
                     <select 
                         name="category_id" 

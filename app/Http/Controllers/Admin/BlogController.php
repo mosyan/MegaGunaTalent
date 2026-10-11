@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -77,12 +78,18 @@ class BlogController extends Controller
             'faq_schema.*.answer' => ['nullable', 'string'],
             'key_takeaways' => ['nullable', 'array'],
             'key_takeaways.*' => ['nullable', 'string'],
+            'published_at' => ['nullable', 'date'],
         ]);
 
         $validated['slug'] = Str::slug($validated['slug'] ?? $validated['title']);
         $validated['author_id'] = auth()->id();
         $validated['is_featured'] = $request->boolean('is_featured');
-        $validated['published_at'] = $validated['status'] === 'published' ? now() : null;
+
+        if ($request->filled('published_at')) {
+            $validated['published_at'] = Carbon::parse($request->input('published_at'));
+        } else {
+            $validated['published_at'] = $validated['status'] === 'published' ? now() : null;
+        }
 
         // Image upload handling
         if ($request->hasFile('featured_image')) {
@@ -151,13 +158,18 @@ class BlogController extends Controller
             'faq_schema.*.answer' => ['nullable', 'string'],
             'key_takeaways' => ['nullable', 'array'],
             'key_takeaways.*' => ['nullable', 'string'],
+            'published_at' => ['nullable', 'date'],
         ]);
 
         $validated['slug'] = Str::slug($validated['slug']);
         $validated['is_featured'] = $request->boolean('is_featured');
 
-        if ($validated['status'] === 'published' && empty($blog->published_at)) {
-            $validated['published_at'] = now();
+        if ($request->filled('published_at')) {
+            $validated['published_at'] = Carbon::parse($request->input('published_at'));
+        } elseif ($validated['status'] === 'published') {
+            $validated['published_at'] = $blog->published_at ?? now();
+        } else {
+            $validated['published_at'] = null;
         }
 
         // Image upload handling

@@ -192,4 +192,24 @@ class AdminTest extends TestCase
         $response->assertSessionHas('success');
         $this->assertTrue(Hash::check('newSecretPass123!', $this->adminUser->fresh()->password));
     }
+
+    public function test_admin_can_set_custom_published_at_date(): void
+    {
+        $category = BlogCategory::create(['name' => 'Visa Info', 'slug' => 'visa-info']);
+
+        $customDate = now()->subDays(5)->startOfMinute();
+
+        $response = $this->actingAs($this->adminUser)->post(route('admin.blogs.store'), [
+            'title' => 'Backdated Article',
+            'category_id' => $category->id,
+            'content' => '<p>Backdated publication content.</p>',
+            'status' => 'published',
+            'published_at' => $customDate->format('Y-m-d H:i:s'),
+        ]);
+
+        $response->assertRedirect(route('admin.blogs.index'));
+        $blog = Blog::where('slug', 'backdated-article')->first();
+        $this->assertNotNull($blog);
+        $this->assertEquals($customDate->format('Y-m-d H:i'), $blog->published_at->format('Y-m-d H:i'));
+    }
 }

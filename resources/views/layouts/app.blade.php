@@ -6,8 +6,8 @@
     @php
         $siteTitle = \App\Models\SiteSetting::get('site_title', 'German Language Study - Speak German With Confidence');
         $siteTagline = \App\Models\SiteSetting::get('site_tagline', 'Master the German language with native-speaking certified instructors');
-        $customLogo = \App\Models\SiteSetting::get('site_logo');
-        $customFavicon = \App\Models\SiteSetting::get('site_favicon');
+        $customLogo = \App\Models\SiteSetting::assetUrl('site_logo');
+        $customFavicon = \App\Models\SiteSetting::assetUrl('site_favicon');
         $footerCopyright = \App\Models\SiteSetting::get('footer_copyright', '© '.date('Y').' Mega Guna Talent. All Rights Reserved.');
         $socialFb = \App\Models\SiteSetting::get('social_facebook', 'https://facebook.com');
         $socialIg = \App\Models\SiteSetting::get('social_instagram', 'https://instagram.com');

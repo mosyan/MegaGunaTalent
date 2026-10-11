@@ -27,9 +27,9 @@
     $ctaBtnText = \App\Models\SiteSetting::get('cta_button_text', 'Contact Us');
     $ctaBtnUrl = \App\Models\SiteSetting::get('cta_button_url', route('enroll'));
 
-    $heroBg = \App\Models\SiteSetting::get('hero_bg_image') ?: asset('images/global-bg.jpg');
-    $heroGate = \App\Models\SiteSetting::get('hero_gate_image') ?: asset('images/hero-gate.jpg');
-    $ctaBg = \App\Models\SiteSetting::get('cta_bg_image') ?: asset('images/cta-bridge.jpg');
+    $heroBg = \App\Models\SiteSetting::assetUrl('hero_bg_image', asset('images/global-bg.jpg'));
+    $heroGate = \App\Models\SiteSetting::assetUrl('hero_gate_image', asset('images/hero-gate.jpg'));
+    $ctaBg = \App\Models\SiteSetting::assetUrl('cta_bg_image', asset('images/cta-bridge.jpg'));
 @endphp
 
 @section('content')
