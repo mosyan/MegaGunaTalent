@@ -186,16 +186,14 @@
     <!-- SECTION 2: Identitas & Filosofi Lembaga (Parallax Motion) -->
     <section id="profil-lembaga" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 overflow-hidden border-t border-[#fdc04f]/15">
         <!-- Parallax Background Layer -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-[#0b4555]">
             <img src="{{ asset('images/global-bg.jpg') }}" 
                  alt="LPK Atmosphere Background" 
                  id="about-profile-parallax-bg"
-                 class="w-full h-[130%] -top-[15%] absolute object-cover object-center will-change-transform"
-                 loading="lazy">
-            <!-- Balanced Plum Overlay for Beautiful Cloud Visibility and Sharp Text Contrast -->
-            <div class="absolute inset-0 bg-[#2C0B1E]/60 pointer-events-none"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#2C0B1E]/85 via-[#2C0B1E]/40 to-[#2C0B1E]/75 pointer-events-none"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E] via-transparent to-[#2C0B1E] pointer-events-none"></div>
+                 class="w-full h-[140%] -top-[20%] absolute object-cover object-top will-change-transform"
+                 fetchpriority="high">
+            <!-- Subtle gradient overlay for crisp typography while keeping global-bg clouds crystal clear -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 pointer-events-none"></div>
         </div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
@@ -971,11 +969,14 @@
                 const rect = aboutSection.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
 
-                // Only update when section is in or near viewport
-                if (rect.bottom >= 0 && rect.top <= windowHeight) {
-                    const centerOffset = (rect.top + rect.height / 2 - windowHeight / 2);
-                    const translateY = -centerOffset * 0.22;
-                    aboutBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(1.15)`;
+                // Update smoothly whenever section is near or inside viewport
+                if (rect.bottom >= -150 && rect.top <= windowHeight + 150) {
+                    const totalDistance = windowHeight + rect.height;
+                    const currentPos = windowHeight - rect.top;
+                    const progress = Math.max(0, Math.min(1, currentPos / totalDistance));
+                    // Smooth, continuous translation within safe buffer without sudden scale snap
+                    const translateY = (progress - 0.5) * 100;
+                    aboutBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
                 }
                 ticking = false;
             }
@@ -987,6 +988,7 @@
                 }
             }, { passive: true });
 
+            window.addEventListener('resize', updateAboutParallax);
             updateAboutParallax();
         }
     });
