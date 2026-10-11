@@ -39,14 +39,14 @@
     <!-- ========================================================== -->
     <section id="hero-section" class="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-36 sm:pt-48 overflow-hidden bg-[#0b4555]">
         <!-- Parallax Background Layer -->
-        <div class="absolute inset-x-0 -top-24 -bottom-24 h-[130%] w-full overflow-hidden pointer-events-none -z-10">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <img src="{{ $heroBg }}" 
                  alt="German Language Background" 
                  id="home-hero-parallax-bg"
-                 class="w-full h-full object-cover object-top will-change-transform scale-110"
+                 class="w-full h-[125%] -top-[10%] absolute object-cover object-top will-change-transform"
                  fetchpriority="high">
             <!-- Subtle gradient overlay for contrast -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#321f47]/90 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent pointer-events-none"></div>
         </div>
         
         <!-- Center Hero Text & CTA -->

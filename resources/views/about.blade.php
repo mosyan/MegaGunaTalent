@@ -186,15 +186,16 @@
     <!-- SECTION 2: Identitas & Filosofi Lembaga (Parallax Motion) -->
     <section id="profil-lembaga" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 overflow-hidden border-t border-[#fdc04f]/15">
         <!-- Parallax Background Layer -->
-        <div class="absolute inset-x-0 -top-28 -bottom-28 h-[135%] w-full overflow-hidden pointer-events-none -z-10">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <img src="{{ asset('images/global-bg.jpg') }}" 
                  alt="LPK Atmosphere Background" 
                  id="about-profile-parallax-bg"
-                 class="w-full h-full object-cover object-center will-change-transform scale-115 opacity-50"
+                 class="w-full h-[130%] -top-[15%] absolute object-cover object-center will-change-transform"
                  loading="lazy">
-            <!-- Luxury Plum & Dark Vignette Overlay for Crisp Typography Contrast -->
-            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E]/95 via-[#2C0B1E]/75 to-[#2C0B1E]/95"></div>
-            <div class="absolute inset-0 bg-black/45"></div>
+            <!-- Balanced Plum Overlay for Beautiful Cloud Visibility and Sharp Text Contrast -->
+            <div class="absolute inset-0 bg-[#2C0B1E]/60 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#2C0B1E]/85 via-[#2C0B1E]/40 to-[#2C0B1E]/75 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E] via-transparent to-[#2C0B1E] pointer-events-none"></div>
         </div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
