@@ -42,6 +42,8 @@ class AboutPageTest extends TestCase
         $response->assertSee('global-bg.jpg');
         $response->assertSee('id="about-mentors-parallax-bg"', false);
         $response->assertSee('mentors-bg.jpg');
+        $response->assertSee('id="about-legal-parallax-bg"', false);
+        $response->assertSee('legal-bg.jpg');
     }
 
     public function test_about_page_structured_data_json_is_valid(): void

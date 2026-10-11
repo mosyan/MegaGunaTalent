@@ -750,9 +750,21 @@
         </div>
     </section>
 
-    <!-- SECTION 6: Landasan Hukum & Akreditasi Resmi -->
-    <section class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 bg-black/30 border-t border-[#fdc04f]/15">
-        <div class="max-w-6xl mx-auto space-y-12">
+    <!-- SECTION 6: Landasan Hukum & Akreditasi Resmi (Parallax Motion) -->
+    <section id="landasan-hukum" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 overflow-hidden border-t border-[#fdc04f]/15 bg-[#2C0B1E]">
+        <!-- Parallax Background Layer -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <img src="{{ asset('images/about/legal-bg.jpg') }}" 
+                 alt="Landasan Hukum & Legalitas Background" 
+                 id="about-legal-parallax-bg"
+                 class="w-full h-[170%] -top-[35%] absolute object-cover object-center will-change-transform scale-110"
+                 loading="lazy">
+            <!-- Luxury Dark Plum and Vignette Overlay for Crisp Typography Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E]/90 via-[#2C0B1E]/65 to-[#2C0B1E]/95 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-black/35 pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto space-y-12 relative z-10">
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
@@ -970,11 +982,13 @@
             }
         });
 
-        // Parallax Effect for Section 2 (Profil Lembaga) & Section 4 (Struktur Manajemen & Mentor)
+        // Parallax Effect for Sections: Profil Lembaga, Struktur Manajemen, Landasan Hukum
         const aboutSection = document.getElementById('profil-lembaga');
         const aboutBg = document.getElementById('about-profile-parallax-bg');
         const mentorsSection = document.getElementById('struktur-manajemen');
         const mentorsBg = document.getElementById('about-mentors-parallax-bg');
+        const legalSection = document.getElementById('landasan-hukum');
+        const legalBg = document.getElementById('about-legal-parallax-bg');
 
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let ticking = false;
@@ -1000,6 +1014,16 @@
                         const offset = viewportCenter - sectionCenter;
                         const translateY = offset * 0.35;
                         mentorsBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
+                    }
+                }
+
+                if (legalSection && legalBg) {
+                    const rect = legalSection.getBoundingClientRect();
+                    if (rect.top < windowHeight + 150 && rect.bottom > -150) {
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const offset = viewportCenter - sectionCenter;
+                        const translateY = offset * 0.35;
+                        legalBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
                     }
                 }
 
