@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ProgramPageTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the programs directory page renders successfully.
      */
@@ -119,9 +122,33 @@ class ProgramPageTest extends TestCase
      */
     public function test_enroll_page_preselects_program_from_query_string(): void
     {
-        $response = $this->get(route('enroll', ['level' => 'Intermediate']));
-
+        // Lowercase
+        $response = $this->get(route('enroll', ['level' => 'intermediate']));
         $response->assertStatus(200);
         $response->assertSee('<option value="Intermediate" selected', false);
+
+        // Uppercase
+        $responseUpper = $this->get(route('enroll', ['level' => 'ADVANCED']));
+        $responseUpper->assertStatus(200);
+        $responseUpper->assertSee('<option value="Advanced" selected', false);
+
+        // Fallback default
+        $responseFallback = $this->get(route('enroll'));
+        $responseFallback->assertStatus(200);
+        $responseFallback->assertSee('<option value="Beginner" selected', false);
+    }
+
+    /**
+     * Test sitemap contains all program routes.
+     */
+    public function test_sitemap_xml_contains_all_program_routes(): void
+    {
+        $response = $this->get(route('sitemap'));
+
+        $response->assertStatus(200);
+        $response->assertSee(route('programs.index'));
+        $response->assertSee(route('programs.show', 'beginner'));
+        $response->assertSee(route('programs.show', 'intermediate'));
+        $response->assertSee(route('programs.show', 'advanced'));
     }
 }
