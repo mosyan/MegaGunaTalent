@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class AdminAuthController extends Controller
@@ -67,5 +68,30 @@ class AdminAuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('admin.login')->with('status', 'You have been logged out.');
+    }
+
+    /**
+     * Show admin profile & account settings.
+     */
+    public function profile(): View
+    {
+        return view('admin.profile');
+    }
+
+    /**
+     * Update administrator account password.
+     */
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return back()->with('success', 'Your password has been successfully updated.');
     }
 }

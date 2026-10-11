@@ -15,10 +15,21 @@
     $programsTitle = \App\Models\SiteSetting::get('programs_title', 'Our Programs');
     $programsSubtitle = \App\Models\SiteSetting::get('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
 
+    $prog1Title = \App\Models\SiteSetting::get('program_1_title', 'Beginner');
+    $prog1Desc = \App\Models\SiteSetting::get('program_1_desc', 'Focus on practical communication skills for travelers and those new to the language.');
+    $prog2Title = \App\Models\SiteSetting::get('program_2_title', 'Intermediate');
+    $prog2Desc = \App\Models\SiteSetting::get('program_2_desc', 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.');
+    $prog3Title = \App\Models\SiteSetting::get('program_3_title', 'Advanced');
+    $prog3Desc = \App\Models\SiteSetting::get('program_3_desc', 'Tailored for those needing German in their careers, focusing on business or technical German.');
+
     $ctaTitle = \App\Models\SiteSetting::get('cta_title', 'Achieve Your German Language Goals');
     $ctaSubtitle = \App\Models\SiteSetting::get('cta_subtitle', 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment.');
     $ctaBtnText = \App\Models\SiteSetting::get('cta_button_text', 'Contact Us');
     $ctaBtnUrl = \App\Models\SiteSetting::get('cta_button_url', route('enroll'));
+
+    $heroBg = \App\Models\SiteSetting::get('hero_bg_image') ?: asset('images/global-bg.jpg');
+    $heroGate = \App\Models\SiteSetting::get('hero_gate_image') ?: asset('images/hero-gate.jpg');
+    $ctaBg = \App\Models\SiteSetting::get('cta_bg_image') ?: asset('images/cta-bridge.jpg');
 @endphp
 
 @section('content')
@@ -27,7 +38,7 @@
     <!-- HERO SECTION                                               -->
     <!-- ========================================================== -->
     <section class="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-36 sm:pt-48 bg-cover bg-top bg-no-repeat overflow-hidden" 
-             style="background-image: url('{{ asset('images/global-bg.jpg') }}'); background-color: #0b4555;">
+             style="background-image: url('{{ $heroBg }}'); background-color: #0b4555;">
         
         <!-- Subtle gradient overlay for contrast -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent pointer-events-none"></div>
@@ -51,7 +62,7 @@
 
         <!-- Brandenburg Gate Landmark Graphic (Positioned resting at bottom border) -->
         <div class="relative z-10 w-full max-w-4xl lg:max-w-5xl mx-auto px-4 mt-8 sm:mt-12 -mb-1 flex justify-center">
-            <img src="{{ asset('images/hero-gate.jpg') }}" 
+            <img src="{{ $heroGate }}" 
                  alt="Brandenburg Gate Berlin" 
                  class="w-full h-auto object-contain drop-shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
         </div>
@@ -84,14 +95,14 @@
                 <div class="flex flex-col items-center group">
                     <div class="h-24 sm:h-28 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                         <img src="{{ asset('images/shape-beginner.svg') }}" 
-                             alt="Beginner German Course" 
+                             alt="{{ $prog1Title }}" 
                              class="h-20 sm:h-24 w-auto object-contain">
                     </div>
                     <h3 class="font-arsenal font-bold text-2xl sm:text-3xl text-[#321f47] mb-4 tracking-wide">
-                        Beginner
+                        {{ $prog1Title }}
                     </h3>
                     <p class="font-arsenal text-lg sm:text-xl text-[#321f47] leading-relaxed max-w-xs font-normal">
-                        Focus on practical communication skills for travelers and those new to the language.
+                        {{ $prog1Desc }}
                     </p>
                 </div>
 
@@ -99,14 +110,14 @@
                 <div class="flex flex-col items-center group">
                     <div class="h-24 sm:h-28 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                         <img src="{{ asset('images/shape-intermediate.svg') }}" 
-                             alt="Intermediate German Course" 
+                             alt="{{ $prog2Title }}" 
                              class="h-20 sm:h-24 w-auto object-contain">
                     </div>
                     <h3 class="font-arsenal font-bold text-2xl sm:text-3xl text-[#321f47] mb-4 tracking-wide">
-                        Intermediate
+                        {{ $prog2Title }}
                     </h3>
                     <p class="font-arsenal text-lg sm:text-xl text-[#321f47] leading-relaxed max-w-xs font-normal">
-                        Building upon basic grammar, expanding vocabulary, and developing conversational fluency.
+                        {{ $prog2Desc }}
                     </p>
                 </div>
 
@@ -114,14 +125,14 @@
                 <div class="flex flex-col items-center group">
                     <div class="h-24 sm:h-28 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                         <img src="{{ asset('images/shape-advanced.svg') }}" 
-                             alt="Advanced German Course" 
+                             alt="{{ $prog3Title }}" 
                              class="h-20 sm:h-24 w-auto object-contain">
                     </div>
                     <h3 class="font-arsenal font-bold text-2xl sm:text-3xl text-[#321f47] mb-4 tracking-wide">
-                        Advanced
+                        {{ $prog3Title }}
                     </h3>
                     <p class="font-arsenal text-lg sm:text-xl text-[#321f47] leading-relaxed max-w-xs font-normal">
-                        Tailored for those needing German in their careers, focusing on business or technical German.
+                        {{ $prog3Desc }}
                     </p>
                 </div>
 
@@ -134,7 +145,7 @@
     <!-- BOTTOM CALL-TO-ACTION SECTION (Night River Bridge)        -->
     <!-- ========================================================== -->
     <section class="relative py-28 sm:py-36 md:py-44 px-6 sm:px-12 bg-cover bg-center bg-no-repeat overflow-hidden" 
-             style="background-image: url('{{ asset('images/cta-bridge.jpg') }}'); background-color: #1a1622;">
+             style="background-image: url('{{ $ctaBg }}'); background-color: #1a1622;">
         
         <!-- 34% Opacity Dark Overlay (as specified in template schema) -->
         <div class="absolute inset-0 bg-black/35 pointer-events-none"></div>

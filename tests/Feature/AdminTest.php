@@ -8,6 +8,7 @@ use App\Models\Enrollment;
 use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class AdminTest extends TestCase
@@ -141,5 +142,54 @@ class AdminTest extends TestCase
 
         $response->assertRedirect();
         $this->assertEquals('contacted', $enrollment->fresh()->status);
+    }
+
+    public function test_admin_can_update_enrollment_notes(): void
+    {
+        $enrollment = Enrollment::create([
+            'first_name' => 'Siti',
+            'last_name' => 'Rahma',
+            'email' => 'siti@example.com',
+            'program_level' => 'Intermediate',
+            'message' => 'Need B1 course',
+            'status' => 'pending',
+        ]);
+
+        $response = $this->actingAs($this->adminUser)->patch(route('admin.enrollments.notes', $enrollment), [
+            'admin_notes' => 'Called candidate on WhatsApp, interested in weekend class batch.',
+        ]);
+
+        $response->assertRedirect();
+        $this->assertEquals('Called candidate on WhatsApp, interested in weekend class batch.', $enrollment->fresh()->admin_notes);
+    }
+
+    public function test_admin_can_export_enrollments_csv(): void
+    {
+        Enrollment::create([
+            'first_name' => 'Andi',
+            'last_name' => 'Wijaya',
+            'email' => 'andi@example.com',
+            'program_level' => 'Advanced',
+            'message' => 'Preparing for C1',
+            'status' => 'pending',
+        ]);
+
+        $response = $this->actingAs($this->adminUser)->get(route('admin.enrollments.export'));
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $this->assertStringContainsString('attachment; filename="enrollments_export_', $response->headers->get('Content-Disposition'));
+    }
+
+    public function test_admin_can_change_password(): void
+    {
+        $response = $this->actingAs($this->adminUser)->put(route('admin.profile.password'), [
+            'current_password' => 'password',
+            'password' => 'newSecretPass123!',
+            'password_confirmation' => 'newSecretPass123!',
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+        $this->assertTrue(Hash::check('newSecretPass123!', $this->adminUser->fresh()->password));
     }
 }

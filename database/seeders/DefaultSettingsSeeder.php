@@ -42,8 +42,14 @@ class DefaultSettingsSeeder extends Seeder
 
             // Programs Section
             ['key' => 'programs_badge', 'value' => 'OUR FLAGSHIP PROGRAMS', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'programs_title', 'value' => 'Tailored Courses for Every Level & Ambition', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'programs_subtitle', 'value' => 'Whether you are a complete beginner or preparing for official Goethe-Zertifikat exams, our immersive curriculum gets you fluent faster.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'programs_title', 'value' => 'Our Programs', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_subtitle', 'value' => 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_1_title', 'value' => 'Beginner', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_1_desc', 'value' => 'Focus on practical communication skills for travelers and those new to the language.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_2_title', 'value' => 'Intermediate', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_2_desc', 'value' => 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_3_title', 'value' => 'Advanced', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_3_desc', 'value' => 'Tailored for those needing German in their careers, focusing on business or technical German.', 'group' => 'programs', 'type' => 'textarea'],
 
             // CTA Section
             ['key' => 'cta_badge', 'value' => 'FAST-TRACK YOUR JOURNEY', 'group' => 'cta', 'type' => 'text'],

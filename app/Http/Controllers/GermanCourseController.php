@@ -57,6 +57,11 @@ class GermanCourseController extends Controller
      */
     public function storeEnrollment(Request $request): RedirectResponse
     {
+        // Silent drop for automated spam bots triggering honeypot
+        if ($request->filled('honeypot_website')) {
+            return redirect()->back()->with('success', "Thank you! We'll get in touch with you as soon as possible.");
+        }
+
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],

@@ -110,6 +110,14 @@ class BlogController extends Controller
     }
 
     /**
+     * Preview or display the specified article.
+     */
+    public function show(Blog $blog): RedirectResponse
+    {
+        return redirect()->route('blog.show', $blog->slug);
+    }
+
+    /**
      * Show the form for editing the article.
      */
     public function edit(Blog $blog): View

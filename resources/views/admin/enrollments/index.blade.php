@@ -11,10 +11,20 @@
             <h2 class="text-xl font-bold text-white tracking-tight">Student Enrollments & Inquiries</h2>
             <p class="text-xs text-slate-400 mt-1">Review student applications, course interest levels, and update follow-up statuses.</p>
         </div>
-        <div>
+        <div class="flex items-center gap-3">
             <span class="px-3.5 py-1.5 rounded-xl bg-white/10 text-slate-200 text-xs font-semibold">
                 {{ $enrollments->total() }} Total Applications
             </span>
+            <a 
+                href="{{ route('admin.enrollments.export', request()->query()) }}" 
+                class="px-4 py-2 rounded-xl bg-[#E2B842] hover:bg-[#cfa230] text-[#2C0B1E] text-xs font-bold transition-all flex items-center gap-2 shadow-lg shadow-[#E2B842]/20 cursor-pointer"
+                title="Download leads as CSV"
+            >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Export CSV
+            </a>
         </div>
     </div>
 
@@ -90,6 +100,14 @@
                             <td class="px-6 py-4">
                                 <div class="font-bold text-white">{{ $enrollment->first_name }} {{ $enrollment->last_name }}</div>
                                 <div class="text-xs text-slate-400 italic mt-0.5 line-clamp-1 max-w-sm">"{{ $enrollment->message }}"</div>
+                                @if($enrollment->admin_notes)
+                                    <div class="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#E2B842]">
+                                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                                        </svg>
+                                        <span class="truncate max-w-xs font-sans text-slate-300">Note: {{ $enrollment->admin_notes }}</span>
+                                    </div>
+                                @endif
                             </td>
                             <td class="px-6 py-4 text-xs">
                                 <div class="text-white">{{ $enrollment->email }}</div>
@@ -128,7 +146,62 @@
                                 <div class="text-[10px] text-slate-500">{{ $enrollment->created_at->format('H:i') }}</div>
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <div class="flex items-center justify-end gap-2">
+                                <div class="flex items-center justify-end gap-2" x-data="{ showNotesModal: false }">
+                                    <!-- CRM Notes Modal Trigger -->
+                                    <button 
+                                        type="button" 
+                                        @click="showNotesModal = true"
+                                        class="p-1.5 rounded-lg transition-colors cursor-pointer {{ $enrollment->admin_notes ? 'text-[#E2B842] bg-[#E2B842]/10 hover:bg-[#E2B842]/20' : 'text-slate-400 hover:text-[#E2B842] hover:bg-white/10' }}"
+                                        title="{{ $enrollment->admin_notes ? 'View/Edit Notes' : 'Add Note' }}"
+                                    >
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </button>
+
+                                    <!-- CRM Notes Modal Dialog -->
+                                    <div 
+                                        x-show="showNotesModal" 
+                                        x-cloak 
+                                        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+                                    >
+                                        <div 
+                                            @click.away="showNotesModal = false" 
+                                            class="bg-[#240919] border border-[#E2B842]/30 rounded-2xl p-6 w-full max-w-lg shadow-2xl space-y-4 text-left"
+                                        >
+                                            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                                <div>
+                                                    <h3 class="text-sm font-bold text-white">Lead Follow-up Notes</h3>
+                                                    <p class="text-xs text-slate-400 mt-0.5">{{ $enrollment->first_name }} {{ $enrollment->last_name }} ({{ $enrollment->email }})</p>
+                                                </div>
+                                                <button type="button" @click="showNotesModal = false" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+                                            </div>
+
+                                            <form action="{{ route('admin.enrollments.notes', $enrollment) }}" method="POST" class="space-y-4">
+                                                @csrf
+                                                @method('PATCH')
+                                                <div>
+                                                    <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Internal Admin & Counselor Notes</label>
+                                                    <textarea 
+                                                        name="admin_notes" 
+                                                        rows="4" 
+                                                        placeholder="Record counseling notes, preferred class times, or WhatsApp chat summary..."
+                                                        class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-[#E2B842]"
+                                                    >{{ $enrollment->admin_notes }}</textarea>
+                                                </div>
+
+                                                <div class="flex items-center justify-end gap-3 pt-2">
+                                                    <button type="button" @click="showNotesModal = false" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-semibold">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#E2B842] hover:bg-[#cfa230] text-[#2C0B1E] text-xs font-bold shadow-lg shadow-[#E2B842]/20">
+                                                        Save Notes
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
                                     @if($enrollment->phone)
                                         <a 
                                             href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $enrollment->phone) }}?text={{ urlencode('Hello ' . $enrollment->first_name . ', thank you for contacting Mega Guna Talent regarding German courses.') }}" 

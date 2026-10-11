@@ -125,6 +125,18 @@
 
 @section('content')
 <article class="pt-32 sm:pt-40 pb-20 px-6 sm:px-12 max-w-5xl mx-auto">
+    @if($blog->status !== 'published')
+        <div class="mb-8 p-4 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xl">
+            <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-amber-400 text-slate-900 text-xs font-black uppercase tracking-wider shrink-0">Draft Mode</span>
+                <span class="text-xs sm:text-sm font-medium">This article is currently a private draft. Only administrators can view this preview.</span>
+            </div>
+            <a href="{{ route('admin.blogs.edit', $blog) }}" class="text-xs font-bold text-amber-300 hover:text-white flex items-center gap-1 transition-colors shrink-0">
+                Edit in Admin Panel &rarr;
+            </a>
+        </div>
+    @endif
+
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-xs text-[#fdc04f] mb-8 overflow-x-auto whitespace-nowrap">
         <a href="{{ route('home') }}" class="hover:underline">Home</a>

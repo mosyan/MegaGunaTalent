@@ -161,15 +161,15 @@
 
             <!-- User Footer -->
             <div class="p-4 border-t border-white/10 bg-[#170510] flex items-center justify-between">
-                <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-8 h-8 rounded-full bg-white/10 text-white font-bold flex items-center justify-center text-xs shrink-0">
+                <a href="{{ route('admin.profile') }}" class="flex items-center gap-3 min-w-0 hover:opacity-80 transition-opacity">
+                    <div class="w-8 h-8 rounded-full bg-[#E2B842] text-[#2C0B1E] font-bold flex items-center justify-center text-xs shrink-0">
                         {{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}
                     </div>
                     <div class="min-w-0 flex-1">
                         <p class="text-xs font-semibold text-white truncate">{{ Auth::user()->name ?? 'Administrator' }}</p>
                         <p class="text-[10px] text-slate-400 truncate">{{ Auth::user()->email ?? '' }}</p>
                     </div>
-                </div>
+                </a>
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
                     <button type="submit" title="Logout" class="p-2 text-slate-400 hover:text-rose-400 hover:bg-white/5 rounded-lg transition-colors cursor-pointer">

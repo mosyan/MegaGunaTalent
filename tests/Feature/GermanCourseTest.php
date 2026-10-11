@@ -59,4 +59,35 @@ class GermanCourseTest extends TestCase
             'program_level' => 'Intermediate',
         ]);
     }
+
+    public function test_honeypot_drops_spam_submission_silently(): void
+    {
+        $payload = [
+            'first_name' => 'Spambot',
+            'last_name' => 'Automated',
+            'email' => 'spam@bot.com',
+            'message' => 'Spam link http://spam.com',
+            'honeypot_website' => 'http://spam.com', // Filled by bots
+        ];
+
+        $response = $this->post(route('enroll.store'), $payload);
+
+        $response->assertSessionHas('success');
+        $response->assertRedirect();
+
+        $this->assertDatabaseMissing('enrollments', [
+            'email' => 'spam@bot.com',
+        ]);
+    }
+
+    public function test_sitemap_xml_renders_valid_xml(): void
+    {
+        $response = $this->get(route('sitemap'));
+
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/xml');
+        $response->assertSee('<urlset', false);
+        $response->assertSee(route('home'), false);
+        $response->assertSee(route('blog.index'), false);
+    }
 }

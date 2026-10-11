@@ -291,6 +291,44 @@
                 </div>
             </div>
 
+            <!-- Hero Visual Backgrounds & Landmark Graphic -->
+            <div class="pt-4 border-t border-white/5 space-y-4">
+                <h4 class="text-sm font-bold text-white">Hero Visuals & Graphics</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Hero Background Image -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Hero Section Background Image</label>
+                        @if(!empty($settings['hero_bg_image']))
+                            <div class="h-24 rounded-lg overflow-hidden bg-black/40 border border-white/10">
+                                <img src="{{ $settings['hero_bg_image'] }}" alt="Hero Background" class="w-full h-full object-cover">
+                            </div>
+                        @else
+                            <div class="h-20 rounded-lg bg-black/30 border border-white/10 flex items-center justify-center text-xs text-slate-400">
+                                Default: images/global-bg.jpg
+                            </div>
+                        @endif
+                        <input type="file" name="hero_bg_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
+                        <p class="text-[11px] text-slate-400">JPG, PNG, or WebP (Max 5MB). Overrides default global map graphic.</p>
+                    </div>
+
+                    <!-- Brandenburg Gate Graphic -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Brandenburg Gate Landmark Graphic</label>
+                        @if(!empty($settings['hero_gate_image']))
+                            <div class="h-24 rounded-lg overflow-hidden bg-black/40 border border-white/10 flex items-center justify-center p-2">
+                                <img src="{{ $settings['hero_gate_image'] }}" alt="Hero Gate" class="max-h-full w-auto object-contain">
+                            </div>
+                        @else
+                            <div class="h-20 rounded-lg bg-black/30 border border-white/10 flex items-center justify-center text-xs text-slate-400">
+                                Default: images/hero-gate.jpg
+                            </div>
+                        @endif
+                        <input type="file" name="hero_gate_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
+                        <p class="text-[11px] text-slate-400">PNG or JPG cutout resting at the hero baseline (Max 4MB).</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- 3 Stat Badges -->
             <div class="pt-4 border-t border-white/5 space-y-3">
                 <h4 class="text-sm font-bold text-white">Trust & Achievement Statistics (Floating Cards)</h4>
@@ -318,7 +356,7 @@
         <div x-show="currentTab === 'programs'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                Course Programs Heading & Overview
+                Course Programs Heading & Cards Customizer
             </h3>
 
             <div>
@@ -345,9 +383,54 @@
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Description</label>
                 <textarea 
                     name="programs_subtitle" 
-                    rows="3"
+                    rows="2"
                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                 >{{ old('programs_subtitle', $settings['programs_subtitle'] ?? '') }}</textarea>
+            </div>
+
+            <!-- 3 Individual Program Cards Customization -->
+            <div class="pt-4 border-t border-white/5 space-y-4">
+                <h4 class="text-sm font-bold text-white">Program Cards (Beginner, Intermediate, Advanced)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Program 1 -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 1 (Left)</span>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
+                            <input type="text" name="program_1_title" value="{{ old('program_1_title', $settings['program_1_title'] ?? 'Beginner') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
+                            <textarea name="program_1_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_1_desc', $settings['program_1_desc'] ?? 'Focus on practical communication skills for travelers and those new to the language.') }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Program 2 -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 2 (Middle)</span>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
+                            <input type="text" name="program_2_title" value="{{ old('program_2_title', $settings['program_2_title'] ?? 'Intermediate') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
+                            <textarea name="program_2_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_2_desc', $settings['program_2_desc'] ?? 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.') }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Program 3 -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 3 (Right)</span>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
+                            <input type="text" name="program_3_title" value="{{ old('program_3_title', $settings['program_3_title'] ?? 'Advanced') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
+                            <textarea name="program_3_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_3_desc', $settings['program_3_desc'] ?? 'Tailored for those needing German in their careers, focusing on business or technical German.') }}</textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -385,6 +468,26 @@
                     rows="3"
                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                 >{{ old('cta_subtitle', $settings['cta_subtitle'] ?? '') }}</textarea>
+            </div>
+
+            <!-- CTA Background Image Upload -->
+            <div class="pt-4 border-t border-white/5">
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Section Background Image</label>
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-4">
+                    @if(!empty($settings['cta_bg_image']))
+                        <div class="w-28 h-16 rounded-lg overflow-hidden bg-black/40 border border-white/10 shrink-0">
+                            <img src="{{ $settings['cta_bg_image'] }}" alt="CTA Background" class="w-full h-full object-cover">
+                        </div>
+                    @else
+                        <div class="w-28 h-16 rounded-lg bg-black/30 border border-white/10 flex items-center justify-center text-[10px] text-slate-400 text-center px-1 shrink-0">
+                            Default: cta-bridge.jpg
+                        </div>
+                    @endif
+                    <div class="flex-1 min-w-0">
+                        <input type="file" name="cta_bg_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
+                        <p class="text-[11px] text-slate-400 mt-1">Recommended 1920x800px JPG or WebP (Max 5MB).</p>
+                    </div>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/5">

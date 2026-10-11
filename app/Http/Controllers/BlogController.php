@@ -74,13 +74,21 @@ class BlogController extends Controller
      */
     public function show(string $slug): View
     {
-        $blog = Blog::published()
+        $blog = Blog::with(['category', 'author'])
             ->where('slug', $slug)
-            ->with(['category', 'author'])
             ->firstOrFail();
 
-        // Increment view count
-        $blog->increment('view_count');
+        $isAdmin = auth()->check() && auth()->user()->isAdmin();
+
+        // If article is not published, only allow access to authenticated administrators
+        if ($blog->status !== 'published' && ! $isAdmin) {
+            abort(404);
+        }
+
+        // Increment view count for normal readers
+        if ($blog->status === 'published' && ! $isAdmin) {
+            $blog->increment('view_count');
+        }
 
         // Related articles in same category
         $relatedBlogs = Blog::published()

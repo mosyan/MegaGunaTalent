@@ -55,6 +55,10 @@
             <div class="bg-white/95 backdrop-blur-md text-[#321f47] p-8 sm:p-12 shadow-2xl border-4 border-[#fdc04f]">
                 <form action="{{ route('enroll.store') }}" method="POST" class="space-y-6">
                     @csrf
+                    <!-- Spam Honeypot Field -->
+                    <div class="hidden" aria-hidden="true" style="display:none !important;">
+                        <input type="text" name="honeypot_website" tabindex="-1" autocomplete="off">
+                    </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- First Name -->

@@ -124,4 +124,23 @@ class BlogTest extends TestCase
         $response = $this->get(route('blog.show', $draft->slug));
         $response->assertStatus(404);
     }
+
+    public function test_admin_can_preview_unpublished_draft_blog(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true, 'role' => 'admin']);
+
+        $draft = Blog::create([
+            'title' => 'Admin Only Secret Draft',
+            'slug' => 'admin-only-secret-draft',
+            'category_id' => $this->category->id,
+            'author_id' => $admin->id,
+            'content' => '<p>Upcoming announcement.</p>',
+            'status' => 'draft',
+        ]);
+
+        $response = $this->actingAs($admin)->get(route('blog.show', $draft->slug));
+        $response->assertStatus(200);
+        $response->assertSee('Admin Only Secret Draft');
+        $response->assertSee('Draft Mode');
+    }
 }

@@ -17,5 +17,6 @@ class Enrollment extends Model
         'message',
         'program_level',
         'status',
+        'admin_notes',
     ];
 }
