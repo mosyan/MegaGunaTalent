@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\SiteSetting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,6 +25,43 @@ class ProgramPageTest extends TestCase
         $response->assertSee(route('programs.show', 'beginner'));
         $response->assertSee(route('programs.show', 'intermediate'));
         $response->assertSee(route('programs.show', 'advanced'));
+    }
+
+    /**
+     * Test top navigation contains clickable Programs link and hover submenu items.
+     */
+    public function test_top_navigation_contains_clickable_programs_link_and_hover_submenu(): void
+    {
+        $response = $this->get(route('home'));
+
+        $response->assertStatus(200);
+        // Direct clickable Programs link
+        $response->assertSee(route('programs.index'));
+        $response->assertSee('Programs');
+
+        // Dropdown submenu items
+        $response->assertSee('Semua Program');
+        $response->assertSee('Beginner');
+        $response->assertSee('Intermediate');
+        $response->assertSee('Advanced');
+        $response->assertSee(route('programs.show', 'beginner'));
+        $response->assertSee(route('programs.show', 'intermediate'));
+        $response->assertSee(route('programs.show', 'advanced'));
+    }
+
+    /**
+     * Test program details dynamically reflect customized admin site settings.
+     */
+    public function test_program_details_reflect_customized_admin_site_settings(): void
+    {
+        SiteSetting::set('program_beginner_title', 'Kelas Bahasa Jerman Pemula Mega Guna', 'programs');
+        SiteSetting::set('program_beginner_duration', '8 Minggu Akselerasi', 'programs');
+
+        $response = $this->get(route('programs.show', 'beginner'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Kelas Bahasa Jerman Pemula Mega Guna');
+        $response->assertSee('8 Minggu Akselerasi');
     }
 
     /**

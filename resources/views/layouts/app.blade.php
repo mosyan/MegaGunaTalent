@@ -55,7 +55,80 @@
             <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold text-white tracking-wide">
                 <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">Home</a>
                 <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">About Us</a>
-                <a href="{{ route('programs.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">Programs</a>
+                
+                <!-- Programs Hover Dropdown (Clickable Parent + Auto Hover Submenu) -->
+                <div class="relative group">
+                    <a href="{{ route('programs.index') }}" 
+                       class="inline-flex items-center gap-1.5 py-2 hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                        <span>Programs</span>
+                        <svg class="w-3.5 h-3.5 text-[#fdc04f] transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </a>
+
+                    <!-- Dropdown Panel (Hover & Focus) -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 pointer-events-none translate-y-2 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 focus-within:opacity-100 focus-within:pointer-events-auto focus-within:translate-y-0 transition-all duration-200 z-50 min-w-[300px]">
+                        <div class="bg-[#240919]/95 backdrop-blur-xl border border-[#fdc04f]/35 rounded-2xl p-2.5 shadow-2xl shadow-black/80 space-y-1">
+                            <!-- All Programs -->
+                            <a href="{{ route('programs.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors group/item">
+                                <div class="w-9 h-9 rounded-lg bg-[#fdc04f]/20 border border-[#fdc04f]/40 flex items-center justify-center text-[#fdc04f] shrink-0">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors">Semua Program</div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Overview kurikulum & sertifikasi</div>
+                                </div>
+                            </a>
+
+                            <div class="h-px bg-white/10 my-1"></div>
+
+                            <!-- Beginner -->
+                            <a href="{{ route('programs.show', 'beginner') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
+                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                    <img src="{{ asset('images/shape-beginner.svg') }}" alt="Beginner" class="h-full w-auto object-contain">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Beginner</span>
+                                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f]/20 text-[#fdc04f] shrink-0">A1 - A2</span>
+                                    </div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Fondasi bahasa & percakapan harian</div>
+                                </div>
+                            </a>
+
+                            <!-- Intermediate -->
+                            <a href="{{ route('programs.show', 'intermediate') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
+                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                    <img src="{{ asset('images/shape-intermediate.svg') }}" alt="Intermediate" class="h-full w-auto object-contain">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Intermediate</span>
+                                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f] text-[#321f47] shrink-0">B1</span>
+                                    </div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Syarat utama Ausbildung & karier</div>
+                                </div>
+                            </a>
+
+                            <!-- Advanced -->
+                            <a href="{{ route('programs.show', 'advanced') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors group/item">
+                                <div class="w-9 h-9 rounded-lg bg-black/40 border border-[#fdc04f]/30 flex items-center justify-center p-1.5 shrink-0 group-hover/item:scale-105 transition-transform">
+                                    <img src="{{ asset('images/shape-advanced.svg') }}" alt="Advanced" class="h-full w-auto object-contain">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Advanced</span>
+                                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f]/20 text-[#fdc04f] shrink-0">B2 - C1</span>
+                                    </div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Profisiensi medis, teknik & akademis</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">Blog</a>
                 <a href="{{ route('enroll') }}" class="bg-[#fdc04f] text-[#321f47] px-4 py-2 rounded-full font-bold hover:bg-[#fcae26] transition-colors shadow-md text-sm">Enroll Now</a>
             </nav>
@@ -97,10 +170,28 @@
                     <span>About Us / Profil</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
-                <a href="{{ route('programs.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">
-                    <span>Our Programs</span>
-                    <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
+                
+                <!-- Our Programs (With Submenu in Drawer) -->
+                <div class="border-b border-[#fdc04f]/10 pb-3">
+                    <a href="{{ route('programs.index') }}" class="group flex items-center justify-between py-2 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">
+                        <span>Our Programs</span>
+                        <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    </a>
+                    <div class="pl-3.5 pt-1 space-y-2 border-l-2 border-[#fdc04f]/30 ml-1 text-base font-normal">
+                        <a href="{{ route('programs.show', 'beginner') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
+                            <span>Beginner (A1 - A2)</span>
+                            <span class="text-xs text-[#fdc04f] font-mono">Goethe</span>
+                        </a>
+                        <a href="{{ route('programs.show', 'intermediate') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
+                            <span>Intermediate (B1)</span>
+                            <span class="text-xs text-[#fdc04f] font-mono">Ausbildung</span>
+                        </a>
+                        <a href="{{ route('programs.show', 'advanced') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
+                            <span>Advanced (B2 - C1)</span>
+                            <span class="text-xs text-[#fdc04f] font-mono">Karier</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="{{ route('blog.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">
                     <span>Article Blog</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>

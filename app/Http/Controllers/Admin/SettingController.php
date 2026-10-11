@@ -61,7 +61,7 @@ class SettingController extends Controller
             'hero_stat_3_val' => ['nullable', 'string', 'max:50'],
             'hero_stat_3_lbl' => ['nullable', 'string', 'max:100'],
 
-            // Programs Section
+            // Programs Section - General & Home Cards
             'programs_badge' => ['nullable', 'string', 'max:255'],
             'programs_title' => ['nullable', 'string', 'max:255'],
             'programs_subtitle' => ['nullable', 'string'],
@@ -71,6 +71,45 @@ class SettingController extends Controller
             'program_2_desc' => ['nullable', 'string', 'max:500'],
             'program_3_title' => ['nullable', 'string', 'max:100'],
             'program_3_desc' => ['nullable', 'string', 'max:500'],
+
+            // Programs Section - Beginner Program
+            'program_beginner_title' => ['nullable', 'string', 'max:255'],
+            'program_beginner_level' => ['nullable', 'string', 'max:100'],
+            'program_beginner_badge' => ['nullable', 'string', 'max:255'],
+            'program_beginner_tagline' => ['nullable', 'string'],
+            'program_beginner_description' => ['nullable', 'string'],
+            'program_beginner_duration' => ['nullable', 'string', 'max:100'],
+            'program_beginner_total_hours' => ['nullable', 'string', 'max:100'],
+            'program_beginner_class_size' => ['nullable', 'string', 'max:100'],
+            'program_beginner_schedule' => ['nullable', 'string', 'max:255'],
+            'program_beginner_target_exam' => ['nullable', 'string', 'max:255'],
+            'program_beginner_career_path' => ['nullable', 'string'],
+
+            // Programs Section - Intermediate Program
+            'program_intermediate_title' => ['nullable', 'string', 'max:255'],
+            'program_intermediate_level' => ['nullable', 'string', 'max:100'],
+            'program_intermediate_badge' => ['nullable', 'string', 'max:255'],
+            'program_intermediate_tagline' => ['nullable', 'string'],
+            'program_intermediate_description' => ['nullable', 'string'],
+            'program_intermediate_duration' => ['nullable', 'string', 'max:100'],
+            'program_intermediate_total_hours' => ['nullable', 'string', 'max:100'],
+            'program_intermediate_class_size' => ['nullable', 'string', 'max:100'],
+            'program_intermediate_schedule' => ['nullable', 'string', 'max:255'],
+            'program_intermediate_target_exam' => ['nullable', 'string', 'max:255'],
+            'program_intermediate_career_path' => ['nullable', 'string'],
+
+            // Programs Section - Advanced Program
+            'program_advanced_title' => ['nullable', 'string', 'max:255'],
+            'program_advanced_level' => ['nullable', 'string', 'max:100'],
+            'program_advanced_badge' => ['nullable', 'string', 'max:255'],
+            'program_advanced_tagline' => ['nullable', 'string'],
+            'program_advanced_description' => ['nullable', 'string'],
+            'program_advanced_duration' => ['nullable', 'string', 'max:100'],
+            'program_advanced_total_hours' => ['nullable', 'string', 'max:100'],
+            'program_advanced_class_size' => ['nullable', 'string', 'max:100'],
+            'program_advanced_schedule' => ['nullable', 'string', 'max:255'],
+            'program_advanced_target_exam' => ['nullable', 'string', 'max:255'],
+            'program_advanced_career_path' => ['nullable', 'string'],
 
             // CTA Section
             'cta_badge' => ['nullable', 'string', 'max:255'],

@@ -3,10 +3,13 @@
 namespace Tests\Unit;
 
 use App\Services\ProgramCatalog;
-use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ProgramCatalogTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test that all programs are defined with required attributes.
      */

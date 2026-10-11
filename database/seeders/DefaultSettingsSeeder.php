@@ -58,6 +58,36 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'program_3_title', 'value' => 'Advanced', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_3_desc', 'value' => 'Tailored for those needing German in their careers, focusing on business or technical German.', 'group' => 'programs', 'type' => 'textarea'],
 
+            // Program Details: Beginner
+            ['key' => 'program_beginner_title', 'value' => 'Beginner German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_level', 'value' => 'A1 - A2 (CEFR)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_badge', 'value' => 'Fondasi & Percakapan Harian', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_duration', 'value' => '10 - 12 Minggu', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_total_hours', 'value' => '160 Jam Pembelajaran Intensif', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_class_size', 'value' => 'Maksimal 15 Siswa / Kelas', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_schedule', 'value' => 'Senin - Jumat (09:00 - 13:00 WIB) / Pilihan Kelas Malam', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_target_exam', 'value' => 'Goethe-Zertifikat A1 & A2', 'group' => 'programs', 'type' => 'text'],
+
+            // Program Details: Intermediate
+            ['key' => 'program_intermediate_title', 'value' => 'Intermediate German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_level', 'value' => 'B1 (CEFR)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_badge', 'value' => 'Pintu Gerbang Utama Ausbildung Jerman', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_duration', 'value' => '12 Minggu', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_total_hours', 'value' => '180 Jam Pembelajaran Intensif', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_class_size', 'value' => 'Maksimal 15 Siswa / Kelas', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_schedule', 'value' => 'Senin - Jumat (08:30 - 13:00 WIB)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_target_exam', 'value' => 'Goethe-Zertifikat B1 (4 Modul)', 'group' => 'programs', 'type' => 'text'],
+
+            // Program Details: Advanced
+            ['key' => 'program_advanced_title', 'value' => 'Advanced German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_level', 'value' => 'B2 - C1 (CEFR)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_badge', 'value' => 'Profisiensi Karier & Akademik', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_duration', 'value' => '12 - 14 Minggu', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_total_hours', 'value' => '200 Jam Pembelajaran Intensif', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_class_size', 'value' => 'Maksimal 12 Siswa / Kelas (Fokus & Presisi)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_schedule', 'value' => 'Senin - Jumat / Kelas Spesialisasi Fleksibel', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_target_exam', 'value' => 'Goethe-Zertifikat B2/C1 & TestDaF', 'group' => 'programs', 'type' => 'text'],
+
             // CTA Section
             ['key' => 'cta_badge', 'value' => 'FAST-TRACK YOUR JOURNEY', 'group' => 'cta', 'type' => 'text'],
             ['key' => 'cta_title', 'value' => 'Ready to Start Speaking German?', 'group' => 'cta', 'type' => 'text'],

@@ -396,13 +396,16 @@
                 >{{ old('programs_subtitle', $settings['programs_subtitle'] ?? '') }}</textarea>
             </div>
 
-            <!-- 3 Individual Program Cards Customization -->
+            <!-- 3 Individual Program Cards Customization (Home Snippets) -->
             <div class="pt-4 border-t border-white/5 space-y-4">
-                <h4 class="text-sm font-bold text-white">Program Cards (Beginner, Intermediate, Advanced)</h4>
+                <h4 class="text-sm font-bold text-white flex items-center justify-between">
+                    <span>Ringkasan Kartu Beranda (Homepage Program Snippets)</span>
+                    <span class="text-xs text-slate-400 font-normal">Tampil di beranda (kartu 3 kolom)</span>
+                </h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Program 1 -->
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 1 (Left)</span>
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 1 (Left - Beginner)</span>
                         <div>
                             <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
                             <input type="text" name="program_1_title" value="{{ old('program_1_title', $settings['program_1_title'] ?? 'Beginner') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
@@ -415,7 +418,7 @@
 
                     <!-- Program 2 -->
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 2 (Middle)</span>
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 2 (Middle - Intermediate)</span>
                         <div>
                             <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
                             <input type="text" name="program_2_title" value="{{ old('program_2_title', $settings['program_2_title'] ?? 'Intermediate') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
@@ -428,7 +431,7 @@
 
                     <!-- Program 3 -->
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 3 (Right)</span>
+                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 3 (Right - Advanced)</span>
                         <div>
                             <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
                             <input type="text" name="program_3_title" value="{{ old('program_3_title', $settings['program_3_title'] ?? 'Advanced') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
@@ -437,6 +440,228 @@
                             <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
                             <textarea name="program_3_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_3_desc', $settings['program_3_desc'] ?? 'Tailored for those needing German in their careers, focusing on business or technical German.') }}</textarea>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAIL PROGRAM 1: BEGINNER (A1 - A2) -->
+            <div class="pt-6 border-t border-white/10 space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-white/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#E2B842]/20 border border-[#E2B842]/40 flex items-center justify-center text-[#E2B842] font-bold text-xs">
+                            A1
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Program 1: Beginner (A1 - A2)</h4>
+                            <p class="text-xs text-slate-400">Halaman detail: <code class="text-[#E2B842]">/programs/beginner</code></p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-[#E2B842]/10 text-[#E2B842] text-[11px] font-bold uppercase tracking-wider">Fondasi Dasar</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
+                        <input type="text" name="program_beginner_title" value="{{ old('program_beginner_title', $settings['program_beginner_title'] ?? 'Beginner German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
+                        <input type="text" name="program_beginner_level" value="{{ old('program_beginner_level', $settings['program_beginner_level'] ?? 'A1 - A2 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
+                        <input type="text" name="program_beginner_badge" value="{{ old('program_beginner_badge', $settings['program_beginner_badge'] ?? 'Fondasi & Percakapan Harian') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
+                        <input type="text" name="program_beginner_target_exam" value="{{ old('program_beginner_target_exam', $settings['program_beginner_target_exam'] ?? 'Goethe-Zertifikat A1 & A2') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
+                    <input type="text" name="program_beginner_tagline" value="{{ old('program_beginner_tagline', $settings['program_beginner_tagline'] ?? 'Kuasai Dasar Bahasa Jerman dari Nol Hingga Mampu Berkomunikasi Sehari-hari dan Lulus Sertifikasi Goethe A1/A2.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
+                    <textarea name="program_beginner_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_beginner_description', $settings['program_beginner_description'] ?? 'Program Beginner dirancang khusus bagi peserta yang belum pernah mempelajari bahasa Jerman sama sekali. Menggunakan metode pembelajaran interaktif berbasis SKKNI dan standar Goethe-Institut, peserta akan dibimbing mulai dari pelafalan presisi (Aussprache), kosakata esensial, struktur tata bahasa dasar (Akkusativ & Dativ), hingga simulasi percakapan nyata untuk kehidupan sehari-hari, perjalanan, dan persiapan awal studi di Jerman.') }}</textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
+                        <input type="text" name="program_beginner_duration" value="{{ old('program_beginner_duration', $settings['program_beginner_duration'] ?? '10 - 12 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Total Jam Pembelajaran</label>
+                        <input type="text" name="program_beginner_total_hours" value="{{ old('program_beginner_total_hours', $settings['program_beginner_total_hours'] ?? '160 Jam Pembelajaran Intensif') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
+                        <input type="text" name="program_beginner_class_size" value="{{ old('program_beginner_class_size', $settings['program_beginner_class_size'] ?? 'Maksimal 15 Siswa / Kelas') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
+                        <input type="text" name="program_beginner_schedule" value="{{ old('program_beginner_schedule', $settings['program_beginner_schedule'] ?? 'Senin - Jumat (09:00 - 13:00 WIB) / Pilihan Kelas Malam') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
+                        <input type="text" name="program_beginner_career_path" value="{{ old('program_beginner_career_path', $settings['program_beginner_career_path'] ?? 'Lulusan level ini memiliki pondasi kuat untuk melanjutkan ke level Intermediate B1 (syarat utama Ausbildung), serta memenuhi syarat administratif dasar program Au Pair dan visa tertentu ke Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAIL PROGRAM 2: INTERMEDIATE (B1) -->
+            <div class="pt-6 border-t border-white/10 space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-white/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#E2B842] text-[#2C0B1E] flex items-center justify-center font-bold text-xs">
+                            B1
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Program 2: Intermediate (B1)</h4>
+                            <p class="text-xs text-slate-400">Halaman detail: <code class="text-[#E2B842]">/programs/intermediate</code></p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-[#E2B842] text-[#2C0B1E] text-[11px] font-bold uppercase tracking-wider">Syarat Ausbildung</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
+                        <input type="text" name="program_intermediate_title" value="{{ old('program_intermediate_title', $settings['program_intermediate_title'] ?? 'Intermediate German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
+                        <input type="text" name="program_intermediate_level" value="{{ old('program_intermediate_level', $settings['program_intermediate_level'] ?? 'B1 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
+                        <input type="text" name="program_intermediate_badge" value="{{ old('program_intermediate_badge', $settings['program_intermediate_badge'] ?? 'Pintu Gerbang Utama Ausbildung Jerman') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
+                        <input type="text" name="program_intermediate_target_exam" value="{{ old('program_intermediate_target_exam', $settings['program_intermediate_target_exam'] ?? 'Goethe-Zertifikat B1 (4 Modul)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
+                    <input type="text" name="program_intermediate_tagline" value="{{ old('program_intermediate_tagline', $settings['program_intermediate_tagline'] ?? 'Kunci Kelulusan Goethe-Zertifikat B1 Sebagai Syarat Mutlak Visa Ausbildung, Studi Vokasi, dan Karier di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
+                    <textarea name="program_intermediate_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_intermediate_description', $settings['program_intermediate_description'] ?? 'Program Intermediate difokuskan untuk mencapai tingkat kemandirian berbahasa Jerman (Selbstständige Sprachverwendung). Level B1 adalah syarat wajib paling krusial bagi calon peserta program Ausbildung (perhotelan, keperawatan/Pflege, teknik/Mechatronik, gastronomi, dll.) di Jerman. Di level ini, peserta dilatih berdiskusi, memahami teks berita, menyusun argumentasi formal, serta menguasai struktur gramatikal lanjutan seperti kalimat pasif (Passiv), Konjunktiv II, dan klausa bawahan (Nebensätze).') }}</textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
+                        <input type="text" name="program_intermediate_duration" value="{{ old('program_intermediate_duration', $settings['program_intermediate_duration'] ?? '12 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Total Jam Pembelajaran</label>
+                        <input type="text" name="program_intermediate_total_hours" value="{{ old('program_intermediate_total_hours', $settings['program_intermediate_total_hours'] ?? '180 Jam Pembelajaran Intensif') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
+                        <input type="text" name="program_intermediate_class_size" value="{{ old('program_intermediate_class_size', $settings['program_intermediate_class_size'] ?? 'Maksimal 15 Siswa / Kelas') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
+                        <input type="text" name="program_intermediate_schedule" value="{{ old('program_intermediate_schedule', $settings['program_intermediate_schedule'] ?? 'Senin - Jumat (08:30 - 13:00 WIB)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
+                        <input type="text" name="program_intermediate_career_path" value="{{ old('program_intermediate_career_path', $settings['program_intermediate_career_path'] ?? 'Sertifikat Goethe B1 adalah dokumen resmi utama yang diakui Kedutaan Besar Jerman di Jakarta untuk penerbitan visa Ausbildung, visa mencari pelatihan kerja, dan visa studi persiapan.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAIL PROGRAM 3: ADVANCED (B2 - C1) -->
+            <div class="pt-6 border-t border-white/10 space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-white/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#E2B842]/20 border border-[#E2B842]/40 flex items-center justify-center text-[#E2B842] font-bold text-xs">
+                            B2+
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Program 3: Advanced (B2 - C1)</h4>
+                            <p class="text-xs text-slate-400">Halaman detail: <code class="text-[#E2B842]">/programs/advanced</code></p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-[#E2B842]/10 text-[#E2B842] text-[11px] font-bold uppercase tracking-wider">Profisiensi Tinggi</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
+                        <input type="text" name="program_advanced_title" value="{{ old('program_advanced_title', $settings['program_advanced_title'] ?? 'Advanced German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
+                        <input type="text" name="program_advanced_level" value="{{ old('program_advanced_level', $settings['program_advanced_level'] ?? 'B2 - C1 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
+                        <input type="text" name="program_advanced_badge" value="{{ old('program_advanced_badge', $settings['program_advanced_badge'] ?? 'Profisiensi Karier & Akademik') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
+                        <input type="text" name="program_advanced_target_exam" value="{{ old('program_advanced_target_exam', $settings['program_advanced_target_exam'] ?? 'Goethe-Zertifikat B2/C1 & TestDaF') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
+                    <input type="text" name="program_advanced_tagline" value="{{ old('program_advanced_tagline', $settings['program_advanced_tagline'] ?? 'Kecakapan Bahasa Tingkat Tinggi untuk Jalur Karier Profesional, Bahasa Khusus (Fachsprache), dan Studi Universitas di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
+                    <textarea name="program_advanced_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_advanced_description', $settings['program_advanced_description'] ?? 'Program Advanced dirancang untuk profesional, dokter, perawat ahli, insinyur, dan calon mahasiswa master/doktoral yang memerlukan kemahiran bahasa Jerman tingkat lanjut. Fokus pembelajaran mencakup bahasa teknis dan bisnis (Wirtschaftsdeutsch & Fachsprache), retorika presentasi, penulisan laporan ilmiah, negosiasi kontrak, serta pemahaman mendalam tentang teks kompleks abstrak dan teknis.') }}</textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
+                        <input type="text" name="program_advanced_duration" value="{{ old('program_advanced_duration', $settings['program_advanced_duration'] ?? '12 - 14 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Total Jam Pembelajaran</label>
+                        <input type="text" name="program_advanced_total_hours" value="{{ old('program_advanced_total_hours', $settings['program_advanced_total_hours'] ?? '200 Jam Pembelajaran Intensif') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
+                        <input type="text" name="program_advanced_class_size" value="{{ old('program_advanced_class_size', $settings['program_advanced_class_size'] ?? 'Maksimal 12 Siswa / Kelas (Fokus & Presisi)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
+                        <input type="text" name="program_advanced_schedule" value="{{ old('program_advanced_schedule', $settings['program_advanced_schedule'] ?? 'Senin - Jumat / Kelas Spesialisasi Fleksibel') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
+                        <input type="text" name="program_advanced_career_path" value="{{ old('program_advanced_career_path', $settings['program_advanced_career_path'] ?? 'Sertifikasi B2/C1 membuka akses langsung ke pasar kerja profesional berpenghasilan tinggi di Jerman, izin praktik profesi kesehatan, dan penerimaan universitas negeri ternama di Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
             </div>

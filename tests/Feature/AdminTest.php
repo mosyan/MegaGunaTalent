@@ -87,6 +87,37 @@ class AdminTest extends TestCase
         $aboutResponse->assertSee('Visi Baru: Menjadi LPK Nomor Satu di Indonesia');
     }
 
+    public function test_admin_can_update_program_settings_and_reflects_on_program_pages(): void
+    {
+        $response = $this->actingAs($this->adminUser)->post(route('admin.settings.update'), [
+            'program_beginner_title' => 'Program Beginner Super Eksklusif',
+            'program_beginner_duration' => '8 Minggu Intensif Plus',
+            'program_intermediate_badge' => 'Jalur Emas Ausbildung Jerman',
+            'program_advanced_target_exam' => 'TestDaF Level 5 & Goethe C1',
+        ]);
+
+        $response->assertRedirect(route('admin.settings.index'));
+
+        $this->assertEquals('Program Beginner Super Eksklusif', SiteSetting::get('program_beginner_title'));
+        $this->assertEquals('8 Minggu Intensif Plus', SiteSetting::get('program_beginner_duration'));
+        $this->assertEquals('Jalur Emas Ausbildung Jerman', SiteSetting::get('program_intermediate_badge'));
+        $this->assertEquals('TestDaF Level 5 & Goethe C1', SiteSetting::get('program_advanced_target_exam'));
+
+        // Verify reflection on detail pages
+        $beginnerResponse = $this->get(route('programs.show', 'beginner'));
+        $beginnerResponse->assertStatus(200);
+        $beginnerResponse->assertSee('Program Beginner Super Eksklusif');
+        $beginnerResponse->assertSee('8 Minggu Intensif Plus');
+
+        $intermediateResponse = $this->get(route('programs.show', 'intermediate'));
+        $intermediateResponse->assertStatus(200);
+        $intermediateResponse->assertSee('Jalur Emas Ausbildung Jerman');
+
+        $advancedResponse = $this->get(route('programs.show', 'advanced'));
+        $advancedResponse->assertStatus(200);
+        $advancedResponse->assertSee('TestDaF Level 5 & Goethe C1');
+    }
+
     public function test_admin_can_manage_blog_categories(): void
     {
         $response = $this->actingAs($this->adminUser)->post(route('admin.blog-categories.store'), [
