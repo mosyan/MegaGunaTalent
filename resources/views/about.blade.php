@@ -190,7 +190,7 @@
             <img src="{{ asset('images/global-bg.jpg') }}" 
                  alt="LPK Atmosphere Background" 
                  id="about-profile-parallax-bg"
-                 class="w-full h-[140%] -top-[20%] absolute object-cover object-top will-change-transform"
+                 class="w-full h-[170%] -top-[35%] absolute object-cover object-top will-change-transform scale-110"
                  fetchpriority="high">
             <!-- Subtle gradient overlay for crisp typography while keeping global-bg clouds crystal clear -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 pointer-events-none"></div>
@@ -969,14 +969,15 @@
                 const rect = aboutSection.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
 
-                // Update smoothly whenever section is near or inside viewport
-                if (rect.bottom >= -150 && rect.top <= windowHeight + 150) {
-                    const totalDistance = windowHeight + rect.height;
-                    const currentPos = windowHeight - rect.top;
-                    const progress = Math.max(0, Math.min(1, currentPos / totalDistance));
-                    // Smooth, continuous translation within safe buffer without sudden scale snap
-                    const translateY = (progress - 0.5) * 100;
-                    aboutBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+                // Active whenever section is in or near viewport
+                if (rect.top < windowHeight + 150 && rect.bottom > -150) {
+                    const viewportCenter = windowHeight / 2;
+                    const sectionCenter = rect.top + rect.height / 2;
+                    const offset = viewportCenter - sectionCenter;
+
+                    // 0.35 factor: identical dynamic motion & sensitivity to homepage hero
+                    const translateY = offset * 0.35;
+                    aboutBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
                 }
                 ticking = false;
             }
