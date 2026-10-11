@@ -118,6 +118,48 @@ class AdminTest extends TestCase
         $advancedResponse->assertSee('TestDaF Level 5 & Goethe C1');
     }
 
+    public function test_guest_cannot_update_settings(): void
+    {
+        $response = $this->post(route('admin.settings.update'), [
+            'hero_title_line1' => 'HACKED TITLE',
+        ]);
+
+        $response->assertRedirect(route('admin.login'));
+        $this->assertNotEquals('HACKED TITLE', SiteSetting::get('hero_title_line1'));
+    }
+
+    public function test_admin_settings_index_displays_program_customization_fields(): void
+    {
+        $response = $this->actingAs($this->adminUser)->get(route('admin.settings.index'));
+
+        $response->assertStatus(200);
+        $response->assertSee('name="program_beginner_title"', false);
+        $response->assertSee('name="program_beginner_level"', false);
+        $response->assertSee('name="program_beginner_duration"', false);
+        $response->assertSee('name="program_intermediate_title"', false);
+        $response->assertSee('name="program_intermediate_badge"', false);
+        $response->assertSee('name="program_intermediate_schedule"', false);
+        $response->assertSee('name="program_advanced_title"', false);
+        $response->assertSee('name="program_advanced_target_exam"', false);
+        $response->assertSee('name="program_advanced_career_path"', false);
+    }
+
+    public function test_program_customization_escapes_html_to_prevent_xss(): void
+    {
+        $maliciousTitle = '<script>alert("xss")</script>German Pro';
+
+        $this->actingAs($this->adminUser)->post(route('admin.settings.update'), [
+            'program_beginner_title' => $maliciousTitle,
+        ]);
+
+        $response = $this->get(route('programs.show', 'beginner'));
+        $response->assertStatus(200);
+
+        // Blade escapes HTML characters to entities
+        $response->assertDontSee('<script>alert("xss")</script>', false);
+        $response->assertSee('&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;German Pro', false);
+    }
+
     public function test_admin_can_manage_blog_categories(): void
     {
         $response = $this->actingAs($this->adminUser)->post(route('admin.blog-categories.store'), [
