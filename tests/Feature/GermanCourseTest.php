@@ -23,6 +23,8 @@ class GermanCourseTest extends TestCase
         $response->assertSee('Achieve Your German Language Goals');
         $response->assertSee('Enroll Now');
         $response->assertSee('Contact Us');
+        $response->assertSee('home-hero-parallax-bg');
+        $response->assertSee('global-bg.jpg');
         $response->assertSeeText('All Rights Reserved.');
     }
 

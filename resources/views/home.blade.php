@@ -35,14 +35,20 @@
 @section('content')
 
     <!-- ========================================================== -->
-    <!-- HERO SECTION                                               -->
+    <!-- HERO SECTION (Parallax Motion)                             -->
     <!-- ========================================================== -->
-    <section class="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-36 sm:pt-48 bg-cover bg-top bg-no-repeat overflow-hidden" 
-             style="background-image: url('{{ $heroBg }}'); background-color: #0b4555;">
+    <section id="hero-section" class="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-36 sm:pt-48 overflow-hidden bg-[#0b4555]">
+        <!-- Parallax Background Layer -->
+        <div class="absolute inset-x-0 -top-24 -bottom-24 h-[130%] w-full overflow-hidden pointer-events-none -z-10">
+            <img src="{{ $heroBg }}" 
+                 alt="German Language Background" 
+                 id="home-hero-parallax-bg"
+                 class="w-full h-full object-cover object-top will-change-transform scale-110"
+                 fetchpriority="high">
+            <!-- Subtle gradient overlay for contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#321f47]/90 pointer-events-none"></div>
+        </div>
         
-        <!-- Subtle gradient overlay for contrast -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent pointer-events-none"></div>
-
         <!-- Center Hero Text & CTA -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center my-auto">
             <h1 class="font-yeseva text-white text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] tracking-tight leading-[1.12] drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
@@ -169,3 +175,32 @@
     </section>
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const heroBg = document.getElementById('home-hero-parallax-bg');
+        if (!heroBg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        let ticking = false;
+
+        function updateHeroParallax() {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollY < window.innerHeight * 1.5) {
+                const translateY = scrollY * 0.35;
+                heroBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(1.1)`;
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeroParallax);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        updateHeroParallax();
+    });
+</script>
+@endpush

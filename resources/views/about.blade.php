@@ -183,9 +183,21 @@
         </div>
     </section>
 
-    <!-- SECTION 2: Identitas & Filosofi Lembaga -->
-    <section id="profil-lembaga" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 bg-black/20 border-t border-[#fdc04f]/15">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- SECTION 2: Identitas & Filosofi Lembaga (Parallax Motion) -->
+    <section id="profil-lembaga" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 overflow-hidden border-t border-[#fdc04f]/15">
+        <!-- Parallax Background Layer -->
+        <div class="absolute inset-x-0 -top-28 -bottom-28 h-[135%] w-full overflow-hidden pointer-events-none -z-10">
+            <img src="{{ asset('images/global-bg.jpg') }}" 
+                 alt="LPK Atmosphere Background" 
+                 id="about-profile-parallax-bg"
+                 class="w-full h-full object-cover object-center will-change-transform scale-115 opacity-50"
+                 loading="lazy">
+            <!-- Luxury Plum & Dark Vignette Overlay for Crisp Typography Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E]/95 via-[#2C0B1E]/75 to-[#2C0B1E]/95"></div>
+            <div class="absolute inset-0 bg-black/45"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <!-- Left Column: Story & Identity -->
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
@@ -946,6 +958,36 @@
                 closeModal();
             }
         });
+
+        // Parallax Effect for Section 2 (Profil Lembaga)
+        const aboutSection = document.getElementById('profil-lembaga');
+        const aboutBg = document.getElementById('about-profile-parallax-bg');
+
+        if (aboutSection && aboutBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            let ticking = false;
+
+            function updateAboutParallax() {
+                const rect = aboutSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Only update when section is in or near viewport
+                if (rect.bottom >= 0 && rect.top <= windowHeight) {
+                    const centerOffset = (rect.top + rect.height / 2 - windowHeight / 2);
+                    const translateY = -centerOffset * 0.22;
+                    aboutBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(1.15)`;
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateAboutParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            updateAboutParallax();
+        }
     });
 </script>
 @endpush
