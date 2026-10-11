@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-serif: 'Yeseva One', Georgia, serif;
+    --font-arsenal: 'Arsenal', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+    
+    --color-brand-gold: #fdc04f;
+    --color-brand-purple: #321f47;
+    --color-brand-brown: #736143;
+    --color-brand-lavender: #f2ebfd;
+}
+
+:root {
+    --palette-0: #fdc04f;
+    --palette-1: #321f47;
+    --palette-2: #736143;
+    --palette-3: #f2ebfd;
+    --palette-custom-41h913: #000000;
+    --palette-custom-h4ppr5: #ffffff;
+}
+
+.font-yeseva {
+    font-family: 'Yeseva One', Georgia, serif;
+}
+
+.font-arsenal {
+    font-family: 'Arsenal', sans-serif;
+}
+
+.font-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.btn-brand-double {
+    display: inline-block;
+    background-color: #fdc04f;
+    color: #321f47;
+    border: 5px double #321f47;
+    font-family: 'Arsenal', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 0.75rem 2.5rem;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.btn-brand-double:hover {
+    background-color: #fdb838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.btn-brand-double:active {
+    transform: translateY(0);
+}
+
+.btn-brand-double-light {
+    display: inline-block;
+    background-color: #fdc04f;
+    color: #321f47;
+    border: 4px double #321f47;
+    font-family: 'Arsenal', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.75rem 2rem;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.btn-brand-double-light:hover {
+    background-color: #fdb838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}

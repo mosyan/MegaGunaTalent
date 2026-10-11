@@ -1,0 +1,1004 @@
+{
+  "v": 21,
+  "pages": [
+    {
+      "slug": "home",
+      "title": "Home",
+      "contents": [
+        {
+          "id": "e07f4fd8-d950-4c81-995f-b7ef9d6a4709",
+          "topPadding": 32,
+          "bottomPadding": 32,
+          "imageUrl": "",
+          "title": "Speak German With Confidence",
+          "description": "Engaging German courses for all levels.",
+          "buttonText": "Enroll Now",
+          "url": "",
+          "colorReplacements": [],
+          "type": "banner-section",
+          "displayStyle": "centered",
+          "descriptionStyle": {
+            "color": "var(--palette-custom-h4ppr5)",
+            "fontSize": "2em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "titleStyle": {
+            "color": "var(--palette-custom-h4ppr5)",
+            "fontSize": "4em",
+            "textAlign": "center",
+            "fontFamily": "Yeseva One",
+            "lineHeight": "1.4",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "cardStyle": {
+            "backgroundColor": "var(--palette-custom-h4ppr5)"
+          },
+          "backgroundStyle": {
+            "backgroundColor": ""
+          },
+          "buttonPageId": "",
+          "buttonLinkType": "url",
+          "buttonTextStyle": {
+            "color": "var(--palette-1)",
+            "fontSize": "1.25em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "fontWeight": "bold",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "textDecoration": "",
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "overlayColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "overlayOpacity": 50
+        },
+        {
+          "id": "32389cc6-1ff4-45ff-b4f3-e28ccf9b154b",
+          "topPadding": 32,
+          "bottomPadding": 32,
+          "imageUrl": "https://bc-user-uploads.brandcrowd.com/public/media-Production/84cb8f0c-efa9-43e9-9f06-bd99bde7b0f2/43c2e27f-9f84-453a-b11d-d3043d776ce5",
+          "title": "",
+          "description": "",
+          "buttonText": false,
+          "url": "",
+          "colorReplacements": [],
+          "type": "banner-section",
+          "displayStyle": "big-image",
+          "descriptionStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.5",
+            "textStyleType": "paragraphs",
+            "applyAutoScale": true
+          },
+          "titleStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.1",
+            "textStyleType": "titles",
+            "applyAutoScale": true
+          },
+          "cardStyle": {
+            "backgroundColor": "var(--palette-custom-h4ppr5)"
+          },
+          "backgroundStyle": {
+            "backgroundColor": ""
+          },
+          "buttonPageId": "",
+          "buttonLinkType": "url",
+          "buttonTextStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.5",
+            "textStyleType": "buttons",
+            "applyAutoScale": true
+          },
+          "overlayColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "overlayOpacity": "0",
+          "mediaType": "image"
+        },
+        {
+          "id": "e508a845-d24a-4dad-bdc3-788db9f8eb1e",
+          "type": "divider-section",
+          "dividerColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "dividerStyle": "none",
+          "paddingStyle": 18,
+          "backgroundStyle": {
+            "backgroundColor": "var(--palette-0)"
+          }
+        },
+        {
+          "iconUrl": "",
+          "id": "9c3514da-66f1-45fe-ad2e-722089de490e",
+          "text": "",
+          "textItems": [
+            {
+              "text": "Our Programs",
+              "textStyle": {
+                "color": "var(--palette-1)",
+                "fontSize": "3.125em",
+                "textAlign": "center",
+                "fontFamily": "Yeseva One",
+                "lineHeight": "1.4",
+                "letterSpacing": "0",
+                "applyAutoScale": true
+              },
+              "id": "4adc2868-ef3f-4024-a218-cb9536379500"
+            },
+            {
+              "text": "Learn German at your own pace with our flexible programs, including online courses, %0Ain-person classes, and private tutoring.",
+              "textStyle": {
+                "color": "var(--palette-1)",
+                "fontSize": "1.5625em",
+                "textAlign": "center",
+                "fontFamily": "Arsenal",
+                "lineHeight": "1.4",
+                "letterSpacing": "0",
+                "applyAutoScale": true
+              },
+              "id": "1318e623-7561-4c17-8dbd-1e8fc1f4c55e"
+            }
+          ],
+          "type": "text",
+          "topPadding": 12,
+          "bottomPadding": 12,
+          "textSize": {
+            "fontSize": "1em",
+            "lineHeight": "1.5"
+          },
+          "textStyle": {
+            "textAlign": "center",
+            "textStyleType": "paragraphs",
+            "applyAutoScale": true
+          },
+          "columnStyle": "1",
+          "textAlignment": {},
+          "textColor": {},
+          "backgroundColor": {
+            "backgroundColor": "var(--palette-0)"
+          }
+        },
+        {
+          "id": "1a76f1c4-2566-4b7f-8684-1aa50eb9e37a",
+          "type": "divider-section",
+          "dividerColor": {
+            "backgroundColor": "var(--palette-1)"
+          },
+          "dividerStyle": "thin",
+          "paddingStyle": 24,
+          "backgroundStyle": {
+            "backgroundColor": "var(--palette-0)"
+          }
+        },
+        {
+          "id": "665879a3-5055-4383-bbdd-a358ed97c416",
+          "title": "",
+          "description": "",
+          "type": "shapes-section",
+          "topPadding": 32,
+          "bottomPadding": 32,
+          "displayStyle": "centered",
+          "items": [
+            {
+              "id": "8f4d5d0b-fed0-45c1-aaae-b9ddbbf8afd9",
+              "title": "Beginner",
+              "width": 164,
+              "height": 150,
+              "itemsId": -1,
+              "imageUrl": "https://bcassetcdn.com/shapes/prod/668f1152-406f-47dc-b148-b597cedd6240.svg",
+              "imageLink": "",
+              "mediaType": "shape",
+              "paragraph": "Focus on practical communication skills for travelers and those new to the language.",
+              "imageTitle": "",
+              "colorReplacements": [
+                {
+                  "attribute": "fill",
+                  "originalColor": "#000000",
+                  "replacementColor": "#321f47"
+                }
+              ]
+            },
+            {
+              "title": "Intermediate",
+              "width": 209,
+              "height": 150,
+              "itemsId": -1,
+              "imageUrl": "https://bcassetcdn.com/shapes/prod/11161c37-9b62-413f-bbf9-f00791e8f8e4.svg",
+              "imageLink": "",
+              "mediaType": "shape",
+              "paragraph": "Building upon basic grammar, expanding vocabulary, and developing conversational fluency.",
+              "imageTitle": "",
+              "colorReplacements": [
+                {
+                  "attribute": "fill",
+                  "originalColor": "#26221E",
+                  "replacementColor": "#321f47"
+                }
+              ],
+              "id": "cd23e260-d190-45ce-8463-61e0523ead05"
+            },
+            {
+              "title": "Advanced",
+              "width": 163,
+              "height": 150,
+              "itemsId": -1,
+              "imageUrl": "https://bcassetcdn.com/shapes/prod/d89e8df9-385f-4743-ab7e-5a78e4cbf7d3.svg",
+              "imageLink": "",
+              "mediaType": "shape",
+              "paragraph": "Tailored for those needing German in their careers, focusing on business or technical German.",
+              "imageTitle": "",
+              "colorReplacements": [
+                {
+                  "attribute": "fill",
+                  "originalColor": "#000000",
+                  "replacementColor": "#321f47"
+                }
+              ],
+              "id": "58bd1977-c706-4d89-a496-2871e750ef54"
+            }
+          ],
+          "backgroundStyle": {
+            "backgroundColor": "var(--palette-0)"
+          },
+          "cardStyle": {},
+          "size": "5.5rem",
+          "titleStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.1",
+            "textStyleType": "titles",
+            "applyAutoScale": true
+          },
+          "descriptionStyle": {
+            "applyAutoScale": true,
+            "textStyleType": "paragraphs",
+            "textAlign": "center"
+          },
+          "headingStyle": {
+            "color": "var(--palette-1)",
+            "fontSize": "1.5625em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "fontWeight": "bold",
+            "lineHeight": "1.4",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "textDecoration": "",
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "paragraphStyle": {
+            "color": "var(--palette-1)",
+            "fontSize": "1.5625em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          }
+        },
+        {
+          "id": "a0d49f8c-b95f-43d5-8c49-60338efcac8e",
+          "topPadding": 32,
+          "bottomPadding": 32,
+          "imageUrl": "https://bc-user-uploads.brandcrowd.com/public/media-Production/84cb8f0c-efa9-43e9-9f06-bd99bde7b0f2/00a0bf45-10d7-4fd4-b6fa-5dad8ee5c135",
+          "title": "Achieve Your German Language Goals",
+          "description": "We \u00a0help you achieve your language learning goals, whether for travel, %0Awork, or personal enrichment.",
+          "buttonText": "Contact Us",
+          "url": "",
+          "colorReplacements": [],
+          "type": "banner-section",
+          "displayStyle": "big-image",
+          "descriptionStyle": {
+            "color": "var(--palette-custom-h4ppr5)",
+            "fontSize": "1.5625em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "titleStyle": {
+            "color": "var(--palette-custom-h4ppr5)",
+            "fontSize": "3.125em",
+            "textAlign": "center",
+            "fontFamily": "Yeseva One",
+            "lineHeight": "1.1",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "cardStyle": {
+            "backgroundColor": "var(--palette-custom-h4ppr5)"
+          },
+          "backgroundStyle": {
+            "backgroundColor": ""
+          },
+          "buttonPageId": "",
+          "buttonLinkType": "url",
+          "buttonTextStyle": {
+            "color": "var(--palette-1)",
+            "fontSize": "1.25em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "fontWeight": "bold",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "textDecoration": "",
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "overlayColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "overlayOpacity": "34",
+          "mediaType": "image"
+        }
+      ],
+      "id": "4aad6ba1-d693-5e83-b790-a441c01e353c"
+    },
+    {
+      "slug": "enroll-now",
+      "title": "Enroll Now",
+      "contents": [
+        {
+          "id": "e197067f-08e1-4e2f-a653-a0c109095fc2",
+          "type": "divider-section",
+          "dividerColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "dividerStyle": "none",
+          "paddingStyle": 24,
+          "backgroundStyle": {
+            "backgroundColor": ""
+          }
+        },
+        {
+          "iconUrl": "",
+          "id": "5bfd5df8-6ffc-42bc-aa39-59c2c4e984f8",
+          "text": "",
+          "textItems": [
+            {
+              "text": "Start Your Learning Journey",
+              "textStyle": {
+                "color": "var(--palette-custom-h4ppr5)",
+                "fontSize": "3.125em",
+                "textAlign": "center",
+                "fontFamily": "Yeseva One",
+                "lineHeight": "1.5",
+                "letterSpacing": "0",
+                "applyAutoScale": true
+              },
+              "id": "408e6152-9245-4bdc-9397-0dfdbee93306"
+            },
+            {
+              "text": "",
+              "textStyle": {
+                "color": "var(--palette-custom-h4ppr5)",
+                "fontSize": "1em",
+                "textAlign": "left",
+                "fontFamily": "Arsenal",
+                "lineHeight": "1.5",
+                "letterSpacing": "0",
+                "applyAutoScale": true
+              },
+              "id": "904333ad-21f4-4380-a7e3-0fd3a4150687"
+            },
+            {
+              "text": "Enroll now and let's discuss your German language goals.",
+              "textStyle": {
+                "color": "var(--palette-custom-h4ppr5)",
+                "fontSize": "1.5625em",
+                "textAlign": "center",
+                "fontFamily": "Arsenal",
+                "lineHeight": "1.4",
+                "letterSpacing": "0",
+                "applyAutoScale": true
+              },
+              "id": "9a00ba4a-34f0-4352-b758-06c02a163749"
+            }
+          ],
+          "type": "text",
+          "topPadding": 12,
+          "bottomPadding": 12,
+          "textSize": {
+            "fontSize": "1em",
+            "lineHeight": "1.5"
+          },
+          "textStyle": {
+            "textAlign": "center",
+            "textStyleType": "paragraphs",
+            "applyAutoScale": true
+          },
+          "columnStyle": "1",
+          "textAlignment": {},
+          "textColor": {},
+          "backgroundColor": {
+            "backgroundColor": ""
+          }
+        },
+        {
+          "id": "2e2c6f7a-c504-4b1f-aac2-6518ad2d0e0b",
+          "type": "divider-section",
+          "dividerColor": {
+            "backgroundColor": "var(--palette-custom-h4ppr5)"
+          },
+          "dividerStyle": "thin",
+          "paddingStyle": 24,
+          "backgroundStyle": {
+            "backgroundColor": ""
+          }
+        },
+        {
+          "id": "944efa7a-150b-4d6f-9e2d-cd0ac2562313",
+          "title": "",
+          "description": "",
+          "buttonText": "Send",
+          "displayStyle": "preview",
+          "layoutStyle": "centered",
+          "topPadding": 32,
+          "bottomPadding": 32,
+          "imageUrl": "",
+          "fields": [
+            {
+              "id": "firstName",
+              "name": "First name",
+              "type": "text",
+              "enabled": true,
+              "required": true
+            },
+            {
+              "id": "lastName",
+              "name": "Last name",
+              "type": "text",
+              "enabled": true,
+              "required": true
+            },
+            {
+              "id": "emailAddress",
+              "name": "Email address",
+              "type": "email",
+              "enabled": true,
+              "required": true
+            },
+            {
+              "id": "phoneNumber",
+              "name": "Phone number",
+              "type": "phone",
+              "enabled": true,
+              "required": true
+            },
+            {
+              "id": "message",
+              "name": "Message",
+              "type": "text-area",
+              "enabled": true,
+              "required": true
+            },
+            {
+              "id": "customField1",
+              "name": "Custom Field",
+              "enabled": false,
+              "required": false,
+              "type": "text"
+            },
+            {
+              "id": "customField2",
+              "name": "Custom Field",
+              "enabled": false,
+              "required": false,
+              "type": "text"
+            },
+            {
+              "id": "customField3",
+              "name": "Custom Field",
+              "enabled": false,
+              "required": false,
+              "type": "text"
+            }
+          ],
+          "successMessage": "Thank you! We'll get in touch with you as soon as possible.",
+          "responseEmail": "",
+          "type": "contact-form",
+          "cardStyle": {
+            "backgroundColor": "var(--palette-custom-h4ppr5)"
+          },
+          "backgroundStyle": {
+            "backgroundColor": ""
+          },
+          "titleStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.1",
+            "textStyleType": "titles",
+            "applyAutoScale": true
+          },
+          "descriptionStyle": {
+            "textAlign": "center",
+            "fontFamily": "Lato",
+            "lineHeight": "1.5",
+            "textStyleType": "paragraphs",
+            "applyAutoScale": true
+          },
+          "successMessageStyle": {
+            "color": "",
+            "overflowWrap": "anywhere",
+            "wordBreak": "normal"
+          },
+          "buttonTextStyle": {
+            "color": "var(--palette-1)",
+            "fontSize": "1.25em",
+            "textAlign": "center",
+            "fontFamily": "Arsenal",
+            "fontWeight": "bold",
+            "lineHeight": "1.5",
+            "letterSpacing": "0",
+            "applyAutoScale": true,
+            "textDecoration": ""
+          }
+        },
+        {
+          "id": "088f2858-48f9-44cb-8cdc-83012513bbf1",
+          "type": "divider-section",
+          "dividerColor": {
+            "backgroundColor": "var(--palette-custom-41h913)"
+          },
+          "dividerStyle": "none",
+          "paddingStyle": 24,
+          "backgroundStyle": {
+            "backgroundColor": ""
+          }
+        }
+      ],
+      "id": "b18e163a-5046-55bf-b29b-58a911523991"
+    }
+  ],
+  "styles": {
+    "logoStyles": {
+      "imageStyle": {
+        "width": "9rem",
+        "height": "9rem"
+      }
+    },
+    "buttonStyles": {
+      "style": {
+        "color": "var(--palette-1)",
+        "boxShadow": "",
+        "borderColor": "var(--palette-1)",
+        "borderStyle": "double",
+        "borderWidth": "5px",
+        "borderRadius": "0",
+        "backgroundColor": "var(--palette-0)"
+      },
+      "iconStyle": {
+        "fill": "var(--palette-1)"
+      },
+      "selectedButtonStyleId": "BUTTON_STYLE_13"
+    },
+    "backgroundStyles": {
+      "style": {
+        "background": "var(--palette-1)",
+        "backgroundSize": "cover",
+        "backgroundRepeat": "no-repeat",
+        "backgroundPosition": "center center"
+      },
+      "backgroundShapeStyle": {
+        "background": ""
+      },
+      "backgroundShapes": [],
+      "backgroundImageUrl": "https://bc-user-uploads.brandcrowd.com/public/media-Production/84cb8f0c-efa9-43e9-9f06-bd99bde7b0f2/b5ee1546-a1df-4a35-8abb-b20a2338c0d3",
+      "mediaOverlayStyle": {
+        "backgroundColor": "var(--palette-custom-41h913)",
+        "opacity": "0"
+      }
+    },
+    "textStyles": {
+      "textFontFamily": "lato",
+      "textStyleOptions": {
+        "titles": {
+          "type": "titles",
+          "title": "Titles",
+          "style": {
+            "color": "var(--palette-0)",
+            "fontFamily": "Lato",
+            "fontSize": "2.25em",
+            "letterSpacing": "0",
+            "lineHeight": "1.1"
+          },
+          "isModified": false
+        },
+        "headings": {
+          "type": "headings",
+          "title": "Headings",
+          "style": {
+            "color": "var(--palette-0)",
+            "fontFamily": "Lato",
+            "fontSize": "1.5em",
+            "letterSpacing": "0",
+            "lineHeight": "1.4"
+          },
+          "isModified": false
+        },
+        "paragraphs": {
+          "type": "paragraphs",
+          "title": "Paragraphs",
+          "style": {
+            "color": "var(--palette-0)",
+            "fontFamily": "Lato",
+            "fontSize": "1em",
+            "letterSpacing": "0",
+            "lineHeight": "1.5"
+          },
+          "isModified": false
+        },
+        "buttons": {
+          "type": "buttons",
+          "title": "Buttons",
+          "style": {
+            "color": "var(--palette-1)",
+            "fontFamily": "Lato",
+            "fontSize": "1em",
+            "letterSpacing": "0",
+            "lineHeight": "1.5"
+          },
+          "isModified": false
+        }
+      }
+    },
+    "galleryStyles": {
+      "galleryType": "grid"
+    },
+    "colors": [
+      {
+        "id": "palette-0",
+        "value": "#fdc04f",
+        "type": "palette"
+      },
+      {
+        "id": "palette-1",
+        "value": "#321f47",
+        "type": "palette"
+      },
+      {
+        "id": "palette-2",
+        "value": "#736143",
+        "type": "palette"
+      },
+      {
+        "id": "palette-3",
+        "value": "#f2ebfd",
+        "type": "palette"
+      },
+      {
+        "id": "palette-custom-41h913",
+        "value": "#000000",
+        "type": "custom"
+      },
+      {
+        "id": "palette-custom-h4ppr5",
+        "value": "#ffffff",
+        "type": "custom"
+      }
+    ]
+  },
+  "pageHeaderDesktop": {
+    "displayStyle": "desktop-hamburger-horizontal-stack-left-logo-right-menu",
+    "navigation": {
+      "displayType": "nav-hamburger-hamburger-rounded",
+      "renderAfterLogo": false,
+      "defaultButtonStyle": {
+        "borderBottomWidth": "0px",
+        "borderLeftWidth": "0px",
+        "borderRightWidth": "0px",
+        "borderTopWidth": "0px",
+        "color": "var(--palette-0)",
+        "fontSize": "1em",
+        "fontFamily": "Lato",
+        "fontWeight": "normal",
+        "textAlign": "center",
+        "lineHeight": "1.1"
+      },
+      "selectedButtonStyle": {
+        "borderStyle": "solid",
+        "borderRadius": "0px",
+        "borderBottomWidth": "4px",
+        "borderLeftWidth": "0px",
+        "borderRightWidth": "0px",
+        "borderTopWidth": "0px",
+        "color": "var(--palette-0)",
+        "borderColor": "var(--palette-0)"
+      },
+      "iconStyle": {},
+      "isLogoVisible": true,
+      "hamburgerMenuStyle": {
+        "defaultButtonStyle": {
+          "textAlign": "left",
+          "fontFamily": "Arsenal",
+          "backgroundColor": "var(--palette-1)",
+          "color": "var(--palette-0)",
+          "fontSize": "1.25em"
+        },
+        "selectedButtonStyle": {
+          "backgroundColor": "var(--palette-0)",
+          "color": "var(--palette-1)"
+        },
+        "iconStyle": {
+          "border": "solid",
+          "borderWidth": "0px",
+          "borderRadius": "8px",
+          "color": "var(--palette-1)",
+          "backgroundColor": "var(--palette-0)"
+        },
+        "subNavBackgroundColor": "var(--palette-1)"
+      },
+      "viewport": "desktop"
+    },
+    "isLogoOptional": false,
+    "isLogoVisible": true,
+    "logoImageHeight": "11rem",
+    "logoImageWidth": "11rem",
+    "logoImageStyle": {},
+    "logoVariation": 0,
+    "logoImage": {
+      "logoVariation": 0,
+      "logoDraftToken": "ff51e07b-f021-40fd-8e38-2c9fc1894cd9"
+    },
+    "backgroundStyle": {
+      "backgroundOpacity": 100
+    },
+    "style": {},
+    "viewport": "desktop"
+  },
+  "pageHeaderMobile": {
+    "displayStyle": "mobile-hamburger-horizontal-stack-centered-logo-right-menu",
+    "navigation": {
+      "displayType": "nav-hamburger-hamburger-rounded",
+      "renderAfterLogo": false,
+      "defaultButtonStyle": {
+        "borderBottomWidth": "0px",
+        "borderLeftWidth": "0px",
+        "borderRightWidth": "0px",
+        "borderTopWidth": "0px",
+        "color": "var(--palette-0)",
+        "fontSize": "1em",
+        "fontFamily": "Lato",
+        "fontWeight": "normal",
+        "textAlign": "center",
+        "lineHeight": "1.1"
+      },
+      "selectedButtonStyle": {
+        "borderStyle": "solid",
+        "borderRadius": "0px",
+        "borderBottomWidth": "4px",
+        "borderLeftWidth": "0px",
+        "borderRightWidth": "0px",
+        "borderTopWidth": "0px",
+        "color": "var(--palette-0)",
+        "borderColor": "var(--palette-0)"
+      },
+      "iconStyle": {},
+      "isLogoVisible": true,
+      "hamburgerMenuStyle": {
+        "defaultButtonStyle": {
+          "textAlign": "left",
+          "fontFamily": "Arsenal",
+          "backgroundColor": "var(--palette-1)",
+          "color": "var(--palette-0)",
+          "fontSize": "1.25em"
+        },
+        "selectedButtonStyle": {
+          "backgroundColor": "var(--palette-0)",
+          "color": "var(--palette-1)"
+        },
+        "iconStyle": {
+          "border": "solid",
+          "borderWidth": "0px",
+          "borderRadius": "8px",
+          "color": "var(--palette-1)",
+          "backgroundColor": "var(--palette-0)"
+        },
+        "subNavBackgroundColor": "var(--palette-1)"
+      },
+      "viewport": "mobile"
+    },
+    "isLogoOptional": false,
+    "isLogoVisible": true,
+    "logoImageHeight": "9rem",
+    "logoImageWidth": "9rem",
+    "logoImageStyle": {},
+    "logoVariation": 0,
+    "logoImage": {
+      "logoVariation": 0,
+      "logoDraftToken": "ff51e07b-f021-40fd-8e38-2c9fc1894cd9"
+    },
+    "backgroundStyle": {
+      "backgroundOpacity": 100
+    },
+    "style": {},
+    "viewport": "mobile"
+  },
+  "pageFooterDesktop": {
+    "displayStyle": "centered-menu",
+    "copyrightText": "\u00a9 2025 . All Rights Reserved.",
+    "copyrightStyle": {
+      "color": "var(--palette-0)",
+      "fontSize": "1.25em",
+      "textAlign": "center",
+      "fontFamily": "Arsenal",
+      "lineHeight": "1.5",
+      "letterSpacing": "0",
+      "overflowWrap": "anywhere",
+      "wordBreak": "normal"
+    },
+    "backgroundStyle": {
+      "backgroundColor": "var(--palette-1)"
+    },
+    "iconStyle": {
+      "fill": "var(--palette-0)"
+    },
+    "isLogoOptional": true,
+    "isLogoVisible": false,
+    "logoImageStyle": {},
+    "logoVariation": 0,
+    "logoImage": {
+      "logoVariation": 0,
+      "logoDraftToken": "ff51e07b-f021-40fd-8e38-2c9fc1894cd9"
+    },
+    "socialLinks": [
+      {
+        "url": "https://www.facebook.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "facebook",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "70e0321b-07e6-4131-8ced-78b9acaf9112"
+      },
+      {
+        "url": "https://www.instagram.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "instagram",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "b820f845-1b94-439b-a363-26c6831dd600"
+      },
+      {
+        "url": "https://www.x.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "x",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "7be202c0-4ac9-41bd-b560-131c1b2b4772"
+      }
+    ],
+    "viewport": "desktop",
+    "logoImageHeight": "11rem",
+    "logoImageWidth": "11rem"
+  },
+  "pageFooterMobile": {
+    "displayStyle": "centered-menu",
+    "copyrightText": "\u00a9 2025 . All Rights Reserved.",
+    "copyrightStyle": {
+      "color": "var(--palette-0)",
+      "fontSize": "1.25em",
+      "textAlign": "center",
+      "fontFamily": "Arsenal",
+      "lineHeight": "1.5",
+      "letterSpacing": "0",
+      "overflowWrap": "anywhere",
+      "wordBreak": "normal"
+    },
+    "backgroundStyle": {
+      "backgroundColor": "var(--palette-1)"
+    },
+    "iconStyle": {
+      "fill": "var(--palette-0)"
+    },
+    "isLogoOptional": true,
+    "isLogoVisible": false,
+    "logoImageStyle": {},
+    "logoVariation": 0,
+    "logoImage": {
+      "logoVariation": 0,
+      "logoDraftToken": "ff51e07b-f021-40fd-8e38-2c9fc1894cd9"
+    },
+    "socialLinks": [
+      {
+        "url": "https://www.facebook.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "facebook",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "4311430f-04d7-44e9-b47c-6627575af05f"
+      },
+      {
+        "url": "https://www.instagram.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "instagram",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "ba9633a9-b146-4707-ac02-58a398d57fae"
+      },
+      {
+        "url": "https://www.x.com",
+        "width": 0,
+        "height": 0,
+        "imageUrl": "x",
+        "imageLink": "",
+        "mediaType": "image",
+        "imageTitle": "",
+        "id": "cf904590-6ed8-4b53-a470-7ac82222f072"
+      }
+    ],
+    "viewport": "mobile",
+    "logoImageHeight": "8rem",
+    "logoImageWidth": "8rem"
+  },
+  "isModifiedAfterTemplateApplied": false,
+  "brandPageType": "brandSite",
+  "cookieOptions": {},
+  "saveContactSettings": {
+    "isSavingEnabled": true,
+    "hideBranding": false
+  },
+  "nav": {
+    "orders": [
+      {
+        "routeId": "40b2da0a-05b5-5704-a224-61183d6e0370",
+        "subRoutes": []
+      },
+      {
+        "routeId": "f334ee8b-207b-5763-ad3c-8d76b397f870",
+        "subRoutes": []
+      }
+    ],
+    "routes": [
+      {
+        "id": "40b2da0a-05b5-5704-a224-61183d6e0370",
+        "pageId": "4aad6ba1-d693-5e83-b790-a441c01e353c",
+        "pageSlug": "home",
+        "isHidden": false,
+        "displayName": "Home"
+      },
+      {
+        "id": "f334ee8b-207b-5763-ad3c-8d76b397f870",
+        "pageId": "b18e163a-5046-55bf-b29b-58a911523991",
+        "pageSlug": "enroll-now",
+        "isHidden": false,
+        "displayName": "Enroll Now"
+      }
+    ]
+  }
+}
