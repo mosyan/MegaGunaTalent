@@ -18,11 +18,11 @@
     <!-- Schema.org EducationalOrganization & LocalBusiness Structured Data -->
     <script type="application/ld+json">
     {!! json_encode([
-      '@context' => 'https://schema.org',
-      '@graph' => [
+      '@'.'context' => 'https://schema.org',
+      '@'.'graph' => [
         [
-          '@type' => ['EducationalOrganization', 'LocalBusiness'],
-          '@id' => route('about') . '#organization',
+          '@'.'type' => ['EducationalOrganization', 'LocalBusiness'],
+          '@'.'id' => route('about') . '#organization',
           'name' => 'LPK Mega Guna Talent',
           'alternateName' => 'Mega Guna Talent German Language Study',
           'url' => url('/'),
@@ -30,12 +30,12 @@
           'image' => asset('images/about/building-exterior.jpg'),
           'description' => 'Lembaga Pelatihan Kerja resmi yang berfokus pada pelatihan bahasa Jerman, persiapan ujian sertifikasi Goethe-Institut B1, pembekalan budaya kerja, dan pembinaan karier vokasi internasional.',
           'founder' => [
-            '@type' => 'Person',
+            '@'.'type' => 'Person',
             'name' => 'Moses Pasande',
             'jobTitle' => 'Kepala LPK & Founder',
           ],
           'address' => [
-            '@type' => 'PostalAddress',
+            '@'.'type' => 'PostalAddress',
             'streetAddress' => 'Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019',
             'addressLocality' => 'Bekasi Selatan',
             'addressRegion' => 'Jawa Barat',
@@ -43,25 +43,25 @@
             'addressCountry' => 'ID',
           ],
           'areaServed' => [
-            '@type' => 'AdministrativeArea',
+            '@'.'type' => 'AdministrativeArea',
             'name' => 'Indonesia',
           ],
           'hasOfferCatalog' => [
-            '@type' => 'OfferCatalog',
+            '@'.'type' => 'OfferCatalog',
             'name' => 'Program Pelatihan Bahasa Jerman & Vokasi',
             'itemListElement' => [
               [
-                '@type' => 'Course',
+                '@'.'type' => 'Course',
                 'name' => 'Kursus Bahasa Jerman Dasar A1 - A2',
                 'description' => 'Pelatihan tata bahasa, pelafalan, dan komunikasi harian bahasa Jerman bagi pemula.',
               ],
               [
-                '@type' => 'Course',
+                '@'.'type' => 'Course',
                 'name' => 'Kursus Intensif B1 & Persiapan Sertifikasi Goethe',
                 'description' => 'Program intensif persiapan kelulusan sertifikasi Goethe-Zertifikat B1 untuk Ausbildung dan studi di Jerman.',
               ],
               [
-                '@type' => 'Course',
+                '@'.'type' => 'Course',
                 'name' => 'Pembekalan Budaya & Etos Kerja Jerman (Ausbildung Preparation)',
                 'description' => 'Pelatihan interkultural, simulasi wawancara kerja, dan persiapan dokumen resmi ke Jerman.',
               ],
@@ -69,17 +69,17 @@
           ],
         ],
         [
-          '@type' => 'BreadcrumbList',
-          '@id' => route('about') . '#breadcrumb',
+          '@'.'type' => 'BreadcrumbList',
+          '@'.'id' => route('about') . '#breadcrumb',
           'itemListElement' => [
             [
-              '@type' => 'ListItem',
+              '@'.'type' => 'ListItem',
               'position' => 1,
               'name' => 'Home',
               'item' => route('home'),
             ],
             [
-              '@type' => 'ListItem',
+              '@'.'type' => 'ListItem',
               'position' => 2,
               'name' => 'About Us',
               'item' => route('about'),

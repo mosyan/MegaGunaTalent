@@ -198,6 +198,22 @@ class AdminTest extends TestCase
         $this->assertStringContainsString('attachment; filename="enrollments_export_', $response->headers->get('Content-Disposition'));
     }
 
+    public function test_admin_can_delete_enrollment(): void
+    {
+        $enrollment = Enrollment::create([
+            'first_name' => 'Doni',
+            'last_name' => 'Kusuma',
+            'email' => 'doni@example.com',
+            'program_level' => 'Beginner',
+            'message' => 'Spam or cancelled lead',
+            'status' => 'rejected',
+        ]);
+
+        $response = $this->actingAs($this->adminUser)->delete(route('admin.enrollments.destroy', $enrollment));
+        $response->assertRedirect();
+        $this->assertDatabaseMissing('enrollments', ['id' => $enrollment->id]);
+    }
+
     public function test_admin_can_change_password(): void
     {
         $response = $this->actingAs($this->adminUser)->put(route('admin.profile.password'), [
