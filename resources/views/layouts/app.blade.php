@@ -55,7 +55,7 @@
             <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold text-white tracking-wide">
                 <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">Home</a>
                 <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">About Us</a>
-                <a href="{{ route('home') }}#programs" class="hover:text-[#fdc04f] transition-colors">Programs</a>
+                <a href="{{ route('programs.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">Programs</a>
                 <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">Blog</a>
                 <a href="{{ route('enroll') }}" class="bg-[#fdc04f] text-[#321f47] px-4 py-2 rounded-full font-bold hover:bg-[#fcae26] transition-colors shadow-md text-sm">Enroll Now</a>
             </nav>
@@ -97,7 +97,7 @@
                     <span>About Us / Profil</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
-                <a href="{{ route('home') }}#programs" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors">
+                <a href="{{ route('programs.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">
                     <span>Our Programs</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>

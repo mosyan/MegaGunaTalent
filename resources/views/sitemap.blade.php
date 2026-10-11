@@ -17,6 +17,26 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>{{ route('programs.index') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ route('programs.show', 'beginner') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ route('programs.show', 'intermediate') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ route('programs.show', 'advanced') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>{{ route('blog.index') }}</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>

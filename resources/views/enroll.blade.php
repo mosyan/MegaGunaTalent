@@ -127,9 +127,12 @@
                         <select id="program_level" 
                                 name="program_level" 
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-300 focus:border-[#321f47] focus:ring-2 focus:ring-[#fdc04f] focus:outline-none font-arsenal text-lg transition-colors">
-                            <option value="Beginner" {{ old('program_level') == 'Beginner' ? 'selected' : '' }}>Beginner (A1 - A2) - Travel & Foundations</option>
-                            <option value="Intermediate" {{ old('program_level') == 'Intermediate' ? 'selected' : '' }}>Intermediate (B1 - B2) - Grammar & Conversational Fluency</option>
-                            <option value="Advanced" {{ old('program_level') == 'Advanced' ? 'selected' : '' }}>Advanced (C1 - C2) - Career & Technical German</option>
+                            @php
+                                $selectedLevel = strtolower(old('program_level', request('level', request('program', 'Beginner'))));
+                            @endphp
+                            <option value="Beginner" {{ $selectedLevel === 'beginner' ? 'selected' : '' }}>Beginner (A1 - A2) - Travel & Foundations</option>
+                            <option value="Intermediate" {{ $selectedLevel === 'intermediate' ? 'selected' : '' }}>Intermediate (B1 - B2) - Grammar & Conversational Fluency</option>
+                            <option value="Advanced" {{ $selectedLevel === 'advanced' ? 'selected' : '' }}>Advanced (C1 - C2) - Career & Technical German</option>
                         </select>
                     </div>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GermanCourseController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::post('/enroll-now', [GermanCourseController::class, 'storeEnrollment'])
     ->middleware('throttle:10,1')
     ->name('enroll.store');
 Route::get('/about', [GermanCourseController::class, 'about'])->name('about');
+
+// Language Study Programs
+Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
+Route::get('/programs/{slug}', [ProgramController::class, 'show'])->name('programs.show');
 
 // Public Article Blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
