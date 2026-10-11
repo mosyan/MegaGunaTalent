@@ -3,6 +3,24 @@
 @section('title', 'German Language Study - Speak German With Confidence')
 @section('meta_description', 'Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations.')
 
+@php
+    $heroTitle = \App\Models\SiteSetting::get('hero_title_line1', 'Speak German With Confidence');
+    $heroSubtitle = \App\Models\SiteSetting::get('hero_subtitle', 'Engaging German courses for all levels.');
+    $heroBtnText = \App\Models\SiteSetting::get('hero_primary_btn_text', 'Enroll Now');
+    $heroBtnUrl = \App\Models\SiteSetting::get('hero_primary_btn_url', '#enroll');
+    if ($heroBtnUrl === '#enroll' || $heroBtnUrl === '#programs') {
+        $heroBtnUrl = route('enroll');
+    }
+
+    $programsTitle = \App\Models\SiteSetting::get('programs_title', 'Our Programs');
+    $programsSubtitle = \App\Models\SiteSetting::get('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
+
+    $ctaTitle = \App\Models\SiteSetting::get('cta_title', 'Achieve Your German Language Goals');
+    $ctaSubtitle = \App\Models\SiteSetting::get('cta_subtitle', 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment.');
+    $ctaBtnText = \App\Models\SiteSetting::get('cta_button_text', 'Contact Us');
+    $ctaBtnUrl = \App\Models\SiteSetting::get('cta_button_url', route('enroll'));
+@endphp
+
 @section('content')
 
     <!-- ========================================================== -->
@@ -17,16 +35,16 @@
         <!-- Center Hero Text & CTA -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center my-auto">
             <h1 class="font-yeseva text-white text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] tracking-tight leading-[1.12] drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
-                Speak German With Confidence
+                {{ $heroTitle }}
             </h1>
 
             <p class="font-arsenal text-white text-xl sm:text-2xl md:text-[1.85rem] max-w-3xl mx-auto mt-6 sm:mt-8 tracking-wide font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                Engaging German courses for all levels.
+                {{ $heroSubtitle }}
             </p>
 
             <div class="mt-8 sm:mt-10">
-                <a href="{{ route('enroll') }}" class="btn-brand-double">
-                    Enroll Now
+                <a href="{{ $heroBtnUrl }}" class="btn-brand-double">
+                    {{ $heroBtnText }}
                 </a>
             </div>
         </div>
@@ -48,11 +66,11 @@
             <!-- Section Header -->
             <div class="text-center max-w-4xl mx-auto">
                 <h2 class="font-yeseva text-3xl sm:text-5xl md:text-6xl tracking-tight text-[#321f47]">
-                    Our Programs
+                    {{ $programsTitle }}
                 </h2>
 
                 <p class="font-arsenal text-lg sm:text-2xl md:text-[1.55rem] text-[#321f47] mt-6 sm:mt-8 leading-relaxed font-normal">
-                    Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.
+                    {{ $programsSubtitle }}
                 </p>
             </div>
 
@@ -124,16 +142,16 @@
         <!-- Section Content -->
         <div class="relative z-10 max-w-5xl mx-auto text-center">
             <h2 class="font-yeseva text-white text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
-                Achieve Your German Language Goals
+                {{ $ctaTitle }}
             </h2>
 
             <p class="font-arsenal text-white text-lg sm:text-2xl md:text-[1.55rem] max-w-3xl mx-auto mt-6 sm:mt-8 leading-relaxed font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
-                We help you achieve your language learning goals, whether for travel, work, or personal enrichment.
+                {{ $ctaSubtitle }}
             </p>
 
             <div class="mt-8 sm:mt-10">
-                <a href="{{ route('enroll') }}" class="btn-brand-double">
-                    Contact Us
+                <a href="{{ $ctaBtnUrl }}" class="btn-brand-double">
+                    {{ $ctaBtnText }}
                 </a>
             </div>
         </div>
