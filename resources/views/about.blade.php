@@ -418,9 +418,21 @@
         </div>
     </section>
 
-    <!-- SECTION 4: Struktur Pimpinan & Tim Instruktur -->
-    <section class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 bg-black/30 border-t border-[#fdc04f]/15">
-        <div class="max-w-6xl mx-auto space-y-14">
+    <!-- SECTION 4: Struktur Pimpinan & Tim Instruktur (Parallax Motion) -->
+    <section id="struktur-manajemen" class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 overflow-hidden border-t border-[#fdc04f]/15 bg-[#2C0B1E]">
+        <!-- Parallax Background Layer -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <img src="{{ asset('images/about/mentors-bg.jpg') }}" 
+                 alt="Struktur Manajemen & Mentor Background" 
+                 id="about-mentors-parallax-bg"
+                 class="w-full h-[170%] -top-[35%] absolute object-cover object-center will-change-transform scale-110"
+                 loading="lazy">
+            <!-- Luxury Dark Plum and Vignette Overlay for Crisp Typography Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#2C0B1E]/90 via-[#2C0B1E]/65 to-[#2C0B1E]/95 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto space-y-14 relative z-10">
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
@@ -958,39 +970,51 @@
             }
         });
 
-        // Parallax Effect for Section 2 (Profil Lembaga)
+        // Parallax Effect for Section 2 (Profil Lembaga) & Section 4 (Struktur Manajemen & Mentor)
         const aboutSection = document.getElementById('profil-lembaga');
         const aboutBg = document.getElementById('about-profile-parallax-bg');
+        const mentorsSection = document.getElementById('struktur-manajemen');
+        const mentorsBg = document.getElementById('about-mentors-parallax-bg');
 
-        if (aboutSection && aboutBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             let ticking = false;
 
-            function updateAboutParallax() {
-                const rect = aboutSection.getBoundingClientRect();
+            function updateParallaxSections() {
                 const windowHeight = window.innerHeight;
+                const viewportCenter = windowHeight / 2;
 
-                // Active whenever section is in or near viewport
-                if (rect.top < windowHeight + 150 && rect.bottom > -150) {
-                    const viewportCenter = windowHeight / 2;
-                    const sectionCenter = rect.top + rect.height / 2;
-                    const offset = viewportCenter - sectionCenter;
-
-                    // 0.35 factor: identical dynamic motion & sensitivity to homepage hero
-                    const translateY = offset * 0.35;
-                    aboutBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
+                if (aboutSection && aboutBg) {
+                    const rect = aboutSection.getBoundingClientRect();
+                    if (rect.top < windowHeight + 150 && rect.bottom > -150) {
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const offset = viewportCenter - sectionCenter;
+                        const translateY = offset * 0.35;
+                        aboutBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
+                    }
                 }
+
+                if (mentorsSection && mentorsBg) {
+                    const rect = mentorsSection.getBoundingClientRect();
+                    if (rect.top < windowHeight + 150 && rect.bottom > -150) {
+                        const sectionCenter = rect.top + rect.height / 2;
+                        const offset = viewportCenter - sectionCenter;
+                        const translateY = offset * 0.35;
+                        mentorsBg.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.1)`;
+                    }
+                }
+
                 ticking = false;
             }
 
             window.addEventListener('scroll', function () {
                 if (!ticking) {
-                    window.requestAnimationFrame(updateAboutParallax);
+                    window.requestAnimationFrame(updateParallaxSections);
                     ticking = true;
                 }
             }, { passive: true });
 
-            window.addEventListener('resize', updateAboutParallax);
-            updateAboutParallax();
+            window.addEventListener('resize', updateParallaxSections);
+            updateParallaxSections();
         }
     });
 </script>
