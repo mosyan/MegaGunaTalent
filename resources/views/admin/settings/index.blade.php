@@ -72,6 +72,14 @@
         </button>
         <button 
             type="button"
+            @click="currentTab = 'about'" 
+            :class="currentTab === 'about' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow-md shadow-[#E2B842]/20' : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white font-medium'"
+            class="px-4 py-2 rounded-xl text-xs transition-all cursor-pointer"
+        >
+            About Us Page
+        </button>
+        <button 
+            type="button"
             @click="currentTab = 'colors'" 
             :class="currentTab === 'colors' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow-md shadow-[#E2B842]/20' : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white font-medium'"
             class="px-4 py-2 rounded-xl text-xs transition-all cursor-pointer"
@@ -581,6 +589,67 @@
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
                     </div>
+                </div>
+            </div>
+        <!-- TAB: About Us Page -->
+        <div x-show="currentTab === 'about'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                About Us Page Content & Institutional Information
+            </h3>
+
+            <div class="space-y-6">
+                <!-- Hero Badge -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Badge Text</label>
+                    <input 
+                        type="text" 
+                        name="about_hero_badge" 
+                        value="{{ old('about_hero_badge', $settings['about_hero_badge'] ?? 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+
+                <!-- Hero Title -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Main Title</label>
+                    <input 
+                        type="text" 
+                        name="about_hero_title" 
+                        value="{{ old('about_hero_title', $settings['about_hero_title'] ?? 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+
+                <!-- Hero Subtitle -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle / Description</label>
+                    <textarea 
+                        name="about_hero_subtitle" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_hero_subtitle', $settings['about_hero_subtitle'] ?? 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.') }}</textarea>
+                </div>
+
+                <!-- Visi Utama -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Visi Utama Lembaga</label>
+                    <textarea 
+                        name="about_visi" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_visi', $settings['about_visi'] ?? 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}</textarea>
+                </div>
+
+                <!-- Jam Operasional -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Jam Operasional Kampus</label>
+                    <input 
+                        type="text" 
+                        name="about_operating_hours" 
+                        value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? 'Senin - Sabtu: 08:30 - 17:00 WIB') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
                 </div>
             </div>
         </div>

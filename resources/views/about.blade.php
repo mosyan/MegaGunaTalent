@@ -103,17 +103,17 @@
         <div class="max-w-6xl mx-auto text-center space-y-6">
             <!-- Official Institution Badge -->
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fdc04f]/15 border border-[#fdc04f]/40 text-[#fdc04f] text-xs sm:text-sm font-bold tracking-widest uppercase backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-[#fdc04f] animate-pulse"></span>
-                <span>LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#fdc04f] animate-pulse"></span>
+                <span>{{ \App\Models\SiteSetting::get('about_hero_badge', 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard') }}</span>
             </div>
 
             <!-- Page Main Title -->
             <h1 class="font-yeseva text-3xl sm:text-5xl md:text-6xl text-[#fdc04f] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
-                Membangun Generasi Kompeten &<br class="hidden sm:inline"> Siap Berkarier Global di Jerman
+                {!! nl2br(e(\App\Models\SiteSetting::get('about_hero_title', "Membangun Generasi Kompeten &\nSiap Berkarier Global di Jerman"))) !!}
             </h1>
 
             <p class="max-w-3xl mx-auto text-base sm:text-xl text-[#f2ebfd]/90 font-lato leading-relaxed">
-                <strong class="text-white font-bold">LPK Mega Guna Talent</strong> adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.
+                {{ \App\Models\SiteSetting::get('about_hero_subtitle', 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.') }}
             </p>
 
             <!-- Action Buttons -->
@@ -287,7 +287,7 @@
                         Visi Utama Kami
                     </span>
                     <blockquote class="font-yeseva text-xl sm:text-3xl md:text-4xl text-white leading-relaxed italic">
-                        “Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional”
+                        “{{ \App\Models\SiteSetting::get('about_visi', 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}”
                     </blockquote>
                     <p class="text-sm text-[#fdc04f]/90 font-lato">
                         — Ditetapkan oleh Dewan Pembina & Manajemen LPK Mega Guna Talent
@@ -827,7 +827,7 @@
                     <div>
                         <h4 class="font-bold text-white text-sm">Alamat Kampus</h4>
                         <p class="text-xs text-[#f2ebfd]/75 font-lato mt-0.5">
-                            Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019 Jaka Setia, Bekasi Selatan.
+                            {{ \App\Models\SiteSetting::get('contact_address', 'Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019 Jaka Setia, Bekasi Selatan.') }}
                         </p>
                     </div>
                 </div>
@@ -839,8 +839,7 @@
                     <div>
                         <h4 class="font-bold text-white text-sm">Jam Operasional</h4>
                         <p class="text-xs text-[#f2ebfd]/75 font-lato mt-0.5">
-                            Senin - Sabtu: 08:30 - 17:00 WIB<br>
-                            Minggu & Hari Libur: Dengan Perjanjian
+                            {!! nl2br(e(\App\Models\SiteSetting::get('about_operating_hours', "Senin - Sabtu: 08:30 - 17:00 WIB\nMinggu & Hari Libur: Dengan Perjanjian"))) !!}
                         </p>
                     </div>
                 </div>

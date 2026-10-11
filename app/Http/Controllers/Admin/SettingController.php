@@ -38,6 +38,13 @@ class SettingController extends Controller
             'social_facebook' => ['nullable', 'string', 'max:255'],
             'social_linkedin' => ['nullable', 'string', 'max:255'],
 
+            // About Us Section
+            'about_hero_badge' => ['nullable', 'string', 'max:255'],
+            'about_hero_title' => ['nullable', 'string', 'max:255'],
+            'about_hero_subtitle' => ['nullable', 'string'],
+            'about_visi' => ['nullable', 'string'],
+            'about_operating_hours' => ['nullable', 'string', 'max:255'],
+
             // Hero Section
             'hero_badge_text' => ['nullable', 'string', 'max:255'],
             'hero_title_line1' => ['nullable', 'string', 'max:255'],
@@ -126,6 +133,7 @@ class SettingController extends Controller
             }
 
             $group = match (true) {
+                str_starts_with($key, 'about_') => 'about',
                 str_starts_with($key, 'hero_') => 'hero',
                 str_starts_with($key, 'program') => 'programs',
                 str_starts_with($key, 'cta_') => 'cta',

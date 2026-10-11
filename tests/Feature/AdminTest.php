@@ -69,6 +69,24 @@ class AdminTest extends TestCase
         $homeResponse->assertSee('JOIN CLASS NOW');
     }
 
+    public function test_admin_can_update_about_page_settings_and_reflects_on_about_page(): void
+    {
+        $response = $this->actingAs($this->adminUser)->post(route('admin.settings.update'), [
+            'about_hero_title' => 'GERMAN CAREER ACADEMY BEKASI',
+            'about_visi' => 'Visi Baru: Menjadi LPK Nomor Satu di Indonesia',
+        ]);
+
+        $response->assertRedirect(route('admin.settings.index'));
+
+        $this->assertEquals('GERMAN CAREER ACADEMY BEKASI', SiteSetting::get('about_hero_title'));
+        $this->assertEquals('Visi Baru: Menjadi LPK Nomor Satu di Indonesia', SiteSetting::get('about_visi'));
+
+        $aboutResponse = $this->get(route('about'));
+        $aboutResponse->assertStatus(200);
+        $aboutResponse->assertSee('GERMAN CAREER ACADEMY BEKASI');
+        $aboutResponse->assertSee('Visi Baru: Menjadi LPK Nomor Satu di Indonesia');
+    }
+
     public function test_admin_can_manage_blog_categories(): void
     {
         $response = $this->actingAs($this->adminUser)->post(route('admin.blog-categories.store'), [

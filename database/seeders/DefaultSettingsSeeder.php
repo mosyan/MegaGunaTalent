@@ -18,11 +18,18 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'site_tagline', 'value' => 'Master the German language with native-speaking certified instructors', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'contact_email', 'value' => 'info@megagunatalent.com', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'contact_phone', 'value' => '+62 812 3456 7890', 'group' => 'branding', 'type' => 'text'],
-            ['key' => 'contact_address', 'value' => 'Jakarta, Indonesia', 'group' => 'branding', 'type' => 'text'],
+            ['key' => 'contact_address', 'value' => 'Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019 Jaka Setia, Bekasi Selatan - Kota Bekasi', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'social_whatsapp', 'value' => 'https://wa.me/6281234567890', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'social_instagram', 'value' => 'https://instagram.com/megagunatalent', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'social_facebook', 'value' => 'https://facebook.com/megagunatalent', 'group' => 'branding', 'type' => 'text'],
             ['key' => 'social_linkedin', 'value' => 'https://linkedin.com/company/megagunatalent', 'group' => 'branding', 'type' => 'text'],
+
+            // About Us Section
+            ['key' => 'about_hero_badge', 'value' => 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_title', 'value' => 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_subtitle', 'value' => 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_visi', 'value' => 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_operating_hours', 'value' => 'Senin - Sabtu: 08:30 - 17:00 WIB', 'group' => 'about', 'type' => 'text'],
 
             // Hero Section
             ['key' => 'hero_badge_text', 'value' => 'TOP-RATED GERMAN COURSES IN INDONESIA', 'group' => 'hero', 'type' => 'text'],
