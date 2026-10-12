@@ -4,27 +4,27 @@
 @section('meta_description', 'Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations.')
 
 @php
-    $heroTitle = \App\Models\SiteSetting::get('hero_title_line1', 'Speak German With Confidence');
-    $heroSubtitle = \App\Models\SiteSetting::get('hero_subtitle', 'Engaging German courses for all levels.');
-    $heroBtnText = \App\Models\SiteSetting::get('hero_primary_btn_text', 'Enroll Now');
+    $heroTitle = \App\Models\SiteSetting::getLocalized('hero_title_line1', 'Speak German With Confidence');
+    $heroSubtitle = \App\Models\SiteSetting::getLocalized('hero_subtitle', 'Engaging German courses for all levels.');
+    $heroBtnText = \App\Models\SiteSetting::getLocalized('hero_primary_btn_text', 'Enroll Now');
     $heroBtnUrl = \App\Models\SiteSetting::get('hero_primary_btn_url', '#enroll');
     if ($heroBtnUrl === '#enroll' || $heroBtnUrl === '#programs') {
         $heroBtnUrl = route('enroll');
     }
 
-    $programsTitle = \App\Models\SiteSetting::get('programs_title', 'Our Programs');
-    $programsSubtitle = \App\Models\SiteSetting::get('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
+    $programsTitle = \App\Models\SiteSetting::getLocalized('programs_title', 'Our Programs');
+    $programsSubtitle = \App\Models\SiteSetting::getLocalized('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
 
-    $prog1Title = \App\Models\SiteSetting::get('program_1_title', 'Beginner');
-    $prog1Desc = \App\Models\SiteSetting::get('program_1_desc', 'Focus on practical communication skills for travelers and those new to the language.');
-    $prog2Title = \App\Models\SiteSetting::get('program_2_title', 'Intermediate');
-    $prog2Desc = \App\Models\SiteSetting::get('program_2_desc', 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.');
-    $prog3Title = \App\Models\SiteSetting::get('program_3_title', 'Advanced');
-    $prog3Desc = \App\Models\SiteSetting::get('program_3_desc', 'Tailored for those needing German in their careers, focusing on business or technical German.');
+    $prog1Title = \App\Models\SiteSetting::getLocalized('program_1_title', 'Beginner');
+    $prog1Desc = \App\Models\SiteSetting::getLocalized('program_1_desc', 'Focus on practical communication skills for travelers and those new to the language.');
+    $prog2Title = \App\Models\SiteSetting::getLocalized('program_2_title', 'Intermediate');
+    $prog2Desc = \App\Models\SiteSetting::getLocalized('program_2_desc', 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.');
+    $prog3Title = \App\Models\SiteSetting::getLocalized('program_3_title', 'Advanced');
+    $prog3Desc = \App\Models\SiteSetting::getLocalized('program_3_desc', 'Tailored for those needing German in their careers, focusing on business or technical German.');
 
-    $ctaTitle = \App\Models\SiteSetting::get('cta_title', 'Achieve Your German Language Goals');
-    $ctaSubtitle = \App\Models\SiteSetting::get('cta_subtitle', 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment.');
-    $ctaBtnText = \App\Models\SiteSetting::get('cta_button_text', 'Contact Us');
+    $ctaTitle = \App\Models\SiteSetting::getLocalized('cta_title', 'Achieve Your German Language Goals');
+    $ctaSubtitle = \App\Models\SiteSetting::getLocalized('cta_subtitle', 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment.');
+    $ctaBtnText = \App\Models\SiteSetting::getLocalized('cta_button_text', 'Contact Us');
     $ctaBtnUrl = \App\Models\SiteSetting::get('cta_button_url', route('enroll'));
 
     $heroBg = \App\Models\SiteSetting::assetUrl('hero_bg_image', asset('images/global-bg.jpg'));
@@ -112,7 +112,7 @@
                         {{ $prog1Desc }}
                     </p>
                     <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#321f47] group-hover:translate-x-1 transition-transform border-b-2 border-[#321f47]/40 pb-0.5">
-                        Lihat Silabus & Detail &rarr;
+                        {{ __('View Syllabus & Details') }} &rarr;
                     </span>
                 </a>
 
@@ -131,7 +131,7 @@
                         {{ $prog2Desc }}
                     </p>
                     <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#321f47] group-hover:translate-x-1 transition-transform border-b-2 border-[#321f47]/40 pb-0.5">
-                        Lihat Silabus & Detail &rarr;
+                        {{ __('View Syllabus & Details') }} &rarr;
                     </span>
                 </a>
 
@@ -150,7 +150,7 @@
                         {{ $prog3Desc }}
                     </p>
                     <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#321f47] group-hover:translate-x-1 transition-transform border-b-2 border-[#321f47]/40 pb-0.5">
-                        Lihat Silabus & Detail &rarr;
+                        {{ __('View Syllabus & Details') }} &rarr;
                     </span>
                 </a>
 

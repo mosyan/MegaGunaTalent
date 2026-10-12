@@ -201,78 +201,197 @@
         </div>
 
         <!-- TAB: Hero Section & Buttons -->
-        <div x-show="currentTab === 'hero'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                Hero Section Headline, Buttons & Trust Badges
-            </h3>
-
-            <!-- Hero Badge -->
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill)</label>
-                <input 
-                    type="text" 
-                    name="hero_badge_text" 
-                    value="{{ old('hero_badge_text', $settings['hero_badge_text'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
-            </div>
-
-            <!-- Title Line 1 & Line 2 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1</label>
-                    <input 
-                        type="text" 
-                        name="hero_title_line1" 
-                        value="{{ old('hero_title_line1', $settings['hero_title_line1'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Gold Accent)</label>
-                    <input 
-                        type="text" 
-                        name="hero_title_line2" 
-                        value="{{ old('hero_title_line2', $settings['hero_title_line2'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
+        <div x-show="currentTab === 'hero'" x-data="{ heroLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                    Hero Section Headline, Buttons & Trust Badges
+                </h3>
+                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                    <button type="button" @click="heroLang = 'id'" :class="heroLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                    <button type="button" @click="heroLang = 'en'" :class="heroLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                    <button type="button" @click="heroLang = 'de'" :class="heroLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
                 </div>
             </div>
 
-            <!-- Subtitle -->
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph</label>
-                <textarea 
-                    name="hero_subtitle" 
-                    rows="3"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >{{ old('hero_subtitle', $settings['hero_subtitle'] ?? '') }}</textarea>
+            <!-- ID Hero Texts -->
+            <div x-show="heroLang === 'id'" class="space-y-6">
+                <!-- Hero Badge -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Indonesia)</label>
+                    <input 
+                        type="text" 
+                        name="hero_badge_text" 
+                        value="{{ old('hero_badge_text', $settings['hero_badge_text'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+
+                <!-- Title Line 1 & Line 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Indonesia)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line1" 
+                            value="{{ old('hero_title_line1', $settings['hero_title_line1'] ?? '') }}"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Gold Accent - Indonesia)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line2" 
+                            value="{{ old('hero_title_line2', $settings['hero_title_line2'] ?? '') }}"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                </div>
+
+                <!-- Subtitle -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Indonesia)</label>
+                    <textarea 
+                        name="hero_subtitle" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('hero_subtitle', $settings['hero_subtitle'] ?? '') }}</textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (Indonesia)</label>
+                    <input 
+                        type="text" 
+                        name="hero_primary_btn_text" 
+                        value="{{ old('hero_primary_btn_text', $settings['hero_primary_btn_text'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
             </div>
 
-            <!-- Primary and Secondary Buttons -->
+            <!-- EN Hero Texts -->
+            <div x-show="heroLang === 'en'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - English)</label>
+                    <input 
+                        type="text" 
+                        name="hero_badge_text_en" 
+                        value="{{ old('hero_badge_text_en', $settings['hero_badge_text_en'] ?? '') }}"
+                        placeholder="e.g. Official German Language Center & Ausbildung Partner"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (English)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line1_en" 
+                            value="{{ old('hero_title_line1_en', $settings['hero_title_line1_en'] ?? '') }}"
+                            placeholder="e.g. Master German Language"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (English)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line2_en" 
+                            value="{{ old('hero_title_line2_en', $settings['hero_title_line2_en'] ?? '') }}"
+                            placeholder="e.g. With Confidence & Excellence"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (English)</label>
+                    <textarea 
+                        name="hero_subtitle_en" 
+                        rows="3"
+                        placeholder="e.g. Comprehensive German training from A1 to C1 with certified native instructors."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('hero_subtitle_en', $settings['hero_subtitle_en'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (English)</label>
+                    <input 
+                        type="text" 
+                        name="hero_primary_btn_text_en" 
+                        value="{{ old('hero_primary_btn_text_en', $settings['hero_primary_btn_text_en'] ?? '') }}"
+                        placeholder="e.g. Enroll Now"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- DE Hero Texts -->
+            <div x-show="heroLang === 'de'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="hero_badge_text_de" 
+                        value="{{ old('hero_badge_text_de', $settings['hero_badge_text_de'] ?? '') }}"
+                        placeholder="z.B. Offizielles Deutsches Sprachzentrum & Ausbildungspartner"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Deutsch)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line1_de" 
+                            value="{{ old('hero_title_line1_de', $settings['hero_title_line1_de'] ?? '') }}"
+                            placeholder="z.B. Deutsch lernen mit Erfolg"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Deutsch)</label>
+                        <input 
+                            type="text" 
+                            name="hero_title_line2_de" 
+                            value="{{ old('hero_title_line2_de', $settings['hero_title_line2_de'] ?? '') }}"
+                            placeholder="z.B. Für Ausbildung & Karriere"
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                        >
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Deutsch)</label>
+                    <textarea 
+                        name="hero_subtitle_de" 
+                        rows="3"
+                        placeholder="z.B. Umfassende Vorbereitung auf Goethe-Zertifikate von A1 bis C1."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('hero_subtitle_de', $settings['hero_subtitle_de'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="hero_primary_btn_text_de" 
+                        value="{{ old('hero_primary_btn_text_de', $settings['hero_primary_btn_text_de'] ?? '') }}"
+                        placeholder="z.B. Jetzt anmelden"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- Primary and Secondary Buttons URLs -->
             <div class="pt-4 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Primary Button -->
-                <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-4">
-                    <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Primary Button (Gold CTA)</span>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 uppercase mb-1">Button Label</label>
-                        <input 
-                            type="text" 
-                            name="hero_primary_btn_text" 
-                            value="{{ old('hero_primary_btn_text', $settings['hero_primary_btn_text'] ?? '') }}"
-                            class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                        >
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 uppercase mb-1">Button Link URL / Anchor</label>
-                        <input 
-                            type="text" 
-                            name="hero_primary_btn_url" 
-                            value="{{ old('hero_primary_btn_url', $settings['hero_primary_btn_url'] ?? '') }}"
-                            class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                        >
-                    </div>
+                <!-- Primary Button URL -->
+                <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
+                    <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Primary Button Target URL</span>
+                    <input 
+                        type="text" 
+                        name="hero_primary_btn_url" 
+                        value="{{ old('hero_primary_btn_url', $settings['hero_primary_btn_url'] ?? '') }}"
+                        class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
                 </div>
 
                 <!-- Secondary Button -->
@@ -361,11 +480,19 @@
         </div>
 
         <!-- TAB: Programs Section -->
-        <div x-show="currentTab === 'programs'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                Course Programs Heading & Cards Customizer
-            </h3>
+        <div x-show="currentTab === 'programs'" x-data="{ progLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                    Course Programs Heading & Cards Customizer
+                </h3>
+                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                    <button type="button" @click="progLang = 'id'" :class="progLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                    <button type="button" @click="progLang = 'en'" :class="progLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                    <button type="button" @click="progLang = 'de'" :class="progLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                </div>
+            </div>
 
             <div>
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Badge</label>
@@ -396,54 +523,6 @@
                 >{{ old('programs_subtitle', $settings['programs_subtitle'] ?? '') }}</textarea>
             </div>
 
-            <!-- 3 Individual Program Cards Customization (Home Snippets) -->
-            <div class="pt-4 border-t border-white/5 space-y-4">
-                <h4 class="text-sm font-bold text-white flex items-center justify-between">
-                    <span>Ringkasan Kartu Beranda (Homepage Program Snippets)</span>
-                    <span class="text-xs text-slate-400 font-normal">Tampil di beranda (kartu 3 kolom)</span>
-                </h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Program 1 -->
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 1 (Left - Beginner)</span>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
-                            <input type="text" name="program_1_title" value="{{ old('program_1_title', $settings['program_1_title'] ?? 'Beginner') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
-                            <textarea name="program_1_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_1_desc', $settings['program_1_desc'] ?? 'Focus on practical communication skills for travelers and those new to the language.') }}</textarea>
-                        </div>
-                    </div>
-
-                    <!-- Program 2 -->
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 2 (Middle - Intermediate)</span>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
-                            <input type="text" name="program_2_title" value="{{ old('program_2_title', $settings['program_2_title'] ?? 'Intermediate') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
-                            <textarea name="program_2_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_2_desc', $settings['program_2_desc'] ?? 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.') }}</textarea>
-                        </div>
-                    </div>
-
-                    <!-- Program 3 -->
-                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
-                        <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Card 3 (Right - Advanced)</span>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Title</label>
-                            <input type="text" name="program_3_title" value="{{ old('program_3_title', $settings['program_3_title'] ?? 'Advanced') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Description</label>
-                            <textarea name="program_3_desc" rows="3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs">{{ old('program_3_desc', $settings['program_3_desc'] ?? 'Tailored for those needing German in their careers, focusing on business or technical German.') }}</textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- DETAIL PROGRAM 1: BEGINNER (A1 - A2) -->
             <div class="pt-6 border-t border-white/10 space-y-4">
                 <div class="flex items-center justify-between pb-2 border-b border-white/5">
@@ -459,39 +538,88 @@
                     <span class="px-2.5 py-1 rounded bg-[#E2B842]/10 text-[#E2B842] text-[11px] font-bold uppercase tracking-wider">Fondasi Dasar</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
-                        <input type="text" name="program_beginner_title" value="{{ old('program_beginner_title', $settings['program_beginner_title'] ?? 'Beginner German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pb-2 border-b border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
-                        <input type="text" name="program_beginner_level" value="{{ old('program_beginner_level', $settings['program_beginner_level'] ?? 'A1 - A2 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_beginner_level" value="{{ old('program_beginner_level', $settings['program_beginner_level'] ?? 'A1 - A2 (CEFR)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
-                        <input type="text" name="program_beginner_badge" value="{{ old('program_beginner_badge', $settings['program_beginner_badge'] ?? 'Fondasi & Percakapan Harian') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_beginner_badge" value="{{ old('program_beginner_badge', $settings['program_beginner_badge'] ?? 'Fondasi & Percakapan Harian') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
-                        <input type="text" name="program_beginner_target_exam" value="{{ old('program_beginner_target_exam', $settings['program_beginner_target_exam'] ?? 'Goethe-Zertifikat A1 & A2') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_beginner_target_exam" value="{{ old('program_beginner_target_exam', $settings['program_beginner_target_exam'] ?? 'Goethe-Zertifikat A1 & A2') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
-                    <input type="text" name="program_beginner_tagline" value="{{ old('program_beginner_tagline', $settings['program_beginner_tagline'] ?? 'Kuasai Dasar Bahasa Jerman dari Nol Hingga Mampu Berkomunikasi Sehari-hari dan Lulus Sertifikasi Goethe A1/A2.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                <!-- ID Text Fields -->
+                <div x-show="progLang === 'id'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program (Indonesia)</label>
+                            <input type="text" name="program_beginner_title" value="{{ old('program_beginner_title', $settings['program_beginner_title'] ?? 'Beginner German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas (Indonesia)</label>
+                            <input type="text" name="program_beginner_tagline" value="{{ old('program_beginner_tagline', $settings['program_beginner_tagline'] ?? 'Kuasai Dasar Bahasa Jerman dari Nol Hingga Mampu Berkomunikasi Sehari-hari dan Lulus Sertifikasi Goethe A1/A2.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program (Indonesia)</label>
+                        <textarea name="program_beginner_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_beginner_description', $settings['program_beginner_description'] ?? 'Program Beginner dirancang khusus bagi peserta yang belum pernah mempelajari bahasa Jerman sama sekali. Menggunakan metode pembelajaran interaktif berbasis SKKNI dan standar Goethe-Institut, peserta akan dibimbing mulai dari pelafalan presisi (Aussprache), kosakata esensial, struktur tata bahasa dasar (Akkusativ & Dativ), hingga simulasi percakapan nyata untuk kehidupan sehari-hari, perjalanan, dan persiapan awal studi di Jerman.') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan (Indonesia)</label>
+                        <input type="text" name="program_beginner_career_path" value="{{ old('program_beginner_career_path', $settings['program_beginner_career_path'] ?? 'Lulusan level ini memiliki pondasi kuat untuk melanjutkan ke level Intermediate B1 (syarat utama Ausbildung), serta memenuhi syarat administratif dasar program Au Pair dan visa tertentu ke Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
-                    <textarea name="program_beginner_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_beginner_description', $settings['program_beginner_description'] ?? 'Program Beginner dirancang khusus bagi peserta yang belum pernah mempelajari bahasa Jerman sama sekali. Menggunakan metode pembelajaran interaktif berbasis SKKNI dan standar Goethe-Institut, peserta akan dibimbing mulai dari pelafalan presisi (Aussprache), kosakata esensial, struktur tata bahasa dasar (Akkusativ & Dativ), hingga simulasi percakapan nyata untuk kehidupan sehari-hari, perjalanan, dan persiapan awal studi di Jerman.') }}</textarea>
+                <!-- EN Text Fields -->
+                <div x-show="progLang === 'en'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Program Title (English)</label>
+                            <input type="text" name="program_beginner_title_en" value="{{ old('program_beginner_title_en', $settings['program_beginner_title_en'] ?? '') }}" placeholder="e.g. Beginner German Program (A1 - A2)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Short Tagline (English)</label>
+                            <input type="text" name="program_beginner_tagline_en" value="{{ old('program_beginner_tagline_en', $settings['program_beginner_tagline_en'] ?? '') }}" placeholder="e.g. Master foundational German communication and pass Goethe A1/A2 exams." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Full Program Description (English)</label>
+                        <textarea name="program_beginner_description_en" rows="3" placeholder="e.g. Designed for beginners starting from zero, guiding students through precise pronunciation, essential vocabulary, and everyday conversations." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_beginner_description_en', $settings['program_beginner_description_en'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Career Pathway (English)</label>
+                        <input type="text" name="program_beginner_career_path_en" value="{{ old('program_beginner_career_path_en', $settings['program_beginner_career_path_en'] ?? '') }}" placeholder="e.g. Provides a strong foundation for Intermediate B1 and administrative requirements for Au Pair or FSJ." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- DE Text Fields -->
+                <div x-show="progLang === 'de'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Programmtitel (Deutsch)</label>
+                            <input type="text" name="program_beginner_title_de" value="{{ old('program_beginner_title_de', $settings['program_beginner_title_de'] ?? '') }}" placeholder="z.B. Deutsch Grundstufe (A1 - A2)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Slogan / Untertitel (Deutsch)</label>
+                            <input type="text" name="program_beginner_tagline_de" value="{{ old('program_beginner_tagline_de', $settings['program_beginner_tagline_de'] ?? '') }}" placeholder="z.B. Deutsch von Grund auf lernen für Alltag und Goethe A1/A2 Zertifikat." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Ausführliche Beschreibung (Deutsch)</label>
+                        <textarea name="program_beginner_description_de" rows="3" placeholder="z.B. Speziell konzipiert für Teilnehmer ohne Vorkenntnisse, mit Fokus auf Aussprache, Grundgrammatik und praktische Alltagskommunikation." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_beginner_description_de', $settings['program_beginner_description_de'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Karriereperspektiven (Deutsch)</label>
+                        <input type="text" name="program_beginner_career_path_de" value="{{ old('program_beginner_career_path_de', $settings['program_beginner_career_path_de'] ?? '') }}" placeholder="z.B. Solide Basis für B1 Ausbildungsvorbereitung sowie Au-Pair- und FSJ-Visa." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2 border-t border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
                         <input type="text" name="program_beginner_duration" value="{{ old('program_beginner_duration', $settings['program_beginner_duration'] ?? '10 - 12 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
@@ -504,16 +632,9 @@
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
                         <input type="text" name="program_beginner_class_size" value="{{ old('program_beginner_class_size', $settings['program_beginner_class_size'] ?? 'Maksimal 15 Siswa / Kelas') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
                         <input type="text" name="program_beginner_schedule" value="{{ old('program_beginner_schedule', $settings['program_beginner_schedule'] ?? 'Senin - Jumat (09:00 - 13:00 WIB) / Pilihan Kelas Malam') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
-                        <input type="text" name="program_beginner_career_path" value="{{ old('program_beginner_career_path', $settings['program_beginner_career_path'] ?? 'Lulusan level ini memiliki pondasi kuat untuk melanjutkan ke level Intermediate B1 (syarat utama Ausbildung), serta memenuhi syarat administratif dasar program Au Pair dan visa tertentu ke Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
             </div>
@@ -533,39 +654,88 @@
                     <span class="px-2.5 py-1 rounded bg-[#E2B842] text-[#2C0B1E] text-[11px] font-bold uppercase tracking-wider">Syarat Ausbildung</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
-                        <input type="text" name="program_intermediate_title" value="{{ old('program_intermediate_title', $settings['program_intermediate_title'] ?? 'Intermediate German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pb-2 border-b border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
-                        <input type="text" name="program_intermediate_level" value="{{ old('program_intermediate_level', $settings['program_intermediate_level'] ?? 'B1 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_intermediate_level" value="{{ old('program_intermediate_level', $settings['program_intermediate_level'] ?? 'B1 (CEFR)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
-                        <input type="text" name="program_intermediate_badge" value="{{ old('program_intermediate_badge', $settings['program_intermediate_badge'] ?? 'Pintu Gerbang Utama Ausbildung Jerman') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_intermediate_badge" value="{{ old('program_intermediate_badge', $settings['program_intermediate_badge'] ?? 'Pintu Gerbang Utama Ausbildung Jerman') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
-                        <input type="text" name="program_intermediate_target_exam" value="{{ old('program_intermediate_target_exam', $settings['program_intermediate_target_exam'] ?? 'Goethe-Zertifikat B1 (4 Modul)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_intermediate_target_exam" value="{{ old('program_intermediate_target_exam', $settings['program_intermediate_target_exam'] ?? 'Goethe-Zertifikat B1 (4 Modul)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
-                    <input type="text" name="program_intermediate_tagline" value="{{ old('program_intermediate_tagline', $settings['program_intermediate_tagline'] ?? 'Kunci Kelulusan Goethe-Zertifikat B1 Sebagai Syarat Mutlak Visa Ausbildung, Studi Vokasi, dan Karier di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                <!-- ID Text Fields -->
+                <div x-show="progLang === 'id'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program (Indonesia)</label>
+                            <input type="text" name="program_intermediate_title" value="{{ old('program_intermediate_title', $settings['program_intermediate_title'] ?? 'Intermediate German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas (Indonesia)</label>
+                            <input type="text" name="program_intermediate_tagline" value="{{ old('program_intermediate_tagline', $settings['program_intermediate_tagline'] ?? 'Kunci Kelulusan Goethe-Zertifikat B1 Sebagai Syarat Mutlak Visa Ausbildung, Studi Vokasi, dan Karier di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program (Indonesia)</label>
+                        <textarea name="program_intermediate_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_intermediate_description', $settings['program_intermediate_description'] ?? 'Program Intermediate difokuskan untuk mencapai tingkat kemandirian berbahasa Jerman (Selbstständige Sprachverwendung). Level B1 adalah syarat wajib paling krusial bagi calon peserta program Ausbildung di Jerman.') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan (Indonesia)</label>
+                        <input type="text" name="program_intermediate_career_path" value="{{ old('program_intermediate_career_path', $settings['program_intermediate_career_path'] ?? 'Sertifikat Goethe B1 adalah dokumen resmi utama yang diakui Kedutaan Besar Jerman di Jakarta untuk penerbitan visa Ausbildung.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
-                    <textarea name="program_intermediate_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_intermediate_description', $settings['program_intermediate_description'] ?? 'Program Intermediate difokuskan untuk mencapai tingkat kemandirian berbahasa Jerman (Selbstständige Sprachverwendung). Level B1 adalah syarat wajib paling krusial bagi calon peserta program Ausbildung (perhotelan, keperawatan/Pflege, teknik/Mechatronik, gastronomi, dll.) di Jerman. Di level ini, peserta dilatih berdiskusi, memahami teks berita, menyusun argumentasi formal, serta menguasai struktur gramatikal lanjutan seperti kalimat pasif (Passiv), Konjunktiv II, dan klausa bawahan (Nebensätze).') }}</textarea>
+                <!-- EN Text Fields -->
+                <div x-show="progLang === 'en'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Program Title (English)</label>
+                            <input type="text" name="program_intermediate_title_en" value="{{ old('program_intermediate_title_en', $settings['program_intermediate_title_en'] ?? '') }}" placeholder="e.g. Intermediate German Program (B1)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Short Tagline (English)</label>
+                            <input type="text" name="program_intermediate_tagline_en" value="{{ old('program_intermediate_tagline_en', $settings['program_intermediate_tagline_en'] ?? '') }}" placeholder="e.g. Key to passing Goethe B1 for Ausbildung visa and vocational programs in Germany." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Full Program Description (English)</label>
+                        <textarea name="program_intermediate_description_en" rows="3" placeholder="e.g. Focuses on independent language usage, crucial for vocational Ausbildung trainees in nursing, hospitality, and engineering." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_intermediate_description_en', $settings['program_intermediate_description_en'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Career Pathway (English)</label>
+                        <input type="text" name="program_intermediate_career_path_en" value="{{ old('program_intermediate_career_path_en', $settings['program_intermediate_career_path_en'] ?? '') }}" placeholder="e.g. Officially recognized by the German Embassy for issuing Ausbildung and job training visas." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- DE Text Fields -->
+                <div x-show="progLang === 'de'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Programmtitel (Deutsch)</label>
+                            <input type="text" name="program_intermediate_title_de" value="{{ old('program_intermediate_title_de', $settings['program_intermediate_title_de'] ?? '') }}" placeholder="z.B. Deutsch Mittelstufe (B1)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Slogan / Untertitel (Deutsch)</label>
+                            <input type="text" name="program_intermediate_tagline_de" value="{{ old('program_intermediate_tagline_de', $settings['program_intermediate_tagline_de'] ?? '') }}" placeholder="z.B. Schlüssel zum Goethe-Zertifikat B1 für Ausbildung und Beruf in Deutschland." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Ausführliche Beschreibung (Deutsch)</label>
+                        <textarea name="program_intermediate_description_de" rows="3" placeholder="z.B. Vorbereitung auf selbstständige Sprachverwendung für Ausbildung in Pflege, Hotellerie und Technik." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_intermediate_description_de', $settings['program_intermediate_description_de'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Karriereperspektiven (Deutsch)</label>
+                        <input type="text" name="program_intermediate_career_path_de" value="{{ old('program_intermediate_career_path_de', $settings['program_intermediate_career_path_de'] ?? '') }}" placeholder="z.B. Anerkannt für Visumerteilung für duale Ausbildung in Deutschland." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2 border-t border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
                         <input type="text" name="program_intermediate_duration" value="{{ old('program_intermediate_duration', $settings['program_intermediate_duration'] ?? '12 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
@@ -578,16 +748,9 @@
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
                         <input type="text" name="program_intermediate_class_size" value="{{ old('program_intermediate_class_size', $settings['program_intermediate_class_size'] ?? 'Maksimal 15 Siswa / Kelas') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
                         <input type="text" name="program_intermediate_schedule" value="{{ old('program_intermediate_schedule', $settings['program_intermediate_schedule'] ?? 'Senin - Jumat (08:30 - 13:00 WIB)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
-                        <input type="text" name="program_intermediate_career_path" value="{{ old('program_intermediate_career_path', $settings['program_intermediate_career_path'] ?? 'Sertifikat Goethe B1 adalah dokumen resmi utama yang diakui Kedutaan Besar Jerman di Jakarta untuk penerbitan visa Ausbildung, visa mencari pelatihan kerja, dan visa studi persiapan.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
             </div>
@@ -607,39 +770,88 @@
                     <span class="px-2.5 py-1 rounded bg-[#E2B842]/10 text-[#E2B842] text-[11px] font-bold uppercase tracking-wider">Profisiensi Tinggi</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program</label>
-                        <input type="text" name="program_advanced_title" value="{{ old('program_advanced_title', $settings['program_advanced_title'] ?? 'Advanced German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pb-2 border-b border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Level CEFR</label>
-                        <input type="text" name="program_advanced_level" value="{{ old('program_advanced_level', $settings['program_advanced_level'] ?? 'B2 - C1 (CEFR)') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_advanced_level" value="{{ old('program_advanced_level', $settings['program_advanced_level'] ?? 'B2 - C1 (CEFR)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Badge / Sub-judul Fokus</label>
-                        <input type="text" name="program_advanced_badge" value="{{ old('program_advanced_badge', $settings['program_advanced_badge'] ?? 'Profisiensi Karier & Akademik') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_advanced_badge" value="{{ old('program_advanced_badge', $settings['program_advanced_badge'] ?? 'Profisiensi Karier & Akademik') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Target Ujian Resmi</label>
-                        <input type="text" name="program_advanced_target_exam" value="{{ old('program_advanced_target_exam', $settings['program_advanced_target_exam'] ?? 'Goethe-Zertifikat B2/C1 & TestDaF') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        <input type="text" name="program_advanced_target_exam" value="{{ old('program_advanced_target_exam', $settings['program_advanced_target_exam'] ?? 'Goethe-Zertifikat B2/C1 & TestDaF') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas</label>
-                    <input type="text" name="program_advanced_tagline" value="{{ old('program_advanced_tagline', $settings['program_advanced_tagline'] ?? 'Kecakapan Bahasa Tingkat Tinggi untuk Jalur Karier Profesional, Bahasa Khusus (Fachsprache), dan Studi Universitas di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                <!-- ID Text Fields -->
+                <div x-show="progLang === 'id'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Judul Program (Indonesia)</label>
+                            <input type="text" name="program_advanced_title" value="{{ old('program_advanced_title', $settings['program_advanced_title'] ?? 'Advanced German Program') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Tagline Ringkas (Indonesia)</label>
+                            <input type="text" name="program_advanced_tagline" value="{{ old('program_advanced_tagline', $settings['program_advanced_tagline'] ?? 'Kecakapan Bahasa Tingkat Tinggi untuk Jalur Karier Profesional, Bahasa Khusus (Fachsprache), dan Studi Universitas di Jerman.') }}" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program (Indonesia)</label>
+                        <textarea name="program_advanced_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_advanced_description', $settings['program_advanced_description'] ?? 'Program Advanced dirancang untuk profesional, dokter, perawat ahli, insinyur, dan calon mahasiswa master/doktoral yang memerlukan kemahiran bahasa Jerman tingkat lanjut.') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan (Indonesia)</label>
+                        <input type="text" name="program_advanced_career_path" value="{{ old('program_advanced_career_path', $settings['program_advanced_career_path'] ?? 'Sertifikasi B2/C1 membuka akses langsung ke pasar kerja profesional berpenghasilan tinggi di Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-slate-300 uppercase mb-1">Deskripsi Lengkap Program</label>
-                    <textarea name="program_advanced_description" rows="3" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_advanced_description', $settings['program_advanced_description'] ?? 'Program Advanced dirancang untuk profesional, dokter, perawat ahli, insinyur, dan calon mahasiswa master/doktoral yang memerlukan kemahiran bahasa Jerman tingkat lanjut. Fokus pembelajaran mencakup bahasa teknis dan bisnis (Wirtschaftsdeutsch & Fachsprache), retorika presentasi, penulisan laporan ilmiah, negosiasi kontrak, serta pemahaman mendalam tentang teks kompleks abstrak dan teknis.') }}</textarea>
+                <!-- EN Text Fields -->
+                <div x-show="progLang === 'en'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Program Title (English)</label>
+                            <input type="text" name="program_advanced_title_en" value="{{ old('program_advanced_title_en', $settings['program_advanced_title_en'] ?? '') }}" placeholder="e.g. Advanced German Program (B2 - C1)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Short Tagline (English)</label>
+                            <input type="text" name="program_advanced_tagline_en" value="{{ old('program_advanced_tagline_en', $settings['program_advanced_tagline_en'] ?? '') }}" placeholder="e.g. High-level language mastery for professional careers, medical tracks, and university degrees." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Full Program Description (English)</label>
+                        <textarea name="program_advanced_description_en" rows="3" placeholder="e.g. Tailored for doctors, engineers, and master students requiring business and technical German." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_advanced_description_en', $settings['program_advanced_description_en'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Career Pathway (English)</label>
+                        <input type="text" name="program_advanced_career_path_en" value="{{ old('program_advanced_career_path_en', $settings['program_advanced_career_path_en'] ?? '') }}" placeholder="e.g. Direct entry into the high-income German professional labor market and state universities." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- DE Text Fields -->
+                <div x-show="progLang === 'de'" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Programmtitel (Deutsch)</label>
+                            <input type="text" name="program_advanced_title_de" value="{{ old('program_advanced_title_de', $settings['program_advanced_title_de'] ?? '') }}" placeholder="z.B. Deutsch Oberstufe (B2 - C1)" class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 uppercase mb-1">Slogan / Untertitel (Deutsch)</label>
+                            <input type="text" name="program_advanced_tagline_de" value="{{ old('program_advanced_tagline_de', $settings['program_advanced_tagline_de'] ?? '') }}" placeholder="z.B. Höchste Sprachkompetenz für Fachkräfte, Mediziner und universitäres Studium." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Ausführliche Beschreibung (Deutsch)</label>
+                        <textarea name="program_advanced_description_de" rows="3" placeholder="z.B. Konzipiert für Fachkräfte, Ärzte und Akademiker mit Schwerpunkt auf Fach- und Wirtschaftssprache." class="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842] leading-relaxed">{{ old('program_advanced_description_de', $settings['program_advanced_description_de'] ?? '') }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Karriereperspektiven (Deutsch)</label>
+                        <input type="text" name="program_advanced_career_path_de" value="{{ old('program_advanced_career_path_de', $settings['program_advanced_career_path_de'] ?? '') }}" placeholder="z.B. Direkter Zugang zum deutschen Arbeitsmarkt für hochqualifizierte Berufe." class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2 border-t border-white/5">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Durasi</label>
                         <input type="text" name="program_advanced_duration" value="{{ old('program_advanced_duration', $settings['program_advanced_duration'] ?? '12 - 14 Minggu') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
@@ -652,16 +864,9 @@
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Kapasitas Kelas</label>
                         <input type="text" name="program_advanced_class_size" value="{{ old('program_advanced_class_size', $settings['program_advanced_class_size'] ?? 'Maksimal 12 Siswa / Kelas (Fokus & Presisi)') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[11px] text-slate-300 uppercase mb-1">Jadwal Belajar</label>
                         <input type="text" name="program_advanced_schedule" value="{{ old('program_advanced_schedule', $settings['program_advanced_schedule'] ?? 'Senin - Jumat / Kelas Spesialisasi Fleksibel') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-300 uppercase mb-1">Jalur Karier & Peluang Lulusan</label>
-                        <input type="text" name="program_advanced_career_path" value="{{ old('program_advanced_career_path', $settings['program_advanced_career_path'] ?? 'Sertifikasi B2/C1 membuka akses langsung ke pasar kerja profesional berpenghasilan tinggi di Jerman, izin praktik profesi kesehatan, dan penerimaan universitas negeri ternama di Jerman.') }}" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
             </div>
@@ -817,16 +1022,25 @@
                 </div>
             </div>
         <!-- TAB: About Us Page -->
-        <div x-show="currentTab === 'about'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                About Us Page Content & Institutional Information
-            </h3>
+        <div x-show="currentTab === 'about'" x-data="{ aboutLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                    About Us Page Content & Institutional Information
+                </h3>
+                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                    <button type="button" @click="aboutLang = 'id'" :class="aboutLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                    <button type="button" @click="aboutLang = 'en'" :class="aboutLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                    <button type="button" @click="aboutLang = 'de'" :class="aboutLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                </div>
+            </div>
 
-            <div class="space-y-6">
+            <!-- ID About Inputs -->
+            <div x-show="aboutLang === 'id'" class="space-y-6">
                 <!-- Hero Badge -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Badge Text</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Badge Text (Indonesia)</label>
                     <input 
                         type="text" 
                         name="about_hero_badge" 
@@ -837,7 +1051,7 @@
 
                 <!-- Hero Title -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Main Title</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Main Title (Indonesia)</label>
                     <input 
                         type="text" 
                         name="about_hero_title" 
@@ -848,7 +1062,7 @@
 
                 <!-- Hero Subtitle -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle / Description</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle / Description (Indonesia)</label>
                     <textarea 
                         name="about_hero_subtitle" 
                         rows="3"
@@ -858,24 +1072,108 @@
 
                 <!-- Visi Utama -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Visi Utama Lembaga</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Visi Utama Lembaga (Indonesia)</label>
                     <textarea 
                         name="about_visi" 
                         rows="3"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >{{ old('about_visi', $settings['about_visi'] ?? 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}</textarea>
                 </div>
+            </div>
 
-                <!-- Jam Operasional -->
+            <!-- EN About Inputs -->
+            <div x-show="aboutLang === 'en'" class="space-y-6">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Jam Operasional Kampus</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Badge Text (English)</label>
                     <input 
                         type="text" 
-                        name="about_operating_hours" 
-                        value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? 'Senin - Sabtu: 08:30 - 17:00 WIB') }}"
+                        name="about_hero_badge_en" 
+                        value="{{ old('about_hero_badge_en', $settings['about_hero_badge_en'] ?? '') }}"
+                        placeholder="e.g. Official Vocational Training Center • SKKNI & Goethe Standard"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >
                 </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Main Title (English)</label>
+                    <input 
+                        type="text" 
+                        name="about_hero_title_en" 
+                        value="{{ old('about_hero_title_en', $settings['about_hero_title_en'] ?? '') }}"
+                        placeholder="e.g. Empowering Competent Talents for Global Careers in Germany"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle / Description (English)</label>
+                    <textarea 
+                        name="about_hero_subtitle_en" 
+                        rows="3"
+                        placeholder="e.g. Accredited vocational center dedicated to preparing Indonesian youth for Ausbildung and careers in Germany."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_hero_subtitle_en', $settings['about_hero_subtitle_en'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Vision Statement (English)</label>
+                    <textarea 
+                        name="about_visi_en" 
+                        rows="3"
+                        placeholder="e.g. To become the leading vocational institute building human resources adhering to national and international competency standards."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_visi_en', $settings['about_visi_en'] ?? '') }}</textarea>
+                </div>
+            </div>
+
+            <!-- DE About Inputs -->
+            <div x-show="aboutLang === 'de'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Badge Text (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="about_hero_badge_de" 
+                        value="{{ old('about_hero_badge_de', $settings['about_hero_badge_de'] ?? '') }}"
+                        placeholder="z.B. Staatlich anerkannte Ausbildungsstätte • Goethe-Institut Standard"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Main Title (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="about_hero_title_de" 
+                        value="{{ old('about_hero_title_de', $settings['about_hero_title_de'] ?? '') }}"
+                        placeholder="z.B. Qualifizierte Fachkräfte für Karrieren in Deutschland"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle / Description (Deutsch)</label>
+                    <textarea 
+                        name="about_hero_subtitle_de" 
+                        rows="3"
+                        placeholder="z.B. Vorbereitung auf Ausbildung und berufliche Integration in Deutschland."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_hero_subtitle_de', $settings['about_hero_subtitle_de'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Vision Statement (Deutsch)</label>
+                    <textarea 
+                        name="about_visi_de" 
+                        rows="3"
+                        placeholder="z.B. Führendes Institut für berufliche Bildung nach nationalen und internationalen Kompetenzstandards."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('about_visi_de', $settings['about_visi_de'] ?? '') }}</textarea>
+                </div>
+            </div>
+
+            <!-- Jam Operasional -->
+            <div class="pt-4 border-t border-white/5">
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Jam Operasional Kampus</label>
+                <input 
+                    type="text" 
+                    name="about_operating_hours" 
+                    value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? 'Senin - Sabtu: 08:30 - 17:00 WIB') }}"
+                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                >
             </div>
         </div>
 

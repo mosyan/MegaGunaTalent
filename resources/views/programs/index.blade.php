@@ -33,7 +33,7 @@
                 🇩🇪
             </div>
             <div>
-                <div class="text-xs font-bold text-[#1E0D1B]">Standar Goethe</div>
+                <div class="text-xs font-bold text-[#1E0D1B]">{{ __('Goethe Standard') }}</div>
                 <div class="text-[11px] text-[#78350F] font-lato">CEFR A1 • B1 • C1</div>
             </div>
         </div>
@@ -44,8 +44,8 @@
                 🎓
             </div>
             <div>
-                <div class="text-xs font-bold text-[#1E0D1B]">1.500+ Alumni</div>
-                <div class="text-[11px] text-[#78350F] font-lato">Sukses di Jerman</div>
+                <div class="text-xs font-bold text-[#1E0D1B]">{{ __('1,500+ Alumni') }}</div>
+                <div class="text-[11px] text-[#78350F] font-lato">{{ __('Successful in Germany') }}</div>
             </div>
         </div>
 
@@ -58,30 +58,30 @@
             <!-- Pill Badge -->
             <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/95 border-2 border-[#F59E0B]/50 text-[#854D0E] text-xs sm:text-sm font-bold tracking-widest uppercase shadow-md shadow-amber-500/10 backdrop-blur-md">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#D97706] animate-pulse"></span>
-                <span>Standar Internasional CEFR & Goethe-Institut</span>
+                <span>{{ __('International CEFR & Goethe-Institut Standard') }}</span>
             </div>
 
             <!-- Crisp High-Contrast Heading -->
             <h1 class="font-yeseva text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#1E0D1B] leading-tight drop-shadow-sm tracking-tight">
-                Pilihan Program Kursus Bahasa Jerman
+                {{ __('Pilihan Program Kursus Bahasa Jerman') }}
             </h1>
             <div class="w-24 h-1.5 bg-gradient-to-r from-amber-400 via-[#F59E0B] to-amber-500 rounded-full mx-auto shadow-sm"></div>
 
             <!-- Subtitle with high-contrast readable dark tone -->
             <p class="text-base sm:text-xl text-[#2C0B1E]/90 font-lato leading-relaxed max-w-3xl mx-auto font-normal">
-                Kurikulum berjenjang terstruktur dari level pemula tanpa dasar hingga tingkat profisiensi profesional dan akademis, dirancang khusus mengantarkan Anda berkarier dan menempuh Ausbildung di Jerman.
+                {{ __('Structured leveled curriculum from absolute beginners to professional and academic proficiency, specially designed for your career and Ausbildung in Germany.') }}
             </p>
 
             <!-- Quick Trust Badges -->
             <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-2">
                 <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/95 border border-amber-300/80 text-[#1E0D1B] shadow-sm text-xs sm:text-sm font-semibold">
-                    <span class="text-[#D97706] font-bold">✓</span> Garansi Bimbingan Ujian Goethe
+                    <span class="text-[#D97706] font-bold">✓</span> {{ __('Goethe Exam Preparation Guarantee') }}
                 </div>
                 <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/95 border border-amber-300/80 text-[#1E0D1B] shadow-sm text-xs sm:text-sm font-semibold">
-                    <span class="text-[#D97706] font-bold">✓</span> Instruktur Berlisensi & Native Speaker
+                    <span class="text-[#D97706] font-bold">✓</span> {{ __('Certified Instructors & Native Speakers') }}
                 </div>
                 <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/95 border border-amber-300/80 text-[#1E0D1B] shadow-sm text-xs sm:text-sm font-semibold">
-                    <span class="text-[#D97706] font-bold">✓</span> Jalur Resmi Ausbildung & Visa Jerman
+                    <span class="text-[#D97706] font-bold">✓</span> {{ __('Official Ausbildung Pathway & German Visa') }}
                 </div>
             </div>
         </div>
@@ -126,22 +126,22 @@
                         <!-- Specs -->
                         <div class="py-4 border-y border-[#fdc04f]/20 space-y-2 text-sm font-lato">
                             <div class="flex justify-between">
-                                <span class="text-[#f2ebfd]/70">Durasi:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Duration') }}:</span>
                                 <span class="text-white font-bold">{{ $p['duration'] }}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-[#f2ebfd]/70">Target Ujian:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Exam Target') }}:</span>
                                 <span class="text-[#fdc04f] font-bold">{{ $p['target_exam'] }}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-[#f2ebfd]/70">Kapasitas:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Capacity') }}:</span>
                                 <span class="text-white font-bold">{{ $p['class_size'] }}</span>
                             </div>
                         </div>
 
                         <!-- Highlights List -->
                         <div class="space-y-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-[#fdc04f]">Fokus Utama:</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#fdc04f]">{{ __('Key Focus') }}:</span>
                             <ul class="text-xs sm:text-sm text-[#f2ebfd]/80 font-lato space-y-1.5">
                                 @foreach(array_slice($p['highlights'], 0, 3) as $h)
                                     <li class="flex items-start gap-2">
@@ -156,10 +156,10 @@
                     <!-- Action Buttons -->
                     <div class="pt-8 space-y-3">
                         <a href="{{ route('programs.show', $p['slug']) }}" class="btn-brand-double w-full text-center block text-sm font-bold">
-                            Lihat Detail Program & Silabus
+                            {{ __('View Program Details & Syllabus') }}
                         </a>
                         <a href="{{ route('enroll', ['level' => $p['slug']]) }}" class="w-full block text-center py-2.5 text-xs uppercase tracking-wider font-bold text-[#fdc04f] hover:underline">
-                            Daftar Sekarang &rarr;
+                            {{ __('Enroll Now') }} &rarr;
                         </a>
                     </div>
                 </div>

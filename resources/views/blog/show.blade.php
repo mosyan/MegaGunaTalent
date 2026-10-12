@@ -139,9 +139,9 @@
 
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-xs text-[#fdc04f] mb-8 overflow-x-auto whitespace-nowrap">
-        <a href="{{ route('home') }}" class="hover:underline">Home</a>
+        <a href="{{ route('home') }}" class="hover:underline">{{ __('Home') }}</a>
         <span>&rsaquo;</span>
-        <a href="{{ route('blog.index') }}" class="hover:underline">Blog</a>
+        <a href="{{ route('blog.index') }}" class="hover:underline">{{ __('Blog') }}</a>
         @if($blog->category)
             <span>&rsaquo;</span>
             <a href="{{ route('blog.category', $blog->category->slug) }}" class="hover:underline">{{ $blog->category->name }}</a>
@@ -179,7 +179,7 @@
             <span>&bull;</span>
             <span>{{ $blog->published_at?->format('F d, Y') ?? 'Recently' }}</span>
             <span>&bull;</span>
-            <span>{{ $blog->reading_time }} min read</span>
+            <span>{{ __(':min min read', ['min' => $blog->reading_time]) }}</span>
             @if($blog->view_count > 0)
                 <span>&bull;</span>
                 <span>{{ number_format($blog->view_count) }} views</span>
@@ -201,7 +201,7 @@
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
-                <h3 class="font-yeseva text-xl text-white">Key Takeaways</h3>
+                <h3 class="font-yeseva text-xl text-white">{{ __('Key Takeaways') }}</h3>
             </div>
             <ul class="space-y-2.5 font-arsenal text-base sm:text-lg text-[#f2ebfd]/90">
                 @foreach($blog->key_takeaways as $takeaway)
@@ -223,8 +223,8 @@
     @if(!empty($blog->faq_schema) && is_array($blog->faq_schema) && count($blog->faq_schema) > 0)
         <div class="mt-16 pt-12 border-t border-[#fdc04f]/20 max-w-4xl mx-auto" x-data="{ openFaq: null }">
             <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-wider text-[#fdc04f]">Frequently Asked Questions</span>
-                <h3 class="font-yeseva text-2xl sm:text-3xl text-white mt-1">Common Questions About This Topic</h3>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#fdc04f]">{{ __('Frequently Asked Questions') }}</span>
+                <h3 class="font-yeseva text-2xl sm:text-3xl text-white mt-1">{{ __('Common Questions About This Topic') }}</h3>
             </div>
 
             <div class="space-y-4">
@@ -263,7 +263,7 @@
         <!-- Tags -->
         @if($blog->tags)
             <div class="flex flex-wrap items-center gap-2">
-                <span class="text-xs font-bold text-slate-400">Tags:</span>
+                <span class="text-xs font-bold text-slate-400">{{ __('Tags') }}:</span>
                 @foreach(array_map('trim', explode(',', $blog->tags)) as $tag)
                     @if(!empty($tag))
                         <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-[#fdc04f]">
@@ -276,7 +276,7 @@
 
         <!-- Share Links -->
         <div class="flex items-center gap-3">
-            <span class="text-xs font-bold text-slate-400">Share:</span>
+            <span class="text-xs font-bold text-slate-400">{{ __('Share') }}:</span>
             <a 
                 href="https://wa.me/?text={{ urlencode($blog->title . ' ' . url()->current()) }}" 
                 target="_blank" 
@@ -307,17 +307,17 @@
     <!-- Course Enrollment CTA Box -->
     <div class="mt-16 bg-gradient-to-r from-[#2C0B1E] via-[#3f122d] to-[#2C0B1E] border border-[#fdc04f]/40 rounded-3xl p-8 sm:p-12 text-center shadow-2xl space-y-6">
         <span class="inline-block px-3 py-1 rounded-full bg-[#fdc04f]/15 border border-[#fdc04f]/30 text-[#fdc04f] text-xs font-bold uppercase tracking-wider">
-            Ready to Speak Fluent German?
+            {{ __('Ready to Speak Fluent German?') }}
         </span>
         <h2 class="font-yeseva text-3xl sm:text-4xl text-white tracking-tight">
-            Accelerate Your Goethe Certification with Native Mentors
+            {{ __('Accelerate Your Goethe Certification with Native Mentors') }}
         </h2>
         <p class="font-arsenal text-[#f2ebfd]/80 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
-            From A1 basics to professional C1 German, join our interactive programs with flexible online and offline classes designed for Indonesian students and career seekers.
+            {{ __('From A1 basics to professional C1 German, join our interactive programs with flexible online and offline classes designed for Indonesian students and career seekers.') }}
         </p>
         <div>
             <a href="{{ route('enroll') }}" class="btn-brand-double inline-block">
-                Enroll in Next Month's Batch
+                {{ __("Enroll in Next Month's Batch") }}
             </a>
         </div>
     </div>
@@ -326,7 +326,7 @@
     @if($relatedBlogs->count() > 0)
         <div class="mt-20 pt-16 border-t border-white/10">
             <h3 class="font-yeseva text-2xl sm:text-3xl text-white mb-8 text-center sm:text-left">
-                Related Articles
+                {{ __('Related Articles') }}
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @foreach($relatedBlogs as $related)
@@ -340,7 +340,7 @@
                             </h4>
                         </div>
                         <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
-                            <span>{{ $related->reading_time }} min read</span>
+                            <span>{{ __(':min min read', ['min' => $related->reading_time]) }}</span>
                             <span class="text-[#fdc04f] font-bold">&rarr;</span>
                         </div>
                     </a>

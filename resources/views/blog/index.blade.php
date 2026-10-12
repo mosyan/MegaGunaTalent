@@ -24,7 +24,7 @@
                     type="text" 
                     name="search" 
                     value="{{ request('search') }}"
-                    placeholder="Search articles by topic, exam, keywords..."
+                    placeholder="{{ __('Search articles by topic, exam, keywords...') }}"
                     class="w-full px-5 py-3.5 pl-12 rounded-2xl bg-white/10 border border-[#fdc04f]/30 text-white placeholder-[#f2ebfd]/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#fdc04f] backdrop-blur-md"
                 >
                 <svg class="w-5 h-5 text-[#fdc04f] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +39,7 @@
                 href="{{ route('blog.index') }}" 
                 class="px-4 py-1.5 rounded-full text-xs font-bold transition-all {{ !isset($currentCategory) && !request('category') ? 'bg-[#fdc04f] text-[#321f47]' : 'bg-white/10 text-white hover:bg-white/20' }}"
             >
-                All Topics
+                {{ __('All Topics') }}
             </a>
             @foreach($categories as $cat)
                 <a 
@@ -60,7 +60,7 @@
                     <div class="order-2 lg:order-1 space-y-4">
                         <div class="flex items-center gap-3">
                             <span class="px-3 py-1 rounded-full bg-[#fdc04f] text-[#321f47] text-[11px] font-extrabold uppercase tracking-wider">
-                                Featured Story
+                                {{ __('Featured Story') }}
                             </span>
                             <span class="text-xs text-[#fdc04f]">
                                 {{ $featuredBlog->category?->name }}
@@ -82,12 +82,12 @@
                             <span>&bull;</span>
                             <span>{{ $featuredBlog->published_at?->format('M d, Y') }}</span>
                             <span>&bull;</span>
-                            <span>{{ $featuredBlog->reading_time }} min read</span>
+                            <span>{{ __(':min min read', ['min' => $featuredBlog->reading_time]) }}</span>
                         </div>
 
                         <div class="pt-4">
                             <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="inline-flex items-center gap-2 text-sm font-bold text-[#fdc04f] group-hover:translate-x-1 transition-transform">
-                                Read Complete Article &rarr;
+                                {{ __('Read Complete Article') }} &rarr;
                             </a>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                         <div class="flex items-center gap-2 text-xs text-slate-400">
                             <span>{{ $blog->published_at?->format('M d, Y') }}</span>
                             <span>&bull;</span>
-                            <span>{{ $blog->reading_time }} min read</span>
+                            <span>{{ __(':min min read', ['min' => $blog->reading_time]) }}</span>
                         </div>
                         <h3 class="font-yeseva text-xl text-white group-hover:text-[#fdc04f] transition-colors line-clamp-2 leading-snug">
                             <a href="{{ route('blog.show', $blog->slug) }}">
@@ -147,18 +147,18 @@
                     <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
                         <span class="text-slate-400 font-medium">By {{ $blog->author?->name ?? 'Admin' }}</span>
                         <a href="{{ route('blog.show', $blog->slug) }}" class="text-[#fdc04f] font-bold inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            Read &rarr;
+                            {{ __('Read') }} &rarr;
                         </a>
                     </div>
                 </div>
             </article>
         @empty
             <div class="col-span-full py-16 text-center text-slate-400">
-                <p class="text-lg font-bold text-white mb-2">No articles found</p>
-                <p class="text-sm">Try adjusting your search criteria or explore other categories.</p>
+                <p class="text-lg font-bold text-white mb-2">{{ __('No articles found') }}</p>
+                <p class="text-sm">{{ __('Try adjusting your search criteria or explore other categories.') }}</p>
                 <div class="mt-6">
                     <a href="{{ route('blog.index') }}" class="btn-brand-double inline-block">
-                        View All Articles
+                        {{ __('View All Articles') }}
                     </a>
                 </div>
             </div>

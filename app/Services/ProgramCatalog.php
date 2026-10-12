@@ -13,7 +13,7 @@ class ProgramCatalog
     {
         try {
             if (class_exists(SiteSetting::class) && function_exists('app') && app()->has('cache')) {
-                return SiteSetting::get($key, $default);
+                return SiteSetting::getLocalized($key, $default);
             }
         } catch (\Throwable) {
             // Graceful fallback during isolated unit tests or pre-boot

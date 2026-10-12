@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GermanCourseController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 | Public Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Language Switcher (ID, EN, DE)
+Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
 // Landing Page & Enrollment (Protected by rate limiting on submission)
 Route::get('/', [GermanCourseController::class, 'index'])->name('home');

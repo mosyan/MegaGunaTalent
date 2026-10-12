@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Enroll Now - Start Your German Learning Journey')
-@section('meta_description', 'Enroll now in our German language courses and let us discuss your language goals.')
+@section('title', __('Enroll Now - Start Your German Learning Journey'))
+@section('meta_description', __("Enroll now in our German language courses and let us discuss your language goals."))
 
 @section('content')
     <div class="relative min-h-screen pt-36 sm:pt-48 pb-20 sm:pb-32 px-6 sm:px-12 bg-cover bg-top bg-no-repeat overflow-hidden"
@@ -15,11 +15,11 @@
             <!-- Page Header -->
             <div class="text-center">
                 <h1 class="font-yeseva text-white text-3xl sm:text-5xl md:text-6xl tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
-                    Start Your Learning Journey
+                    {{ __('Start Your Learning Journey') }}
                 </h1>
                 
                 <p class="font-arsenal text-white text-lg sm:text-2xl mt-4 sm:mt-6 font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-                    Enroll now and let's discuss your German language goals.
+                    {{ __("Enroll now and let's discuss your German language goals.") }}
                 </p>
 
                 <!-- Thin Divider Line -->
@@ -33,7 +33,7 @@
                         <svg class="w-7 h-7 text-[#321f47]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <span>Success!</span>
+                        <span>{{ __('Success!') }}</span>
                     </div>
                     <p class="text-lg">{{ session('success') }}</p>
                 </div>
@@ -42,7 +42,7 @@
             <!-- Errors Alert -->
             @if ($errors->any())
                 <div class="mb-8 p-6 rounded-none bg-red-900/90 text-white border-2 border-red-500 font-arsenal">
-                    <div class="font-bold text-lg mb-2">Please check the required fields:</div>
+                    <div class="font-bold text-lg mb-2">{{ __('Please check the required fields:') }}</div>
                     <ul class="list-disc list-inside space-y-1">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -64,7 +64,7 @@
                         <!-- First Name -->
                         <div>
                             <label for="first_name" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                                First name <span class="text-red-600">*</span>
+                                {{ __('First name') }} <span class="text-red-600">*</span>
                             </label>
                             <input type="text" 
                                    id="first_name" 
@@ -72,13 +72,13 @@
                                    value="{{ old('first_name') }}"
                                    required 
                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-300 focus:border-[#321f47] focus:ring-2 focus:ring-[#fdc04f] focus:outline-none font-arsenal text-lg transition-colors"
-                                   placeholder="Your first name">
+                                   placeholder="{{ __('Your first name') }}">
                         </div>
 
                         <!-- Last Name -->
                         <div>
                             <label for="last_name" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                                Last name <span class="text-red-600">*</span>
+                                {{ __('Last name') }} <span class="text-red-600">*</span>
                             </label>
                             <input type="text" 
                                    id="last_name" 
@@ -86,7 +86,7 @@
                                    value="{{ old('last_name') }}"
                                    required 
                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-300 focus:border-[#321f47] focus:ring-2 focus:ring-[#fdc04f] focus:outline-none font-arsenal text-lg transition-colors"
-                                   placeholder="Your last name">
+                                   placeholder="{{ __('Your last name') }}">
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
                         <!-- Email Address -->
                         <div>
                             <label for="email" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                                Email address <span class="text-red-600">*</span>
+                                {{ __('Email address') }} <span class="text-red-600">*</span>
                             </label>
                             <input type="email" 
                                    id="email" 
@@ -108,21 +108,21 @@
                         <!-- Phone Number -->
                         <div>
                             <label for="phone" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                                Phone number
+                                {{ __('Phone number') }}
                             </label>
                             <input type="tel" 
                                    id="phone" 
                                    name="phone" 
                                    value="{{ old('phone') }}"
                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-300 focus:border-[#321f47] focus:ring-2 focus:ring-[#fdc04f] focus:outline-none font-arsenal text-lg transition-colors"
-                                   placeholder="+49 or local phone">
+                                   placeholder="{{ __('+49 or local phone') }}">
                         </div>
                     </div>
 
                     <!-- Program Level -->
                     <div>
                         <label for="program_level" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                            Select Program
+                            {{ __('Select Program') }}
                         </label>
                         <select id="program_level" 
                                 name="program_level" 
@@ -130,29 +130,29 @@
                             @php
                                 $selectedLevel = strtolower(old('program_level', request('level', request('program', 'Beginner'))));
                             @endphp
-                            <option value="Beginner" {{ $selectedLevel === 'beginner' ? 'selected' : '' }}>Beginner (A1 - A2) - Travel & Foundations</option>
-                            <option value="Intermediate" {{ $selectedLevel === 'intermediate' ? 'selected' : '' }}>Intermediate (B1 - B2) - Grammar & Conversational Fluency</option>
-                            <option value="Advanced" {{ $selectedLevel === 'advanced' ? 'selected' : '' }}>Advanced (C1 - C2) - Career & Technical German</option>
+                            <option value="Beginner" {{ $selectedLevel === 'beginner' ? 'selected' : '' }}>{{ __('Beginner (A1 - A2) - Travel & Foundations') }}</option>
+                            <option value="Intermediate" {{ $selectedLevel === 'intermediate' ? 'selected' : '' }}>{{ __('Intermediate (B1 - B2) - Grammar & Conversational Fluency') }}</option>
+                            <option value="Advanced" {{ $selectedLevel === 'advanced' ? 'selected' : '' }}>{{ __('Advanced (C1 - C2) - Career & Technical German') }}</option>
                         </select>
                     </div>
 
                     <!-- Message -->
                     <div>
                         <label for="message" class="block font-arsenal font-bold text-lg text-[#321f47] mb-2">
-                            Message <span class="text-red-600">*</span>
+                            {{ __('Message') }} <span class="text-red-600">*</span>
                         </label>
                         <textarea id="message" 
                                   name="message" 
                                   rows="4" 
                                   required 
                                   class="w-full px-4 py-3 bg-gray-50 border border-gray-300 focus:border-[#321f47] focus:ring-2 focus:ring-[#fdc04f] focus:outline-none font-arsenal text-lg transition-colors"
-                                  placeholder="Tell us about your learning goals and preferred schedule...">{{ old('message') }}</textarea>
+                                  placeholder="{{ __('Tell us about your learning goals and preferred schedule...') }}">{{ old('message') }}</textarea>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="text-center pt-4">
                         <button type="submit" class="btn-brand-double w-full sm:w-auto px-12">
-                            Send
+                            {{ __('Send') }}
                         </button>
                     </div>
                 </form>
@@ -161,7 +161,7 @@
             <!-- Back to Home -->
             <div class="mt-8 text-center">
                 <a href="{{ route('home') }}" class="inline-flex items-center text-[#fdc04f] hover:text-white transition-colors text-lg font-bold">
-                    ← Back to Home
+                    ← {{ __('Back to Home') }}
                 </a>
             </div>
 

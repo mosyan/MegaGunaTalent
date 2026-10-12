@@ -104,25 +104,25 @@
             <!-- Official Institution Badge -->
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fdc04f]/15 border border-[#fdc04f]/40 text-[#fdc04f] text-xs sm:text-sm font-bold tracking-widest uppercase backdrop-blur-md">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#fdc04f] animate-pulse"></span>
-                <span>{{ \App\Models\SiteSetting::get('about_hero_badge', 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard') }}</span>
+                <span>{{ \App\Models\SiteSetting::getLocalized('about_hero_badge', 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard') }}</span>
             </div>
 
             <!-- Page Main Title -->
             <h1 class="font-yeseva text-3xl sm:text-5xl md:text-6xl text-[#fdc04f] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
-                {!! nl2br(e(\App\Models\SiteSetting::get('about_hero_title', "Membangun Generasi Kompeten &\nSiap Berkarier Global di Jerman"))) !!}
+                {!! nl2br(e(\App\Models\SiteSetting::getLocalized('about_hero_title', "Membangun Generasi Kompeten &\nSiap Berkarier Global di Jerman"))) !!}
             </h1>
 
             <p class="max-w-3xl mx-auto text-base sm:text-xl text-[#f2ebfd]/90 font-lato leading-relaxed">
-                {{ \App\Models\SiteSetting::get('about_hero_subtitle', 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.') }}
+                {{ \App\Models\SiteSetting::getLocalized('about_hero_subtitle', 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.') }}
             </p>
 
             <!-- Action Buttons -->
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                 <a href="#profil-lembaga" class="btn-brand-double text-base sm:text-lg">
-                    Profil Lembaga
+                    {{ __('Institution Profile') }}
                 </a>
                 <a href="#galeri-fasilitas" class="px-6 py-3.5 rounded-none border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-bold transition-all duration-300">
-                    Lihat Fasilitas & Ruang Kelas
+                    {{ __('View Facilities & Classrooms') }}
                 </a>
             </div>
 
@@ -295,10 +295,10 @@
                 <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#fdc04f]/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10 text-center max-w-4xl mx-auto space-y-4">
                     <span class="inline-block px-4 py-1.5 rounded-full bg-[#fdc04f] text-[#321f47] font-bold text-xs sm:text-sm uppercase tracking-widest">
-                        Visi Utama Kami
+                        {{ __('Our Main Vision') }}
                     </span>
                     <blockquote class="font-yeseva text-xl sm:text-3xl md:text-4xl text-white leading-relaxed italic">
-                        “{{ \App\Models\SiteSetting::get('about_visi', 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}”
+                        “{{ \App\Models\SiteSetting::getLocalized('about_visi', 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}”
                     </blockquote>
                     <p class="text-sm text-[#fdc04f]/90 font-lato">
                         — Ditetapkan oleh Dewan Pembina & Manajemen LPK Mega Guna Talent
@@ -860,9 +860,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
                     <div>
-                        <h4 class="font-bold text-white text-sm">Alamat Kampus</h4>
+                        <h4 class="font-bold text-white text-sm">{{ __('Campus Address') }}</h4>
                         <p class="text-xs text-[#f2ebfd]/75 font-lato mt-0.5">
-                            {{ \App\Models\SiteSetting::get('contact_address', 'Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019 Jaka Setia, Bekasi Selatan.') }}
+                            {{ \App\Models\SiteSetting::getLocalized('contact_address', 'Jln Boulevard Raya A1 No. 16 Villa Galaxy RT. 001/019 Jaka Setia, Bekasi Selatan.') }}
                         </p>
                     </div>
                 </div>
@@ -872,9 +872,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     <div>
-                        <h4 class="font-bold text-white text-sm">Jam Operasional</h4>
+                        <h4 class="font-bold text-white text-sm">{{ __('Operating Hours') }}</h4>
                         <p class="text-xs text-[#f2ebfd]/75 font-lato mt-0.5">
-                            {!! nl2br(e(\App\Models\SiteSetting::get('about_operating_hours', "Senin - Sabtu: 08:30 - 17:00 WIB\nMinggu & Hari Libur: Dengan Perjanjian"))) !!}
+                            {!! nl2br(e(\App\Models\SiteSetting::getLocalized('about_operating_hours', "Senin - Sabtu: 08:30 - 17:00 WIB\nMinggu & Hari Libur: Dengan Perjanjian"))) !!}
                         </p>
                     </div>
                 </div>
@@ -883,7 +883,7 @@
             <!-- CTA Buttons -->
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2">
                 <a href="{{ route('enroll') }}" class="btn-brand-double text-lg sm:text-xl">
-                    Daftar Sekarang
+                    {{ __('Enroll Now') }}
                 </a>
                 @php
                     $waLink = \App\Models\SiteSetting::get('social_whatsapp', 'https://wa.me/6281234567890');

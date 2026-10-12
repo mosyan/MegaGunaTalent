@@ -48,6 +48,23 @@ class SiteSetting extends Model
     }
 
     /**
+     * Get a localized setting value with fallback to default locale (id) and fallback value.
+     */
+    public static function getLocalized(string $key, mixed $default = null, ?string $locale = null): mixed
+    {
+        $locale = $locale ?? (function_exists('app') ? app()->getLocale() : 'id');
+
+        if ($locale && $locale !== 'id') {
+            $localizedVal = static::get("{$key}_{$locale}", null);
+            if ($localizedVal !== null && $localizedVal !== '') {
+                return $localizedVal;
+            }
+        }
+
+        return static::get($key, $default);
+    }
+
+    /**
      * Set a setting value and invalidate the cached key.
      */
     public static function set(string $key, mixed $value, string $group = 'general', string $type = 'text'): self

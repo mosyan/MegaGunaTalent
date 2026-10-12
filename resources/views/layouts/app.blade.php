@@ -4,14 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php
-        $siteTitle = \App\Models\SiteSetting::get('site_title', 'German Language Study - Speak German With Confidence');
-        $siteTagline = \App\Models\SiteSetting::get('site_tagline', 'Master the German language with native-speaking certified instructors');
+        $siteTitle = \App\Models\SiteSetting::getLocalized('site_title', 'German Language Study - Speak German With Confidence');
+        $siteTagline = \App\Models\SiteSetting::getLocalized('site_tagline', 'Master the German language with native-speaking certified instructors');
         $customLogo = \App\Models\SiteSetting::assetUrl('site_logo');
         $customFavicon = \App\Models\SiteSetting::assetUrl('site_favicon');
-        $footerCopyright = \App\Models\SiteSetting::get('footer_copyright', '© '.date('Y').' Mega Guna Talent. All Rights Reserved.');
+        $footerCopyright = \App\Models\SiteSetting::getLocalized('footer_copyright', '© '.date('Y').' Mega Guna Talent. All Rights Reserved.');
         $socialFb = \App\Models\SiteSetting::get('social_facebook', 'https://facebook.com');
         $socialIg = \App\Models\SiteSetting::get('social_instagram', 'https://instagram.com');
         $socialWa = \App\Models\SiteSetting::get('social_whatsapp', 'https://wa.me/6281234567890');
+        $locales = $supportedLocales ?? [
+            'id' => ['code' => 'id', 'name' => 'Bahasa Indonesia', 'short' => 'ID', 'flag' => '🇮🇩'],
+            'en' => ['code' => 'en', 'name' => 'English', 'short' => 'EN', 'flag' => '🇬🇧'],
+            'de' => ['code' => 'de', 'name' => 'Deutsch', 'short' => 'DE', 'flag' => '🇩🇪'],
+        ];
+        $activeLoc = $currentLocale ?? app()->getLocale();
+        $activeMeta = $locales[$activeLoc] ?? $locales['id'] ?? ['flag' => '🇮🇩', 'short' => 'ID', 'name' => 'Bahasa Indonesia'];
     @endphp
     <title>@yield('title', $siteTitle)</title>
     <meta name="description" content="@yield('meta_description', $siteTagline)">
@@ -54,10 +61,10 @@
         </a>
 
         <!-- Desktop Navigation & Hamburger -->
-        <div class="flex items-center space-x-6 sm:space-x-8">
-            <nav class="hidden md:flex items-center space-x-6 font-arsenal text-base font-bold tracking-wide {{ $isLightHeader ? 'bg-white/85 backdrop-blur-md px-6 py-2 rounded-full border border-amber-300/60 shadow-lg shadow-amber-950/5 text-[#2C0B1E]' : 'text-white' }}">
-                <a href="{{ route('home') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('home') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">Home</a>
-                <a href="{{ route('about') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('about') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">About Us</a>
+        <div class="flex items-center space-x-4 sm:space-x-6">
+            <nav class="hidden md:flex items-center space-x-5 lg:space-x-6 font-arsenal text-base font-bold tracking-wide {{ $isLightHeader ? 'bg-white/85 backdrop-blur-md px-6 py-2 rounded-full border border-amber-300/60 shadow-lg shadow-amber-950/5 text-[#2C0B1E]' : 'text-white' }}">
+                <a href="{{ route('home') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('home') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">{{ __('Home') }}</a>
+                <a href="{{ route('about') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('about') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">{{ __('About Us') }}</a>
                 
                 <!-- Programs Hover Dropdown (Clickable Parent + Auto Hover Submenu) -->
                 <div class="relative group">
@@ -65,7 +72,7 @@
                        class="inline-flex items-center gap-1.5 py-2 {{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('programs.*') ? ($isLightHeader ? 'text-[#B45309] font-black' : 'text-[#fdc04f]') : '' }}"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        <span>Programs</span>
+                        <span>{{ __('Programs') }}</span>
                         <svg class="w-3.5 h-3.5 {{ $isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]' }} transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -80,8 +87,8 @@
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <div class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors">Semua Program</div>
-                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Overview kurikulum & sertifikasi</div>
+                                    <div class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors">{{ __('All Programs') }}</div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">{{ __('Overview curriculum & certification') }}</div>
                                 </div>
                             </a>
 
@@ -94,10 +101,10 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center justify-between gap-1">
-                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Beginner</span>
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">{{ __('Beginner') }}</span>
                                         <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f]/20 text-[#fdc04f] shrink-0">A1 - A2</span>
                                     </div>
-                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Fondasi bahasa & percakapan harian</div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">{{ __('Foundation of German language & daily conversation') }}</div>
                                 </div>
                             </a>
 
@@ -108,10 +115,10 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center justify-between gap-1">
-                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Intermediate</span>
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">{{ __('Intermediate') }}</span>
                                         <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f] text-[#321f47] shrink-0">B1</span>
                                     </div>
-                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Syarat utama Ausbildung & karier</div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">{{ __('Key requirement for Ausbildung & career') }}</div>
                                 </div>
                             </a>
 
@@ -122,18 +129,50 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center justify-between gap-1">
-                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">Advanced</span>
+                                        <span class="text-sm font-bold text-white group-hover/item:text-[#fdc04f] transition-colors truncate">{{ __('Advanced') }}</span>
                                         <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#fdc04f]/20 text-[#fdc04f] shrink-0">B2 - C1</span>
                                     </div>
-                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">Profisiensi medis, teknik & akademis</div>
+                                    <div class="text-[11px] text-[#f2ebfd]/70 truncate">{{ __('Medical, engineering & academic proficiency') }}</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <a href="{{ route('blog.index') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('blog.*') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">Blog</a>
-                <a href="{{ route('enroll') }}" class="{{ $isLightHeader ? 'bg-[#2C0B1E] text-[#fdc04f] hover:bg-[#43122f]' : 'bg-[#fdc04f] text-[#321f47] hover:bg-[#fcae26]' }} px-5 py-2 rounded-full font-bold transition-all shadow-md text-sm">Enroll Now</a>
+                <a href="{{ route('blog.index') }}" class="{{ $isLightHeader ? 'hover:text-[#B45309]' : 'hover:text-[#fdc04f]' }} transition-colors {{ request()->routeIs('blog.*') ? ($isLightHeader ? 'text-[#B45309]' : 'text-[#fdc04f]') : '' }}">{{ __('Blog') }}</a>
+                
+                <!-- Language Switcher Dropdown (Desktop Nav) -->
+                <div class="relative group/lang ml-1">
+                    <button type="button" 
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all {{ $isLightHeader ? 'bg-amber-100/90 text-[#2C0B1E] hover:bg-amber-200 border border-amber-300' : 'bg-white/10 text-white hover:bg-white/20 border border-white/20 backdrop-blur-sm' }}"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-label="{{ __('Select Language') }}">
+                        <span class="text-sm leading-none">{{ $activeMeta['flag'] ?? '🇮🇩' }}</span>
+                        <span class="tracking-wider">{{ $activeMeta['short'] ?? 'ID' }}</span>
+                        <svg class="w-3 h-3 transition-transform duration-200 group-hover/lang:rotate-180 opacity-75" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="absolute right-0 top-full pt-2 opacity-0 pointer-events-none translate-y-1 group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto group-hover/lang:translate-y-0 focus-within:opacity-100 focus-within:pointer-events-auto focus-within:translate-y-0 transition-all duration-200 z-50 min-w-[170px]">
+                        <div class="bg-[#240919]/95 backdrop-blur-xl border border-[#fdc04f]/35 rounded-2xl p-1.5 shadow-2xl shadow-black/80 space-y-0.5">
+                            @foreach($locales as $locCode => $locMeta)
+                                <a href="{{ route('locale.switch', $locCode) }}" 
+                                   class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors {{ $activeLoc === $locCode ? 'bg-[#fdc04f] text-[#321f47]' : 'text-white hover:bg-white/10 hover:text-[#fdc04f]' }}">
+                                    <span class="flex items-center gap-2">
+                                        <span class="text-sm">{{ $locMeta['flag'] ?? '🌐' }}</span>
+                                        <span>{{ $locMeta['name'] ?? $locCode }}</span>
+                                    </span>
+                                    @if($activeLoc === $locCode)
+                                        <svg class="w-3.5 h-3.5 text-[#321f47]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                    @endif
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{{ route('enroll') }}" class="{{ $isLightHeader ? 'bg-[#2C0B1E] text-[#fdc04f] hover:bg-[#43122f]' : 'bg-[#fdc04f] text-[#321f47] hover:bg-[#fcae26]' }} px-5 py-2 rounded-full font-bold transition-all shadow-md text-sm">{{ __('Enroll Now') }}</a>
             </nav>
 
             <!-- Hamburger Menu Button -->
@@ -152,10 +191,10 @@
     <!-- Slide-over Drawer Menu -->
     <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
     <div id="drawer-menu" class="fixed top-0 right-0 bottom-0 w-full max-w-sm sm:max-w-md bg-[#321f47] text-[#fdc04f] z-50 translate-x-full transition-transform duration-300 ease-out shadow-2xl flex flex-col justify-between p-8 sm:p-12 border-l border-[#fdc04f]/20">
-        <div>
+        <div class="overflow-y-auto pr-1">
             <!-- Close Button Header -->
-            <div class="flex items-center justify-between pb-8 border-b border-[#fdc04f]/20">
-                <span class="font-yeseva text-2xl tracking-wide text-[#fdc04f]">Menu</span>
+            <div class="flex items-center justify-between pb-6 border-b border-[#fdc04f]/20">
+                <span class="font-yeseva text-2xl tracking-wide text-[#fdc04f]">{{ __('Menu') }}</span>
                 <button id="drawer-close-btn" class="w-10 h-10 rounded-full bg-[#fdc04f] text-[#321f47] flex items-center justify-center hover:bg-white transition-colors cursor-pointer" aria-label="Close menu">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -163,57 +202,74 @@
                 </button>
             </div>
 
+            <!-- Drawer Language Switcher (Segmented Control) -->
+            <div class="mt-4 pt-2 pb-4 border-b border-[#fdc04f]/15">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[#fdc04f]/80 mb-2 font-arsenal flex items-center justify-between">
+                    <span>{{ __('Language') }}</span>
+                    <span class="text-[10px] text-white/60 font-mono">{{ $activeMeta['name'] ?? 'Bahasa' }}</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 bg-black/30 p-1.5 rounded-2xl border border-[#fdc04f]/25">
+                    @foreach($locales as $locCode => $locMeta)
+                        <a href="{{ route('locale.switch', $locCode) }}" 
+                           class="flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-bold transition-all {{ $activeLoc === $locCode ? 'bg-[#fdc04f] text-[#321f47] shadow-md shadow-black/20 font-black' : 'text-[#f2ebfd]/80 hover:text-white hover:bg-white/10' }}">
+                            <span class="text-sm">{{ $locMeta['flag'] ?? '🌐' }}</span>
+                            <span>{{ $locMeta['short'] ?? strtoupper($locCode) }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
             <!-- Navigation Links -->
-            <nav class="mt-10 flex flex-col space-y-6 text-xl sm:text-2xl font-bold font-arsenal">
+            <nav class="mt-6 flex flex-col space-y-5 text-xl sm:text-2xl font-bold font-arsenal">
                 <a href="{{ route('home') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('home') ? 'text-[#fdc04f]' : '' }}">
-                    <span>Home</span>
+                    <span>{{ __('Home') }}</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
                 <a href="{{ route('about') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('about') ? 'text-[#fdc04f]' : '' }}">
-                    <span>About Us / Profil</span>
+                    <span>{{ __('About Us') }}</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
                 
                 <!-- Our Programs (With Submenu in Drawer) -->
                 <div class="border-b border-[#fdc04f]/10 pb-3">
                     <a href="{{ route('programs.index') }}" class="group flex items-center justify-between py-2 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('programs.*') ? 'text-[#fdc04f]' : '' }}">
-                        <span>Our Programs</span>
+                        <span>{{ __('Our Programs') }}</span>
                         <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </a>
                     <div class="pl-3.5 pt-1 space-y-2 border-l-2 border-[#fdc04f]/30 ml-1 text-base font-normal">
                         <a href="{{ route('programs.show', 'beginner') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
-                            <span>Beginner (A1 - A2)</span>
+                            <span>{{ __('Beginner') }} (A1 - A2)</span>
                             <span class="text-xs text-[#fdc04f] font-mono">Goethe</span>
                         </a>
                         <a href="{{ route('programs.show', 'intermediate') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
-                            <span>Intermediate (B1)</span>
+                            <span>{{ __('Intermediate') }} (B1)</span>
                             <span class="text-xs text-[#fdc04f] font-mono">Ausbildung</span>
                         </a>
                         <a href="{{ route('programs.show', 'advanced') }}" class="flex items-center justify-between text-[#f2ebfd]/80 hover:text-[#fdc04f] transition-colors py-0.5">
-                            <span>Advanced (B2 - C1)</span>
+                            <span>{{ __('Advanced') }} (B2 - C1)</span>
                             <span class="text-xs text-[#fdc04f] font-mono">Karier</span>
                         </a>
                     </div>
                 </div>
                 <a href="{{ route('blog.index') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('blog.*') ? 'text-[#fdc04f]' : '' }}">
-                    <span>Article Blog</span>
+                    <span>{{ __('Article Blog') }}</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
                 <a href="{{ route('enroll') }}" class="group flex items-center justify-between py-2 border-b border-[#fdc04f]/10 text-white hover:text-[#fdc04f] transition-colors {{ request()->routeIs('enroll') ? 'text-[#fdc04f]' : '' }}">
-                    <span>Enroll Now</span>
+                    <span>{{ __('Enroll Now') }}</span>
                     <span class="text-xs text-[#fdc04f] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
             </nav>
 
-            <div class="mt-10">
+            <div class="mt-8">
                 <a href="{{ route('enroll') }}" class="btn-brand-double w-full block">
-                    Enroll Now
+                    {{ __('Enroll Now') }}
                 </a>
             </div>
         </div>
 
         <!-- Drawer Footer -->
-        <div class="pt-8 border-t border-[#fdc04f]/20 text-center">
+        <div class="pt-6 border-t border-[#fdc04f]/20 text-center">
             <p class="text-sm text-[#f2ebfd]/70 mb-4 font-lato">{{ $siteTagline }}</p>
             <div class="flex items-center justify-center space-x-6 text-[#fdc04f]">
                 @if($socialFb)
@@ -245,19 +301,35 @@
         <div class="max-w-6xl mx-auto flex flex-col items-center justify-center text-center space-y-6">
             <!-- Footer Navigation -->
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm sm:text-base font-bold font-arsenal tracking-wide text-white/90">
-                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors">Home</a>
+                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Home') }}</a>
                 <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
-                <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors">About Us</a>
+                <a href="{{ route('about') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('About Us') }}</a>
                 <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
-                <a href="{{ route('home') }}#programs" class="hover:text-[#fdc04f] transition-colors">Programs</a>
+                <a href="{{ route('programs.index') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Programs') }}</a>
                 <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
-                <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors">Article Blog</a>
+                <a href="{{ route('blog.index') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Article Blog') }}</a>
                 <span class="text-[#fdc04f]/40 hidden sm:inline">•</span>
-                <a href="{{ route('enroll') }}" class="hover:text-[#fdc04f] transition-colors">Enroll Now</a>
+                <a href="{{ route('enroll') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Enroll Now') }}</a>
+            </div>
+
+            <!-- Footer Language Selector -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-1 pb-1">
+                <span class="text-xs uppercase tracking-wider text-[#fdc04f]/60 font-bold mr-1">{{ __('Language') }}:</span>
+                <div class="inline-flex items-center gap-1 bg-white/5 border border-[#fdc04f]/25 rounded-full p-1 backdrop-blur-sm">
+                    @foreach($locales as $locCode => $locMeta)
+                        <a href="{{ route('locale.switch', $locCode) }}" 
+                           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all {{ $activeLoc === $locCode ? 'bg-[#fdc04f] text-[#321f47] shadow-sm font-black' : 'text-[#f2ebfd]/80 hover:text-white hover:bg-white/10' }}"
+                           title="{{ $locMeta['name'] }}">
+                            <span class="text-sm leading-none">{{ $locMeta['flag'] }}</span>
+                            <span class="hidden sm:inline">{{ $locMeta['name'] }}</span>
+                            <span class="sm:hidden">{{ $locMeta['short'] }}</span>
+                        </a>
+                    @endforeach
+                </div>
             </div>
 
             <!-- Copyright -->
-            <p class="font-arsenal text-lg sm:text-xl font-normal text-[#fdc04f] tracking-wide">
+            <p class="font-arsenal text-base sm:text-lg font-normal text-[#fdc04f] tracking-wide">
                 {{ $footerCopyright }}
             </p>
 

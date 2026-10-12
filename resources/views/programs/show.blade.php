@@ -90,9 +90,9 @@
         <div class="max-w-6xl mx-auto space-y-8">
             <!-- Breadcrumb Navigation -->
             <nav class="flex items-center gap-2 text-xs sm:text-sm text-[#f2ebfd]/70 font-lato" aria-label="Breadcrumb">
-                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors">Home</a>
+                <a href="{{ route('home') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Home') }}</a>
                 <span>/</span>
-                <a href="{{ route('programs.index') }}" class="hover:text-[#fdc04f] transition-colors">Programs</a>
+                <a href="{{ route('programs.index') }}" class="hover:text-[#fdc04f] transition-colors">{{ __('Programs') }}</a>
                 <span>/</span>
                 <span class="text-[#fdc04f] font-semibold">{{ $program['level_short'] }}</span>
             </nav>
@@ -120,10 +120,10 @@
                     <!-- CTAs -->
                     <div class="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
                         <a href="{{ route('enroll', ['level' => $program['slug']]) }}" class="btn-brand-double text-base sm:text-lg">
-                            Daftar Program {{ $program['level_short'] }}
+                            {{ __('Enroll Now') }} ({{ $program['level_short'] }})
                         </a>
                         <a href="#kurikulum" class="px-6 py-3.5 border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-bold transition-all duration-300">
-                            Lihat Silabus Modul ↓
+                            {{ __('View Module Syllabus') }} ↓
                         </a>
                     </div>
                 </div>
@@ -138,22 +138,22 @@
                         </div>
 
                         <div>
-                            <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">Standard Resmi</span>
+                            <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">{{ __('Official Standard') }}</span>
                             <div class="font-yeseva text-2xl text-white mt-1">{{ $program['level'] }}</div>
-                            <div class="text-xs text-[#f2ebfd]/70 mt-1">Standar CEFR & SKKNI Kemnaker RI</div>
+                            <div class="text-xs text-[#f2ebfd]/70 mt-1">{{ __('CEFR Standard & SKKNI Kemnaker RI') }}</div>
                         </div>
 
                         <div class="pt-4 border-t border-[#fdc04f]/20 space-y-3 text-left text-sm font-lato">
                             <div class="flex items-center justify-between">
-                                <span class="text-[#f2ebfd]/70">Durasi:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Duration') }}:</span>
                                 <span class="text-white font-bold">{{ $program['duration'] }}</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-[#f2ebfd]/70">Target Ujian:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Exam Target') }}:</span>
                                 <span class="text-[#fdc04f] font-bold">{{ $program['target_exam'] }}</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-[#f2ebfd]/70">Kapasitas:</span>
+                                <span class="text-[#f2ebfd]/70">{{ __('Capacity') }}:</span>
                                 <span class="text-white font-bold">{{ $program['class_size'] }}</span>
                             </div>
                         </div>
@@ -164,27 +164,27 @@
             <!-- Key Feature Metrics Bar -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-10 text-left">
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 rounded-lg">
-                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">Durasi Pelatihan</div>
+                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">{{ __('Training Duration') }}</div>
                     <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] mt-1">{{ $program['duration'] }}</div>
                     <div class="text-[11px] text-[#f2ebfd]/60 mt-1">{{ $program['total_hours'] }}</div>
                 </div>
 
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 rounded-lg">
-                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">Sertifikasi Target</div>
+                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">{{ __('Target Certification') }}</div>
                     <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] mt-1">{{ $program['target_exam'] }}</div>
-                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">Ujian Resmi Internasional</div>
+                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">{{ __('Official International Exam') }}</div>
                 </div>
 
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 rounded-lg">
-                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">Format Kelas</div>
+                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">{{ __('Class Format') }}</div>
                     <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] mt-1">{{ $program['class_size'] }}</div>
-                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">Interaktif & Terbimbing</div>
+                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">{{ __('Interactive & Guided') }}</div>
                 </div>
 
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 rounded-lg">
-                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">Jadwal Kursus</div>
-                    <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] mt-1">Fleksibel</div>
-                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">Pagi, Malam & Akhir Pekan</div>
+                    <div class="text-xs text-[#f2ebfd]/70 uppercase tracking-wider font-lato">{{ __('Course Schedule') }}</div>
+                    <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] mt-1">{{ __('Flexible') }}</div>
+                    <div class="text-[11px] text-[#f2ebfd]/60 mt-1">{{ __('Morning, Evening & Weekend') }}</div>
                 </div>
             </div>
         </div>
@@ -197,10 +197,10 @@
         <div class="max-w-6xl mx-auto space-y-12">
             <div class="text-center max-w-3xl mx-auto space-y-3">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Fasilitas & Pendekatan
+                    {{ __('Facilities & Approach') }}
                 </div>
                 <h2 class="font-yeseva text-2xl sm:text-4xl text-white">
-                    Mengapa Memilih Program {{ $program['level_short'] }} di Mega Guna Talent?
+                    {{ __('Why Choose the :level Program at Mega Guna Talent?', ['level' => $program['level_short']]) }}
                 </h2>
             </div>
 
@@ -226,13 +226,13 @@
         <div class="max-w-6xl mx-auto space-y-14">
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Silabus Lengkap
+                    {{ __('Complete Syllabus') }}
                 </div>
                 <h2 class="font-yeseva text-3xl sm:text-5xl text-[#fdc04f]">
-                    Struktur Modul & Materi Pembelajaran
+                    {{ __('Module Structure & Learning Materials') }}
                 </h2>
                 <p class="text-base sm:text-lg text-[#f2ebfd]/80 font-lato">
-                    Disusun secara progresif dan sistematis agar setiap peserta menguasai keterampilan mendengar (Hören), membaca (Lesen), menulis (Schreiben), dan berbicara (Sprechen) secara seimbang.
+                    {{ __('Structured progressively and systematically so that every participant masters listening (Hören), reading (Lesen), writing (Schreiben), and speaking (Sprechen) equally.') }}
                 </p>
             </div>
 
@@ -265,10 +265,10 @@
             <!-- Learning Outcomes -->
             <div class="space-y-6">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Hasil Pembelajaran
+                    {{ __('Learning Outcomes') }}
                 </div>
                 <h2 class="font-yeseva text-2xl sm:text-4xl text-white leading-snug">
-                    Kompetensi yang Anda Kuasai Setelah Lulus
+                    {{ __('Competencies You Will Master After Graduation') }}
                 </h2>
                 <div class="space-y-4">
                     @foreach($program['learning_outcomes'] as $outcome)
@@ -289,7 +289,7 @@
                 <!-- Who is this for? -->
                 <div class="p-8 rounded-2xl bg-black/50 border-2 border-[#fdc04f]/30 space-y-5">
                     <h3 class="font-yeseva text-2xl text-[#fdc04f]">
-                        Siapa yang Cocok Mengikuti Program Ini?
+                        {{ __('Who is This Program For?') }}
                     </h3>
                     <ul class="space-y-3 font-lato text-base text-[#f2ebfd]/85">
                         @foreach($program['target_audience'] as $audience)
@@ -303,9 +303,9 @@
 
                 <!-- Career Path Banner -->
                 <div class="p-8 rounded-2xl bg-gradient-to-r from-[#2C0B1E] to-[#321f47] border border-[#fdc04f]/40 space-y-3 shadow-xl">
-                    <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">Prospek Karier & Studi</span>
+                    <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">{{ __('Career & Study Prospects') }}</span>
                     <h3 class="font-yeseva text-xl sm:text-2xl text-white">
-                        Peluang di Jerman Setelah Menyelesaikan Level Ini
+                        {{ __('Opportunities in Germany After Completing This Level') }}
                     </h3>
                     <p class="text-sm sm:text-base text-[#f2ebfd]/85 font-lato leading-relaxed">
                         {{ $program['career_path'] }}
@@ -322,10 +322,10 @@
         <div class="max-w-4xl mx-auto space-y-12">
             <div class="text-center space-y-3">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Pertanyaan Umum
+                    {{ __('Frequently Asked Questions') }}
                 </div>
                 <h2 class="font-yeseva text-2xl sm:text-4xl text-white">
-                    FAQ Seputar Program {{ $program['level_short'] }}
+                    {{ __('FAQ About the :level Program', ['level' => $program['level_short']]) }}
                 </h2>
             </div>
 
@@ -351,13 +351,13 @@
         <div class="max-w-6xl mx-auto space-y-10">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div>
-                    <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">Jalur Belajar Lengkap</span>
+                    <span class="text-xs uppercase tracking-widest text-[#fdc04f] font-bold">{{ __('Complete Learning Pathway') }}</span>
                     <h2 class="font-yeseva text-2xl sm:text-4xl text-white mt-1">
-                        Program Pelatihan Bahasa Jerman Lainnya
+                        {{ __('Other German Language Training Programs') }}
                     </h2>
                 </div>
                 <a href="{{ route('programs.index') }}" class="text-[#fdc04f] hover:underline font-bold text-sm">
-                    Lihat Semua Program &rarr;
+                    {{ __('All Programs') }} &rarr;
                 </a>
             </div>
 
@@ -379,7 +379,7 @@
                                 {{ $other['tagline'] }}
                             </p>
                             <span class="inline-flex items-center gap-1 text-sm font-bold text-[#fdc04f] group-hover:underline pt-1">
-                                Pelajari Program Ini &rarr;
+                                {{ __('Learn More About This Program') }} &rarr;
                             </span>
                         </div>
                     </a>
@@ -394,26 +394,26 @@
     <section class="py-20 sm:py-28 px-6 sm:px-12 md:px-16 bg-gradient-to-t from-[#2C0B1E] via-[#321f47] to-[#2C0B1E] border-t border-[#fdc04f]/20 text-center relative overflow-hidden">
         <div class="max-w-4xl mx-auto space-y-6 relative z-10">
             <span class="inline-block px-4 py-1.5 rounded-full bg-[#fdc04f]/20 border border-[#fdc04f]/50 text-[#fdc04f] text-xs uppercase font-bold tracking-widest">
-                Batch Baru Segera Dimulai
+                {{ __('New Batch Starting Soon') }}
             </span>
 
             <h2 class="font-yeseva text-3xl sm:text-5xl text-white leading-tight">
-                Mulai Perjalanan Menuju Jerman Bersama <span class="text-[#fdc04f]">Program {{ $program['level_short'] }}</span>
+                {{ __('Start Your Journey to Germany With') }} <span class="text-[#fdc04f]">Program {{ $program['level_short'] }}</span>
             </h2>
 
             <p class="text-base sm:text-xl text-[#f2ebfd]/85 font-lato max-w-2xl mx-auto leading-relaxed">
-                Kapasitas kelas dibatasi maksimal 15 peserta untuk menjaga interaksi dan kualitas bimbingan personal. Amankan kursi Anda sekarang!
+                {{ __('Class capacity is limited to a maximum of 15 participants to maintain interaction and personal guidance quality. Secure your seat now!') }}
             </p>
 
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
                 <a href="{{ route('enroll', ['level' => $program['slug']]) }}" class="btn-brand-double text-lg px-8 py-4">
-                    Daftar Sekarang & Konsultasi Gratis
+                    {{ __('Enroll Now & Free Consultation') }}
                 </a>
                 <a href="https://wa.me/6281234567890?text=Halo%20LPK%20Mega%20Guna%20Talent,%20saya%20tertarik%20dengan%20Program%20{{ urlencode($program['title']) }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="px-8 py-4 border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-bold transition-all duration-300">
-                    Chat WhatsApp Konsultan
+                    {{ __('Chat with WhatsApp Consultant') }}
                 </a>
             </div>
         </div>
