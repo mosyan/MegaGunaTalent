@@ -1242,64 +1242,87 @@
         </div>
 
         <!-- TAB: CTA Banner Section -->
-        <div x-show="currentTab === 'cta'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                Call-to-Action (CTA) Conversion Banner
-            </h3>
+        <div x-show="currentTab === 'cta'" x-data="{ 
+            ctaLang: 'id',
+            generateCtaPresets() {
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks CTA Conversion Banner untuk 3 Bahasa (ID, EN, DE)?')) return;
+                const presets = {
+                    cta_badge: 'Mulai Perjalanan Anda',
+                    cta_title: 'Raih Target Bahasa Jerman Anda Bersama Kami',
+                    cta_subtitle: 'Kami membantu mewujudkan cita-cita studi, karier, dan Ausbildung Anda di Jerman melalui kurikulum terstruktur dan bimbingan mentor berpengalaman.',
+                    cta_button_text: 'Hubungi Kami & Daftar Sekarang',
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Pill Badge</label>
-                <input 
-                    type="text" 
-                    name="cta_badge" 
-                    value="{{ old('cta_badge', $settings['cta_badge'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
-            </div>
+                    cta_badge_en: 'Start Your Journey Today',
+                    cta_title_en: 'Achieve Your German Language Goals',
+                    cta_subtitle_en: 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment with certified tutors.',
+                    cta_button_text_en: 'Contact Us & Enroll Now',
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Heading</label>
-                <input 
-                    type="text" 
-                    name="cta_title" 
-                    value="{{ old('cta_title', $settings['cta_title'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Subtitle</label>
-                <textarea 
-                    name="cta_subtitle" 
-                    rows="3"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >{{ old('cta_subtitle', $settings['cta_subtitle'] ?? '') }}</textarea>
-            </div>
-
-            <!-- CTA Background Image Upload -->
-            <div class="pt-4 border-t border-white/5">
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Section Background Image</label>
-                <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-4">
-                    @if(!empty($settings['cta_bg_image']))
-                        <div class="w-28 h-16 rounded-lg overflow-hidden bg-black/40 border border-white/10 shrink-0">
-                            <img src="{{ $settings['cta_bg_image'] }}" alt="CTA Background" class="w-full h-full object-cover">
-                        </div>
-                    @else
-                        <div class="w-28 h-16 rounded-lg bg-black/30 border border-white/10 flex items-center justify-center text-[10px] text-slate-400 text-center px-1 shrink-0">
-                            Default: cta-bridge.jpg
-                        </div>
-                    @endif
-                    <div class="flex-1 min-w-0">
-                        <input type="file" name="cta_bg_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
-                        <p class="text-[11px] text-slate-400 mt-1">Recommended 1920x800px JPG or WebP (Max 5MB).</p>
+                    cta_badge_de: 'Starten Sie Ihre Sprachreise',
+                    cta_title_de: 'Erreichen Sie Ihre Deutsch-Sprachziele',
+                    cta_subtitle_de: 'Wir unterstützen Sie beim Erreichen Ihrer Sprachziele für Ausbildung, Studium oder Beruf mit praxisnahem Unterricht und Goethe-Zertifikat Vorbereitung.',
+                    cta_button_text_de: 'Kontaktieren & Jetzt Anmelden'
+                };
+                for (const [key, val] of Object.entries(presets)) {
+                    const el = document.querySelector(`[name='${key}']`);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input'));
+                    }
+                }
+            }
+        }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                        Call-to-Action (CTA) Conversion Banner
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Konfigurasi teks multilingual (ID, EN, DE) untuk pill badge, headline ajakan, subtitle dan tombol konversi pendaftaran.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" @click="generateCtaPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>✨ Generate Rekomendasi 3 Bahasa</span>
+                    </button>
+                    <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                        <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                        <button type="button" @click="ctaLang = 'id'" :class="ctaLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                        <button type="button" @click="ctaLang = 'en'" :class="ctaLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                        <button type="button" @click="ctaLang = 'de'" :class="ctaLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+            <!-- ID CTA -->
+            <div x-show="ctaLang === 'id'" class="space-y-6">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Button Text</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Pill Badge (ID)</label>
+                    <input 
+                        type="text" 
+                        name="cta_badge" 
+                        value="{{ old('cta_badge', $settings['cta_badge'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Heading (ID)</label>
+                    <input 
+                        type="text" 
+                        name="cta_title" 
+                        value="{{ old('cta_title', $settings['cta_title'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Subtitle (ID)</label>
+                    <textarea 
+                        name="cta_subtitle" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('cta_subtitle', $settings['cta_subtitle'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Button Text (ID)</label>
                     <input 
                         type="text" 
                         name="cta_button_text" 
@@ -1307,6 +1330,88 @@
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >
                 </div>
+            </div>
+
+            <!-- EN CTA -->
+            <div x-show="ctaLang === 'en'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Pill Badge (EN)</label>
+                    <input 
+                        type="text" 
+                        name="cta_badge_en" 
+                        value="{{ old('cta_badge_en', $settings['cta_badge_en'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Heading (EN)</label>
+                    <input 
+                        type="text" 
+                        name="cta_title_en" 
+                        value="{{ old('cta_title_en', $settings['cta_title_en'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Subtitle (EN)</label>
+                    <textarea 
+                        name="cta_subtitle_en" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('cta_subtitle_en', $settings['cta_subtitle_en'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Button Text (EN)</label>
+                    <input 
+                        type="text" 
+                        name="cta_button_text_en" 
+                        value="{{ old('cta_button_text_en', $settings['cta_button_text_en'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- DE CTA -->
+            <div x-show="ctaLang === 'de'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Pill Badge (DE)</label>
+                    <input 
+                        type="text" 
+                        name="cta_badge_de" 
+                        value="{{ old('cta_badge_de', $settings['cta_badge_de'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Heading (DE)</label>
+                    <input 
+                        type="text" 
+                        name="cta_title_de" 
+                        value="{{ old('cta_title_de', $settings['cta_title_de'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Subtitle (DE)</label>
+                    <textarea 
+                        name="cta_subtitle_de" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('cta_subtitle_de', $settings['cta_subtitle_de'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">CTA Button Text (DE)</label>
+                    <input 
+                        type="text" 
+                        name="cta_button_text_de" 
+                        value="{{ old('cta_button_text_de', $settings['cta_button_text_de'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- Shared CTA URL & Background -->
+            <div class="pt-6 border-t border-white/10 space-y-6">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Button Target URL</label>
                     <input 
@@ -1316,36 +1421,140 @@
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >
                 </div>
+
+                <!-- CTA Background Image Upload -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">CTA Section Background Image</label>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-4">
+                        @if(!empty($settings['cta_bg_image']))
+                            <div class="w-28 h-16 rounded-lg overflow-hidden bg-black/40 border border-white/10 shrink-0">
+                                <img src="{{ $settings['cta_bg_image'] }}" alt="CTA Background" class="w-full h-full object-cover">
+                            </div>
+                        @else
+                            <div class="w-28 h-16 rounded-lg bg-black/30 border border-white/10 flex items-center justify-center text-[10px] text-slate-400 text-center px-1 shrink-0">
+                                Default: cta-bridge.jpg
+                            </div>
+                        @endif
+                        <div class="flex-1 min-w-0">
+                            <input type="file" name="cta_bg_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
+                            <p class="text-[11px] text-slate-400 mt-1">Recommended 1920x800px JPG or WebP (Max 5MB).</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- TAB: Footer & Social -->
-        <div x-show="currentTab === 'footer'" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-base font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                Footer Content & Social Media Links
-            </h3>
+        <div x-show="currentTab === 'footer'" x-data="{ 
+            footerLang: 'id',
+            generateFooterPresets() {
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks Footer untuk 3 Bahasa (ID, EN, DE)?')) return;
+                const presets = {
+                    footer_about: 'LPK Mega Guna Talent adalah lembaga pelatihan kerja dan kursus bahasa Jerman resmi berstandar internasional CEFR dan SKKNI, mempersiapkan calon talenta andal untuk Ausbildung, karier, dan studi di Jerman.',
+                    footer_copyright: '© 2026 LPK Mega Guna Talent. Hak Cipta Dilindungi Undang-Undang.',
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">About Description</label>
-                <textarea 
-                    name="footer_about" 
-                    rows="3"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >{{ old('footer_about', $settings['footer_about'] ?? '') }}</textarea>
+                    footer_about_en: 'LPK Mega Guna Talent is an official vocational training and German language institution adhering to CEFR & SKKNI standards, preparing talented candidates for Ausbildung, careers, and university studies in Germany.',
+                    footer_copyright_en: '© 2026 Mega Guna Talent. All Rights Reserved.',
+
+                    footer_about_de: 'LPK Mega Guna Talent ist ein offizielles Berufsbildungs- und Sprachinstitut nach GER- und SKKNI-Standards zur Vorbereitung von Talenten auf Ausbildung, Beruf und Studium in Deutschland.',
+                    footer_copyright_de: '© 2026 Mega Guna Talent. Alle Rechte vorbehalten.'
+                };
+                for (const [key, val] of Object.entries(presets)) {
+                    const el = document.querySelector(`[name='${key}']`);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input'));
+                    }
+                }
+            }
+        }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                        Footer Content & Social Media Links
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Konfigurasi ringkasan institusi, teks hak cipta 3 bahasa, dan profil media sosial resmi.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" @click="generateFooterPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>✨ Generate Rekomendasi 3 Bahasa</span>
+                    </button>
+                    <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                        <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                        <button type="button" @click="footerLang = 'id'" :class="footerLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                        <button type="button" @click="footerLang = 'en'" :class="footerLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                        <button type="button" @click="footerLang = 'de'" :class="footerLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                    </div>
+                </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Copyright Text</label>
-                <input 
-                    type="text" 
-                    name="footer_copyright" 
-                    value="{{ old('footer_copyright', $settings['footer_copyright'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
+            <!-- ID Footer -->
+            <div x-show="footerLang === 'id'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">About Description (ID)</label>
+                    <textarea 
+                        name="footer_about" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('footer_about', $settings['footer_about'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Copyright Text (ID)</label>
+                    <input 
+                        type="text" 
+                        name="footer_copyright" 
+                        value="{{ old('footer_copyright', $settings['footer_copyright'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
             </div>
 
-            <div class="pt-4 border-t border-white/5">
+            <!-- EN Footer -->
+            <div x-show="footerLang === 'en'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">About Description (EN)</label>
+                    <textarea 
+                        name="footer_about_en" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('footer_about_en', $settings['footer_about_en'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">Copyright Text (EN)</label>
+                    <input 
+                        type="text" 
+                        name="footer_copyright_en" 
+                        value="{{ old('footer_copyright_en', $settings['footer_copyright_en'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- DE Footer -->
+            <div x-show="footerLang === 'de'" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">About Description (DE)</label>
+                    <textarea 
+                        name="footer_about_de" 
+                        rows="3"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('footer_about_de', $settings['footer_about_de'] ?? '') }}</textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">Copyright Text (DE)</label>
+                    <input 
+                        type="text" 
+                        name="footer_copyright_de" 
+                        value="{{ old('footer_copyright_de', $settings['footer_copyright_de'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-amber-500/30 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+            </div>
+
+            <!-- Shared Social Media Links -->
+            <div class="pt-6 border-t border-white/10">
                 <h4 class="text-sm font-bold text-white mb-4">Social Media Profile Links</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -1390,6 +1599,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         <!-- TAB: About Us Page -->
         <div x-show="currentTab === 'about'" x-data="{ 
             aboutLang: 'id',

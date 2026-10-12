@@ -183,14 +183,26 @@ class SettingController extends Controller
 
             // CTA Section
             'cta_badge' => ['nullable', 'string', 'max:255'],
+            'cta_badge_en' => ['nullable', 'string', 'max:255'],
+            'cta_badge_de' => ['nullable', 'string', 'max:255'],
             'cta_title' => ['nullable', 'string', 'max:255'],
+            'cta_title_en' => ['nullable', 'string', 'max:255'],
+            'cta_title_de' => ['nullable', 'string', 'max:255'],
             'cta_subtitle' => ['nullable', 'string'],
+            'cta_subtitle_en' => ['nullable', 'string'],
+            'cta_subtitle_de' => ['nullable', 'string'],
             'cta_button_text' => ['nullable', 'string', 'max:100'],
+            'cta_button_text_en' => ['nullable', 'string', 'max:100'],
+            'cta_button_text_de' => ['nullable', 'string', 'max:100'],
             'cta_button_url' => ['nullable', 'string', 'max:255'],
 
             // Footer Section
             'footer_about' => ['nullable', 'string'],
+            'footer_about_en' => ['nullable', 'string'],
+            'footer_about_de' => ['nullable', 'string'],
             'footer_copyright' => ['nullable', 'string', 'max:255'],
+            'footer_copyright_en' => ['nullable', 'string', 'max:255'],
+            'footer_copyright_de' => ['nullable', 'string', 'max:255'],
 
             // Theme Colors
             'theme_color_primary' => ['nullable', 'string', 'max:20'],

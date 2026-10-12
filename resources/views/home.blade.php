@@ -34,6 +34,7 @@
     $prog3Title = \App\Models\SiteSetting::getLocalized('program_3_title', 'Advanced');
     $prog3Desc = \App\Models\SiteSetting::getLocalized('program_3_desc', 'Tailored for those needing German in their careers, focusing on business or technical German.');
 
+    $ctaBadge = \App\Models\SiteSetting::getLocalized('cta_badge', 'Start Learning Today');
     $ctaTitle = \App\Models\SiteSetting::getLocalized('cta_title', 'Achieve Your German Language Goals');
     $ctaSubtitle = \App\Models\SiteSetting::getLocalized('cta_subtitle', 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment.');
     $ctaBtnText = \App\Models\SiteSetting::getLocalized('cta_button_text', 'Contact Us');
@@ -226,12 +227,19 @@
 
         <!-- Section Content -->
         <div class="relative z-10 max-w-5xl mx-auto text-center">
+            @if(!empty($ctaBadge))
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#fdc04f] text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-[#fdc04f] animate-pulse"></span>
+                    <span>{{ $ctaBadge }}</span>
+                </div>
+            @endif
+
             <h2 class="font-yeseva text-white text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
                 {{ $ctaTitle }}
             </h2>
 
             <p class="font-arsenal text-white text-lg sm:text-2xl md:text-[1.55rem] max-w-3xl mx-auto mt-6 sm:mt-8 leading-relaxed font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
-                {{ $ctaSubtitle }}
+                {!! nl2br(e($ctaSubtitle)) !!}
             </p>
 
             <div class="mt-8 sm:mt-10">

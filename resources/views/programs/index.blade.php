@@ -58,18 +58,18 @@
             <!-- Pill Badge -->
             <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/95 border-2 border-[#F59E0B]/50 text-[#854D0E] text-xs sm:text-sm font-bold tracking-widest uppercase shadow-md shadow-amber-500/10 backdrop-blur-md">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#D97706] animate-pulse"></span>
-                <span>{{ __('International CEFR & Goethe-Institut Standard') }}</span>
+                <span>{{ \App\Models\SiteSetting::getLocalized('programs_badge', __('International CEFR & Goethe-Institut Standard')) }}</span>
             </div>
 
             <!-- Crisp High-Contrast Heading -->
             <h1 class="font-yeseva text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#1E0D1B] leading-tight drop-shadow-sm tracking-tight">
-                {{ __('Pilihan Program Kursus Bahasa Jerman') }}
+                {{ \App\Models\SiteSetting::getLocalized('programs_title', __('Pilihan Program Kursus Bahasa Jerman')) }}
             </h1>
             <div class="w-24 h-1.5 bg-gradient-to-r from-amber-400 via-[#F59E0B] to-amber-500 rounded-full mx-auto shadow-sm"></div>
 
             <!-- Subtitle with high-contrast readable dark tone -->
             <p class="text-base sm:text-xl text-[#2C0B1E]/90 font-lato leading-relaxed max-w-3xl mx-auto font-normal">
-                {{ __('Structured leveled curriculum from absolute beginners to professional and academic proficiency, specially designed for your career and Ausbildung in Germany.') }}
+                {{ \App\Models\SiteSetting::getLocalized('programs_subtitle', __('Structured leveled curriculum from absolute beginners to professional and academic proficiency, specially designed for your career and Ausbildung in Germany.')) }}
             </p>
 
             <!-- Quick Trust Badges -->

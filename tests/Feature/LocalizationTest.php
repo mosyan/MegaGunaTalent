@@ -117,6 +117,10 @@ class LocalizationTest extends TestCase
             'program_1_title' => 'Pemula',
             'program_1_title_en' => 'Beginner Program',
             'program_1_title_de' => 'Anfänger Programm',
+            'cta_badge_en' => 'Start Your Journey Today',
+            'cta_title_de' => 'Erreichen Sie Ihre Deutsch-Sprachziele',
+            'footer_about_en' => 'Premier German Language Academy',
+            'footer_copyright_de' => '© 2026 Mega Guna Talent. Alle Rechte vorbehalten.',
         ]);
 
         $response->assertRedirect(route('admin.settings.index'));
@@ -129,6 +133,10 @@ class LocalizationTest extends TestCase
         $this->assertEquals('Goethe-Bestehensquote', SiteSetting::get('hero_stat_1_lbl_de'));
         $this->assertEquals('About Title EN', SiteSetting::get('about_hero_title_en'));
         $this->assertEquals('Anfänger Programm', SiteSetting::get('program_1_title_de'));
+        $this->assertEquals('Start Your Journey Today', SiteSetting::get('cta_badge_en'));
+        $this->assertEquals('Erreichen Sie Ihre Deutsch-Sprachziele', SiteSetting::get('cta_title_de'));
+        $this->assertEquals('Premier German Language Academy', SiteSetting::get('footer_about_en'));
+        $this->assertEquals('© 2026 Mega Guna Talent. Alle Rechte vorbehalten.', SiteSetting::get('footer_copyright_de'));
     }
 
     public function test_it_safely_redirects_to_internal_return_url(): void
@@ -200,5 +208,13 @@ class LocalizationTest extends TestCase
         $this->assertNotEmpty(SiteSetting::get('program_beginner_title_de'));
         $this->assertNotEmpty(SiteSetting::get('program_intermediate_tagline_en'));
         $this->assertNotEmpty(SiteSetting::get('program_advanced_description_de'));
+
+        // Verify CTA & Footer
+        $this->assertNotEmpty(SiteSetting::get('cta_badge_en'));
+        $this->assertNotEmpty(SiteSetting::get('cta_title_de'));
+        $this->assertNotEmpty(SiteSetting::get('cta_button_text_en'));
+        $this->assertNotEmpty(SiteSetting::get('footer_about_en'));
+        $this->assertNotEmpty(SiteSetting::get('footer_about_de'));
+        $this->assertNotEmpty(SiteSetting::get('footer_copyright_de'));
     }
 }

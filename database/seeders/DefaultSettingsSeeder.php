@@ -197,15 +197,31 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'program_advanced_career_path_de', 'value' => 'Berechtigt zur ärztlichen Approbation, direkter Arbeitsaufnahme in deutschen Spitzenunternehmen sowie uneingeschränkter Hochschulzulassung.', 'group' => 'programs', 'type' => 'text'],
 
             // CTA Section
-            ['key' => 'cta_badge', 'value' => 'FAST-TRACK YOUR JOURNEY', 'group' => 'cta', 'type' => 'text'],
-            ['key' => 'cta_title', 'value' => 'Ready to Start Speaking German?', 'group' => 'cta', 'type' => 'text'],
-            ['key' => 'cta_subtitle', 'value' => 'Join hundreds of successful students who achieved their dreams in Germany. Limited seats available for next month\'s batch!', 'group' => 'cta', 'type' => 'textarea'],
-            ['key' => 'cta_button_text', 'value' => 'RESERVE YOUR SEAT TODAY', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_badge', 'value' => 'Mulai Perjalanan Anda', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_badge_en', 'value' => 'Start Your Journey Today', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_badge_de', 'value' => 'Starten Sie Ihre Sprachreise', 'group' => 'cta', 'type' => 'text'],
+
+            ['key' => 'cta_title', 'value' => 'Raih Target Bahasa Jerman Anda Bersama Kami', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_title_en', 'value' => 'Achieve Your German Language Goals', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_title_de', 'value' => 'Erreichen Sie Ihre Deutsch-Sprachziele', 'group' => 'cta', 'type' => 'text'],
+
+            ['key' => 'cta_subtitle', 'value' => 'Kami membantu mewujudkan cita-cita studi, karier, dan Ausbildung Anda di Jerman melalui kurikulum terstruktur dan bimbingan mentor berpengalaman.', 'group' => 'cta', 'type' => 'textarea'],
+            ['key' => 'cta_subtitle_en', 'value' => 'We help you achieve your language learning goals, whether for travel, work, or personal enrichment with certified tutors.', 'group' => 'cta', 'type' => 'textarea'],
+            ['key' => 'cta_subtitle_de', 'value' => 'Wir unterstützen Sie beim Erreichen Ihrer Sprachziele für Ausbildung, Studium oder Beruf mit praxisnahem Unterricht und Goethe-Zertifikat Vorbereitung.', 'group' => 'cta', 'type' => 'textarea'],
+
+            ['key' => 'cta_button_text', 'value' => 'Hubungi Kami & Daftar Sekarang', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_button_text_en', 'value' => 'Contact Us & Enroll Now', 'group' => 'cta', 'type' => 'text'],
+            ['key' => 'cta_button_text_de', 'value' => 'Kontaktieren & Jetzt Anmelden', 'group' => 'cta', 'type' => 'text'],
             ['key' => 'cta_button_url', 'value' => '#enroll', 'group' => 'cta', 'type' => 'text'],
 
             // Footer Section
-            ['key' => 'footer_about', 'value' => 'Mega Guna Talent is Indonesia\'s premier German language academy, preparing students and skilled workers for successful careers and academic paths in Germany.', 'group' => 'footer', 'type' => 'textarea'],
-            ['key' => 'footer_copyright', 'value' => '© 2026 Mega Guna Talent. All rights reserved.', 'group' => 'footer', 'type' => 'text'],
+            ['key' => 'footer_about', 'value' => 'LPK Mega Guna Talent adalah lembaga pelatihan kerja dan kursus bahasa Jerman resmi berstandar internasional CEFR dan SKKNI, mempersiapkan calon talenta andal untuk Ausbildung, karier, dan studi di Jerman.', 'group' => 'footer', 'type' => 'textarea'],
+            ['key' => 'footer_about_en', 'value' => 'LPK Mega Guna Talent is an official vocational training and German language institution adhering to CEFR & SKKNI standards, preparing talented candidates for Ausbildung, careers, and university studies in Germany.', 'group' => 'footer', 'type' => 'textarea'],
+            ['key' => 'footer_about_de', 'value' => 'LPK Mega Guna Talent ist ein offizielles Berufsbildungs- und Sprachinstitut nach GER- und SKKNI-Standards zur Vorbereitung von Talenten auf Ausbildung, Beruf und Studium in Deutschland.', 'group' => 'footer', 'type' => 'textarea'],
+
+            ['key' => 'footer_copyright', 'value' => '© 2026 LPK Mega Guna Talent. Hak Cipta Dilindungi Undang-Undang.', 'group' => 'footer', 'type' => 'text'],
+            ['key' => 'footer_copyright_en', 'value' => '© 2026 Mega Guna Talent. All Rights Reserved.', 'group' => 'footer', 'type' => 'text'],
+            ['key' => 'footer_copyright_de', 'value' => '© 2026 Mega Guna Talent. Alle Rechte vorbehalten.', 'group' => 'footer', 'type' => 'text'],
 
             // Styling & Colors
             ['key' => 'theme_color_primary', 'value' => '#2C0B1E', 'group' => 'colors', 'type' => 'text'],
