@@ -371,21 +371,67 @@
     <!-- ============================================================== -->
     <!-- FLOATING WHATSAPP CHAT WIDGET (EQUIPORA STYLE WITH FORM POPUP)  -->
     <!-- ============================================================== -->
-    <div id="wa-floating-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        
+    <div x-data="{
+            isOpen: false,
+            name: '',
+            message: '',
+            errorMessage: '',
+            currentTime: '',
+            init() {
+                const updateTime = () => {
+                    const now = new Date();
+                    this.currentTime = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+                };
+                updateTime();
+                setInterval(updateTime, 30000);
+            },
+            selectTopic(topic) {
+                if (!this.message.trim()) {
+                    this.message = 'Halo Admin, saya ingin menanyakan mengenai ' + topic + '.';
+                } else if (!this.message.includes(topic)) {
+                    this.message = this.message + ' (Topik: ' + topic + ')';
+                }
+            },
+            sendWhatsApp() {
+                if (!this.name.trim() || !this.message.trim()) {
+                    this.errorMessage = '{{ __('Harap isi nama dan pesan terlebih dahulu.') }}';
+                    return;
+                }
+                this.errorMessage = '';
+                const adminNumber = '6281327788498';
+                const template = `Halo Admin LPK Mega Guna Talent,\n\nSaya ingin berkonsultasi:\n• Nama: ${this.name.trim()}\n• Pesan: ${this.message.trim()}\n\n(Dikirim melalui website megagunatalent.com)`;
+                const waUrl = `https://wa.me/${adminNumber}?text=${encodeURIComponent(template)}`;
+                window.open(waUrl, '_blank', 'noopener,noreferrer');
+                this.name = '';
+                this.message = '';
+                this.isOpen = false;
+            }
+        }"
+        x-cloak
+        @click.outside="isOpen = false"
+        @keydown.escape.window="isOpen = false"
+        id="wa-floating-widget"
+        class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+
         <!-- Interactive WhatsApp Chat Card Popup -->
-        <div id="wa-chat-card" 
-             class="opacity-0 translate-y-6 scale-95 pointer-events-none transition-all duration-300 ease-out mb-4 w-[calc(100vw-2.5rem)] max-w-[370px] sm:w-[380px] bg-[#1a0f26]/95 backdrop-blur-2xl border border-[#25D366]/30 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden flex flex-col origin-bottom-right"
+        <div x-show="isOpen"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-6 scale-95"
+             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+             x-transition:leave-end="opacity-0 translate-y-6 scale-95"
+             class="mb-4 w-[calc(100vw-2.5rem)] max-w-[370px] sm:w-[380px] bg-[#1a0f26]/95 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden flex flex-col origin-bottom-right"
              role="dialog"
              aria-modal="true"
              aria-label="{{ __('Chat via WhatsApp') }}">
-            
+
             <!-- WhatsApp Header -->
-            <div class="bg-gradient-to-r from-[#075E54] via-[#128C7E] to-[#25D366] p-4 sm:p-5 text-white flex items-center justify-between shadow-md relative overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 p-4 sm:p-5 text-white flex items-center justify-between shadow-md relative overflow-hidden">
                 <!-- Decorative background WhatsApp watermark -->
                 <div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
                     <svg class="w-28 h-28 fill-current" viewBox="0 0 24 24">
-                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.789.78 2.791.78h.005c3.18 0 5.767-2.587 5.768-5.766 0-1.54-.6-2.99-1.69-4.08-1.09-1.09-2.54-1.69-4.084-1.69zm5.214 7.271c-.22.618-1.08 1.139-1.503 1.18-.387.037-.878.077-2.836-.713-1.758-.709-2.91-2.457-3-2.576-.089-.12-1.842-2.452-1.842-4.676 0-2.224 1.164-3.318 1.579-3.763.415-.445.908-.557 1.211-.557.303 0 .606.003.87.016.28.013.655-.106 1.025.782.38 1.037.914 2.227 1.002 2.38.089.153.149.333.03.568-.119.235-.179.382-.358.591-.178.21-.375.469-.537.63-.178.178-.364.372-.157.727.207.355.92 1.516 1.974 2.456 1.357 1.21 2.502 1.586 2.857 1.764.355.178.563.148.77-.089.208-.237.89-1.036 1.127-1.392.237-.356.474-.297.792-.178.318.118 2.016.951 2.362 1.124.346.173.577.26.662.404.085.144.085.834-.135 1.452z"/>
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                     </svg>
                 </div>
 
@@ -393,22 +439,22 @@
                     <div class="relative">
                         <div class="w-11 h-11 rounded-full bg-white/20 border-2 border-white/40 p-2 flex items-center justify-center text-white backdrop-blur-sm shadow-md">
                             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.789.78 2.791.78h.005c3.18 0 5.767-2.587 5.768-5.766 0-1.54-.6-2.99-1.69-4.08-1.09-1.09-2.54-1.69-4.084-1.69zm5.214 7.271c-.22.618-1.08 1.139-1.503 1.18-.387.037-.878.077-2.836-.713-1.758-.709-2.91-2.457-3-2.576-.089-.12-1.842-2.452-1.842-4.676 0-2.224 1.164-3.318 1.579-3.763.415-.445.908-.557 1.211-.557.303 0 .606.003.87.016.28.013.655-.106 1.025.782.38 1.037.914 2.227 1.002 2.38.089.153.149.333.03.568-.119.235-.179.382-.358.591-.178.21-.375.469-.537.63-.178.178-.364.372-.157.727.207.355.92 1.516 1.974 2.456 1.357 1.21 2.502 1.586 2.857 1.764.355.178.563.148.77-.089.208-.237.89-1.036 1.127-1.392.237-.356.474-.297.792-.178.318.118 2.016.951 2.362 1.124.346.173.577.26.662.404.085.144.085.834-.135 1.452z"/>
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                             </svg>
                         </div>
-                        <span class="w-3.5 h-3.5 rounded-full bg-[#25D366] border-2 border-[#128C7E] absolute -bottom-0.5 -right-0.5 animate-pulse"></span>
+                        <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-emerald-700 absolute -bottom-0.5 -right-0.5 animate-pulse"></span>
                     </div>
                     <div>
                         <h4 class="font-bold text-white text-sm sm:text-base leading-tight font-arsenal">LPK Mega Guna Talent</h4>
                         <p class="text-[11px] sm:text-xs text-emerald-100 flex items-center gap-1.5 font-lato mt-0.5">
-                            <span class="w-2 h-2 rounded-full bg-[#25D366] inline-block animate-ping"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-300 inline-block animate-ping"></span>
                             <span>{{ __('Customer Support • Online') }}</span>
                         </p>
                     </div>
                 </div>
 
                 <button type="button" 
-                        id="wa-close-btn" 
+                        @click="isOpen = false" 
                         class="w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white flex items-center justify-center transition-all cursor-pointer relative z-10" 
                         aria-label="Tutup Form WhatsApp">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -423,7 +469,7 @@
                 <div class="bg-black/35 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 shadow-md space-y-1">
                     <div class="flex items-center justify-between text-[11px] text-[#fdc04f] font-bold">
                         <span>Admin Mega Guna Talent</span>
-                        <span class="text-white/40 font-mono text-[10px]" id="wa-chat-timestamp">Online</span>
+                        <span class="text-white/40 font-mono text-[10px]" x-text="currentTime">Online</span>
                     </div>
                     <p class="text-xs text-white/90 leading-relaxed font-lato">
                         {{ __('Halo! 👋 Ada yang bisa kami bantu seputar program kursus bahasa Jerman atau info Ausbildung? Silakan isi nama dan pesan Anda di bawah:') }}
@@ -432,30 +478,30 @@
 
                 <!-- Quick Topic Selector Pills -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                    <button type="button" class="wa-topic-chip px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer" data-topic="Info Kursus Bahasa Jerman (A1-B1)">
+                    <button type="button" @click="selectTopic('Info Kursus Bahasa Jerman (A1-B1)')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
                         🇩🇪 Kursus A1-B1
                     </button>
-                    <button type="button" class="wa-topic-chip px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer" data-topic="Persiapan Program Ausbildung Jerman">
+                    <button type="button" @click="selectTopic('Persiapan Program Ausbildung Jerman')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
                         🎓 Ausbildung
                     </button>
-                    <button type="button" class="wa-topic-chip px-2.5 py-1 rounded-full bg-white/5 hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer" data-topic="Konsultasi Jadwal & Biaya Kursus">
+                    <button type="button" @click="selectTopic('Konsultasi Jadwal & Biaya Kursus')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
                         📅 Jadwal & Biaya
                     </button>
                 </div>
 
                 <!-- Input Form -->
-                <form id="wa-message-form" class="space-y-3 pt-1">
+                <form @submit.prevent="sendWhatsApp()" class="space-y-3 pt-1">
                     <div>
-                        <label for="wa-input-name" class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
                             {{ __('Nama Lengkap') }} <span class="text-[#fdc04f]">*</span>
                         </label>
                         <div class="relative">
                             <input type="text" 
-                                   id="wa-input-name" 
+                                   x-model="name"
                                    required
                                    autocomplete="name"
                                    placeholder="Contoh: Budi Santoso" 
-                                   class="w-full pl-9 pr-3 py-2.5 bg-black/45 border border-white/15 focus:border-[#25D366] focus:ring-2 focus:ring-[#25D366]/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all">
+                                   class="w-full pl-9 pr-3 py-2.5 bg-black/45 border border-white/15 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all">
                             <svg class="w-4 h-4 text-white/50 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
@@ -463,28 +509,27 @@
                     </div>
 
                     <div>
-                        <label for="wa-input-message" class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
                             {{ __('Pesan / Pertanyaan') }} <span class="text-[#fdc04f]">*</span>
                         </label>
-                        <textarea id="wa-input-message" 
+                        <textarea x-model="message"
                                   rows="3" 
                                   required
                                   placeholder="Tuliskan pertanyaan atau rencana studi/karier Anda..." 
-                                  class="w-full px-3 py-2.5 bg-black/45 border border-white/15 focus:border-[#25D366] focus:ring-2 focus:ring-[#25D366]/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all resize-none"></textarea>
+                                  class="w-full px-3 py-2.5 bg-black/45 border border-white/15 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all resize-none"></textarea>
                     </div>
 
-                    <div id="wa-alert-error" class="hidden text-[11px] text-rose-300 bg-rose-500/20 border border-rose-500/30 rounded-xl p-2.5 flex items-center gap-2">
+                    <div x-show="errorMessage" x-cloak class="text-[11px] text-rose-300 bg-rose-500/20 border border-rose-500/30 rounded-xl p-2.5 flex items-center gap-2">
                         <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <span>{{ __('Harap isi nama dan pesan terlebih dahulu.') }}</span>
+                        <span x-text="errorMessage"></span>
                     </div>
 
                     <button type="submit" 
-                            id="wa-btn-submit"
-                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20ba5a] hover:to-[#0f7a6d] text-white font-extrabold text-xs shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold text-xs shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
                         <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.789.78 2.791.78h.005c3.18 0 5.767-2.587 5.768-5.766 0-1.54-.6-2.99-1.69-4.08-1.09-1.09-2.54-1.69-4.084-1.69zm5.214 7.271c-.22.618-1.08 1.139-1.503 1.18-.387.037-.878.077-2.836-.713-1.758-.709-2.91-2.457-3-2.576-.089-.12-1.842-2.452-1.842-4.676 0-2.224 1.164-3.318 1.579-3.763.415-.445.908-.557 1.211-.557.303 0 .606.003.87.016.28.013.655-.106 1.025.782.38 1.037.914 2.227 1.002 2.38.089.153.149.333.03.568-.119.235-.179.382-.358.591-.178.21-.375.469-.537.63-.178.178-.364.372-.157.727.207.355.92 1.516 1.974 2.456 1.357 1.21 2.502 1.586 2.857 1.764.355.178.563.148.77-.089.208-.237.89-1.036 1.127-1.392.237-.356.474-.297.792-.178.318.118 2.016.951 2.362 1.124.346.173.577.26.662.404.085.144.085.834-.135 1.452z"/>
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                         </svg>
                         <span>{{ __('Kirim ke WhatsApp') }}</span>
                         <svg class="w-3.5 h-3.5 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -494,38 +539,24 @@
                 </form>
 
                 <p class="text-[10px] text-center text-white/50 font-lato pt-1">
-                    {{ __('Terhubung langsung ke WhatsApp Admin Resmi') }}: <span class="text-[#25D366] font-mono font-bold tracking-wider">0813-2778-8498</span>
+                    {{ __('Terhubung langsung ke WhatsApp Admin Resmi') }}: <span class="text-emerald-400 font-mono font-bold tracking-wider">0813-2778-8498</span>
                 </p>
             </div>
         </div>
 
-        <!-- The Floating Trigger Button (Equipora Style) -->
-        <div class="relative group">
-            <!-- Pulsing Rings (Equipora Signature Animation) -->
-            <span class="absolute -inset-1 rounded-full bg-[#25D366] animate-ping opacity-45 pointer-events-none"></span>
-            <span class="absolute -inset-2.5 rounded-full bg-[#25D366]/25 animate-pulse pointer-events-none"></span>
+        <!-- The exact button snippet from Equipora requested by the user: -->
+        <button @click="isOpen = !isOpen" aria-label="Whatsapp CS Equipora" class="flex items-center justify-center w-16 h-16 bg-emerald-500 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 hover:bg-emerald-600 transition-all duration-300 focus:outline-none relative group cursor-pointer">
+            <span class="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-25 pointer-events-none" style="animation-duration: 2s;"></span>
+            <svg x-show="!isOpen" class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+            <svg x-show="isOpen" style="display:none;" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
 
-            <!-- Tooltip chip on hover (Desktop) -->
-            <span id="wa-hover-chip" class="hidden sm:inline-block absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3.5 py-1.5 rounded-full bg-[#240919]/90 border border-[#25D366]/40 text-white text-xs font-bold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none backdrop-blur-md">
-                {{ __('Chat via WhatsApp') }} 👋
-            </span>
-
-            <!-- Main Button Circle -->
-            <button type="button" 
-                    id="wa-trigger-btn"
-                    aria-label="{{ __('Chat via WhatsApp') }}"
-                    aria-expanded="false"
-                    class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_10px_30px_rgba(37,211,102,0.55)] flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 z-10">
-                <!-- WhatsApp Icon (When closed) -->
-                <svg id="wa-btn-icon-wa" class="w-7 h-7 sm:w-8 sm:h-8 fill-current transition-transform duration-300" viewBox="0 0 24 24">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.789.78 2.791.78h.005c3.18 0 5.767-2.587 5.768-5.766 0-1.54-.6-2.99-1.69-4.08-1.09-1.09-2.54-1.69-4.084-1.69zm5.214 7.271c-.22.618-1.08 1.139-1.503 1.18-.387.037-.878.077-2.836-.713-1.758-.709-2.91-2.457-3-2.576-.089-.12-1.842-2.452-1.842-4.676 0-2.224 1.164-3.318 1.579-3.763.415-.445.908-.557 1.211-.557.303 0 .606.003.87.016.28.013.655-.106 1.025.782.38 1.037.914 2.227 1.002 2.38.089.153.149.333.03.568-.119.235-.179.382-.358.591-.178.21-.375.469-.537.63-.178.178-.364.372-.157.727.207.355.92 1.516 1.974 2.456 1.357 1.21 2.502 1.586 2.857 1.764.355.178.563.148.77-.089.208-.237.89-1.036 1.127-1.392.237-.356.474-.297.792-.178.318.118 2.016.951 2.362 1.124.346.173.577.26.662.404.085.144.085.834-.135 1.452z"/>
-                </svg>
-                <!-- Close Icon (When open) -->
-                <svg id="wa-btn-icon-close" class="w-6 h-6 sm:w-7 sm:h-7 stroke-current stroke-[2.5] hidden transition-transform duration-300" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
+            <!-- Hover Tooltip -->
+            <div x-show="!isOpen" class="absolute right-full mr-3 px-3.5 py-1.5 bg-slate-900/95 backdrop-blur-sm text-white text-xs font-bold rounded-xl opacity-0 invisible translate-x-2 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 transition-all duration-200 pointer-events-none whitespace-nowrap shadow-xl flex items-center gap-2 border border-slate-700/60">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Whatsapp CS Equipora</span>
+                <div class="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-slate-900 rotate-45 border-t border-r border-slate-700/60"></div>
+            </div>
+        </button>
     </div>
 
     <!-- Interactive Navigation Scripts -->
@@ -566,125 +597,6 @@
                     link.addEventListener('click', closeDrawer);
                 });
             }
-
-            // Floating WhatsApp Widget Logic (Equipora style with form popup)
-            const waTriggerBtn = document.getElementById('wa-trigger-btn');
-            const waCloseBtn = document.getElementById('wa-close-btn');
-            const waCard = document.getElementById('wa-chat-card');
-            const waIconWa = document.getElementById('wa-btn-icon-wa');
-            const waIconClose = document.getElementById('wa-btn-icon-close');
-            const waForm = document.getElementById('wa-message-form');
-            const waNameInput = document.getElementById('wa-input-name');
-            const waMsgInput = document.getElementById('wa-input-message');
-            const waError = document.getElementById('wa-alert-error');
-            const waTimestamp = document.getElementById('wa-chat-timestamp');
-            const waChips = document.querySelectorAll('.wa-topic-chip');
-
-            const ADMIN_WA_NUMBER = '6281327788498';
-
-            function updateWaTimestamp() {
-                if (waTimestamp) {
-                    const now = new Date();
-                    const hours = String(now.getHours()).padStart(2, '0');
-                    const minutes = String(now.getMinutes()).padStart(2, '0');
-                    waTimestamp.textContent = `${hours}:${minutes}`;
-                }
-            }
-
-            let isWaOpen = false;
-
-            function openWaChat() {
-                isWaOpen = true;
-                waCard.classList.remove('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
-                waCard.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-                waIconWa.classList.add('hidden');
-                waIconClose.classList.remove('hidden');
-                waTriggerBtn.setAttribute('aria-expanded', 'true');
-                updateWaTimestamp();
-                setTimeout(() => {
-                    if (waNameInput) waNameInput.focus();
-                }, 150);
-            }
-
-            function closeWaChat() {
-                isWaOpen = false;
-                waCard.classList.add('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
-                waCard.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-                waIconWa.classList.remove('hidden');
-                waIconClose.classList.add('hidden');
-                waTriggerBtn.setAttribute('aria-expanded', 'false');
-                if (waError) waError.classList.add('hidden');
-            }
-
-            function toggleWaChat() {
-                if (isWaOpen) {
-                    closeWaChat();
-                } else {
-                    openWaChat();
-                }
-            }
-
-            if (waTriggerBtn) {
-                waTriggerBtn.addEventListener('click', toggleWaChat);
-            }
-            if (waCloseBtn) {
-                waCloseBtn.addEventListener('click', closeWaChat);
-            }
-
-            // Quick topic chip click handler
-            waChips.forEach(chip => {
-                chip.addEventListener('click', function () {
-                    const topic = this.getAttribute('data-topic');
-                    if (waMsgInput) {
-                        const currentVal = waMsgInput.value.trim();
-                        if (!currentVal) {
-                            waMsgInput.value = `Halo Admin, saya ingin menanyakan mengenai ${topic}.`;
-                        } else if (!currentVal.includes(topic)) {
-                            waMsgInput.value = `${currentVal} (Topik: ${topic})`;
-                        }
-                        waMsgInput.focus();
-                    }
-                });
-            });
-
-            // Submit form handler -> open WhatsApp
-            if (waForm) {
-                waForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const name = (waNameInput ? waNameInput.value : '').trim();
-                    const msg = (waMsgInput ? waMsgInput.value : '').trim();
-
-                    if (!name || !msg) {
-                        if (waError) waError.classList.remove('hidden');
-                        return;
-                    }
-
-                    if (waError) waError.classList.add('hidden');
-
-                    const textTemplate = `Halo Admin LPK Mega Guna Talent,\n\nSaya ingin berkonsultasi:\n• Nama: ${name}\n• Pesan: ${msg}\n\n(Dikirim melalui website megagunatalent.com)`;
-                    const waUrl = `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(textTemplate)}`;
-
-                    window.open(waUrl, '_blank', 'noopener,noreferrer');
-                    
-                    // Clear and close
-                    waForm.reset();
-                    closeWaChat();
-                });
-            }
-
-            // Close on outside click
-            document.addEventListener('click', function (e) {
-                if (isWaOpen && !e.target.closest('#wa-floating-widget')) {
-                    closeWaChat();
-                }
-            });
-
-            // Close on ESC key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && isWaOpen) {
-                    closeWaChat();
-                }
-            });
         });
     </script>
     @stack('scripts')

@@ -11,6 +11,10 @@
     --color-brand-lavender: #f2ebfd;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 :root {
     --palette-0: #fdc04f;
     --palette-1: #321f47;
