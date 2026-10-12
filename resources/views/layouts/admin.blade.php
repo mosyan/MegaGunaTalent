@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<html lang="en" class="h-full bg-slate-50 text-slate-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,12 @@
     <style>
         [x-cloak] { display: none !important; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(226, 184, 66, 0.3); border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(226, 184, 66, 0.6); }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.6); }
     </style>
 </head>
-<body class="h-full bg-[#12040d] font-['Plus_Jakarta_Sans',sans-serif] text-slate-200 antialiased overflow-x-hidden" x-data="{ sidebarOpen: false }">
+<body class="h-full bg-slate-50 font-['Plus_Jakarta_Sans',sans-serif] text-slate-900 antialiased overflow-x-hidden" x-data="{ sidebarOpen: false }">
     <div class="flex h-screen overflow-hidden">
         
         <!-- Mobile Sidebar Overlay -->
@@ -182,35 +182,35 @@
         </aside>
 
         <!-- Main Content Area -->
-        <div class="flex-1 flex flex-col h-screen overflow-hidden bg-[#180512]">
+        <div class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
             <!-- Topbar -->
-            <header class="h-16 bg-[#210817] border-b border-white/10 px-6 flex items-center justify-between shrink-0">
+            <header class="h-16 bg-white border-b border-slate-200/90 px-6 flex items-center justify-between shrink-0 shadow-xs">
                 <div class="flex items-center gap-4">
-                    <button @click="sidebarOpen = true" class="lg:hidden text-slate-400 hover:text-white p-1">
+                    <button @click="sidebarOpen = true" class="lg:hidden text-slate-600 hover:text-slate-900 p-1 cursor-pointer">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
                     <div>
-                        <h1 class="text-lg font-bold text-white tracking-tight">@yield('page_title', 'Dashboard')</h1>
+                        <h1 class="text-lg font-bold text-slate-900 tracking-tight">@yield('page_title', 'Dashboard')</h1>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('home') }}" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-300 transition-colors">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        View Website
+                    <a href="{{ route('home') }}" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>View Website</span>
                     </a>
                 </div>
             </header>
 
             <!-- Main scrollable view -->
-            <main class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+            <main class="flex-1 overflow-y-auto p-6 lg:p-8 custom-scrollbar text-slate-900">
                 <!-- Notifications -->
                 @if(session('success'))
-                    <div class="mb-6 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium flex items-center justify-between">
+                    <div class="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium flex items-center justify-between shadow-xs">
                         <div class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
                             <span>{{ session('success') }}</span>
@@ -219,8 +219,8 @@
                 @endif
 
                 @if(session('error'))
-                    <div class="mb-6 p-4 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-sm font-medium flex items-center gap-3">
-                        <svg class="w-5 h-5 text-rose-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div class="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-medium flex items-center gap-3 shadow-xs">
+                        <svg class="w-5 h-5 text-rose-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                         <span>{{ session('error') }}</span>
@@ -234,3 +234,4 @@
     @stack('scripts')
 </body>
 </html>
+
