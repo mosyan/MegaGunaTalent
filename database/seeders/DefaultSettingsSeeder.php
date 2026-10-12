@@ -32,20 +32,46 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'about_operating_hours', 'value' => 'Senin - Sabtu: 08:30 - 17:00 WIB', 'group' => 'about', 'type' => 'text'],
 
             // Hero Section
-            ['key' => 'hero_badge_text', 'value' => 'TOP-RATED GERMAN COURSES IN INDONESIA', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_title_line1', 'value' => 'SPEAK GERMAN FLUENTLY', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_title_line2', 'value' => 'UNLOCK GLOBAL CAREERS', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_subtitle', 'value' => 'Comprehensive German language training from A1 to C1 for students, jobseekers, and professionals aspiring to study or work in Germany.', 'group' => 'hero', 'type' => 'textarea'],
-            ['key' => 'hero_primary_btn_text', 'value' => 'ENROLL NOW', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_badge_text', 'value' => 'Lembaga Kursus Resmi & Mitra Persiapan Ausbildung Jerman', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_badge_text_en', 'value' => 'Official German Language Center & Ausbildung Partner', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_badge_text_de', 'value' => 'Offizielles Deutsches Sprachzentrum & Ausbildungspartner', 'group' => 'hero', 'type' => 'text'],
+
+            ['key' => 'hero_title_line1', 'value' => 'Kuasai Bahasa Jerman', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_title_line1_en', 'value' => 'Speak German With Confidence', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_title_line1_de', 'value' => 'Deutsch sprechen mit Selbstvertrauen', 'group' => 'hero', 'type' => 'text'],
+
+            ['key' => 'hero_title_line2', 'value' => 'Wujudkan Karier & Studi Impian', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_title_line2_en', 'value' => 'Unlock Your Career & Study in Germany', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_title_line2_de', 'value' => 'Ihre Zukunft in Deutschland starten', 'group' => 'hero', 'type' => 'text'],
+
+            ['key' => 'hero_subtitle', 'value' => 'Bimbingan intensif dari level A1 hingga C1 bersama pengajar tersertifikasi berstandar Goethe-Institut.', 'group' => 'hero', 'type' => 'textarea'],
+            ['key' => 'hero_subtitle_en', 'value' => 'Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations.', 'group' => 'hero', 'type' => 'textarea'],
+            ['key' => 'hero_subtitle_de', 'value' => 'Interaktive Deutschkurse für alle Niveaustufen von A1 bis C1 mit zertifizierten Dozenten und Goethe-Zertifikat Vorbereitung.', 'group' => 'hero', 'type' => 'textarea'],
+
+            ['key' => 'hero_primary_btn_text', 'value' => 'Daftar Sekarang', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_primary_btn_text_en', 'value' => 'Enroll Now', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_primary_btn_text_de', 'value' => 'Jetzt anmelden', 'group' => 'hero', 'type' => 'text'],
             ['key' => 'hero_primary_btn_url', 'value' => '#enroll', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_secondary_btn_text', 'value' => 'EXPLORE PROGRAMS', 'group' => 'hero', 'type' => 'text'],
+
+            ['key' => 'hero_secondary_btn_text', 'value' => 'Pelajari Program', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_secondary_btn_text_en', 'value' => 'Explore Programs', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_secondary_btn_text_de', 'value' => 'Programme entdecken', 'group' => 'hero', 'type' => 'text'],
             ['key' => 'hero_secondary_btn_url', 'value' => '#programs', 'group' => 'hero', 'type' => 'text'],
+
             ['key' => 'hero_stat_1_val', 'value' => '98%', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_stat_1_lbl', 'value' => 'Goethe Exam Pass Rate', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_1_lbl', 'value' => 'Kelulusan Goethe-Zertifikat', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_1_lbl_en', 'value' => 'Goethe Exam Pass Rate', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_1_lbl_de', 'value' => 'Goethe-Bestehensquote', 'group' => 'hero', 'type' => 'text'],
+
             ['key' => 'hero_stat_2_val', 'value' => '1,500+', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_stat_2_lbl', 'value' => 'Alumni in Germany', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_2_lbl', 'value' => 'Alumni Studi & Ausbildung', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_2_lbl_en', 'value' => 'Alumni in Germany', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_2_lbl_de', 'value' => 'Erfolgreiche Absolventen', 'group' => 'hero', 'type' => 'text'],
+
             ['key' => 'hero_stat_3_val', 'value' => '100%', 'group' => 'hero', 'type' => 'text'],
-            ['key' => 'hero_stat_3_lbl', 'value' => 'Certified Teachers', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_3_lbl', 'value' => 'Pengajar Tersertifikasi', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_3_lbl_en', 'value' => 'Certified Expert Tutors', 'group' => 'hero', 'type' => 'text'],
+            ['key' => 'hero_stat_3_lbl_de', 'value' => 'Zertifizierte Dozenten', 'group' => 'hero', 'type' => 'text'],
 
             // Programs Section
             ['key' => 'programs_badge', 'value' => 'OUR FLAGSHIP PROGRAMS', 'group' => 'programs', 'type' => 'text'],

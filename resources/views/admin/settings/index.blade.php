@@ -201,226 +201,477 @@
         </div>
 
         <!-- TAB: Hero Section & Buttons -->
-        <div x-show="currentTab === 'hero'" x-data="{ heroLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                    Hero Section Headline, Buttons & Trust Badges
-                </h3>
-                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
-                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
-                    <button type="button" @click="heroLang = 'id'" :class="heroLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
-                    <button type="button" @click="heroLang = 'en'" :class="heroLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
-                    <button type="button" @click="heroLang = 'de'" :class="heroLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+        <div x-show="currentTab === 'hero'" x-data="{ 
+            heroLang: 'id',
+            generateHeroPresets() {
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks Headline, Buttons & Trust Badges untuk 3 Bahasa (Indonesia, English, Deutsch)?')) return;
+                const presets = {
+                    hero_badge_text: 'Lembaga Kursus Resmi & Mitra Persiapan Ausbildung Jerman',
+                    hero_title_line1: 'Kuasai Bahasa Jerman',
+                    hero_title_line2: 'Wujudkan Karier & Studi Impian',
+                    hero_subtitle: 'Bimbingan intensif dari level A1 hingga C1 bersama pengajar tersertifikasi berstandar Goethe-Institut.',
+                    hero_primary_btn_text: 'Daftar Sekarang',
+                    hero_secondary_btn_text: 'Pelajari Program',
+                    hero_stat_1_lbl: 'Kelulusan Goethe-Zertifikat',
+                    hero_stat_2_lbl: 'Alumni Studi & Ausbildung',
+                    hero_stat_3_lbl: 'Pengajar Tersertifikasi',
+
+                    hero_badge_text_en: 'Official German Language Center & Ausbildung Partner',
+                    hero_title_line1_en: 'Speak German With Confidence',
+                    hero_title_line2_en: 'Unlock Your Career & Study in Germany',
+                    hero_subtitle_en: 'Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations.',
+                    hero_primary_btn_text_en: 'Enroll Now',
+                    hero_secondary_btn_text_en: 'Explore Programs',
+                    hero_stat_1_lbl_en: 'Goethe Exam Pass Rate',
+                    hero_stat_2_lbl_en: 'Alumni in Germany',
+                    hero_stat_3_lbl_en: 'Certified Expert Tutors',
+
+                    hero_badge_text_de: 'Offizielles Deutsches Sprachzentrum & Ausbildungspartner',
+                    hero_title_line1_de: 'Deutsch sprechen mit Selbstvertrauen',
+                    hero_title_line2_de: 'Ihre Zukunft in Deutschland starten',
+                    hero_subtitle_de: 'Interaktive Deutschkurse für alle Niveaustufen von A1 bis C1 mit zertifizierten Dozenten und Goethe-Zertifikat Vorbereitung.',
+                    hero_primary_btn_text_de: 'Jetzt anmelden',
+                    hero_secondary_btn_text_de: 'Programme entdecken',
+                    hero_stat_1_lbl_de: 'Goethe-Bestehensquote',
+                    hero_stat_2_lbl_de: 'Erfolgreiche Absolventen',
+                    hero_stat_3_lbl_de: 'Zertifizierte Dozenten'
+                };
+                for (const [key, val] of Object.entries(presets)) {
+                    const el = document.querySelector(`[name='${key}']`);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input'));
+                    }
+                }
+            }
+        }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                        Hero Section Headline, Buttons & Trust Badges
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Konfigurasi teks multilingual (ID, EN, DE) untuk headline utama, tombol CTA, dan label floating trust badges.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" @click="generateHeroPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>✨ Generate Rekomendasi 3 Bahasa</span>
+                    </button>
+                    <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                        <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                        <button type="button" @click="heroLang = 'id'" :class="heroLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                        <button type="button" @click="heroLang = 'en'" :class="heroLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                        <button type="button" @click="heroLang = 'de'" :class="heroLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                    </div>
                 </div>
             </div>
 
             <!-- ID Hero Texts -->
             <div x-show="heroLang === 'id'" class="space-y-6">
-                <!-- Hero Badge -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Indonesia)</label>
-                    <input 
-                        type="text" 
-                        name="hero_badge_text" 
-                        value="{{ old('hero_badge_text', $settings['hero_badge_text'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
-                </div>
-
-                <!-- Title Line 1 & Line 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider flex items-center gap-2">
+                        <span>🇮🇩 Headline & Copywriting (Indonesia)</span>
+                    </h4>
+                    <!-- Hero Badge -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Indonesia)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Indonesia)</label>
                         <input 
                             type="text" 
-                            name="hero_title_line1" 
-                            value="{{ old('hero_title_line1', $settings['hero_title_line1'] ?? '') }}"
+                            name="hero_badge_text" 
+                            value="{{ old('hero_badge_text', $settings['hero_badge_text'] ?? '') }}"
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
                     </div>
+
+                    <!-- Title Line 1 & Line 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line1" 
+                                value="{{ old('hero_title_line1', $settings['hero_title_line1'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Gold Accent - Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line2" 
+                                value="{{ old('hero_title_line2', $settings['hero_title_line2'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Subtitle -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Gold Accent - Indonesia)</label>
-                        <input 
-                            type="text" 
-                            name="hero_title_line2" 
-                            value="{{ old('hero_title_line2', $settings['hero_title_line2'] ?? '') }}"
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Indonesia)</label>
+                        <textarea 
+                            name="hero_subtitle" 
+                            rows="3"
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                        >
+                        >{{ old('hero_subtitle', $settings['hero_subtitle'] ?? '') }}</textarea>
                     </div>
                 </div>
 
-                <!-- Subtitle -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Indonesia)</label>
-                    <textarea 
-                        name="hero_subtitle" 
-                        rows="3"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >{{ old('hero_subtitle', $settings['hero_subtitle'] ?? '') }}</textarea>
+                <!-- ID Buttons Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇮🇩 CTA Button Labels (Indonesia)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary Button Label</label>
+                            <input 
+                                type="text" 
+                                name="hero_primary_btn_text" 
+                                value="{{ old('hero_primary_btn_text', $settings['hero_primary_btn_text'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Secondary Button Label</label>
+                            <input 
+                                type="text" 
+                                name="hero_secondary_btn_text" 
+                                value="{{ old('hero_secondary_btn_text', $settings['hero_secondary_btn_text'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (Indonesia)</label>
-                    <input 
-                        type="text" 
-                        name="hero_primary_btn_text" 
-                        value="{{ old('hero_primary_btn_text', $settings['hero_primary_btn_text'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
+                <!-- ID Trust Badges Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇮🇩 Trust Badges / Stats Labels (Indonesia)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 1 Label</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_1_lbl" 
+                                value="{{ old('hero_stat_1_lbl', $settings['hero_stat_1_lbl'] ?? '') }}"
+                                placeholder="Kelulusan Goethe-Zertifikat"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 2 Label</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_2_lbl" 
+                                value="{{ old('hero_stat_2_lbl', $settings['hero_stat_2_lbl'] ?? '') }}"
+                                placeholder="Alumni Studi & Ausbildung"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 3 Label</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_3_lbl" 
+                                value="{{ old('hero_stat_3_lbl', $settings['hero_stat_3_lbl'] ?? '') }}"
+                                placeholder="Pengajar Tersertifikasi"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- EN Hero Texts -->
             <div x-show="heroLang === 'en'" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - English)</label>
-                    <input 
-                        type="text" 
-                        name="hero_badge_text_en" 
-                        value="{{ old('hero_badge_text_en', $settings['hero_badge_text_en'] ?? '') }}"
-                        placeholder="e.g. Official German Language Center & Ausbildung Partner"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider flex items-center gap-2">
+                        <span>🇬🇧 Headline & Copywriting (English)</span>
+                    </h4>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (English)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - English)</label>
                         <input 
                             type="text" 
-                            name="hero_title_line1_en" 
-                            value="{{ old('hero_title_line1_en', $settings['hero_title_line1_en'] ?? '') }}"
-                            placeholder="e.g. Master German Language"
+                            name="hero_badge_text_en" 
+                            value="{{ old('hero_badge_text_en', $settings['hero_badge_text_en'] ?? '') }}"
+                            placeholder="e.g. Official German Language Center & Ausbildung Partner"
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
                     </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line1_en" 
+                                value="{{ old('hero_title_line1_en', $settings['hero_title_line1_en'] ?? '') }}"
+                                placeholder="e.g. Speak German With Confidence"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line2_en" 
+                                value="{{ old('hero_title_line2_en', $settings['hero_title_line2_en'] ?? '') }}"
+                                placeholder="e.g. Unlock Your Career & Study in Germany"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (English)</label>
-                        <input 
-                            type="text" 
-                            name="hero_title_line2_en" 
-                            value="{{ old('hero_title_line2_en', $settings['hero_title_line2_en'] ?? '') }}"
-                            placeholder="e.g. With Confidence & Excellence"
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (English)</label>
+                        <textarea 
+                            name="hero_subtitle_en" 
+                            rows="3"
+                            placeholder="e.g. Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations."
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                        >
+                        >{{ old('hero_subtitle_en', $settings['hero_subtitle_en'] ?? '') }}</textarea>
                     </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (English)</label>
-                    <textarea 
-                        name="hero_subtitle_en" 
-                        rows="3"
-                        placeholder="e.g. Comprehensive German training from A1 to C1 with certified native instructors."
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >{{ old('hero_subtitle_en', $settings['hero_subtitle_en'] ?? '') }}</textarea>
+
+                <!-- EN Buttons Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇬🇧 CTA Button Labels (English)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary Button Label (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_primary_btn_text_en" 
+                                value="{{ old('hero_primary_btn_text_en', $settings['hero_primary_btn_text_en'] ?? '') }}"
+                                placeholder="e.g. Enroll Now"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Secondary Button Label (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_secondary_btn_text_en" 
+                                value="{{ old('hero_secondary_btn_text_en', $settings['hero_secondary_btn_text_en'] ?? '') }}"
+                                placeholder="e.g. Explore Programs"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (English)</label>
-                    <input 
-                        type="text" 
-                        name="hero_primary_btn_text_en" 
-                        value="{{ old('hero_primary_btn_text_en', $settings['hero_primary_btn_text_en'] ?? '') }}"
-                        placeholder="e.g. Enroll Now"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
+
+                <!-- EN Trust Badges Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇬🇧 Trust Badges / Stats Labels (English)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 1 Label (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_1_lbl_en" 
+                                value="{{ old('hero_stat_1_lbl_en', $settings['hero_stat_1_lbl_en'] ?? '') }}"
+                                placeholder="e.g. Goethe Exam Pass Rate"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 2 Label (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_2_lbl_en" 
+                                value="{{ old('hero_stat_2_lbl_en', $settings['hero_stat_2_lbl_en'] ?? '') }}"
+                                placeholder="e.g. Alumni in Germany"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 3 Label (English)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_3_lbl_en" 
+                                value="{{ old('hero_stat_3_lbl_en', $settings['hero_stat_3_lbl_en'] ?? '') }}"
+                                placeholder="e.g. Certified Expert Tutors"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- DE Hero Texts -->
             <div x-show="heroLang === 'de'" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Deutsch)</label>
-                    <input 
-                        type="text" 
-                        name="hero_badge_text_de" 
-                        value="{{ old('hero_badge_text_de', $settings['hero_badge_text_de'] ?? '') }}"
-                        placeholder="z.B. Offizielles Deutsches Sprachzentrum & Ausbildungspartner"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider flex items-center gap-2">
+                        <span>🇩🇪 Headline & Copywriting (Deutsch)</span>
+                    </h4>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Deutsch)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Badge Text (Top Pill - Deutsch)</label>
                         <input 
                             type="text" 
-                            name="hero_title_line1_de" 
-                            value="{{ old('hero_title_line1_de', $settings['hero_title_line1_de'] ?? '') }}"
-                            placeholder="z.B. Deutsch lernen mit Erfolg"
+                            name="hero_badge_text_de" 
+                            value="{{ old('hero_badge_text_de', $settings['hero_badge_text_de'] ?? '') }}"
+                            placeholder="z.B. Offizielles Deutsches Sprachzentrum & Ausbildungspartner"
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
                     </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 1 (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line1_de" 
+                                value="{{ old('hero_title_line1_de', $settings['hero_title_line1_de'] ?? '') }}"
+                                placeholder="z.B. Deutsch sprechen mit Selbstvertrauen"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_title_line2_de" 
+                                value="{{ old('hero_title_line2_de', $settings['hero_title_line2_de'] ?? '') }}"
+                                placeholder="z.B. Ihre Zukunft in Deutschland starten"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Line 2 (Deutsch)</label>
-                        <input 
-                            type="text" 
-                            name="hero_title_line2_de" 
-                            value="{{ old('hero_title_line2_de', $settings['hero_title_line2_de'] ?? '') }}"
-                            placeholder="z.B. Für Ausbildung & Karriere"
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Deutsch)</label>
+                        <textarea 
+                            name="hero_subtitle_de" 
+                            rows="3"
+                            placeholder="z.B. Interaktive Deutschkurse für alle Niveaustufen von A1 bis C1 mit zertifizierten Dozenten und Goethe-Zertifikat Vorbereitung."
                             class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                        >
+                        >{{ old('hero_subtitle_de', $settings['hero_subtitle_de'] ?? '') }}</textarea>
                     </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Hero Subtitle Paragraph (Deutsch)</label>
-                    <textarea 
-                        name="hero_subtitle_de" 
-                        rows="3"
-                        placeholder="z.B. Umfassende Vorbereitung auf Goethe-Zertifikate von A1 bis C1."
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >{{ old('hero_subtitle_de', $settings['hero_subtitle_de'] ?? '') }}</textarea>
+
+                <!-- DE Buttons Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇩🇪 CTA Button Labels (Deutsch)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary Button Label (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_primary_btn_text_de" 
+                                value="{{ old('hero_primary_btn_text_de', $settings['hero_primary_btn_text_de'] ?? '') }}"
+                                placeholder="z.B. Jetzt anmelden"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Secondary Button Label (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_secondary_btn_text_de" 
+                                value="{{ old('hero_secondary_btn_text_de', $settings['hero_secondary_btn_text_de'] ?? '') }}"
+                                placeholder="z.B. Programme entdecken"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Primary CTA Button Label (Deutsch)</label>
-                    <input 
-                        type="text" 
-                        name="hero_primary_btn_text_de" 
-                        value="{{ old('hero_primary_btn_text_de', $settings['hero_primary_btn_text_de'] ?? '') }}"
-                        placeholder="z.B. Jetzt anmelden"
-                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
+
+                <!-- DE Trust Badges Labels -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                    <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇩🇪 Trust Badges / Stats Labels (Deutsch)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 1 Label (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_1_lbl_de" 
+                                value="{{ old('hero_stat_1_lbl_de', $settings['hero_stat_1_lbl_de'] ?? '') }}"
+                                placeholder="z.B. Goethe-Bestehensquote"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 2 Label (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_2_lbl_de" 
+                                value="{{ old('hero_stat_2_lbl_de', $settings['hero_stat_2_lbl_de'] ?? '') }}"
+                                placeholder="z.B. Erfolgreiche Absolventen"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 uppercase mb-1">Badge 3 Label (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="hero_stat_3_lbl_de" 
+                                value="{{ old('hero_stat_3_lbl_de', $settings['hero_stat_3_lbl_de'] ?? '') }}"
+                                placeholder="z.B. Zertifizierte Dozenten"
+                                class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Primary and Secondary Buttons URLs -->
-            <div class="pt-4 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Primary Button URL -->
-                <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                    <span class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">Primary Button Target URL</span>
-                    <input 
-                        type="text" 
-                        name="hero_primary_btn_url" 
-                        value="{{ old('hero_primary_btn_url', $settings['hero_primary_btn_url'] ?? '') }}"
-                        class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >
-                </div>
-
-                <!-- Secondary Button -->
-                <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-4">
-                    <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">Secondary Button (Ghost/Outline)</span>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 uppercase mb-1">Button Label</label>
+            <!-- Primary and Secondary Buttons Targets & URLs (Shared) -->
+            <div class="pt-4 border-t border-white/10 space-y-4">
+                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#E2B842]"></span>
+                    Target URL & Navigasi Tombol (Berlaku untuk semua bahasa)
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Primary Button URL -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
+                        <label class="block text-xs font-bold text-[#E2B842] uppercase tracking-wider">Primary Button Target Link / URL</label>
                         <input 
                             type="text" 
-                            name="hero_secondary_btn_text" 
-                            value="{{ old('hero_secondary_btn_text', $settings['hero_secondary_btn_text'] ?? '') }}"
+                            name="hero_primary_btn_url" 
+                            value="{{ old('hero_primary_btn_url', $settings['hero_primary_btn_url'] ?? '') }}"
+                            placeholder="e.g. #enroll atau /registration"
                             class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
                     </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 uppercase mb-1">Button Link URL / Anchor</label>
+
+                    <!-- Secondary Button URL -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">Secondary Button Target Link / URL</label>
                         <input 
                             type="text" 
                             name="hero_secondary_btn_url" 
                             value="{{ old('hero_secondary_btn_url', $settings['hero_secondary_btn_url'] ?? '') }}"
+                            placeholder="e.g. #programs atau /courses"
                             class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                         >
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Stat Badges Numerical Values (Shared) -->
+            <div class="pt-4 border-t border-white/10 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#E2B842]"></span>
+                        Nilai Angka / Statistik Trust Badges (Shared)
+                    </h4>
+                    <span class="text-[11px] text-slate-400">Label tiap stat dikonfigurasi pada tab bahasa di atas</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
+                        <label class="block text-[11px] text-slate-400 uppercase font-semibold">Stat 1 Nilai Angka</label>
+                        <input type="text" name="hero_stat_1_val" value="{{ old('hero_stat_1_val', $settings['hero_stat_1_val'] ?? '') }}" placeholder="98%" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
+                        <label class="block text-[11px] text-slate-400 uppercase font-semibold">Stat 2 Nilai Angka</label>
+                        <input type="text" name="hero_stat_2_val" value="{{ old('hero_stat_2_val', $settings['hero_stat_2_val'] ?? '') }}" placeholder="1,500+" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]">
+                    </div>
+                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
+                        <label class="block text-[11px] text-slate-400 uppercase font-semibold">Stat 3 Nilai Angka</label>
+                        <input type="text" name="hero_stat_3_val" value="{{ old('hero_stat_3_val', $settings['hero_stat_3_val'] ?? '') }}" placeholder="100%" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]">
                     </div>
                 </div>
             </div>
 
             <!-- Hero Visual Backgrounds & Landmark Graphic -->
-            <div class="pt-4 border-t border-white/5 space-y-4">
-                <h4 class="text-sm font-bold text-white">Hero Visuals & Graphics</h4>
+            <div class="pt-4 border-t border-white/10 space-y-4">
+                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#E2B842]"></span>
+                    Hero Visuals & Graphics
+                </h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Hero Background Image -->
                     <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
@@ -452,28 +703,6 @@
                         @endif
                         <input type="file" name="hero_gate_image" accept="image/*" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E2B842] file:text-[#2C0B1E] hover:file:bg-[#cfa230] cursor-pointer">
                         <p class="text-[11px] text-slate-400">PNG or JPG cutout resting at the hero baseline (Max 4MB).</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3 Stat Badges -->
-            <div class="pt-4 border-t border-white/5 space-y-3">
-                <h4 class="text-sm font-bold text-white">Trust & Achievement Statistics (Floating Cards)</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
-                        <label class="block text-[11px] text-slate-400 uppercase">Stat 1</label>
-                        <input type="text" name="hero_stat_1_val" value="{{ old('hero_stat_1_val', $settings['hero_stat_1_val'] ?? '') }}" placeholder="98%" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        <input type="text" name="hero_stat_1_lbl" value="{{ old('hero_stat_1_lbl', $settings['hero_stat_1_lbl'] ?? '') }}" placeholder="Goethe Pass Rate" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-xs">
-                    </div>
-                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
-                        <label class="block text-[11px] text-slate-400 uppercase">Stat 2</label>
-                        <input type="text" name="hero_stat_2_val" value="{{ old('hero_stat_2_val', $settings['hero_stat_2_val'] ?? '') }}" placeholder="1,500+" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        <input type="text" name="hero_stat_2_lbl" value="{{ old('hero_stat_2_lbl', $settings['hero_stat_2_lbl'] ?? '') }}" placeholder="Alumni in Germany" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-xs">
-                    </div>
-                    <div class="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
-                        <label class="block text-[11px] text-slate-400 uppercase">Stat 3</label>
-                        <input type="text" name="hero_stat_3_val" value="{{ old('hero_stat_3_val', $settings['hero_stat_3_val'] ?? '') }}" placeholder="100%" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm">
-                        <input type="text" name="hero_stat_3_lbl" value="{{ old('hero_stat_3_lbl', $settings['hero_stat_3_lbl'] ?? '') }}" placeholder="Certified Teachers" class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-xs">
                     </div>
                 </div>
             </div>

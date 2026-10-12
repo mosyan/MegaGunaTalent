@@ -104,6 +104,12 @@ class LocalizationTest extends TestCase
             'hero_title_line1' => 'Judul Bahasa Indonesia',
             'hero_title_line1_en' => 'English Hero Title',
             'hero_title_line1_de' => 'Deutscher Hero Titel',
+            'hero_secondary_btn_text' => 'Pelajari Program',
+            'hero_secondary_btn_text_en' => 'Explore Programs',
+            'hero_secondary_btn_text_de' => 'Programme entdecken',
+            'hero_stat_1_lbl' => 'Kelulusan Goethe-Zertifikat',
+            'hero_stat_1_lbl_en' => 'Goethe Exam Pass Rate',
+            'hero_stat_1_lbl_de' => 'Goethe-Bestehensquote',
             'about_hero_title' => 'Judul About ID',
             'about_hero_title_en' => 'About Title EN',
             'about_hero_title_de' => 'About Titel DE',
@@ -117,6 +123,9 @@ class LocalizationTest extends TestCase
 
         $this->assertEquals('English Hero Title', SiteSetting::get('hero_title_line1_en'));
         $this->assertEquals('Deutscher Hero Titel', SiteSetting::get('hero_title_line1_de'));
+        $this->assertEquals('Explore Programs', SiteSetting::get('hero_secondary_btn_text_en'));
+        $this->assertEquals('Programme entdecken', SiteSetting::get('hero_secondary_btn_text_de'));
+        $this->assertEquals('Goethe-Bestehensquote', SiteSetting::get('hero_stat_1_lbl_de'));
         $this->assertEquals('About Title EN', SiteSetting::get('about_hero_title_en'));
         $this->assertEquals('Anfänger Programm', SiteSetting::get('program_1_title_de'));
     }

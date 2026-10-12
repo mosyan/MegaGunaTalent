@@ -4,13 +4,24 @@
 @section('meta_description', 'Engaging German courses for all levels. Learn German with flexible programs, experienced native tutors, and real-world conversations.')
 
 @php
+    $heroBadge = \App\Models\SiteSetting::getLocalized('hero_badge_text', '');
     $heroTitle = \App\Models\SiteSetting::getLocalized('hero_title_line1', 'Speak German With Confidence');
+    $heroTitleLine2 = \App\Models\SiteSetting::getLocalized('hero_title_line2', '');
     $heroSubtitle = \App\Models\SiteSetting::getLocalized('hero_subtitle', 'Engaging German courses for all levels.');
     $heroBtnText = \App\Models\SiteSetting::getLocalized('hero_primary_btn_text', 'Enroll Now');
     $heroBtnUrl = \App\Models\SiteSetting::get('hero_primary_btn_url', '#enroll');
     if ($heroBtnUrl === '#enroll' || $heroBtnUrl === '#programs') {
         $heroBtnUrl = route('enroll');
     }
+    $heroSecondaryBtnText = \App\Models\SiteSetting::getLocalized('hero_secondary_btn_text', '');
+    $heroSecondaryBtnUrl = \App\Models\SiteSetting::get('hero_secondary_btn_url', '#programs');
+
+    $stat1Val = \App\Models\SiteSetting::get('hero_stat_1_val', '');
+    $stat1Lbl = \App\Models\SiteSetting::getLocalized('hero_stat_1_lbl', '');
+    $stat2Val = \App\Models\SiteSetting::get('hero_stat_2_val', '');
+    $stat2Lbl = \App\Models\SiteSetting::getLocalized('hero_stat_2_lbl', '');
+    $stat3Val = \App\Models\SiteSetting::get('hero_stat_3_val', '');
+    $stat3Lbl = \App\Models\SiteSetting::getLocalized('hero_stat_3_lbl', '');
 
     $programsTitle = \App\Models\SiteSetting::getLocalized('programs_title', 'Our Programs');
     $programsSubtitle = \App\Models\SiteSetting::getLocalized('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
@@ -51,19 +62,57 @@
         
         <!-- Center Hero Text & CTA -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center my-auto">
+            @if(!empty($heroBadge))
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#fdc04f]/40 text-[#fdc04f] text-xs sm:text-sm font-bold tracking-widest uppercase mb-6 shadow-lg shadow-black/20 animate-fade-in">
+                    <span class="w-2 h-2 rounded-full bg-[#fdc04f] animate-pulse"></span>
+                    <span>{{ $heroBadge }}</span>
+                </div>
+            @endif
+
             <h1 class="font-yeseva text-white text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] tracking-tight leading-[1.12] drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
                 {{ $heroTitle }}
+                @if(!empty($heroTitleLine2))
+                    <span class="block text-[#fdc04f] mt-1">{{ $heroTitleLine2 }}</span>
+                @endif
             </h1>
 
             <p class="font-arsenal text-white text-xl sm:text-2xl md:text-[1.85rem] max-w-3xl mx-auto mt-6 sm:mt-8 tracking-wide font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
                 {{ $heroSubtitle }}
             </p>
 
-            <div class="mt-8 sm:mt-10">
+            <div class="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                 <a href="{{ $heroBtnUrl }}" class="btn-brand-double">
                     {{ $heroBtnText }}
                 </a>
+                @if(!empty($heroSecondaryBtnText))
+                    <a href="{{ $heroSecondaryBtnUrl }}" class="px-7 py-3.5 sm:px-8 sm:py-4 border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-arsenal font-bold text-base sm:text-lg transition-all duration-300 backdrop-blur-sm bg-black/20">
+                        {{ $heroSecondaryBtnText }}
+                    </a>
+                @endif
             </div>
+
+            @if(!empty($stat1Val) || !empty($stat2Val) || !empty($stat3Val))
+                <div class="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
+                    @if(!empty($stat1Val))
+                        <div class="bg-black/35 backdrop-blur-md border border-[#fdc04f]/30 rounded-xl p-3 sm:p-4 text-center hover:border-[#fdc04f] transition-colors">
+                            <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] drop-shadow-sm">{{ $stat1Val }}</div>
+                            <div class="text-xs sm:text-sm text-white/90 font-arsenal mt-1 font-semibold">{{ $stat1Lbl }}</div>
+                        </div>
+                    @endif
+                    @if(!empty($stat2Val))
+                        <div class="bg-black/35 backdrop-blur-md border border-[#fdc04f]/30 rounded-xl p-3 sm:p-4 text-center hover:border-[#fdc04f] transition-colors">
+                            <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] drop-shadow-sm">{{ $stat2Val }}</div>
+                            <div class="text-xs sm:text-sm text-white/90 font-arsenal mt-1 font-semibold">{{ $stat2Lbl }}</div>
+                        </div>
+                    @endif
+                    @if(!empty($stat3Val))
+                        <div class="bg-black/35 backdrop-blur-md border border-[#fdc04f]/30 rounded-xl p-3 sm:p-4 text-center hover:border-[#fdc04f] transition-colors">
+                            <div class="font-yeseva text-2xl sm:text-3xl text-[#fdc04f] drop-shadow-sm">{{ $stat3Val }}</div>
+                            <div class="text-xs sm:text-sm text-white/90 font-arsenal mt-1 font-semibold">{{ $stat3Lbl }}</div>
+                        </div>
+                    @endif
+                </div>
+            @endif
         </div>
 
         <!-- Brandenburg Gate Landmark Graphic (Positioned resting at bottom border) -->
