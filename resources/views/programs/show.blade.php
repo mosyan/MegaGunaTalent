@@ -409,7 +409,10 @@
                 <a href="{{ route('enroll', ['level' => $program['slug']]) }}" class="btn-brand-double text-lg px-8 py-4">
                     {{ __('Enroll Now & Free Consultation') }}
                 </a>
-                <a href="https://wa.me/6281234567890?text=Halo%20LPK%20Mega%20Guna%20Talent,%20saya%20tertarik%20dengan%20Program%20{{ urlencode($program['title']) }}" 
+                @php
+                    $waProgramUrl = 'https://wa.me/6281327788498?text=' . urlencode("Halo Admin LPK Mega Guna Talent, saya ingin konsultasi program {$program['title']}.");
+                @endphp
+                <a href="{{ $waProgramUrl }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="px-8 py-4 border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-bold transition-all duration-300">

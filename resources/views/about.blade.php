@@ -886,7 +886,7 @@
                     {{ __('Enroll Now') }}
                 </a>
                 @php
-                    $waLink = \App\Models\SiteSetting::get('social_whatsapp', 'https://wa.me/6281234567890');
+                    $waLink = \App\Models\SiteSetting::get('social_whatsapp', 'https://wa.me/6281327788498');
                 @endphp
                 <a href="{{ $waLink }}" target="_blank" rel="noopener noreferrer" 
                    class="px-8 py-3.5 rounded-none border-2 border-[#25D366] bg-[#25D366] text-white hover:bg-[#20ba5a] font-bold transition-all duration-300 flex items-center gap-2 shadow-lg">
