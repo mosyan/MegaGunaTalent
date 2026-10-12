@@ -26,10 +26,24 @@ class DefaultSettingsSeeder extends Seeder
 
             // About Us Section
             ['key' => 'about_hero_badge', 'value' => 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_badge_en', 'value' => 'Official Vocational Training Institute • SKKNI & Goethe Standard', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_badge_de', 'value' => 'Anerkanntes Berufsbildungszentrum • Goethe-Institut Standard', 'group' => 'about', 'type' => 'text'],
+
             ['key' => 'about_hero_title', 'value' => 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_title_en', 'value' => 'Empowering Competent Talents for Global Careers in Germany', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_hero_title_de', 'value' => 'Kompetente Fachkräfte für erfolgreiche Karrieren in Deutschland', 'group' => 'about', 'type' => 'text'],
+
             ['key' => 'about_hero_subtitle', 'value' => 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_hero_subtitle_en', 'value' => 'LPK Mega Guna Talent is an accredited vocational institute committed to forging Indonesian youth through international-standard German language mastery, solid professional work ethics, and modern immersive learning environments.', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_hero_subtitle_de', 'value' => 'LPK Mega Guna Talent ist eine akkreditierte Ausbildungsstätte, die junge indonesische Talente gezielt auf Ausbildung, Studium und qualifizierte Berufe in Deutschland vorbereitet – mit intensivem Sprachunterricht und praxisnaher Arbeitskultur.', 'group' => 'about', 'type' => 'textarea'],
+
             ['key' => 'about_visi', 'value' => 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_visi_en', 'value' => 'To be the foremost vocational training institute cultivating globally competitive human resources aligned with national and international professional standards.', 'group' => 'about', 'type' => 'textarea'],
+            ['key' => 'about_visi_de', 'value' => 'Ein führendes Institut für berufliche Bildung zu sein, das hochqualifizierte Fachkräfte nach nationalen und internationalen Kompetenzstandards ausbildet.', 'group' => 'about', 'type' => 'textarea'],
+
             ['key' => 'about_operating_hours', 'value' => 'Senin - Sabtu: 08:30 - 17:00 WIB', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_operating_hours_en', 'value' => 'Monday - Saturday: 08:30 AM - 05:00 PM (WIB)', 'group' => 'about', 'type' => 'text'],
+            ['key' => 'about_operating_hours_de', 'value' => 'Montag - Samstag: 08:30 - 17:00 Uhr (WIB)', 'group' => 'about', 'type' => 'text'],
 
             // Hero Section
             ['key' => 'hero_badge_text', 'value' => 'Lembaga Kursus Resmi & Mitra Persiapan Ausbildung Jerman', 'group' => 'hero', 'type' => 'text'],
@@ -73,19 +87,41 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'hero_stat_3_lbl_en', 'value' => 'Certified Expert Tutors', 'group' => 'hero', 'type' => 'text'],
             ['key' => 'hero_stat_3_lbl_de', 'value' => 'Zertifizierte Dozenten', 'group' => 'hero', 'type' => 'text'],
 
-            // Programs Section
-            ['key' => 'programs_badge', 'value' => 'OUR FLAGSHIP PROGRAMS', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'programs_title', 'value' => 'Our Programs', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'programs_subtitle', 'value' => 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.', 'group' => 'programs', 'type' => 'textarea'],
-            ['key' => 'program_1_title', 'value' => 'Beginner', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'program_1_desc', 'value' => 'Focus on practical communication skills for travelers and those new to the language.', 'group' => 'programs', 'type' => 'textarea'],
-            ['key' => 'program_2_title', 'value' => 'Intermediate', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'program_2_desc', 'value' => 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.', 'group' => 'programs', 'type' => 'textarea'],
-            ['key' => 'program_3_title', 'value' => 'Advanced', 'group' => 'programs', 'type' => 'text'],
-            ['key' => 'program_3_desc', 'value' => 'Tailored for those needing German in their careers, focusing on business or technical German.', 'group' => 'programs', 'type' => 'textarea'],
+            // Programs Section - Main Heading
+            ['key' => 'programs_badge', 'value' => 'PROGRAM UNGGULAN KAMI', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_badge_en', 'value' => 'OUR FLAGSHIP PROGRAMS', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_badge_de', 'value' => 'UNSERE SPITZENPROGRAMME', 'group' => 'programs', 'type' => 'text'],
 
-            // Program Details: Beginner
-            ['key' => 'program_beginner_title', 'value' => 'Beginner German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_title', 'value' => 'Program Kursus & Jalur Persiapan', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_title_en', 'value' => 'Comprehensive Language Pathways', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'programs_title_de', 'value' => 'Gezielte Deutschkurse & Bildungspfade', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'programs_subtitle', 'value' => 'Kurikulum terstruktur dirancang sistematis dari fondasi percakapan hingga kemandirian bahasa untuk studi dan karier profesional di Jerman.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'programs_subtitle_en', 'value' => 'Structured curriculum designed systematically from basic conversation to fluent professional proficiency for your studies and career in Germany.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'programs_subtitle_de', 'value' => 'Strukturierte Lehrpläne von den Grundlagen bis zur berufsbezogenen Sprachkompetenz für Studium und duale Ausbildung in Deutschland.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_1_title', 'value' => 'Beginner', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_1_title_en', 'value' => 'Beginner (A1 - A2)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_1_title_de', 'value' => 'Grundstufe (A1 - A2)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_1_desc', 'value' => 'Focus on practical communication skills for travelers and those new to the language.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_1_desc_en', 'value' => 'Practical foundational skills for beginners and travel readiness.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_1_desc_de', 'value' => 'Praktische Grundkenntnisse für Anfänger und Alltagssituationen.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_2_title', 'value' => 'Intermediate', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_2_title_en', 'value' => 'Intermediate (B1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_2_title_de', 'value' => 'Mittelstufe (B1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_2_desc', 'value' => 'Building upon basic grammar, expanding vocabulary, and developing conversational fluency.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_2_desc_en', 'value' => 'Independent language competence essential for Ausbildung vocational training.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_2_desc_de', 'value' => 'Selbstständige Sprachverwendung für Ausbildung und Berufsleben.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_3_title', 'value' => 'Advanced', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_3_title_en', 'value' => 'Advanced (B2 - C1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_3_title_de', 'value' => 'Oberstufe (B2 - C1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_3_desc', 'value' => 'Tailored for those needing German in their careers, focusing on business or technical German.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_3_desc_en', 'value' => 'Specialized technical and business German for university and medical careers.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_3_desc_de', 'value' => 'Fach- und Wirtschaftssprache für Akademiker, Ärzte und Ingenieure.', 'group' => 'programs', 'type' => 'textarea'],
+
+            // Program Details: Beginner (A1 - A2)
             ['key' => 'program_beginner_level', 'value' => 'A1 - A2 (CEFR)', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_beginner_badge', 'value' => 'Fondasi & Percakapan Harian', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_beginner_duration', 'value' => '10 - 12 Minggu', 'group' => 'programs', 'type' => 'text'],
@@ -94,8 +130,23 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'program_beginner_schedule', 'value' => 'Senin - Jumat (09:00 - 13:00 WIB) / Pilihan Kelas Malam', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_beginner_target_exam', 'value' => 'Goethe-Zertifikat A1 & A2', 'group' => 'programs', 'type' => 'text'],
 
-            // Program Details: Intermediate
-            ['key' => 'program_intermediate_title', 'value' => 'Intermediate German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_title', 'value' => 'Beginner German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_title_en', 'value' => 'Beginner German Program (A1 - A2)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_title_de', 'value' => 'Deutsch Grundstufe (A1 - A2)', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_beginner_tagline', 'value' => 'Kuasai Dasar Bahasa Jerman dari Nol Hingga Mampu Berkomunikasi Sehari-hari dan Lulus Sertifikasi Goethe A1/A2.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_tagline_en', 'value' => 'Master German fundamentals from scratch to fluent everyday conversation and certified Goethe A1/A2 qualification.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_tagline_de', 'value' => 'Deutsche Grundlagen von Null auf lernen: Sichere Alltagskommunikation und erfolgreicher Goethe-A1/A2-Abschluss.', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_beginner_description', 'value' => 'Program Beginner dirancang khusus bagi peserta yang belum pernah mempelajari bahasa Jerman sama sekali. Menggunakan metode pembelajaran interaktif berbasis SKKNI dan standar Goethe-Institut, peserta akan dibimbing mulai dari pelafalan presisi (Aussprache), kosakata esensial, struktur tata bahasa dasar (Akkusativ & Dativ), hingga simulasi percakapan nyata untuk kehidupan sehari-hari, perjalanan, dan persiapan awal studi di Jerman.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_beginner_description_en', 'value' => 'Tailored for learners with zero prior knowledge. Guided by certified instructors using CEFR benchmarks, you master proper pronunciation, essential vocabulary, sentence syntax (Accusative/Dative), and real-life dialogue simulations for living and studying in Germany.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_beginner_description_de', 'value' => 'Speziell für Anfänger ohne Vorkenntnisse entwickelt. Schrittweise Vermittlung von exakter Aussprache, Grundwortschatz, Grammatikstrukturen und lebendigen Dialogübungen nach offiziellen Standards des Goethe-Instituts.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_beginner_career_path', 'value' => 'Lulusan level ini memiliki pondasi kuat untuk melanjutkan ke level Intermediate B1 (syarat utama Ausbildung), serta memenuhi syarat administratif dasar program Au Pair dan visa tertentu ke Jerman.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_career_path_en', 'value' => 'Provides the indispensable prerequisite foundation for Intermediate B1 (Ausbildung entry), Au Pair placements, and early academic preparation.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_beginner_career_path_de', 'value' => 'Solide Basis für den direkten Übergang zur Mittelstufe B1 sowie Erfüllung der Sprachanforderungen für Au-Pair und Orientierungsvisa.', 'group' => 'programs', 'type' => 'text'],
+
+            // Program Details: Intermediate (B1)
             ['key' => 'program_intermediate_level', 'value' => 'B1 (CEFR)', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_intermediate_badge', 'value' => 'Pintu Gerbang Utama Ausbildung Jerman', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_intermediate_duration', 'value' => '12 Minggu', 'group' => 'programs', 'type' => 'text'],
@@ -104,8 +155,23 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'program_intermediate_schedule', 'value' => 'Senin - Jumat (08:30 - 13:00 WIB)', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_intermediate_target_exam', 'value' => 'Goethe-Zertifikat B1 (4 Modul)', 'group' => 'programs', 'type' => 'text'],
 
-            // Program Details: Advanced
-            ['key' => 'program_advanced_title', 'value' => 'Advanced German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_title', 'value' => 'Intermediate German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_title_en', 'value' => 'Intermediate German Program (B1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_title_de', 'value' => 'Deutsch Mittelstufe (B1)', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_intermediate_tagline', 'value' => 'Kunci Kelulusan Goethe-Zertifikat B1 Sebagai Syarat Mutlak Visa Ausbildung, Studi Vokasi, dan Karier di Jerman.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_tagline_en', 'value' => 'Your definitive stepping stone to Goethe B1 certification, mandatory for vocational Ausbildung and work visas in Germany.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_tagline_de', 'value' => 'Der entscheidende Meilenstein zum Goethe-Zertifikat B1 – Pflichtvoraussetzung für die duale Ausbildung in Deutschland.', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_intermediate_description', 'value' => 'Program Intermediate difokuskan untuk mencapai tingkat kemandirian berbahasa Jerman (Selbstständige Sprachverwendung). Level B1 adalah syarat wajib paling krusial bagi calon peserta program Ausbildung (perhotelan, keperawatan/Pflege, teknik/Mechatronik, gastronomi, dll.) di Jerman. Di level ini, peserta dilatih berdiskusi, memahami teks berita, menyusun argumentasi formal, serta menguasai struktur gramatikal lanjutan seperti kalimat pasif (Passiv), Konjunktiv II, dan klausa bawahan (Nebensätze).', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_intermediate_description_en', 'value' => 'Focused on independent language proficiency (CEFR B1). Trainees master complex grammar (Passive voice, Subjunctive II, subordinate clauses), workplace terminology, interview readiness, and intensive drill in all 4 exam modules (Reading, Listening, Writing, Speaking).', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_intermediate_description_de', 'value' => 'Fokus auf selbstständige Sprachverwendung. Umfassende Vorbereitung auf alle vier Prüfungsmodule (Lesen, Hören, Schreiben, Sprechen) mit berufsbezogener Fachsprache für Pflege, Gastronomie und Handwerk.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_intermediate_career_path', 'value' => 'Sertifikat Goethe B1 adalah dokumen resmi utama yang diakui Kedutaan Besar Jerman di Jakarta untuk penerbitan visa Ausbildung, visa mencari pelatihan kerja, dan visa studi persiapan.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_career_path_en', 'value' => 'The official key required by the German Embassy for issuing dual vocational training (Ausbildung) visas in healthcare, engineering, IT, and hospitality.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_intermediate_career_path_de', 'value' => 'Vollständige Erfüllung der Visakriterien der Deutschen Botschaft für die Einreise zur dualen Ausbildung und Fachkräfteweiterbildung.', 'group' => 'programs', 'type' => 'text'],
+
+            // Program Details: Advanced (B2 - C1)
             ['key' => 'program_advanced_level', 'value' => 'B2 - C1 (CEFR)', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_advanced_badge', 'value' => 'Profisiensi Karier & Akademik', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_advanced_duration', 'value' => '12 - 14 Minggu', 'group' => 'programs', 'type' => 'text'],
@@ -113,6 +179,22 @@ class DefaultSettingsSeeder extends Seeder
             ['key' => 'program_advanced_class_size', 'value' => 'Maksimal 12 Siswa / Kelas (Fokus & Presisi)', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_advanced_schedule', 'value' => 'Senin - Jumat / Kelas Spesialisasi Fleksibel', 'group' => 'programs', 'type' => 'text'],
             ['key' => 'program_advanced_target_exam', 'value' => 'Goethe-Zertifikat B2/C1 & TestDaF', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_advanced_title', 'value' => 'Advanced German Program', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_title_en', 'value' => 'Advanced German Program (B2 - C1)', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_title_de', 'value' => 'Deutsch Oberstufe (B2 - C1)', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_advanced_tagline', 'value' => 'Kecakapan Bahasa Tingkat Tinggi untuk Jalur Karier Profesional, Bahasa Khusus (Fachsprache), dan Studi Universitas di Jerman.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_tagline_en', 'value' => 'Superior professional fluency, specialized technical German (Fachsprache), and direct entrance to German universities.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_tagline_de', 'value' => 'Höchste Sprachkompetenz für Fachkräfte, Mediziner, Wirtschaftsdeutsch und universitäres Studium in Deutschland.', 'group' => 'programs', 'type' => 'text'],
+
+            ['key' => 'program_advanced_description', 'value' => 'Program Advanced dirancang untuk profesional, dokter, perawat ahli, insinyur, dan calon mahasiswa master/doktoral yang memerlukan kemahiran bahasa Jerman tingkat lanjut. Fokus pembelajaran mencakup bahasa teknis dan bisnis (Wirtschaftsdeutsch & Fachsprache), retorika presentasi, penulisan laporan ilmiah, negosiasi kontrak, serta pemahaman mendalam tentang teks kompleks abstrak dan teknis.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_advanced_description_en', 'value' => 'Designed for qualified doctors, nurses, engineers, and graduate researchers. Focuses on advanced discourse, technical academic writing, medical terminology, negotiation rhetoric, and rigorous TestDaF / Goethe B2-C1 preparation.', 'group' => 'programs', 'type' => 'textarea'],
+            ['key' => 'program_advanced_description_de', 'value' => 'Gezielt konzipiert für Akademiker, Ärzte, Ingenieure und Masterstudierende. Schwerpunkte: Fachsprache, wissenschaftliches Schreiben, Verhandlungsführung und zielgerichtetes Training für TestDaF sowie Goethe B2/C1.', 'group' => 'programs', 'type' => 'textarea'],
+
+            ['key' => 'program_advanced_career_path', 'value' => 'Sertifikasi B2/C1 membuka akses langsung ke pasar kerja profesional berpenghasilan tinggi di Jerman, izin praktik profesi kesehatan, dan penerimaan universitas negeri ternama di Jerman.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_career_path_en', 'value' => 'Unlocks high-salary professional employment in Germany, medical professional licensing (Approbation), and direct admission to German public universities.', 'group' => 'programs', 'type' => 'text'],
+            ['key' => 'program_advanced_career_path_de', 'value' => 'Berechtigt zur ärztlichen Approbation, direkter Arbeitsaufnahme in deutschen Spitzenunternehmen sowie uneingeschränkter Hochschulzulassung.', 'group' => 'programs', 'type' => 'text'],
 
             // CTA Section
             ['key' => 'cta_badge', 'value' => 'FAST-TRACK YOUR JOURNEY', 'group' => 'cta', 'type' => 'text'],

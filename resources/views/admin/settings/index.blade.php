@@ -709,47 +709,187 @@
         </div>
 
         <!-- TAB: Programs Section -->
-        <div x-show="currentTab === 'programs'" x-data="{ progLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                    Course Programs Heading & Cards Customizer
-                </h3>
-                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
-                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
-                    <button type="button" @click="progLang = 'id'" :class="progLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
-                    <button type="button" @click="progLang = 'en'" :class="progLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
-                    <button type="button" @click="progLang = 'de'" :class="progLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+        <div x-show="currentTab === 'programs'" x-data="{ 
+            progLang: 'id',
+            generateProgramPresets() {
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks Heading & Kartu Program untuk 3 Bahasa (ID, EN, DE)?')) return;
+                const presets = {
+                    programs_badge: 'PROGRAM UNGGULAN KAMI',
+                    programs_title: 'Program Kursus & Jalur Persiapan',
+                    programs_subtitle: 'Kurikulum terstruktur dirancang sistematis dari fondasi percakapan hingga kemandirian bahasa untuk studi dan karier profesional di Jerman.',
+                    program_beginner_title: 'Beginner German Program',
+                    program_beginner_tagline: 'Kuasai Dasar Bahasa Jerman dari Nol Hingga Mampu Berkomunikasi Sehari-hari dan Lulus Sertifikasi Goethe A1/A2.',
+                    program_beginner_description: 'Program Beginner dirancang khusus bagi peserta yang belum pernah mempelajari bahasa Jerman sama sekali. Menggunakan metode pembelajaran interaktif berbasis SKKNI dan standar Goethe-Institut, peserta akan dibimbing mulai dari pelafalan presisi (Aussprache), kosakata esensial, struktur tata bahasa dasar (Akkusativ & Dativ), hingga simulasi percakapan nyata untuk kehidupan sehari-hari, perjalanan, dan persiapan awal studi di Jerman.',
+                    program_beginner_career_path: 'Lulusan level ini memiliki pondasi kuat untuk melanjutkan ke level Intermediate B1 (syarat utama Ausbildung), serta memenuhi syarat administratif dasar program Au Pair dan visa tertentu ke Jerman.',
+                    program_intermediate_title: 'Intermediate German Program',
+                    program_intermediate_tagline: 'Kunci Kelulusan Goethe-Zertifikat B1 Sebagai Syarat Mutlak Visa Ausbildung, Studi Vokasi, dan Karier di Jerman.',
+                    program_intermediate_description: 'Program Intermediate difokuskan untuk mencapai tingkat kemandirian berbahasa Jerman (Selbstständige Sprachverwendung). Level B1 adalah syarat wajib paling krusial bagi calon peserta program Ausbildung (perhotelan, keperawatan/Pflege, teknik/Mechatronik, gastronomi, dll.) di Jerman. Di level ini, peserta dilatih berdiskusi, memahami teks berita, menyusun argumentasi formal, serta menguasai struktur gramatikal lanjutan seperti kalimat pasif (Passiv), Konjunktiv II, dan klausa bawahan (Nebensätze).',
+                    program_intermediate_career_path: 'Sertifikat Goethe B1 adalah dokumen resmi utama yang diakui Kedutaan Besar Jerman di Jakarta untuk penerbitan visa Ausbildung, visa mencari pelatihan kerja, dan visa studi persiapan.',
+                    program_advanced_title: 'Advanced German Program',
+                    program_advanced_tagline: 'Kecakapan Bahasa Tingkat Tinggi untuk Jalur Karier Profesional, Bahasa Khusus (Fachsprache), dan Studi Universitas di Jerman.',
+                    program_advanced_description: 'Program Advanced dirancang untuk profesional, dokter, perawat ahli, insinyur, dan calon mahasiswa master/doktoral yang memerlukan kemahiran bahasa Jerman tingkat lanjut. Fokus pembelajaran mencakup bahasa teknis dan bisnis (Wirtschaftsdeutsch & Fachsprache), retorika presentasi, penulisan laporan ilmiah, negosiasi kontrak, serta pemahaman mendalam tentang teks kompleks abstrak dan teknis.',
+                    program_advanced_career_path: 'Sertifikasi B2/C1 membuka akses langsung ke pasar kerja profesional berpenghasilan tinggi di Jerman, izin praktik profesi kesehatan, dan penerimaan universitas negeri ternama di Jerman.',
+
+                    programs_badge_en: 'OUR FLAGSHIP PROGRAMS',
+                    programs_title_en: 'Comprehensive Language Pathways',
+                    programs_subtitle_en: 'Structured curriculum designed systematically from basic conversation to fluent professional proficiency for your studies and career in Germany.',
+                    program_beginner_title_en: 'Beginner German Program (A1 - A2)',
+                    program_beginner_tagline_en: 'Master German fundamentals from scratch to fluent everyday conversation and certified Goethe A1/A2 qualification.',
+                    program_beginner_description_en: 'Tailored for learners with zero prior knowledge. Guided by certified instructors using CEFR benchmarks, you master proper pronunciation, essential vocabulary, sentence syntax (Accusative/Dative), and real-life dialogue simulations for living and studying in Germany.',
+                    program_beginner_career_path_en: 'Provides the indispensable prerequisite foundation for Intermediate B1 (Ausbildung entry), Au Pair placements, and early academic preparation.',
+                    program_intermediate_title_en: 'Intermediate German Program (B1)',
+                    program_intermediate_tagline_en: 'Your definitive stepping stone to Goethe B1 certification, mandatory for vocational Ausbildung and work visas in Germany.',
+                    program_intermediate_description_en: 'Focused on independent language proficiency (CEFR B1). Trainees master complex grammar (Passive voice, Subjunctive II, subordinate clauses), workplace terminology, interview readiness, and intensive drill in all 4 exam modules (Reading, Listening, Writing, Speaking).',
+                    program_intermediate_career_path_en: 'The official key required by the German Embassy for issuing dual vocational training (Ausbildung) visas in healthcare, engineering, IT, and hospitality.',
+                    program_advanced_title_en: 'Advanced German Program (B2 - C1)',
+                    program_advanced_tagline_en: 'Superior professional fluency, specialized technical German (Fachsprache), and direct entrance to German universities.',
+                    program_advanced_description_en: 'Designed for qualified doctors, nurses, engineers, and graduate researchers. Focuses on advanced discourse, technical academic writing, medical terminology, negotiation rhetoric, and rigorous TestDaF / Goethe B2-C1 preparation.',
+                    program_advanced_career_path_en: 'Unlocks high-salary professional employment in Germany, medical professional licensing (Approbation), and direct admission to German public universities.',
+
+                    programs_badge_de: 'UNSERE SPITZENPROGRAMME',
+                    programs_title_de: 'Gezielte Deutschkurse & Bildungspfade',
+                    programs_subtitle_de: 'Strukturierte Lehrpläne von den Grundlagen bis zur berufsbezogenen Sprachkompetenz für Studium und duale Ausbildung in Deutschland.',
+                    program_beginner_title_de: 'Deutsch Grundstufe (A1 - A2)',
+                    program_beginner_tagline_de: 'Deutsche Grundlagen von Null auf lernen: Sichere Alltagskommunikation und erfolgreicher Goethe-A1/A2-Abschluss.',
+                    program_beginner_description_de: 'Speziell für Anfänger ohne Vorkenntnisse entwickelt. Schrittweise Vermittlung von exakter Aussprache, Grundwortschatz, Grammatikstrukturen und lebendigen Dialogübungen nach offiziellen Standards des Goethe-Instituts.',
+                    program_beginner_career_path_de: 'Solide Basis für den direkten Übergang zur Mittelstufe B1 sowie Erfüllung der Sprachanforderungen für Au-Pair und Orientierungsvisa.',
+                    program_intermediate_title_de: 'Deutsch Mittelstufe (B1)',
+                    program_intermediate_tagline_de: 'Der entscheidende Meilenstein zum Goethe-Zertifikat B1 – Pflichtvoraussetzung für die duale Ausbildung in Deutschland.',
+                    program_intermediate_description_de: 'Fokus auf selbstständige Sprachverwendung. Umfassende Vorbereitung auf alle vier Prüfungsmodule (Lesen, Hören, Schreiben, Sprechen) mit berufsbezogener Fachsprache für Pflege, Gastronomie und Handwerk.',
+                    program_intermediate_career_path_de: 'Vollständige Erfüllung der Visakriterien der Deutschen Botschaft für die Einreise zur dualen Ausbildung und Fachkräfteweiterbildung.',
+                    program_advanced_title_de: 'Deutsch Oberstufe (B2 - C1)',
+                    program_advanced_tagline_de: 'Höchste Sprachkompetenz für Fachkräfte, Mediziner, Wirtschaftsdeutsch und universitäres Studium in Deutschland.',
+                    program_advanced_description_de: 'Gezielt konzipiert für Akademiker, Ärzte, Ingenieure und Masterstudierende. Schwerpunkte: Fachsprache, wissenschaftliches Schreiben, Verhandlungsführung und zielgerichtetes Training für TestDaF sowie Goethe B2/C1.',
+                    program_advanced_career_path_de: 'Berechtigt zur ärztlichen Approbation, direkter Arbeitsaufnahme in deutschen Spitzenunternehmen sowie uneingeschränkter Hochschulzulassung.'
+                };
+                for (const [key, val] of Object.entries(presets)) {
+                    const el = document.querySelector(`[name='${key}']`);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input'));
+                    }
+                }
+            }
+        }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                        Course Programs Heading & Cards Customizer
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Konfigurasi lengkap heading dan detail kurikulum untuk 3 tingkatan program dalam bahasa Indonesia, English, dan Deutsch.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" @click="generateProgramPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>✨ Generate Rekomendasi 3 Bahasa</span>
+                    </button>
+                    <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                        <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                        <button type="button" @click="progLang = 'id'" :class="progLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                        <button type="button" @click="progLang = 'en'" :class="progLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                        <button type="button" @click="progLang = 'de'" :class="progLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                    </div>
                 </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Badge</label>
-                <input 
-                    type="text" 
-                    name="programs_badge" 
-                    value="{{ old('programs_badge', $settings['programs_badge'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
+            <!-- ID Programs Main Heading -->
+            <div x-show="progLang === 'id'" class="space-y-4 bg-white/5 border border-white/10 rounded-xl p-5">
+                <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇮🇩 Section Header (Indonesia)</h4>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Badge</label>
+                    <input 
+                        type="text" 
+                        name="programs_badge" 
+                        value="{{ old('programs_badge', $settings['programs_badge'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Main Section Title</label>
+                    <input 
+                        type="text" 
+                        name="programs_title" 
+                        value="{{ old('programs_title', $settings['programs_title'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Description</label>
+                    <textarea 
+                        name="programs_subtitle" 
+                        rows="2"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('programs_subtitle', $settings['programs_subtitle'] ?? '') }}</textarea>
+                </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Main Section Title</label>
-                <input 
-                    type="text" 
-                    name="programs_title" 
-                    value="{{ old('programs_title', $settings['programs_title'] ?? '') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
+            <!-- EN Programs Main Heading -->
+            <div x-show="progLang === 'en'" class="space-y-4 bg-white/5 border border-white/10 rounded-xl p-5">
+                <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇬🇧 Section Header (English)</h4>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Badge (English)</label>
+                    <input 
+                        type="text" 
+                        name="programs_badge_en" 
+                        value="{{ old('programs_badge_en', $settings['programs_badge_en'] ?? '') }}"
+                        placeholder="e.g. OUR FLAGSHIP PROGRAMS"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Main Section Title (English)</label>
+                    <input 
+                        type="text" 
+                        name="programs_title_en" 
+                        value="{{ old('programs_title_en', $settings['programs_title_en'] ?? '') }}"
+                        placeholder="e.g. Comprehensive Language Pathways"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Description (English)</label>
+                    <textarea 
+                        name="programs_subtitle_en" 
+                        rows="2"
+                        placeholder="e.g. Structured curriculum designed systematically from basic conversation to fluent professional proficiency."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('programs_subtitle_en', $settings['programs_subtitle_en'] ?? '') }}</textarea>
+                </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Description</label>
-                <textarea 
-                    name="programs_subtitle" 
-                    rows="2"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >{{ old('programs_subtitle', $settings['programs_subtitle'] ?? '') }}</textarea>
+            <!-- DE Programs Main Heading -->
+            <div x-show="progLang === 'de'" class="space-y-4 bg-white/5 border border-white/10 rounded-xl p-5">
+                <h4 class="text-xs font-bold text-[#E2B842] uppercase tracking-wider">🇩🇪 Section Header (Deutsch)</h4>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Badge (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="programs_badge_de" 
+                        value="{{ old('programs_badge_de', $settings['programs_badge_de'] ?? '') }}"
+                        placeholder="z.B. UNSERE SPITZENPROGRAMME"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Main Section Title (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="programs_title_de" 
+                        value="{{ old('programs_title_de', $settings['programs_title_de'] ?? '') }}"
+                        placeholder="z.B. Gezielte Deutschkurse & Bildungspfade"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Section Description (Deutsch)</label>
+                    <textarea 
+                        name="programs_subtitle_de" 
+                        rows="2"
+                        placeholder="z.B. Strukturierte Lehrpläne von den Grundlagen bis zur berufsbezogenen Sprachkompetenz für Studium und Ausbildung."
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >{{ old('programs_subtitle_de', $settings['programs_subtitle_de'] ?? '') }}</textarea>
+                </div>
             </div>
 
             <!-- DETAIL PROGRAM 1: BEGINNER (A1 - A2) -->
@@ -1251,17 +1391,57 @@
                 </div>
             </div>
         <!-- TAB: About Us Page -->
-        <div x-show="currentTab === 'about'" x-data="{ aboutLang: 'id' }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
-                    About Us Page Content & Institutional Information
-                </h3>
-                <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
-                    <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
-                    <button type="button" @click="aboutLang = 'id'" :class="aboutLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
-                    <button type="button" @click="aboutLang = 'en'" :class="aboutLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
-                    <button type="button" @click="aboutLang = 'de'" :class="aboutLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+        <div x-show="currentTab === 'about'" x-data="{ 
+            aboutLang: 'id',
+            generateAboutPresets() {
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks About Us untuk 3 Bahasa (ID, EN, DE)?')) return;
+                const presets = {
+                    about_hero_badge: 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard',
+                    about_hero_title: 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman',
+                    about_hero_subtitle: 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.',
+                    about_visi: 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional',
+                    about_operating_hours: 'Senin - Sabtu: 08:30 - 17:00 WIB',
+
+                    about_hero_badge_en: 'Official Vocational Training Institute • SKKNI & Goethe Standard',
+                    about_hero_title_en: 'Empowering Competent Talents for Global Careers in Germany',
+                    about_hero_subtitle_en: 'LPK Mega Guna Talent is an accredited vocational institute committed to forging Indonesian youth through international-standard German language mastery, solid professional work ethics, and modern immersive learning environments.',
+                    about_visi_en: 'To be the foremost vocational training institute cultivating globally competitive human resources aligned with national and international professional standards.',
+                    about_operating_hours_en: 'Monday - Saturday: 08:30 AM - 05:00 PM (WIB)',
+
+                    about_hero_badge_de: 'Anerkanntes Berufsbildungszentrum • Goethe-Institut Standard',
+                    about_hero_title_de: 'Kompetente Fachkräfte für erfolgreiche Karrieren in Deutschland',
+                    about_hero_subtitle_de: 'LPK Mega Guna Talent ist eine akkreditierte Ausbildungsstätte, die junge indonesische Talente gezielt auf Ausbildung, Studium und qualifizierte Berufe in Deutschland vorbereitet – mit intensivem Sprachunterricht und praxisnaher Arbeitskultur.',
+                    about_visi_de: 'Ein führendes Institut für berufliche Bildung zu sein, das hochqualifizierte Fachkräfte nach nationalen und internationalen Kompetenzstandards ausbildet.',
+                    about_operating_hours_de: 'Montag - Samstag: 08:30 - 17:00 Uhr (WIB)'
+                };
+                for (const [key, val] of Object.entries(presets)) {
+                    const el = document.querySelector(`[name='${key}']`);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input'));
+                    }
+                }
+            }
+        }" class="bg-[#240919] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
+                        About Us Page Content & Institutional Information
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Kelola narasi institusional, visi lembaga, dan profil operasional dalam bahasa Indonesia, English, dan Deutsch.</p>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" @click="generateAboutPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>✨ Generate Rekomendasi 3 Bahasa</span>
+                    </button>
+                    <div class="flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/10 shrink-0">
+                        <span class="text-[11px] text-slate-400 font-semibold px-2">Bahasa:</span>
+                        <button type="button" @click="aboutLang = 'id'" :class="aboutLang === 'id' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇮🇩 ID (Utama)</button>
+                        <button type="button" @click="aboutLang = 'en'" :class="aboutLang === 'en' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇬🇧 EN</button>
+                        <button type="button" @click="aboutLang = 'de'" :class="aboutLang === 'de' ? 'bg-[#E2B842] text-[#2C0B1E] font-bold shadow' : 'text-slate-300 hover:text-white'" class="px-2.5 py-1 rounded-lg text-xs transition-all cursor-pointer">🇩🇪 DE</button>
+                    </div>
                 </div>
             </div>
 
@@ -1273,7 +1453,7 @@
                     <input 
                         type="text" 
                         name="about_hero_badge" 
-                        value="{{ old('about_hero_badge', $settings['about_hero_badge'] ?? 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard') }}"
+                        value="{{ old('about_hero_badge', $settings['about_hero_badge'] ?? '') }}"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >
                 </div>
@@ -1284,7 +1464,7 @@
                     <input 
                         type="text" 
                         name="about_hero_title" 
-                        value="{{ old('about_hero_title', $settings['about_hero_title'] ?? 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman') }}"
+                        value="{{ old('about_hero_title', $settings['about_hero_title'] ?? '') }}"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >
                 </div>
@@ -1296,7 +1476,7 @@
                         name="about_hero_subtitle" 
                         rows="3"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >{{ old('about_hero_subtitle', $settings['about_hero_subtitle'] ?? 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.') }}</textarea>
+                    >{{ old('about_hero_subtitle', $settings['about_hero_subtitle'] ?? '') }}</textarea>
                 </div>
 
                 <!-- Visi Utama -->
@@ -1306,7 +1486,18 @@
                         name="about_visi" 
                         rows="3"
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                    >{{ old('about_visi', $settings['about_visi'] ?? 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}</textarea>
+                    >{{ old('about_visi', $settings['about_visi'] ?? '') }}</textarea>
+                </div>
+
+                <!-- Jam Operasional ID -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Jam Operasional Kampus (Indonesia)</label>
+                    <input 
+                        type="text" 
+                        name="about_operating_hours" 
+                        value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? '') }}"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
                 </div>
             </div>
 
@@ -1350,6 +1541,16 @@
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >{{ old('about_visi_en', $settings['about_visi_en'] ?? '') }}</textarea>
                 </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Operating Hours (English)</label>
+                    <input 
+                        type="text" 
+                        name="about_operating_hours_en" 
+                        value="{{ old('about_operating_hours_en', $settings['about_operating_hours_en'] ?? '') }}"
+                        placeholder="e.g. Monday - Saturday: 08:30 AM - 05:00 PM (WIB)"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
             </div>
 
             <!-- DE About Inputs -->
@@ -1392,17 +1593,16 @@
                         class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
                     >{{ old('about_visi_de', $settings['about_visi_de'] ?? '') }}</textarea>
                 </div>
-            </div>
-
-            <!-- Jam Operasional -->
-            <div class="pt-4 border-t border-white/5">
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Jam Operasional Kampus</label>
-                <input 
-                    type="text" 
-                    name="about_operating_hours" 
-                    value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? 'Senin - Sabtu: 08:30 - 17:00 WIB') }}"
-                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
-                >
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Öffnungszeiten (Deutsch)</label>
+                    <input 
+                        type="text" 
+                        name="about_operating_hours_de" 
+                        value="{{ old('about_operating_hours_de', $settings['about_operating_hours_de'] ?? '') }}"
+                        placeholder="z.B. Montag - Samstag: 08:30 - 17:00 Uhr (WIB)"
+                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]"
+                    >
+                </div>
             </div>
         </div>
 

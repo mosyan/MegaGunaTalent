@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\SiteSetting;
 use App\Models\User;
+use Database\Seeders\DefaultSettingsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -178,5 +179,26 @@ class LocalizationTest extends TestCase
 
         $response->assertRedirect();
         $response->assertSessionHas('success', 'Vielen Dank! Wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen.');
+    }
+
+    public function test_default_settings_seeder_populates_multilingual_data(): void
+    {
+        $this->seed(DefaultSettingsSeeder::class);
+
+        // Verify About Us
+        $this->assertNotEmpty(SiteSetting::get('about_hero_title_en'));
+        $this->assertNotEmpty(SiteSetting::get('about_hero_title_de'));
+        $this->assertNotEmpty(SiteSetting::get('about_operating_hours_de'));
+
+        // Verify Hero
+        $this->assertNotEmpty(SiteSetting::get('hero_title_line1_en'));
+        $this->assertNotEmpty(SiteSetting::get('hero_title_line1_de'));
+        $this->assertNotEmpty(SiteSetting::get('hero_stat_1_lbl_de'));
+
+        // Verify Programs
+        $this->assertNotEmpty(SiteSetting::get('programs_badge_en'));
+        $this->assertNotEmpty(SiteSetting::get('program_beginner_title_de'));
+        $this->assertNotEmpty(SiteSetting::get('program_intermediate_tagline_en'));
+        $this->assertNotEmpty(SiteSetting::get('program_advanced_description_de'));
     }
 }

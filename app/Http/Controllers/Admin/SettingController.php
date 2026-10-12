@@ -52,6 +52,8 @@ class SettingController extends Controller
             'about_visi_en' => ['nullable', 'string'],
             'about_visi_de' => ['nullable', 'string'],
             'about_operating_hours' => ['nullable', 'string', 'max:255'],
+            'about_operating_hours_en' => ['nullable', 'string', 'max:255'],
+            'about_operating_hours_de' => ['nullable', 'string', 'max:255'],
 
             // Hero Section
             'hero_badge_text' => ['nullable', 'string', 'max:255'],
@@ -89,6 +91,8 @@ class SettingController extends Controller
 
             // Programs Section - General & Home Cards
             'programs_badge' => ['nullable', 'string', 'max:255'],
+            'programs_badge_en' => ['nullable', 'string', 'max:255'],
+            'programs_badge_de' => ['nullable', 'string', 'max:255'],
             'programs_title' => ['nullable', 'string', 'max:255'],
             'programs_title_en' => ['nullable', 'string', 'max:255'],
             'programs_title_de' => ['nullable', 'string', 'max:255'],

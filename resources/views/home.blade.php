@@ -23,8 +23,9 @@
     $stat3Val = \App\Models\SiteSetting::get('hero_stat_3_val', '');
     $stat3Lbl = \App\Models\SiteSetting::getLocalized('hero_stat_3_lbl', '');
 
-    $programsTitle = \App\Models\SiteSetting::getLocalized('programs_title', 'Our Programs');
-    $programsSubtitle = \App\Models\SiteSetting::getLocalized('programs_subtitle', 'Learn German at your own pace with our flexible programs, including online courses, in-person classes, and private tutoring.');
+    $programsBadge = \App\Models\SiteSetting::getLocalized('programs_badge', 'PROGRAM UNGGULAN KAMI');
+    $programsTitle = \App\Models\SiteSetting::getLocalized('programs_title', 'Program Kursus & Jalur Persiapan');
+    $programsSubtitle = \App\Models\SiteSetting::getLocalized('programs_subtitle', 'Kurikulum terstruktur dirancang sistematis dari fondasi percakapan hingga kemandirian bahasa untuk studi dan karier profesional di Jerman.');
 
     $prog1Title = \App\Models\SiteSetting::getLocalized('program_1_title', 'Beginner');
     $prog1Desc = \App\Models\SiteSetting::getLocalized('program_1_desc', 'Focus on practical communication skills for travelers and those new to the language.');
@@ -131,6 +132,12 @@
             
             <!-- Section Header -->
             <div class="text-center max-w-4xl mx-auto">
+                @if(!empty($programsBadge))
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#321f47]/10 border border-[#321f47]/20 text-[#321f47] text-xs font-bold tracking-widest uppercase mb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#321f47]"></span>
+                        <span>{{ $programsBadge }}</span>
+                    </div>
+                @endif
                 <h2 class="font-yeseva text-3xl sm:text-5xl md:text-6xl tracking-tight text-[#321f47]">
                     {{ $programsTitle }}
                 </h2>
