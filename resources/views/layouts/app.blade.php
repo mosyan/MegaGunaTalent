@@ -413,7 +413,7 @@
         id="wa-floating-widget"
         class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
 
-        <!-- Interactive WhatsApp Chat Card Popup -->
+        <!-- Interactive WhatsApp Chat Card Popup (Clean White Theme) -->
         <div x-show="isOpen"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 translate-y-6 scale-95"
@@ -421,13 +421,13 @@
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 translate-y-0 scale-100"
              x-transition:leave-end="opacity-0 translate-y-6 scale-95"
-             class="mb-4 w-[calc(100vw-2.5rem)] max-w-[370px] sm:w-[380px] bg-[#1a0f26]/95 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden flex flex-col origin-bottom-right"
+             class="mb-4 w-[calc(100vw-2.5rem)] max-w-[370px] sm:w-[380px] bg-white border border-slate-200/90 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.18)] overflow-hidden flex flex-col origin-bottom-right"
              role="dialog"
              aria-modal="true"
              aria-label="{{ __('Chat via WhatsApp') }}">
 
             <!-- WhatsApp Header -->
-            <div class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 p-4 sm:p-5 text-white flex items-center justify-between shadow-md relative overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 sm:p-5 text-white flex items-center justify-between shadow-xs relative overflow-hidden">
                 <!-- Decorative background WhatsApp watermark -->
                 <div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
                     <svg class="w-28 h-28 fill-current" viewBox="0 0 24 24">
@@ -442,12 +442,12 @@
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                             </svg>
                         </div>
-                        <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-emerald-700 absolute -bottom-0.5 -right-0.5 animate-pulse"></span>
+                        <span class="w-3.5 h-3.5 rounded-full bg-emerald-300 border-2 border-emerald-700 absolute -bottom-0.5 -right-0.5 animate-pulse"></span>
                     </div>
                     <div>
                         <h4 class="font-bold text-white text-sm sm:text-base leading-tight font-arsenal">LPK Mega Guna Talent</h4>
                         <p class="text-[11px] sm:text-xs text-emerald-100 flex items-center gap-1.5 font-lato mt-0.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-300 inline-block animate-ping"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-200 inline-block animate-ping"></span>
                             <span>{{ __('Customer Support • Online') }}</span>
                         </p>
                     </div>
@@ -455,7 +455,7 @@
 
                 <button type="button" 
                         @click="isOpen = false" 
-                        class="w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white flex items-center justify-center transition-all cursor-pointer relative z-10" 
+                        class="w-8 h-8 rounded-full bg-black/15 hover:bg-black/25 text-white flex items-center justify-center transition-all cursor-pointer relative z-10" 
                         aria-label="Tutup Form WhatsApp">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
@@ -463,28 +463,28 @@
                 </button>
             </div>
 
-            <!-- WhatsApp Body & Interactive Form -->
-            <div class="p-4 sm:p-5 space-y-3.5 bg-[#1b0d26]">
+            <!-- WhatsApp Body & Interactive Form (Clean White & Slate Layout) -->
+            <div class="p-4 sm:p-5 space-y-3.5 bg-slate-50">
                 <!-- Chat Bubble Greetings -->
-                <div class="bg-black/35 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 shadow-md space-y-1">
-                    <div class="flex items-center justify-between text-[11px] text-[#fdc04f] font-bold">
-                        <span>Admin Mega Guna Talent</span>
-                        <span class="text-white/40 font-mono text-[10px]" x-text="currentTime">Online</span>
+                <div class="bg-white border border-slate-200/90 rounded-2xl rounded-tl-sm p-3.5 shadow-xs space-y-1">
+                    <div class="flex items-center justify-between text-[11px] font-bold">
+                        <span class="text-emerald-700">Admin Mega Guna Talent</span>
+                        <span class="text-slate-400 font-mono text-[10px]" x-text="currentTime">Online</span>
                     </div>
-                    <p class="text-xs text-white/90 leading-relaxed font-lato">
+                    <p class="text-xs text-slate-700 leading-relaxed font-lato">
                         {{ __('Halo! 👋 Ada yang bisa kami bantu seputar program kursus bahasa Jerman atau info Ausbildung? Silakan isi nama dan pesan Anda di bawah:') }}
                     </p>
                 </div>
 
                 <!-- Quick Topic Selector Pills -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                    <button type="button" @click="selectTopic('Info Kursus Bahasa Jerman (A1-B1)')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
+                    <button type="button" @click="selectTopic('Info Kursus Bahasa Jerman (A1-B1)')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400 text-[11px] text-slate-700 hover:text-emerald-700 font-medium shadow-xs transition-all cursor-pointer">
                         🇩🇪 Kursus A1-B1
                     </button>
-                    <button type="button" @click="selectTopic('Persiapan Program Ausbildung Jerman')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
+                    <button type="button" @click="selectTopic('Persiapan Program Ausbildung Jerman')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400 text-[11px] text-slate-700 hover:text-emerald-700 font-medium shadow-xs transition-all cursor-pointer">
                         🎓 Ausbildung
                     </button>
-                    <button type="button" @click="selectTopic('Konsultasi Jadwal & Biaya Kursus')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-[11px] text-[#fdc04f] hover:text-white transition-all cursor-pointer">
+                    <button type="button" @click="selectTopic('Konsultasi Jadwal & Biaya Kursus')" class="px-2.5 py-1 rounded-full bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-400 text-[11px] text-slate-700 hover:text-emerald-700 font-medium shadow-xs transition-all cursor-pointer">
                         📅 Jadwal & Biaya
                     </button>
                 </div>
@@ -492,8 +492,8 @@
                 <!-- Input Form -->
                 <form @submit.prevent="sendWhatsApp()" class="space-y-3 pt-1">
                     <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
-                            {{ __('Nama Lengkap') }} <span class="text-[#fdc04f]">*</span>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
+                            {{ __('Nama Lengkap') }} <span class="text-emerald-600">*</span>
                         </label>
                         <div class="relative">
                             <input type="text" 
@@ -501,33 +501,33 @@
                                    required
                                    autocomplete="name"
                                    placeholder="Contoh: Budi Santoso" 
-                                   class="w-full pl-9 pr-3 py-2.5 bg-black/45 border border-white/15 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all">
-                            <svg class="w-4 h-4 text-white/50 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   class="w-full pl-9 pr-3 py-2.5 bg-white border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 rounded-xl text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none transition-all shadow-xs">
+                            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">
-                            {{ __('Pesan / Pertanyaan') }} <span class="text-[#fdc04f]">*</span>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
+                            {{ __('Pesan / Pertanyaan') }} <span class="text-emerald-600">*</span>
                         </label>
                         <textarea x-model="message"
                                   rows="3" 
                                   required
                                   placeholder="Tuliskan pertanyaan atau rencana studi/karier Anda..." 
-                                  class="w-full px-3 py-2.5 bg-black/45 border border-white/15 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 rounded-xl text-white text-xs placeholder:text-white/40 focus:outline-none transition-all resize-none"></textarea>
+                                  class="w-full px-3 py-2.5 bg-white border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 rounded-xl text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none transition-all resize-none shadow-xs"></textarea>
                     </div>
 
-                    <div x-show="errorMessage" x-cloak class="text-[11px] text-rose-300 bg-rose-500/20 border border-rose-500/30 rounded-xl p-2.5 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div x-show="errorMessage" x-cloak class="text-[11px] text-rose-700 bg-rose-50 border border-rose-200 rounded-xl p-2.5 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-rose-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         <span x-text="errorMessage"></span>
                     </div>
 
                     <button type="submit" 
-                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold text-xs shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold text-xs shadow-md shadow-emerald-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
                         <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                         </svg>
@@ -538,8 +538,8 @@
                     </button>
                 </form>
 
-                <p class="text-[10px] text-center text-white/50 font-lato pt-1">
-                    {{ __('Terhubung langsung ke WhatsApp Admin Resmi') }}: <span class="text-emerald-400 font-mono font-bold tracking-wider">0813-2778-8498</span>
+                <p class="text-[10px] text-center text-slate-500 font-lato pt-1">
+                    {{ __('Terhubung langsung ke WhatsApp Admin Resmi') }}: <span class="text-emerald-600 font-mono font-bold tracking-wider">0813-2778-8498</span>
                 </p>
             </div>
         </div>
