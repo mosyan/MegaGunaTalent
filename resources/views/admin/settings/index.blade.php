@@ -1600,30 +1600,342 @@
                 </div>
             </div>
         </div>
-        <!-- TAB: About Us Page -->
+                <!-- TAB: About Us Page -->
         <div x-show="currentTab === 'about'" x-data="{ 
             aboutLang: 'id',
             generateAboutPresets() {
-                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks About Us untuk 3 Bahasa (ID, EN, DE)?')) return;
+                if (!confirm('Apakah Anda ingin mengisi otomatis rekomendasi teks lengkap About Us untuk 3 Bahasa (ID, EN, DE)?')) return;
                 const presets = {
-                    about_hero_badge: 'LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard',
-                    about_hero_title: 'Membangun Generasi Kompeten & Siap Berkarier Global di Jerman',
-                    about_hero_subtitle: 'LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.',
-                    about_visi: 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional',
-                    about_operating_hours: 'Senin - Sabtu: 08:30 - 17:00 WIB',
-
-                    about_hero_badge_en: 'Official Vocational Training Institute • SKKNI & Goethe Standard',
-                    about_hero_title_en: 'Empowering Competent Talents for Global Careers in Germany',
-                    about_hero_subtitle_en: 'LPK Mega Guna Talent is an accredited vocational institute committed to forging Indonesian youth through international-standard German language mastery, solid professional work ethics, and modern immersive learning environments.',
-                    about_visi_en: 'To be the foremost vocational training institute cultivating globally competitive human resources aligned with national and international professional standards.',
-                    about_operating_hours_en: 'Monday - Saturday: 08:30 AM - 05:00 PM (WIB)',
-
-                    about_hero_badge_de: 'Anerkanntes Berufsbildungszentrum • Goethe-Institut Standard',
-                    about_hero_title_de: 'Kompetente Fachkräfte für erfolgreiche Karrieren in Deutschland',
-                    about_hero_subtitle_de: 'LPK Mega Guna Talent ist eine akkreditierte Ausbildungsstätte, die junge indonesische Talente gezielt auf Ausbildung, Studium und qualifizierte Berufe in Deutschland vorbereitet – mit intensivem Sprachunterricht und praxisnaher Arbeitskultur.',
-                    about_visi_de: 'Ein führendes Institut für berufliche Bildung zu sein, das hochqualifizierte Fachkräfte nach nationalen und internationalen Kompetenzstandards ausbildet.',
-                    about_operating_hours_de: 'Montag - Samstag: 08:30 - 17:00 Uhr (WIB)'
-                };
+                    "about_hero_badge": "LPK Resmi Kemnaker RI • SKKNI & Goethe-Institut Standard",
+                    "about_hero_title": "Membangun Generasi Kompeten & Siap Berkarier Global di Jerman",
+                    "about_hero_subtitle": "LPK Mega Guna Talent adalah Lembaga Pelatihan Kerja terakreditasi yang berdedikasi menempa talenta muda Indonesia dengan penguasaan bahasa Jerman berstandar internasional, penguatan etos kerja profesional, dan fasilitas pembelajaran modern.",
+                    "about_visi": "Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional",
+                    "about_operating_hours": "Senin - Sabtu: 08:30 - 17:00 WIB",
+                    "about_hero_badge_en": "Official Vocational Training Institute • SKKNI & Goethe Standard",
+                    "about_hero_badge_de": "Anerkanntes Berufsbildungszentrum • Goethe-Institut Standard",
+                    "about_hero_title_en": "Empowering Competent Talents for Global Careers in Germany",
+                    "about_hero_title_de": "Kompetente Fachkräfte für erfolgreiche Karrieren in Deutschland",
+                    "about_hero_subtitle_en": "LPK Mega Guna Talent is an accredited vocational institute committed to forging Indonesian youth through international-standard German language mastery, solid professional work ethics, and modern immersive learning environments.",
+                    "about_hero_subtitle_de": "LPK Mega Guna Talent ist eine akkreditierte Ausbildungsstätte, die junge indonesische Talente gezielt auf Ausbildung, Studium und qualifizierte Berufe in Deutschland vorbereitet – mit intensivem Sprachunterricht und praxisnaher Arbeitskultur.",
+                    "about_visi_en": "To be the foremost vocational training institute cultivating globally competitive human resources aligned with national and international professional standards.",
+                    "about_visi_de": "Ein führendes Institut für berufliche Bildung zu sein, das hochqualifizierte Fachkräfte nach nationalen und internationalen Kompetenzstandards ausbildet.",
+                    "about_operating_hours_en": "Monday - Saturday: 08:30 AM - 05:00 PM (WIB)",
+                    "about_operating_hours_de": "Montag - Samstag: 08:30 - 17:00 Uhr (WIB)",
+                    "about_metric_1_val": "240+",
+                    "about_metric_1_val_en": "240+",
+                    "about_metric_1_val_de": "240+",
+                    "about_metric_1_lbl": "Kapasitas Siswa / Tahun",
+                    "about_metric_1_lbl_en": "Student Capacity / Year",
+                    "about_metric_1_lbl_de": "Teilnehmerkapazität / Jahr",
+                    "about_metric_1_sub": "4 Batch Intensif @ 60 Siswa",
+                    "about_metric_1_sub_en": "4 Intensive Batches @ 60 Students",
+                    "about_metric_1_sub_de": "4 Intensivkohorten @ 60 Schüler",
+                    "about_metric_2_val": "3 Ruang",
+                    "about_metric_2_val_en": "3 Labs",
+                    "about_metric_2_val_de": "3 Räume",
+                    "about_metric_2_lbl": "Kelas Multimedia Representatif",
+                    "about_metric_2_lbl_en": "Representative Multimedia Classrooms",
+                    "about_metric_2_lbl_de": "Moderne Multimediaklassen",
+                    "about_metric_2_sub": "AC, Smart Audio, Proyektor",
+                    "about_metric_2_sub_en": "AC, Smart Audio, Interactive Projectors",
+                    "about_metric_2_sub_de": "Klimatisiert, Smart-Audio, Beamer",
+                    "about_metric_3_val": "100%",
+                    "about_metric_3_val_en": "100%",
+                    "about_metric_3_val_de": "100%",
+                    "about_metric_3_lbl": "Standar SKKNI & Goethe",
+                    "about_metric_3_lbl_en": "SKKNI & Goethe Standards",
+                    "about_metric_3_lbl_de": "SKKNI & Goethe-Institut Standard",
+                    "about_metric_3_sub": "Level A1, A2 hingga B1",
+                    "about_metric_3_sub_en": "Levels A1, A2 through B1",
+                    "about_metric_3_sub_de": "Stufen A1, A2 bis B1",
+                    "about_metric_4_val": "Bekasi",
+                    "about_metric_4_val_en": "Bekasi",
+                    "about_metric_4_val_de": "Bekasi",
+                    "about_metric_4_lbl": "Lokasi Villa Galaxy",
+                    "about_metric_4_lbl_en": "Villa Galaxy Location",
+                    "about_metric_4_lbl_de": "Standort Villa Galaxy",
+                    "about_metric_4_sub": "Akses Strategis & Nyaman",
+                    "about_metric_4_sub_en": "Strategic & Comfortable Access",
+                    "about_metric_4_sub_de": "Zentral & Erstklassig erreichbar",
+                    "about_story_badge": "Sekilas Tentang Kami",
+                    "about_story_badge_en": "About Our Institution",
+                    "about_story_badge_de": "Über Unser Institut",
+                    "about_story_title": "Dedikasi Penuh untuk Pelatihan Kerja & Penguasaan Bahasa Asing Berkualitas",
+                    "about_story_title_en": "Dedicated to High-Quality Vocational Training & German Language Mastery",
+                    "about_story_title_de": "Hingabe für erstklassige Berufsausbildung & deutsche Sprachkompetenz",
+                    "about_story_p1": "LPK Mega Guna Talent didirikan dengan tekad kuat untuk menjembatani generasi muda Indonesia dalam meraih kesempatan emas berkarier dan menempuh pendidikan vokasi (Ausbildung) di Republik Federal Jerman.",
+                    "about_story_p1_en": "LPK Mega Guna Talent was established with a resolute mission to bridge Indonesian youth toward golden career and vocational training (Ausbildung) opportunities in the Federal Republic of Germany.",
+                    "about_story_p1_de": "LPK Mega Guna Talent wurde mit der festen Vision gegründet, junge indonesische Talente mit erstklassigen Karriere- und dualen Ausbildungschancen in der Bundesrepublik Deutschland zu verbinden.",
+                    "about_story_p2": "Berlokasi di kawasan prestisius Villa Galaxy, Bekasi Selatan, lembaga kami dirancang khusus dengan fasilitas gedung modern berkapasitas ratusan peserta didik. Kami memadukan pendekatan kurikulum interaktif berbasis SKKNI (Standar Kompetensi Kerja Nasional Indonesia) dan silabus sertifikasi internasional Goethe-Institut (CEFR).",
+                    "about_story_p2_en": "Located in the prestigious Villa Galaxy area of South Bekasi, our facility is purposefully built with modern infrastructure accommodating hundreds of learners. We blend an interactive curriculum based on Indonesian National Work Competency Standards (SKKNI) with international Goethe-Institut (CEFR) certification syllabi.",
+                    "about_story_p2_de": "Im renommierten Viertel Villa Galaxy in Süd-Bekasi gelegen, verfügt unser Institut über moderne Räumlichkeiten für hunderte Lernende. Wir vereinen praxisnahe Lehrpläne nach nationalen indonesischen Standards (SKKNI) mit internationalen Prüfungsrichtlinien des Goethe-Instituts (GER).",
+                    "about_story_p3": "Bukan sekadar mengajarkan tata bahasa, kami menanamkan kedisiplinan, pemahaman lintas budaya (Interkulturelle Kompetenz), etos kerja presisi, dan simulasi kehidupan nyata di Jerman agar setiap siswa berangkat dengan kepercayaan diri penuh.",
+                    "about_story_p3_en": "Beyond language mechanics, we instill strict discipline, intercultural competence, precision work ethics, and authentic living simulations in Germany so each graduate embarks with unwavering confidence.",
+                    "about_story_p3_de": "Über reine Grammatik hinaus vermitteln wir Arbeitsdisziplin, interkulturelle Kompetenz, deutsche Arbeitsethik und authentische Alltagssimulationen für einen optimalen und selbstsicheren Start in Deutschland.",
+                    "about_story_h1_title": "Berizin Resmi",
+                    "about_story_h1_title_en": "Fully Licensed",
+                    "about_story_h1_title_de": "Staatlich Zugelassen",
+                    "about_story_h1_desc": "Sesuai UU Ketenagakerjaan No. 13/2003 & regulasi vokasi Kemnaker RI.",
+                    "about_story_h1_desc_en": "Compliant with Labor Law No. 13/2003 & Ministry of Manpower vocational directives.",
+                    "about_story_h1_desc_de": "Gemäß Arbeitsgesetz Nr. 13/2003 und Richtlinien des indonesischen Arbeitsministeriums.",
+                    "about_story_h2_title": "Instruktur Bersertifikat",
+                    "about_story_h2_title_en": "Certified Instructors",
+                    "about_story_h2_title_de": "Zertifizierte Dozenten",
+                    "about_story_h2_desc": "Mentor lulusan internasional dengan sertifikasi kompetensi resmi BNSP & Goethe.",
+                    "about_story_h2_desc_en": "Internationally trained educators with certified BNSP & Goethe qualifications.",
+                    "about_story_h2_desc_de": "International erfahrene Lehrkräfte mit offizieller BNSP- und Goethe-Zertifizierung.",
+                    "about_campus_tag": "Gedung Kampus Utama",
+                    "about_campus_tag_en": "Main Campus Facility",
+                    "about_campus_tag_de": "Hauptcampus Gebäude",
+                    "about_campus_title": "LPK Mega Guna Talent",
+                    "about_campus_title_en": "LPK Mega Guna Talent",
+                    "about_campus_title_de": "LPK Mega Guna Talent",
+                    "about_campus_desc": "Jln Boulevard Raya A1 No. 16 Villa Galaxy, Jaka Setia, Bekasi Selatan.",
+                    "about_campus_desc_en": "Jln Boulevard Raya A1 No. 16 Villa Galaxy, Jaka Setia, South Bekasi.",
+                    "about_campus_desc_de": "Jln Boulevard Raya A1 No. 16 Villa Galaxy, Jaka Setia, Süd-Bekasi.",
+                    "about_campus_env_tag": "Lingkungan Belajar",
+                    "about_campus_env_tag_en": "Learning Environment",
+                    "about_campus_env_tag_de": "Lernumgebung",
+                    "about_campus_env_desc": "Eksklusif, kondusif, dan dilengkapi sarana multimedia mutakhir.",
+                    "about_campus_env_desc_en": "Exclusive, highly conducive, and outfitted with cutting-edge multimedia.",
+                    "about_campus_env_desc_de": "Exklusiv, lernfördernd und mit modernster Multimediatechnik ausgestattet.",
+                    "about_mv_badge": "Arah & Fondasi Lembaga",
+                    "about_mv_badge_en": "Institutional Foundation",
+                    "about_mv_badge_de": "Leitbild & Fundament",
+                    "about_mv_title": "Visi & Misi Strategis",
+                    "about_mv_title_en": "Strategic Vision & Mission",
+                    "about_mv_title_de": "Strategische Vision & Mission",
+                    "about_mv_subtitle": "Komitmen teguh LPK Mega Guna Talent dalam mewujudkan standar kompetensi kerja berkualitas tinggi yang diakui di panggung global.",
+                    "about_mv_subtitle_en": "LPK Mega Guna Talent's steadfast commitment to delivering high-caliber professional competencies recognized across the globe.",
+                    "about_mv_subtitle_de": "Unser klares Bekenntnis zu erstklassigen Ausbildungsstandards, die international und in Deutschland höchste Anerkennung finden.",
+                    "about_visi_badge": "Visi Utama Lembaga",
+                    "about_visi_badge_en": "Our Primary Vision",
+                    "about_visi_badge_de": "Unsere Zentrale Vision",
+                    "about_visi_author": "— Ditetapkan oleh Dewan Pembina & Manajemen LPK Mega Guna Talent",
+                    "about_visi_author_en": "— Established by the Advisory Board & Executive Management of LPK Mega Guna Talent",
+                    "about_visi_author_de": "— Beschlossen durch das Kuratorium und die Geschäftsführung von LPK Mega Guna Talent",
+                    "about_mission_title": "7 Pilar Misi & Rencana Strategis",
+                    "about_mission_title_en": "7 Strategic Mission Pillars",
+                    "about_mission_title_de": "7 Strategische Säulen & Leitlinien",
+                    "about_mission_subtitle": "Pedoman operasional penyelenggaraan pelatihan kerja di LPK Mega Guna Talent",
+                    "about_mission_subtitle_en": "Operational blueprint guiding vocational training and educational delivery at LPK Mega Guna Talent",
+                    "about_mission_subtitle_de": "Operative Leitlinien für die ganzheitliche Berufsausbildung am LPK Mega Guna Talent",
+                    "about_mission_1_title": "Regulasi Pelatihan PBK",
+                    "about_mission_1_title_en": "Competency-Based Training (PBK)",
+                    "about_mission_1_title_de": "Kompetenzbasierte Ausbildung",
+                    "about_mission_1_desc": "Menyelenggarakan pelatihan kerja berbasis kompetensi (PBK) yang patuh dan selaras dengan regulasi Kementerian Ketenagakerjaan Republik Indonesia.",
+                    "about_mission_1_desc_en": "Delivering competency-based vocational training strictly aligned with regulations of the Ministry of Manpower of the Republic of Indonesia.",
+                    "about_mission_1_desc_de": "Durchführung kompetenzbasierter Berufsbildung in voller Übereinstimmung mit den gesetzlichen Vorgaben des indonesischen Arbeitsministeriums.",
+                    "about_mission_1_tag": "Kemnaker Standard",
+                    "about_mission_1_tag_en": "Kemnaker Standard",
+                    "about_mission_1_tag_de": "Ministeriumstandard",
+                    "about_mission_2_title": "Kurikulum Standar Industri",
+                    "about_mission_2_title_en": "Industry-Standard Curriculum",
+                    "about_mission_2_title_de": "Industrienaher Lehrplan",
+                    "about_mission_2_desc": "Mengembangkan kurikulum berstandar industri dan silabus resmi Goethe-Institut e.V. untuk menjamin relevansi keterampilan siswa.",
+                    "about_mission_2_desc_en": "Designing industry-aligned curricula and official Goethe-Institut e.V. syllabi ensuring direct market relevance.",
+                    "about_mission_2_desc_de": "Entwicklung praxisnaher Lehrpläne nach offiziellen Vorgaben des Goethe-Instituts zur Gewährleistung höchster Relevanz.",
+                    "about_mission_2_tag": "Goethe & CEFR Aligned",
+                    "about_mission_2_tag_en": "Goethe & CEFR Aligned",
+                    "about_mission_2_tag_de": "Goethe & GER Konform",
+                    "about_mission_3_title": "Instruktur Bersertifikasi BNSP",
+                    "about_mission_3_title_en": "BNSP-Certified Instructors",
+                    "about_mission_3_title_de": "Zertifizierte Ausbilder",
+                    "about_mission_3_desc": "Meningkatkan kapasitas tenaga pelatih profesional yang memiliki sertifikat kompetensi metodologi pelatihan dan bahasa Jerman tingkat tinggi.",
+                    "about_mission_3_desc_en": "Empowering licensed professional educators certified in teaching methodology and advanced German fluency.",
+                    "about_mission_3_desc_de": "Förderung qualifizierter Lehrkräfte mit staatlich zertifizierter Fachdidaktik und exzellenten Deutschkenntnissen.",
+                    "about_mission_3_tag": "Certified Mentorship",
+                    "about_mission_3_tag_en": "Certified Mentorship",
+                    "about_mission_3_tag_de": "Zertifiziertes Mentoring",
+                    "about_mission_4_title": "Sarana Multimedia Modern",
+                    "about_mission_4_title_en": "Smart Multimedia Facilities",
+                    "about_mission_4_title_de": "Moderne Medienausstattung",
+                    "about_mission_4_desc": "Menyediakan sarana dan prasarana multimedia interaktif berteknologi tinggi untuk menghadirkan pengalaman belajar yang imersif dan efektif.",
+                    "about_mission_4_desc_en": "Providing high-tech interactive multimedia infrastructure to deliver immersive and effective educational experiences.",
+                    "about_mission_4_desc_de": "Bereitstellung moderner interaktiver Multimediatechnik für ein immersives und hocheffizientes Lernerlebnis.",
+                    "about_mission_4_tag": "Smart Interactive Lab",
+                    "about_mission_4_tag_en": "Smart Interactive Lab",
+                    "about_mission_4_tag_de": "Interaktives Sprachlabor",
+                    "about_mission_5_title": "Manajemen Mutu Terpadu",
+                    "about_mission_5_title_en": "Total Quality Management",
+                    "about_mission_5_title_de": "Integriertes Qualitätsmanagement",
+                    "about_mission_5_desc": "Mengimplementasikan sistem manajemen penjaminan mutu dan tata kelola digital terintegrasi demi transparansi proses pembelajaran.",
+                    "about_mission_5_desc_en": "Implementing comprehensive quality assurance and digital governance systems ensuring educational transparency.",
+                    "about_mission_5_desc_de": "Umsetzung digitaler Qualitätssicherungssysteme für transparente und überprüfbare Bildungsprozesse.",
+                    "about_mission_5_tag": "Quality Assurance",
+                    "about_mission_5_tag_en": "Quality Assurance",
+                    "about_mission_5_tag_de": "Qualitätssicherung",
+                    "about_mission_6_title": "Kemitraan Penempatan & GNIK",
+                    "about_mission_6_title_en": "Placement Partnerships & GNIK",
+                    "about_mission_6_title_de": "Ausbildungspartnerschaften & GNIK",
+                    "about_mission_6_desc": "Membangun kemitraan strategis penempatan kerja vokasi di Jerman (Ausbildung) serta mendukung penuh Gerakan Nasional Indonesia Kompeten.",
+                    "about_mission_6_desc_en": "Forging strategic bilateral placement partnerships for vocational training in Germany while advancing national workforce competencies.",
+                    "about_mission_6_desc_de": "Aufbau strategischer Kooperationen für die duale Ausbildung in Deutschland und aktive Förderung nationaler Fachkräfte.",
+                    "about_mission_6_tag": "Global Career Network",
+                    "about_mission_6_tag_en": "Global Career Network",
+                    "about_mission_6_tag_de": "Internationales Karrierenetz",
+                    "about_team_badge": "Kepemimpinan & Tenaga Pengajar",
+                    "about_team_badge_en": "Leadership & Educators",
+                    "about_team_badge_de": "Führung & Lehrkörper",
+                    "about_team_title": "Struktur Manajemen & Mentor",
+                    "about_team_title_en": "Management Structure & Mentors",
+                    "about_team_title_de": "Institutsleitung & Dozententeam",
+                    "about_team_subtitle": "Dipimpin oleh para profesional berwawasan global yang berdedikasi mengantarkan setiap siswa meraih masa depan cemerlang di Jerman.",
+                    "about_team_subtitle_en": "Led by globally minded professionals committed to guiding every student toward a luminous future in Germany.",
+                    "about_team_subtitle_de": "Geleitet von international erfahrenen Führungskräften, die jeden Teilnehmer auf seinem Erfolgsweg nach Deutschland begleiten.",
+                    "about_team_1_name": "Moses Pasande",
+                    "about_team_1_role": "Kepala LPK & Founder",
+                    "about_team_1_role_en": "Head of Institution & Founder",
+                    "about_team_1_role_de": "Institutsleiter & Gründer",
+                    "about_team_1_subrole": "Founder & Head of Institution",
+                    "about_team_1_subrole_en": "Founder & Head of Institution",
+                    "about_team_1_subrole_de": "Gründer & Gesamtleiter",
+                    "about_team_1_bio": "Pemimpin visioner dalam ekosistem pelatihan vokasi internasional. Berkomitmen menghadirkan kurikulum berstandar industri dan tata kelola pendidikan yang berorientasi pada hasil kerja nyata.",
+                    "about_team_1_bio_en": "Visionary leader in international vocational ecosystems. Dedicated to delivering industry-benchmarked curricula and outcome-driven educational management.",
+                    "about_team_1_bio_de": "Visionäre Führungskraft in der internationalen Berufsbildung mit starkem Fokus auf praxisorientierte Ausbildung und verlässliche Resultate.",
+                    "about_team_2_name": "Ramona Novelia Wiyono",
+                    "about_team_2_role": "Kabid Kurikulum & Senior Mentor",
+                    "about_team_2_role_en": "Head of Curriculum & Senior Mentor",
+                    "about_team_2_role_de": "Leitung Lehrplan & Senior Mentorin",
+                    "about_team_2_subrole": "Head of Curriculum & Global Educator",
+                    "about_team_2_subrole_en": "Head of Curriculum & Global Educator",
+                    "about_team_2_subrole_de": "Curriculum Direktorin & Pädagogin",
+                    "about_team_2_bio": "Alumnus Raffles Shanghai & RMIT University Melbourne (Bachelor of Design). Pemegang sertifikasi 120-Hour TESOL/TEFL dan alumnus UIBE Beijing dengan pengalaman mengajar multibahasa tingkat internasional.",
+                    "about_team_2_bio_en": "Alumna of Raffles Shanghai & RMIT University Melbourne (Bachelor of Design). Certified 120-Hour TESOL/TEFL holder and UIBE Beijing alumna with global multilingual teaching experience.",
+                    "about_team_2_bio_de": "Absolventin der Raffles Shanghai & RMIT University Melbourne (B.Des). Zertifizierte TESOL/TEFL-Pädagogin und UIBE Peking-Alumna mit umfassender internationaler Lehrerfahrung.",
+                    "about_team_3_name": "Muhammad Rafa Affansyah Purba",
+                    "about_team_3_role": "Instruktur Bahasa Jerman",
+                    "about_team_3_role_en": "German Language Instructor",
+                    "about_team_3_role_de": "Dozent für Deutsch als Fremdsprache",
+                    "about_team_3_subrole": "Goethe Deutsch B1 & SKKNI Level 4 Certified",
+                    "about_team_3_subrole_en": "Goethe Deutsch B1 & SKKNI Level 4 Certified",
+                    "about_team_3_subrole_de": "Goethe-Zertifikat B1 & SKKNI Level 4 lizenziert",
+                    "about_team_3_bio": "Instruktur berlisensi BNSP SKKNI Level 4 dan pemegang Goethe-Zertifikat Deutsch B1. Menguasai pedagogi komunikatif aktif untuk mempersiapkan kelulusan ujian resmi bahasa Jerman.",
+                    "about_team_3_bio_en": "Licensed BNSP SKKNI Level 4 instructor and Goethe B1 credential holder, specializing in active communicative pedagogy for Goethe certification success.",
+                    "about_team_3_bio_de": "Zertifizierter Fachausbilder (BNSP Stufe 4) mit Goethe-Zertifikat B1, spezialisiert auf handlungsorientierten und kommunikativen Deutschunterricht.",
+                    "about_team_4_name": "Henny",
+                    "about_team_4_role": "Kabid Penjaminan Mutu & Sertifikasi",
+                    "about_team_4_role_en": "Head of Quality Assurance & Certification",
+                    "about_team_4_role_de": "Leitung Qualitätssicherung & Zertifizierung",
+                    "about_team_4_bio": "Mengawal standarisasi mutu pembelajaran, audit kurikulum berkala, dan verifikasi sertifikasi kompetensi seluruh lulusan.",
+                    "about_team_4_bio_en": "Overseeing educational quality standards, regular curriculum audits, and competency certification verification for all trainees.",
+                    "about_team_4_bio_de": "Verantwortlich für Qualitätsstandards, regelmäßige Lehrplanaudits und die Validierung aller Abschlusszertifikate.",
+                    "about_team_5_name": "Septarina Adinda Privari, S.H",
+                    "about_team_5_role": "Kabid Administrasi & Keuangan",
+                    "about_team_5_role_en": "Head of Legal, Administration & Finance",
+                    "about_team_5_role_de": "Leitung Verwaltung, Recht & Finanzen",
+                    "about_team_5_bio": "Mengelola tata kelola hukum, legalitas dokumen kesiswaan, administrasi lembaga, dan transparansi keuangan operasional.",
+                    "about_team_5_bio_en": "Managing legal compliance, student documentation, institutional governance, and operational financial transparency.",
+                    "about_team_5_bio_de": "Zuständig für rechtliche Compliance, Teilnehmerdokumentation, Institutsverwaltung und transparente Finanzführung.",
+                    "about_fac_badge": "Fasilitas Representatif",
+                    "about_fac_badge_en": "Representative Facilities",
+                    "about_fac_badge_de": "Moderne Ausstattung",
+                    "about_fac_title": "Sarana & Prasarana Pembelajaran",
+                    "about_fac_title_en": "Campus Facilities & Learning Spaces",
+                    "about_fac_title_de": "Campusausstattung & Lernumgebung",
+                    "about_fac_subtitle": "Setiap ruang belajar, ruang rapat, dan laboratorium dirancang ergonomis demi kenyamanan maksimal peserta didik selama proses intensif.",
+                    "about_fac_subtitle_en": "Classrooms, conference suites, and resource labs ergonomically designed for maximum trainee comfort during rigorous intensive studies.",
+                    "about_fac_subtitle_de": "Ergonomisch gestaltete Unterrichts-, Konferenz- und Medienräume für höchste Konzentration und maximalen Lernerfolg.",
+                    "about_fac_1_badge": "Gedung Kampus",
+                    "about_fac_1_badge_en": "Campus Building",
+                    "about_fac_1_badge_de": "Campusgebäude",
+                    "about_fac_1_title": "Tampak Depan Gedung",
+                    "about_fac_1_title_en": "Main Campus Exterior",
+                    "about_fac_1_title_de": "Außenansicht des Campus",
+                    "about_fac_1_desc": "Kawasan Villa Galaxy Blok A1 No. 16, Bekasi Selatan.",
+                    "about_fac_1_desc_en": "Villa Galaxy Block A1 No. 16, South Bekasi.",
+                    "about_fac_1_desc_de": "Villa Galaxy Block A1 Nr. 16, Süd-Bekasi.",
+                    "about_fac_1_modal": "Tampak depan gedung operasional di Villa Galaxy Bekasi Selatan dengan akses mudah dan lokasi prestisius.",
+                    "about_fac_1_modal_en": "Front view of the operational campus in Villa Galaxy South Bekasi with seamless accessibility and prestigious surroundings.",
+                    "about_fac_1_modal_de": "Vorderansicht des Campusgebäudes in Villa Galaxy Süd-Bekasi mit erstklassiger Verkehrsanbindung.",
+                    "about_fac_2_badge": "Pelayanan Siswa",
+                    "about_fac_2_badge_en": "Student Services",
+                    "about_fac_2_badge_de": "Studierendenservice",
+                    "about_fac_2_title": "Front Office & Konsultasi",
+                    "about_fac_2_title_en": "Front Office & Advisory",
+                    "about_fac_2_title_de": "Empfang & Beratung",
+                    "about_fac_2_desc": "Pusat informasi penerimaan dan pendampingan registrasi.",
+                    "about_fac_2_desc_en": "Admissions hub and personal registration counseling.",
+                    "about_fac_2_desc_de": "Zentrale Anlaufstelle für Information und Anmeldung.",
+                    "about_fac_2_modal": "Area resepsionis dan konsultasi terpadu bagi calon siswa dan orang tua untuk informasi program secara detail.",
+                    "about_fac_2_modal_en": "Comprehensive advisory reception for prospective trainees and parents seeking detailed pathway consultations.",
+                    "about_fac_2_modal_de": "Integrierter Beratungs- und Empfangsbereich für Studieninteressierte und Eltern.",
+                    "about_fac_3_badge": "Kelas Teori 30 m²",
+                    "about_fac_3_badge_en": "Theory Lab 30 m²",
+                    "about_fac_3_badge_de": "Theorieraum 30 m²",
+                    "about_fac_3_title": "Ruang Kelas Teori A",
+                    "about_fac_3_title_en": "Lecture Classroom A",
+                    "about_fac_3_title_de": "Unterrichtsraum A",
+                    "about_fac_3_desc": "Dilengkapi proyektor interaktif dan audio jernih untuk Hören.",
+                    "about_fac_3_desc_en": "Equipped with interactive projection and studio audio for listening drills.",
+                    "about_fac_3_desc_de": "Ausgestattet mit Beamer und klangreinem Audiosystem für Hören-Übungen.",
+                    "about_fac_3_modal": "Kapasitas 20 peserta didik per kelas dengan perangkat multimedia, pendingin ruangan (AC), dan pencahayaan optimal.",
+                    "about_fac_3_modal_en": "Capped at 20 trainees per room with climate control and optimal daylight illumination.",
+                    "about_fac_3_modal_de": "Kapazität für 20 Teilnehmende mit moderner Klimatisierung und ergonomischer Beleuchtung.",
+                    "about_fac_4_badge": "Kelas Interaktif",
+                    "about_fac_4_badge_en": "Interactive Lab",
+                    "about_fac_4_badge_de": "Interaktiver Raum",
+                    "about_fac_4_title": "Ruang Kelas Teori B",
+                    "about_fac_4_title_en": "Interactive Classroom B",
+                    "about_fac_4_title_de": "Unterrichtsraum B",
+                    "about_fac_4_desc": "Suasana belajar kondusif dengan jumlah siswa terbatas.",
+                    "about_fac_4_desc_en": "Conducive learning atmosphere with small cohort sizes.",
+                    "about_fac_4_desc_de": "Konzentrierte Lernatmosphäre mit begrenzter Gruppengröße.",
+                    "about_fac_4_modal": "Penataan meja dan kursi ergonomis untuk memfasilitasi diskusi interaktif dan praktik Sprechen bahasa Jerman.",
+                    "about_fac_4_modal_en": "Ergonomic seating arrangements facilitating dynamic dialogue workshops and spoken German simulation.",
+                    "about_fac_4_modal_de": "Ergonomische Möblierung für dialogorientierte Sprechübungen und interaktive Gruppenarbeit.",
+                    "about_fac_5_badge": "Manajemen",
+                    "about_fac_5_badge_en": "Administration",
+                    "about_fac_5_badge_de": "Verwaltung",
+                    "about_fac_5_title": "Ruang Rapat & Diskusi",
+                    "about_fac_5_title_en": "Conference & Faculty Room",
+                    "about_fac_5_title_de": "Konferenz- & Besprechungsraum",
+                    "about_fac_5_desc": "Pusat perencanaan strategis dan penjaminan mutu lembaga.",
+                    "about_fac_5_desc_en": "Center for academic strategic planning and quality assurance.",
+                    "about_fac_5_desc_de": "Zentrum für strategische Lehrplanung und Qualitätssicherung.",
+                    "about_fac_5_modal": "Tempat koordinasi berkala pimpinan dan instruktur untuk evaluasi mutu dan kemajuan capaian belajar siswa.",
+                    "about_fac_5_modal_en": "Regular coordination hub for academic leadership and instructors tracking trainee progress milestones.",
+                    "about_fac_5_modal_de": "Regelmäßiger Koordinationsort für Dozierende zur kontinuierlichen Leistungsbewertung.",
+                    "about_fac_6_badge": "Kepala LPK",
+                    "about_fac_6_badge_en": "Director Office",
+                    "about_fac_6_badge_de": "Direktion",
+                    "about_fac_6_title": "Ruang Pimpinan LPK",
+                    "about_fac_6_title_en": "Director Executive Suite",
+                    "about_fac_6_title_de": "Büro der Institutsleitung",
+                    "about_fac_6_desc": "Supervisi kebijakan mutu dan kerja sama bilateral.",
+                    "about_fac_6_desc_en": "Overseeing institutional policy and bilateral agreements.",
+                    "about_fac_6_desc_de": "Koordination von Qualitätsrichtlinien und bilateralen Partnerschaften.",
+                    "about_fac_6_modal": "Ruang kerja pimpinan untuk supervisi menyeluruh operasional dan penerimaan tamu mitra kelembagaan.",
+                    "about_fac_6_modal_en": "Executive directorate dedicated to comprehensive operations supervision and welcoming institutional partners.",
+                    "about_fac_6_modal_de": "Leitungsbüro für operative Gesamtaufsicht und Empfang internationaler Kooperationspartner.",
+                    "about_table_title": "Ringkasan Kapasitas & Sarana Prasarana",
+                    "about_table_title_en": "Summary of Campus Capacity & Facilities",
+                    "about_table_title_de": "Übersicht über Raumkapazitäten & Ausstattung",
+                    "about_legal_badge": "Legalitas & Kepatuhan",
+                    "about_legal_badge_en": "Legal Compliance & Accreditations",
+                    "about_legal_badge_de": "Rechtliche Grundlagen & Zulassung",
+                    "about_legal_title": "Landasan Hukum Penyelenggaraan",
+                    "about_legal_title_en": "Statutory & Legal Framework",
+                    "about_legal_title_de": "Gesetzliche Durchführungsgrundlagen",
+                    "about_legal_subtitle": "Penyelenggaraan pelatihan kerja di LPK Mega Guna Talent beroperasi dengan izin resmi dan tunduk sepenuhnya pada peraturan perundang-undangan Republik Indonesia.",
+                    "about_legal_subtitle_en": "Vocational education at LPK Mega Guna Talent operates under official governmental licensing and fully complies with laws of the Republic of Indonesia.",
+                    "about_legal_subtitle_de": "Die Ausbildung am LPK Mega Guna Talent erfolgt unter offizieller staatlicher Lizenz und in voller Übereinstimmung mit den Gesetzen der Republik Indonesien.",
+                    "about_cta_badge": "Kunjungan Kampus & Pendaftaran",
+                    "about_cta_badge_en": "Campus Visit & Enrollment",
+                    "about_cta_badge_de": "Campusbesuch & Anmeldung",
+                    "about_cta_title": "Siap Melangkah Menuju Masa Depan di Jerman?",
+                    "about_cta_title_en": "Ready to Step Towards Your Future in Germany?",
+                    "about_cta_title_de": "Bereit für Ihre berufliche Zukunft in Deutschland?",
+                    "about_cta_subtitle": "Kunjungi kampus LPK Mega Guna Talent di Villa Galaxy Bekasi untuk berkonsultasi langsung dengan tim akademik kami, atau daftar kelas intensif batch berikutnya hari ini.",
+                    "about_cta_subtitle_en": "Visit LPK Mega Guna Talent campus in Villa Galaxy Bekasi for in-person academic counseling, or enroll in our upcoming intensive cohort today.",
+                    "about_cta_subtitle_de": "Besuchen Sie den Campus des LPK Mega Guna Talent in Villa Galaxy Bekasi zur persönlichen Beratung oder sichern Sie sich Ihren Platz im nächsten Intensivkurs.",
+                    "about_cta_btn_enroll": "Daftar Sekarang",
+                    "about_cta_btn_enroll_en": "Enroll Now",
+                    "about_cta_btn_enroll_de": "Jetzt Anmelden",
+                    "about_cta_btn_wa": "Konsultasi via WhatsApp",
+                    "about_cta_btn_wa_en": "Consult via WhatsApp",
+                    "about_cta_btn_wa_de": "Beratung per WhatsApp"
+};
                 for (const [key, val] of Object.entries(presets)) {
                     const el = document.querySelector(`[name='${key}']`);
                     if (el) {
@@ -1639,7 +1951,7 @@
                         <span class="w-2.5 h-2.5 rounded-full bg-[#E2B842]"></span>
                         About Us Page Content & Institutional Information
                     </h3>
-                    <p class="text-xs text-slate-500 mt-1">Kelola narasi institusional, visi lembaga, dan profil operasional dalam bahasa Indonesia, English, dan Deutsch.</p>
+                    <p class="text-xs text-slate-500 mt-1">Kelola narasi institusional, metric counters, 7 pilar misi, profil pimpinan & mentor, serta fasilitas kampus dalam 3 bahasa (Indonesia, English, Deutsch).</p>
                 </div>
                 <div class="flex items-center gap-3 flex-wrap">
                     <button type="button" @click="generateAboutPresets()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#E2B842] to-[#f3cf65] text-[#2C0B1E] font-bold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer">
@@ -1655,163 +1967,3063 @@
                 </div>
             </div>
 
-            <!-- ID About Inputs -->
+            <!-- Indonesia (ID) About Inputs -->
             <div x-show="aboutLang === 'id'" class="space-y-6">
-                <!-- Hero Badge -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (Indonesia)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_badge" 
-                        value="{{ old('about_hero_badge', $settings['about_hero_badge'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Hero Headline, Deskripsi & Metric Counters (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_badge" 
+                                value="{{ old('about_hero_badge', $settings['about_hero_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_title" 
+                                value="{{ old('about_hero_title', $settings['about_hero_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (Indonesia)</label>
+                            <textarea 
+                                name="about_hero_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_hero_subtitle', $settings['about_hero_subtitle'] ?? '') }}</textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Value (e.g. 240+) (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_val" 
+                                    value="{{ old('about_metric_1_val', $settings['about_metric_1_val'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Label (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_lbl" 
+                                    value="{{ old('about_metric_1_lbl', $settings['about_metric_1_lbl'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Subtitle (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_sub" 
+                                    value="{{ old('about_metric_1_sub', $settings['about_metric_1_sub'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Value (e.g. 3 Ruang) (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_val" 
+                                    value="{{ old('about_metric_2_val', $settings['about_metric_2_val'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Label (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_lbl" 
+                                    value="{{ old('about_metric_2_lbl', $settings['about_metric_2_lbl'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Subtitle (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_sub" 
+                                    value="{{ old('about_metric_2_sub', $settings['about_metric_2_sub'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Value (e.g. 100%) (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_val" 
+                                    value="{{ old('about_metric_3_val', $settings['about_metric_3_val'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Label (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_lbl" 
+                                    value="{{ old('about_metric_3_lbl', $settings['about_metric_3_lbl'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Subtitle (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_sub" 
+                                    value="{{ old('about_metric_3_sub', $settings['about_metric_3_sub'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Value (e.g. Bekasi) (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_val" 
+                                    value="{{ old('about_metric_4_val', $settings['about_metric_4_val'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Label (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_lbl" 
+                                    value="{{ old('about_metric_4_lbl', $settings['about_metric_4_lbl'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Subtitle (Indonesia)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_sub" 
+                                    value="{{ old('about_metric_4_sub', $settings['about_metric_4_sub'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Hero Title -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (Indonesia)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_title" 
-                        value="{{ old('about_hero_title', $settings['about_hero_title'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sekilas Tentang Kami (Story, Highlights & Campus) (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Pill Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_badge" 
+                                value="{{ old('about_story_badge', $settings['about_story_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Main Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_title" 
+                                value="{{ old('about_story_title', $settings['about_story_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 1 (Dedikasi & Peluang Ausbildung) (Indonesia)</label>
+                            <textarea 
+                                name="about_story_p1" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p1', $settings['about_story_p1'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 2 (Lokasi Villa Galaxy & Kurikulum SKKNI/Goethe) (Indonesia)</label>
+                            <textarea 
+                                name="about_story_p2" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p2', $settings['about_story_p2'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 3 (Interkulturelle Kompetenz & Simulasi) (Indonesia)</label>
+                            <textarea 
+                                name="about_story_p3" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p3', $settings['about_story_p3'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Title (Berizin Resmi) (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_title" 
+                                value="{{ old('about_story_h1_title', $settings['about_story_h1_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Description (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_desc" 
+                                value="{{ old('about_story_h1_desc', $settings['about_story_h1_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Title (Instruktur Bersertifikat) (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_title" 
+                                value="{{ old('about_story_h2_title', $settings['about_story_h2_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Description (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_desc" 
+                                value="{{ old('about_story_h2_desc', $settings['about_story_h2_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Tag (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_tag" 
+                                value="{{ old('about_campus_tag', $settings['about_campus_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_title" 
+                                value="{{ old('about_campus_title', $settings['about_campus_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Address / Subtitle (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_desc" 
+                                value="{{ old('about_campus_desc', $settings['about_campus_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Tag (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_tag" 
+                                value="{{ old('about_campus_env_tag', $settings['about_campus_env_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Description (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_desc" 
+                                value="{{ old('about_campus_env_desc', $settings['about_campus_env_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Hero Subtitle -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (Indonesia)</label>
-                    <textarea 
-                        name="about_hero_subtitle" 
-                        rows="3"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_hero_subtitle', $settings['about_hero_subtitle'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Visi & Misi Strategis + 7 Pilar Misi (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Arah & Fondasi) (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_badge" 
+                                value="{{ old('about_mv_badge', $settings['about_mv_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Visi & Misi Strategis) (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_title" 
+                                value="{{ old('about_mv_title', $settings['about_mv_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Indonesia)</label>
+                            <textarea 
+                                name="about_mv_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mv_subtitle', $settings['about_mv_subtitle'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_badge" 
+                                value="{{ old('about_visi_badge', $settings['about_visi_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Kalimat Visi Utama Lembaga (Indonesia)</label>
+                            <textarea 
+                                name="about_visi" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_visi', $settings['about_visi'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Sign-off / Penetapan (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_author" 
+                                value="{{ old('about_visi_author', $settings['about_visi_author'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Pilar Misi (7 Pilar Misi...) (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_title" 
+                                value="{{ old('about_mission_title', $settings['about_mission_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Sub-judul Pilar Misi (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_subtitle" 
+                                value="{{ old('about_mission_subtitle', $settings['about_mission_subtitle'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_title" 
+                                value="{{ old('about_mission_1_title', $settings['about_mission_1_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_1_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_1_desc', $settings['about_mission_1_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_tag" 
+                                value="{{ old('about_mission_1_tag', $settings['about_mission_1_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_title" 
+                                value="{{ old('about_mission_2_title', $settings['about_mission_2_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_2_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_2_desc', $settings['about_mission_2_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_tag" 
+                                value="{{ old('about_mission_2_tag', $settings['about_mission_2_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_title" 
+                                value="{{ old('about_mission_3_title', $settings['about_mission_3_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_3_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_3_desc', $settings['about_mission_3_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_tag" 
+                                value="{{ old('about_mission_3_tag', $settings['about_mission_3_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_title" 
+                                value="{{ old('about_mission_4_title', $settings['about_mission_4_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_4_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_4_desc', $settings['about_mission_4_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_tag" 
+                                value="{{ old('about_mission_4_tag', $settings['about_mission_4_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_title" 
+                                value="{{ old('about_mission_5_title', $settings['about_mission_5_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_5_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_5_desc', $settings['about_mission_5_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_tag" 
+                                value="{{ old('about_mission_5_tag', $settings['about_mission_5_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_title" 
+                                value="{{ old('about_mission_6_title', $settings['about_mission_6_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Description (Indonesia)</label>
+                            <textarea 
+                                name="about_mission_6_desc" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_6_desc', $settings['about_mission_6_desc'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Tag / Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_tag" 
+                                value="{{ old('about_mission_6_tag', $settings['about_mission_6_tag'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Visi Utama -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Utama Lembaga (Indonesia)</label>
-                    <textarea 
-                        name="about_visi" 
-                        rows="3"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_visi', $settings['about_visi'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Struktur Manajemen, Pimpinan & Mentor (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_badge" 
+                                value="{{ old('about_team_badge', $settings['about_team_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_title" 
+                                value="{{ old('about_team_title', $settings['about_team_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Indonesia)</label>
+                            <textarea 
+                                name="about_team_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_subtitle', $settings['about_team_subtitle'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Nama (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_name" 
+                                value="{{ old('about_team_1_name', $settings['about_team_1_name'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Role Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_role" 
+                                value="{{ old('about_team_1_role', $settings['about_team_1_role'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Sub-role (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_subrole" 
+                                value="{{ old('about_team_1_subrole', $settings['about_team_1_subrole'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Biografi (Indonesia)</label>
+                            <textarea 
+                                name="about_team_1_bio" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_1_bio', $settings['about_team_1_bio'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Nama (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_name" 
+                                value="{{ old('about_team_2_name', $settings['about_team_2_name'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Role Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_role" 
+                                value="{{ old('about_team_2_role', $settings['about_team_2_role'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Sub-role (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_subrole" 
+                                value="{{ old('about_team_2_subrole', $settings['about_team_2_subrole'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Biografi (Indonesia)</label>
+                            <textarea 
+                                name="about_team_2_bio" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_2_bio', $settings['about_team_2_bio'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Nama (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_name" 
+                                value="{{ old('about_team_3_name', $settings['about_team_3_name'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Role Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_role" 
+                                value="{{ old('about_team_3_role', $settings['about_team_3_role'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Sub-role (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_subrole" 
+                                value="{{ old('about_team_3_subrole', $settings['about_team_3_subrole'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Biografi (Indonesia)</label>
+                            <textarea 
+                                name="about_team_3_bio" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_3_bio', $settings['about_team_3_bio'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Nama (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_4_name" 
+                                value="{{ old('about_team_4_name', $settings['about_team_4_name'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Role (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_4_role" 
+                                value="{{ old('about_team_4_role', $settings['about_team_4_role'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Deskripsi Tugas (Indonesia)</label>
+                            <textarea 
+                                name="about_team_4_bio" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_4_bio', $settings['about_team_4_bio'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Nama (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_5_name" 
+                                value="{{ old('about_team_5_name', $settings['about_team_5_name'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Role (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_5_role" 
+                                value="{{ old('about_team_5_role', $settings['about_team_5_role'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Deskripsi Tugas (Indonesia)</label>
+                            <textarea 
+                                name="about_team_5_bio" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_5_bio', $settings['about_team_5_bio'] ?? '') }}</textarea>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Jam Operasional ID -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Jam Operasional Kampus (Indonesia)</label>
-                    <input 
-                        type="text" 
-                        name="about_operating_hours" 
-                        value="{{ old('about_operating_hours', $settings['about_operating_hours'] ?? '') }}"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sarana & Prasarana (Fasilitas Kampus) (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_badge" 
+                                value="{{ old('about_fac_badge', $settings['about_fac_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_title" 
+                                value="{{ old('about_fac_title', $settings['about_fac_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_subtitle', $settings['about_fac_subtitle'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_badge" 
+                                value="{{ old('about_fac_1_badge', $settings['about_fac_1_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_title" 
+                                value="{{ old('about_fac_1_title', $settings['about_fac_1_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_desc" 
+                                value="{{ old('about_fac_1_desc', $settings['about_fac_1_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_1_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_1_modal', $settings['about_fac_1_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_badge" 
+                                value="{{ old('about_fac_2_badge', $settings['about_fac_2_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_title" 
+                                value="{{ old('about_fac_2_title', $settings['about_fac_2_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_desc" 
+                                value="{{ old('about_fac_2_desc', $settings['about_fac_2_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_2_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_2_modal', $settings['about_fac_2_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_badge" 
+                                value="{{ old('about_fac_3_badge', $settings['about_fac_3_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_title" 
+                                value="{{ old('about_fac_3_title', $settings['about_fac_3_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_desc" 
+                                value="{{ old('about_fac_3_desc', $settings['about_fac_3_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_3_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_3_modal', $settings['about_fac_3_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_badge" 
+                                value="{{ old('about_fac_4_badge', $settings['about_fac_4_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_title" 
+                                value="{{ old('about_fac_4_title', $settings['about_fac_4_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_desc" 
+                                value="{{ old('about_fac_4_desc', $settings['about_fac_4_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_4_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_4_modal', $settings['about_fac_4_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_badge" 
+                                value="{{ old('about_fac_5_badge', $settings['about_fac_5_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_title" 
+                                value="{{ old('about_fac_5_title', $settings['about_fac_5_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_desc" 
+                                value="{{ old('about_fac_5_desc', $settings['about_fac_5_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_5_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_5_modal', $settings['about_fac_5_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_badge" 
+                                value="{{ old('about_fac_6_badge', $settings['about_fac_6_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Judul (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_title" 
+                                value="{{ old('about_fac_6_title', $settings['about_fac_6_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Lokasi/Ket (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_desc" 
+                                value="{{ old('about_fac_6_desc', $settings['about_fac_6_desc'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Deskripsi Detail Modal (Indonesia)</label>
+                            <textarea 
+                                name="about_fac_6_modal" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_6_modal', $settings['about_fac_6_modal'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Tabel Spesifikasi Ruangan (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_table_title" 
+                                value="{{ old('about_table_title', $settings['about_table_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Landasan Hukum & Legalitas Penyelenggaraan (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_badge" 
+                                value="{{ old('about_legal_badge', $settings['about_legal_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_title" 
+                                value="{{ old('about_legal_title', $settings['about_legal_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Indonesia)</label>
+                            <textarea 
+                                name="about_legal_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_legal_subtitle', $settings['about_legal_subtitle'] ?? '') }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Kunjungan Kampus, Jam Operasional & CTA (Indonesia)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Badge (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_badge" 
+                                value="{{ old('about_cta_badge', $settings['about_cta_badge'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Main Title (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_title" 
+                                value="{{ old('about_cta_title', $settings['about_cta_title'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Subtitle / Ajakan (Indonesia)</label>
+                            <textarea 
+                                name="about_cta_subtitle" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_cta_subtitle', $settings['about_cta_subtitle'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Jam Operasional Kampus (Indonesia)</label>
+                            <textarea 
+                                name="about_operating_hours" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_operating_hours', $settings['about_operating_hours'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol Daftar (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_enroll" 
+                                value="{{ old('about_cta_btn_enroll', $settings['about_cta_btn_enroll'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol WhatsApp (Indonesia)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_wa" 
+                                value="{{ old('about_cta_btn_wa', $settings['about_cta_btn_wa'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- EN About Inputs -->
+            <!-- English (EN) About Inputs -->
             <div x-show="aboutLang === 'en'" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (English)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_badge_en" 
-                        value="{{ old('about_hero_badge_en', $settings['about_hero_badge_en'] ?? '') }}"
-                        placeholder="e.g. Official Vocational Training Center • SKKNI & Goethe Standard"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Hero Headline, Deskripsi & Metric Counters (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_badge_en" 
+                                value="{{ old('about_hero_badge_en', $settings['about_hero_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_title_en" 
+                                value="{{ old('about_hero_title_en', $settings['about_hero_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (English)</label>
+                            <textarea 
+                                name="about_hero_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_hero_subtitle_en', $settings['about_hero_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Value (e.g. 240+) (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_val_en" 
+                                    value="{{ old('about_metric_1_val_en', $settings['about_metric_1_val_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Label (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_lbl_en" 
+                                    value="{{ old('about_metric_1_lbl_en', $settings['about_metric_1_lbl_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Subtitle (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_sub_en" 
+                                    value="{{ old('about_metric_1_sub_en', $settings['about_metric_1_sub_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Value (e.g. 3 Ruang) (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_val_en" 
+                                    value="{{ old('about_metric_2_val_en', $settings['about_metric_2_val_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Label (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_lbl_en" 
+                                    value="{{ old('about_metric_2_lbl_en', $settings['about_metric_2_lbl_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Subtitle (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_sub_en" 
+                                    value="{{ old('about_metric_2_sub_en', $settings['about_metric_2_sub_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Value (e.g. 100%) (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_val_en" 
+                                    value="{{ old('about_metric_3_val_en', $settings['about_metric_3_val_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Label (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_lbl_en" 
+                                    value="{{ old('about_metric_3_lbl_en', $settings['about_metric_3_lbl_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Subtitle (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_sub_en" 
+                                    value="{{ old('about_metric_3_sub_en', $settings['about_metric_3_sub_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Value (e.g. Bekasi) (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_val_en" 
+                                    value="{{ old('about_metric_4_val_en', $settings['about_metric_4_val_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Label (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_lbl_en" 
+                                    value="{{ old('about_metric_4_lbl_en', $settings['about_metric_4_lbl_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Subtitle (English)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_sub_en" 
+                                    value="{{ old('about_metric_4_sub_en', $settings['about_metric_4_sub_en'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (English)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_title_en" 
-                        value="{{ old('about_hero_title_en', $settings['about_hero_title_en'] ?? '') }}"
-                        placeholder="e.g. Empowering Competent Talents for Global Careers in Germany"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sekilas Tentang Kami (Story, Highlights & Campus) (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Pill Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_badge_en" 
+                                value="{{ old('about_story_badge_en', $settings['about_story_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Main Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_title_en" 
+                                value="{{ old('about_story_title_en', $settings['about_story_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 1 (Dedikasi & Peluang Ausbildung) (English)</label>
+                            <textarea 
+                                name="about_story_p1_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p1_en', $settings['about_story_p1_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 2 (Lokasi Villa Galaxy & Kurikulum SKKNI/Goethe) (English)</label>
+                            <textarea 
+                                name="about_story_p2_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p2_en', $settings['about_story_p2_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 3 (Interkulturelle Kompetenz & Simulasi) (English)</label>
+                            <textarea 
+                                name="about_story_p3_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p3_en', $settings['about_story_p3_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Title (Berizin Resmi) (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_title_en" 
+                                value="{{ old('about_story_h1_title_en', $settings['about_story_h1_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Description (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_desc_en" 
+                                value="{{ old('about_story_h1_desc_en', $settings['about_story_h1_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Title (Instruktur Bersertifikat) (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_title_en" 
+                                value="{{ old('about_story_h2_title_en', $settings['about_story_h2_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Description (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_desc_en" 
+                                value="{{ old('about_story_h2_desc_en', $settings['about_story_h2_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Tag (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_tag_en" 
+                                value="{{ old('about_campus_tag_en', $settings['about_campus_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_title_en" 
+                                value="{{ old('about_campus_title_en', $settings['about_campus_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Address / Subtitle (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_desc_en" 
+                                value="{{ old('about_campus_desc_en', $settings['about_campus_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Tag (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_tag_en" 
+                                value="{{ old('about_campus_env_tag_en', $settings['about_campus_env_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Description (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_desc_en" 
+                                value="{{ old('about_campus_env_desc_en', $settings['about_campus_env_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (English)</label>
-                    <textarea 
-                        name="about_hero_subtitle_en" 
-                        rows="3"
-                        placeholder="e.g. Accredited vocational center dedicated to preparing Indonesian youth for Ausbildung and careers in Germany."
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_hero_subtitle_en', $settings['about_hero_subtitle_en'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Visi & Misi Strategis + 7 Pilar Misi (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Arah & Fondasi) (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_badge_en" 
+                                value="{{ old('about_mv_badge_en', $settings['about_mv_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Visi & Misi Strategis) (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_title_en" 
+                                value="{{ old('about_mv_title_en', $settings['about_mv_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (English)</label>
+                            <textarea 
+                                name="about_mv_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mv_subtitle_en', $settings['about_mv_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_badge_en" 
+                                value="{{ old('about_visi_badge_en', $settings['about_visi_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Kalimat Visi Utama Lembaga (English)</label>
+                            <textarea 
+                                name="about_visi_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_visi_en', $settings['about_visi_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Sign-off / Penetapan (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_author_en" 
+                                value="{{ old('about_visi_author_en', $settings['about_visi_author_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Pilar Misi (7 Pilar Misi...) (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_title_en" 
+                                value="{{ old('about_mission_title_en', $settings['about_mission_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Sub-judul Pilar Misi (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_subtitle_en" 
+                                value="{{ old('about_mission_subtitle_en', $settings['about_mission_subtitle_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_title_en" 
+                                value="{{ old('about_mission_1_title_en', $settings['about_mission_1_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Description (English)</label>
+                            <textarea 
+                                name="about_mission_1_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_1_desc_en', $settings['about_mission_1_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_tag_en" 
+                                value="{{ old('about_mission_1_tag_en', $settings['about_mission_1_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_title_en" 
+                                value="{{ old('about_mission_2_title_en', $settings['about_mission_2_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Description (English)</label>
+                            <textarea 
+                                name="about_mission_2_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_2_desc_en', $settings['about_mission_2_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_tag_en" 
+                                value="{{ old('about_mission_2_tag_en', $settings['about_mission_2_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_title_en" 
+                                value="{{ old('about_mission_3_title_en', $settings['about_mission_3_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Description (English)</label>
+                            <textarea 
+                                name="about_mission_3_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_3_desc_en', $settings['about_mission_3_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_tag_en" 
+                                value="{{ old('about_mission_3_tag_en', $settings['about_mission_3_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_title_en" 
+                                value="{{ old('about_mission_4_title_en', $settings['about_mission_4_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Description (English)</label>
+                            <textarea 
+                                name="about_mission_4_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_4_desc_en', $settings['about_mission_4_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_tag_en" 
+                                value="{{ old('about_mission_4_tag_en', $settings['about_mission_4_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_title_en" 
+                                value="{{ old('about_mission_5_title_en', $settings['about_mission_5_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Description (English)</label>
+                            <textarea 
+                                name="about_mission_5_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_5_desc_en', $settings['about_mission_5_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_tag_en" 
+                                value="{{ old('about_mission_5_tag_en', $settings['about_mission_5_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_title_en" 
+                                value="{{ old('about_mission_6_title_en', $settings['about_mission_6_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Description (English)</label>
+                            <textarea 
+                                name="about_mission_6_desc_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_6_desc_en', $settings['about_mission_6_desc_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Tag / Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_tag_en" 
+                                value="{{ old('about_mission_6_tag_en', $settings['about_mission_6_tag_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Vision Statement (English)</label>
-                    <textarea 
-                        name="about_visi_en" 
-                        rows="3"
-                        placeholder="e.g. To become the leading vocational institute building human resources adhering to national and international competency standards."
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_visi_en', $settings['about_visi_en'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Struktur Manajemen, Pimpinan & Mentor (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_badge_en" 
+                                value="{{ old('about_team_badge_en', $settings['about_team_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_title_en" 
+                                value="{{ old('about_team_title_en', $settings['about_team_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (English)</label>
+                            <textarea 
+                                name="about_team_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_subtitle_en', $settings['about_team_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Role Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_role_en" 
+                                value="{{ old('about_team_1_role_en', $settings['about_team_1_role_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Sub-role (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_subrole_en" 
+                                value="{{ old('about_team_1_subrole_en', $settings['about_team_1_subrole_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Biografi (English)</label>
+                            <textarea 
+                                name="about_team_1_bio_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_1_bio_en', $settings['about_team_1_bio_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Role Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_role_en" 
+                                value="{{ old('about_team_2_role_en', $settings['about_team_2_role_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Sub-role (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_subrole_en" 
+                                value="{{ old('about_team_2_subrole_en', $settings['about_team_2_subrole_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Biografi (English)</label>
+                            <textarea 
+                                name="about_team_2_bio_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_2_bio_en', $settings['about_team_2_bio_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Role Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_role_en" 
+                                value="{{ old('about_team_3_role_en', $settings['about_team_3_role_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Sub-role (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_subrole_en" 
+                                value="{{ old('about_team_3_subrole_en', $settings['about_team_3_subrole_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Biografi (English)</label>
+                            <textarea 
+                                name="about_team_3_bio_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_3_bio_en', $settings['about_team_3_bio_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Role (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_4_role_en" 
+                                value="{{ old('about_team_4_role_en', $settings['about_team_4_role_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Deskripsi Tugas (English)</label>
+                            <textarea 
+                                name="about_team_4_bio_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_4_bio_en', $settings['about_team_4_bio_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Role (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_5_role_en" 
+                                value="{{ old('about_team_5_role_en', $settings['about_team_5_role_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Deskripsi Tugas (English)</label>
+                            <textarea 
+                                name="about_team_5_bio_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_5_bio_en', $settings['about_team_5_bio_en'] ?? '') }}</textarea>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Operating Hours (English)</label>
-                    <input 
-                        type="text" 
-                        name="about_operating_hours_en" 
-                        value="{{ old('about_operating_hours_en', $settings['about_operating_hours_en'] ?? '') }}"
-                        placeholder="e.g. Monday - Saturday: 08:30 AM - 05:00 PM (WIB)"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sarana & Prasarana (Fasilitas Kampus) (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_badge_en" 
+                                value="{{ old('about_fac_badge_en', $settings['about_fac_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_title_en" 
+                                value="{{ old('about_fac_title_en', $settings['about_fac_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (English)</label>
+                            <textarea 
+                                name="about_fac_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_subtitle_en', $settings['about_fac_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_badge_en" 
+                                value="{{ old('about_fac_1_badge_en', $settings['about_fac_1_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_title_en" 
+                                value="{{ old('about_fac_1_title_en', $settings['about_fac_1_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_desc_en" 
+                                value="{{ old('about_fac_1_desc_en', $settings['about_fac_1_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_1_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_1_modal_en', $settings['about_fac_1_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_badge_en" 
+                                value="{{ old('about_fac_2_badge_en', $settings['about_fac_2_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_title_en" 
+                                value="{{ old('about_fac_2_title_en', $settings['about_fac_2_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_desc_en" 
+                                value="{{ old('about_fac_2_desc_en', $settings['about_fac_2_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_2_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_2_modal_en', $settings['about_fac_2_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_badge_en" 
+                                value="{{ old('about_fac_3_badge_en', $settings['about_fac_3_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_title_en" 
+                                value="{{ old('about_fac_3_title_en', $settings['about_fac_3_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_desc_en" 
+                                value="{{ old('about_fac_3_desc_en', $settings['about_fac_3_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_3_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_3_modal_en', $settings['about_fac_3_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_badge_en" 
+                                value="{{ old('about_fac_4_badge_en', $settings['about_fac_4_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_title_en" 
+                                value="{{ old('about_fac_4_title_en', $settings['about_fac_4_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_desc_en" 
+                                value="{{ old('about_fac_4_desc_en', $settings['about_fac_4_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_4_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_4_modal_en', $settings['about_fac_4_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_badge_en" 
+                                value="{{ old('about_fac_5_badge_en', $settings['about_fac_5_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_title_en" 
+                                value="{{ old('about_fac_5_title_en', $settings['about_fac_5_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_desc_en" 
+                                value="{{ old('about_fac_5_desc_en', $settings['about_fac_5_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_5_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_5_modal_en', $settings['about_fac_5_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_badge_en" 
+                                value="{{ old('about_fac_6_badge_en', $settings['about_fac_6_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Judul (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_title_en" 
+                                value="{{ old('about_fac_6_title_en', $settings['about_fac_6_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Lokasi/Ket (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_desc_en" 
+                                value="{{ old('about_fac_6_desc_en', $settings['about_fac_6_desc_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Deskripsi Detail Modal (English)</label>
+                            <textarea 
+                                name="about_fac_6_modal_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_6_modal_en', $settings['about_fac_6_modal_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Tabel Spesifikasi Ruangan (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_table_title_en" 
+                                value="{{ old('about_table_title_en', $settings['about_table_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Landasan Hukum & Legalitas Penyelenggaraan (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_badge_en" 
+                                value="{{ old('about_legal_badge_en', $settings['about_legal_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_title_en" 
+                                value="{{ old('about_legal_title_en', $settings['about_legal_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (English)</label>
+                            <textarea 
+                                name="about_legal_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_legal_subtitle_en', $settings['about_legal_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Kunjungan Kampus, Jam Operasional & CTA (English)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Badge (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_badge_en" 
+                                value="{{ old('about_cta_badge_en', $settings['about_cta_badge_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Main Title (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_title_en" 
+                                value="{{ old('about_cta_title_en', $settings['about_cta_title_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Subtitle / Ajakan (English)</label>
+                            <textarea 
+                                name="about_cta_subtitle_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_cta_subtitle_en', $settings['about_cta_subtitle_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Jam Operasional Kampus (English)</label>
+                            <textarea 
+                                name="about_operating_hours_en" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_operating_hours_en', $settings['about_operating_hours_en'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol Daftar (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_enroll_en" 
+                                value="{{ old('about_cta_btn_enroll_en', $settings['about_cta_btn_enroll_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol WhatsApp (English)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_wa_en" 
+                                value="{{ old('about_cta_btn_wa_en', $settings['about_cta_btn_wa_en'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- DE About Inputs -->
+            <!-- Deutsch (DE) About Inputs -->
             <div x-show="aboutLang === 'de'" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (Deutsch)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_badge_de" 
-                        value="{{ old('about_hero_badge_de', $settings['about_hero_badge_de'] ?? '') }}"
-                        placeholder="z.B. Staatlich anerkannte Ausbildungsstätte • Goethe-Institut Standard"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Hero Headline, Deskripsi & Metric Counters (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Badge Text (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_badge_de" 
+                                value="{{ old('about_hero_badge_de', $settings['about_hero_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_hero_title_de" 
+                                value="{{ old('about_hero_title_de', $settings['about_hero_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (Deutsch)</label>
+                            <textarea 
+                                name="about_hero_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_hero_subtitle_de', $settings['about_hero_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Value (e.g. 240+) (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_val_de" 
+                                    value="{{ old('about_metric_1_val_de', $settings['about_metric_1_val_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Label (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_lbl_de" 
+                                    value="{{ old('about_metric_1_lbl_de', $settings['about_metric_1_lbl_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 1 Subtitle (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_1_sub_de" 
+                                    value="{{ old('about_metric_1_sub_de', $settings['about_metric_1_sub_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Value (e.g. 3 Ruang) (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_val_de" 
+                                    value="{{ old('about_metric_2_val_de', $settings['about_metric_2_val_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Label (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_lbl_de" 
+                                    value="{{ old('about_metric_2_lbl_de', $settings['about_metric_2_lbl_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 2 Subtitle (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_2_sub_de" 
+                                    value="{{ old('about_metric_2_sub_de', $settings['about_metric_2_sub_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Value (e.g. 100%) (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_val_de" 
+                                    value="{{ old('about_metric_3_val_de', $settings['about_metric_3_val_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Label (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_lbl_de" 
+                                    value="{{ old('about_metric_3_lbl_de', $settings['about_metric_3_lbl_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 3 Subtitle (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_3_sub_de" 
+                                    value="{{ old('about_metric_3_sub_de', $settings['about_metric_3_sub_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Value (e.g. Bekasi) (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_val_de" 
+                                    value="{{ old('about_metric_4_val_de', $settings['about_metric_4_val_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Label (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_lbl_de" 
+                                    value="{{ old('about_metric_4_lbl_de', $settings['about_metric_4_lbl_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Metric 4 Subtitle (Deutsch)</label>
+                                <input 
+                                    type="text" 
+                                    name="about_metric_4_sub_de" 
+                                    value="{{ old('about_metric_4_sub_de', $settings['about_metric_4_sub_de'] ?? '') }}"
+                                    class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Main Title (Deutsch)</label>
-                    <input 
-                        type="text" 
-                        name="about_hero_title_de" 
-                        value="{{ old('about_hero_title_de', $settings['about_hero_title_de'] ?? '') }}"
-                        placeholder="z.B. Qualifizierte Fachkräfte für Karrieren in Deutschland"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sekilas Tentang Kami (Story, Highlights & Campus) (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Pill Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_badge_de" 
+                                value="{{ old('about_story_badge_de', $settings['about_story_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Story Main Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_title_de" 
+                                value="{{ old('about_story_title_de', $settings['about_story_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 1 (Dedikasi & Peluang Ausbildung) (Deutsch)</label>
+                            <textarea 
+                                name="about_story_p1_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p1_de', $settings['about_story_p1_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 2 (Lokasi Villa Galaxy & Kurikulum SKKNI/Goethe) (Deutsch)</label>
+                            <textarea 
+                                name="about_story_p2_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p2_de', $settings['about_story_p2_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Paragraf 3 (Interkulturelle Kompetenz & Simulasi) (Deutsch)</label>
+                            <textarea 
+                                name="about_story_p3_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_story_p3_de', $settings['about_story_p3_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Title (Berizin Resmi) (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_title_de" 
+                                value="{{ old('about_story_h1_title_de', $settings['about_story_h1_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 1 Description (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h1_desc_de" 
+                                value="{{ old('about_story_h1_desc_de', $settings['about_story_h1_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Title (Instruktur Bersertifikat) (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_title_de" 
+                                value="{{ old('about_story_h2_title_de', $settings['about_story_h2_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Highlight 2 Description (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_story_h2_desc_de" 
+                                value="{{ old('about_story_h2_desc_de', $settings['about_story_h2_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Tag (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_tag_de" 
+                                value="{{ old('about_campus_tag_de', $settings['about_campus_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_title_de" 
+                                value="{{ old('about_campus_title_de', $settings['about_campus_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Campus Card Address / Subtitle (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_desc_de" 
+                                value="{{ old('about_campus_desc_de', $settings['about_campus_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Tag (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_tag_de" 
+                                value="{{ old('about_campus_env_tag_de', $settings['about_campus_env_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Floating Badge Description (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_campus_env_desc_de" 
+                                value="{{ old('about_campus_env_desc_de', $settings['about_campus_env_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Hero Subtitle / Description (Deutsch)</label>
-                    <textarea 
-                        name="about_hero_subtitle_de" 
-                        rows="3"
-                        placeholder="z.B. Vorbereitung auf Ausbildung und berufliche Integration in Deutschland."
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_hero_subtitle_de', $settings['about_hero_subtitle_de'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Visi & Misi Strategis + 7 Pilar Misi (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Arah & Fondasi) (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_badge_de" 
+                                value="{{ old('about_mv_badge_de', $settings['about_mv_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Visi & Misi Strategis) (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mv_title_de" 
+                                value="{{ old('about_mv_title_de', $settings['about_mv_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Deutsch)</label>
+                            <textarea 
+                                name="about_mv_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mv_subtitle_de', $settings['about_mv_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_badge_de" 
+                                value="{{ old('about_visi_badge_de', $settings['about_visi_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Kalimat Visi Utama Lembaga (Deutsch)</label>
+                            <textarea 
+                                name="about_visi_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_visi_de', $settings['about_visi_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Visi Sign-off / Penetapan (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_visi_author_de" 
+                                value="{{ old('about_visi_author_de', $settings['about_visi_author_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Pilar Misi (7 Pilar Misi...) (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_title_de" 
+                                value="{{ old('about_mission_title_de', $settings['about_mission_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Sub-judul Pilar Misi (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_subtitle_de" 
+                                value="{{ old('about_mission_subtitle_de', $settings['about_mission_subtitle_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_title_de" 
+                                value="{{ old('about_mission_1_title_de', $settings['about_mission_1_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_1_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_1_desc_de', $settings['about_mission_1_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 1 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_1_tag_de" 
+                                value="{{ old('about_mission_1_tag_de', $settings['about_mission_1_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_title_de" 
+                                value="{{ old('about_mission_2_title_de', $settings['about_mission_2_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_2_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_2_desc_de', $settings['about_mission_2_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 2 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_2_tag_de" 
+                                value="{{ old('about_mission_2_tag_de', $settings['about_mission_2_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_title_de" 
+                                value="{{ old('about_mission_3_title_de', $settings['about_mission_3_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_3_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_3_desc_de', $settings['about_mission_3_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 3 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_3_tag_de" 
+                                value="{{ old('about_mission_3_tag_de', $settings['about_mission_3_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_title_de" 
+                                value="{{ old('about_mission_4_title_de', $settings['about_mission_4_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_4_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_4_desc_de', $settings['about_mission_4_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 4 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_4_tag_de" 
+                                value="{{ old('about_mission_4_tag_de', $settings['about_mission_4_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_title_de" 
+                                value="{{ old('about_mission_5_title_de', $settings['about_mission_5_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_5_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_5_desc_de', $settings['about_mission_5_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 5 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_5_tag_de" 
+                                value="{{ old('about_mission_5_tag_de', $settings['about_mission_5_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_title_de" 
+                                value="{{ old('about_mission_6_title_de', $settings['about_mission_6_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Description (Deutsch)</label>
+                            <textarea 
+                                name="about_mission_6_desc_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_mission_6_desc_de', $settings['about_mission_6_desc_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Pilar 6 Tag / Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_mission_6_tag_de" 
+                                value="{{ old('about_mission_6_tag_de', $settings['about_mission_6_tag_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Vision Statement (Deutsch)</label>
-                    <textarea 
-                        name="about_visi_de" 
-                        rows="3"
-                        placeholder="z.B. Führendes Institut für berufliche Bildung nach nationalen und internationalen Kompetenzstandards."
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >{{ old('about_visi_de', $settings['about_visi_de'] ?? '') }}</textarea>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Struktur Manajemen, Pimpinan & Mentor (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_badge_de" 
+                                value="{{ old('about_team_badge_de', $settings['about_team_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_title_de" 
+                                value="{{ old('about_team_title_de', $settings['about_team_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Deutsch)</label>
+                            <textarea 
+                                name="about_team_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_subtitle_de', $settings['about_team_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Role Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_role_de" 
+                                value="{{ old('about_team_1_role_de', $settings['about_team_1_role_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Sub-role (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_1_subrole_de" 
+                                value="{{ old('about_team_1_subrole_de', $settings['about_team_1_subrole_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 1 Biografi (Deutsch)</label>
+                            <textarea 
+                                name="about_team_1_bio_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_1_bio_de', $settings['about_team_1_bio_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Role Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_role_de" 
+                                value="{{ old('about_team_2_role_de', $settings['about_team_2_role_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Sub-role (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_2_subrole_de" 
+                                value="{{ old('about_team_2_subrole_de', $settings['about_team_2_subrole_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 2 Biografi (Deutsch)</label>
+                            <textarea 
+                                name="about_team_2_bio_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_2_bio_de', $settings['about_team_2_bio_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Role Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_role_de" 
+                                value="{{ old('about_team_3_role_de', $settings['about_team_3_role_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Sub-role (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_3_subrole_de" 
+                                value="{{ old('about_team_3_subrole_de', $settings['about_team_3_subrole_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Mentor 3 Biografi (Deutsch)</label>
+                            <textarea 
+                                name="about_team_3_bio_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_3_bio_de', $settings['about_team_3_bio_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Role (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_4_role_de" 
+                                value="{{ old('about_team_4_role_de', $settings['about_team_4_role_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 4 Deskripsi Tugas (Deutsch)</label>
+                            <textarea 
+                                name="about_team_4_bio_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_4_bio_de', $settings['about_team_4_bio_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Role (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_team_5_role_de" 
+                                value="{{ old('about_team_5_role_de', $settings['about_team_5_role_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Officer 5 Deskripsi Tugas (Deutsch)</label>
+                            <textarea 
+                                name="about_team_5_bio_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_team_5_bio_de', $settings['about_team_5_bio_de'] ?? '') }}</textarea>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Öffnungszeiten (Deutsch)</label>
-                    <input 
-                        type="text" 
-                        name="about_operating_hours_de" 
-                        value="{{ old('about_operating_hours_de', $settings['about_operating_hours_de'] ?? '') }}"
-                        placeholder="z.B. Montag - Samstag: 08:30 - 17:00 Uhr (WIB)"
-                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
-                    >
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Sarana & Prasarana (Fasilitas Kampus) (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_badge_de" 
+                                value="{{ old('about_fac_badge_de', $settings['about_fac_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_title_de" 
+                                value="{{ old('about_fac_title_de', $settings['about_fac_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_subtitle_de', $settings['about_fac_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_badge_de" 
+                                value="{{ old('about_fac_1_badge_de', $settings['about_fac_1_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_title_de" 
+                                value="{{ old('about_fac_1_title_de', $settings['about_fac_1_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_1_desc_de" 
+                                value="{{ old('about_fac_1_desc_de', $settings['about_fac_1_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 1 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_1_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_1_modal_de', $settings['about_fac_1_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_badge_de" 
+                                value="{{ old('about_fac_2_badge_de', $settings['about_fac_2_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_title_de" 
+                                value="{{ old('about_fac_2_title_de', $settings['about_fac_2_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_2_desc_de" 
+                                value="{{ old('about_fac_2_desc_de', $settings['about_fac_2_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 2 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_2_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_2_modal_de', $settings['about_fac_2_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_badge_de" 
+                                value="{{ old('about_fac_3_badge_de', $settings['about_fac_3_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_title_de" 
+                                value="{{ old('about_fac_3_title_de', $settings['about_fac_3_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_3_desc_de" 
+                                value="{{ old('about_fac_3_desc_de', $settings['about_fac_3_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 3 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_3_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_3_modal_de', $settings['about_fac_3_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_badge_de" 
+                                value="{{ old('about_fac_4_badge_de', $settings['about_fac_4_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_title_de" 
+                                value="{{ old('about_fac_4_title_de', $settings['about_fac_4_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_4_desc_de" 
+                                value="{{ old('about_fac_4_desc_de', $settings['about_fac_4_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 4 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_4_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_4_modal_de', $settings['about_fac_4_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_badge_de" 
+                                value="{{ old('about_fac_5_badge_de', $settings['about_fac_5_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_title_de" 
+                                value="{{ old('about_fac_5_title_de', $settings['about_fac_5_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_5_desc_de" 
+                                value="{{ old('about_fac_5_desc_de', $settings['about_fac_5_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 5 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_5_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_5_modal_de', $settings['about_fac_5_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_badge_de" 
+                                value="{{ old('about_fac_6_badge_de', $settings['about_fac_6_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Judul (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_title_de" 
+                                value="{{ old('about_fac_6_title_de', $settings['about_fac_6_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Lokasi/Ket (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_fac_6_desc_de" 
+                                value="{{ old('about_fac_6_desc_de', $settings['about_fac_6_desc_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Fasilitas 6 Deskripsi Detail Modal (Deutsch)</label>
+                            <textarea 
+                                name="about_fac_6_modal_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_fac_6_modal_de', $settings['about_fac_6_modal_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Judul Tabel Spesifikasi Ruangan (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_table_title_de" 
+                                value="{{ old('about_table_title_de', $settings['about_table_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Landasan Hukum & Legalitas Penyelenggaraan (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_badge_de" 
+                                value="{{ old('about_legal_badge_de', $settings['about_legal_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_legal_title_de" 
+                                value="{{ old('about_legal_title_de', $settings['about_legal_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Section Subtitle (Deutsch)</label>
+                            <textarea 
+                                name="about_legal_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_legal_subtitle_de', $settings['about_legal_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5 space-y-5">
+                    <h4 class="text-xs font-bold text-[#b38b1f] uppercase tracking-wider flex items-center gap-2">
+                        <span>Kunjungan Kampus, Jam Operasional & CTA (Deutsch)</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Badge (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_badge_de" 
+                                value="{{ old('about_cta_badge_de', $settings['about_cta_badge_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Main Title (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_title_de" 
+                                value="{{ old('about_cta_title_de', $settings['about_cta_title_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">CTA Subtitle / Ajakan (Deutsch)</label>
+                            <textarea 
+                                name="about_cta_subtitle_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_cta_subtitle_de', $settings['about_cta_subtitle_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Jam Operasional Kampus (Deutsch)</label>
+                            <textarea 
+                                name="about_operating_hours_de" 
+                                rows="3"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >{{ old('about_operating_hours_de', $settings['about_operating_hours_de'] ?? '') }}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol Daftar (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_enroll_de" 
+                                value="{{ old('about_cta_btn_enroll_de', $settings['about_cta_btn_enroll_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Label Tombol WhatsApp (Deutsch)</label>
+                            <input 
+                                type="text" 
+                                name="about_cta_btn_wa_de" 
+                                value="{{ old('about_cta_btn_wa_de', $settings['about_cta_btn_wa_de'] ?? '') }}"
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E2B842]/30 focus:border-[#E2B842] shadow-2xs"
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

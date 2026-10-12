@@ -26,196 +26,26 @@ class SettingController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            // Branding & Meta
-            'site_title' => ['nullable', 'string', 'max:255'],
-            'site_tagline' => ['nullable', 'string', 'max:500'],
-            'contact_email' => ['nullable', 'email', 'max:255'],
-            'contact_phone' => ['nullable', 'string', 'max:100'],
-            'contact_address' => ['nullable', 'string', 'max:255'],
-            'social_whatsapp' => ['nullable', 'string', 'max:255'],
-            'social_instagram' => ['nullable', 'string', 'max:255'],
-            'social_facebook' => ['nullable', 'string', 'max:255'],
-            'social_linkedin' => ['nullable', 'string', 'max:255'],
-
-            // About Us Section
-            'about_hero_badge' => ['nullable', 'string', 'max:255'],
-            'about_hero_badge_en' => ['nullable', 'string', 'max:255'],
-            'about_hero_badge_de' => ['nullable', 'string', 'max:255'],
-            'about_hero_title' => ['nullable', 'string', 'max:255'],
-            'about_hero_title_en' => ['nullable', 'string', 'max:255'],
-            'about_hero_title_de' => ['nullable', 'string', 'max:255'],
-            'about_hero_subtitle' => ['nullable', 'string'],
-            'about_hero_subtitle_en' => ['nullable', 'string'],
-            'about_hero_subtitle_de' => ['nullable', 'string'],
-            'about_visi' => ['nullable', 'string'],
-            'about_visi_en' => ['nullable', 'string'],
-            'about_visi_de' => ['nullable', 'string'],
-            'about_operating_hours' => ['nullable', 'string', 'max:255'],
-            'about_operating_hours_en' => ['nullable', 'string', 'max:255'],
-            'about_operating_hours_de' => ['nullable', 'string', 'max:255'],
-
-            // Hero Section
-            'hero_badge_text' => ['nullable', 'string', 'max:255'],
-            'hero_badge_text_en' => ['nullable', 'string', 'max:255'],
-            'hero_badge_text_de' => ['nullable', 'string', 'max:255'],
-            'hero_title_line1' => ['nullable', 'string', 'max:255'],
-            'hero_title_line1_en' => ['nullable', 'string', 'max:255'],
-            'hero_title_line1_de' => ['nullable', 'string', 'max:255'],
-            'hero_title_line2' => ['nullable', 'string', 'max:255'],
-            'hero_title_line2_en' => ['nullable', 'string', 'max:255'],
-            'hero_title_line2_de' => ['nullable', 'string', 'max:255'],
-            'hero_subtitle' => ['nullable', 'string'],
-            'hero_subtitle_en' => ['nullable', 'string'],
-            'hero_subtitle_de' => ['nullable', 'string'],
-            'hero_primary_btn_text' => ['nullable', 'string', 'max:100'],
-            'hero_primary_btn_text_en' => ['nullable', 'string', 'max:100'],
-            'hero_primary_btn_text_de' => ['nullable', 'string', 'max:100'],
-            'hero_primary_btn_url' => ['nullable', 'string', 'max:255'],
-            'hero_secondary_btn_text' => ['nullable', 'string', 'max:100'],
-            'hero_secondary_btn_text_en' => ['nullable', 'string', 'max:100'],
-            'hero_secondary_btn_text_de' => ['nullable', 'string', 'max:100'],
-            'hero_secondary_btn_url' => ['nullable', 'string', 'max:255'],
-            'hero_stat_1_val' => ['nullable', 'string', 'max:50'],
-            'hero_stat_1_lbl' => ['nullable', 'string', 'max:100'],
-            'hero_stat_1_lbl_en' => ['nullable', 'string', 'max:100'],
-            'hero_stat_1_lbl_de' => ['nullable', 'string', 'max:100'],
-            'hero_stat_2_val' => ['nullable', 'string', 'max:50'],
-            'hero_stat_2_lbl' => ['nullable', 'string', 'max:100'],
-            'hero_stat_2_lbl_en' => ['nullable', 'string', 'max:100'],
-            'hero_stat_2_lbl_de' => ['nullable', 'string', 'max:100'],
-            'hero_stat_3_val' => ['nullable', 'string', 'max:50'],
-            'hero_stat_3_lbl' => ['nullable', 'string', 'max:100'],
-            'hero_stat_3_lbl_en' => ['nullable', 'string', 'max:100'],
-            'hero_stat_3_lbl_de' => ['nullable', 'string', 'max:100'],
-
-            // Programs Section - General & Home Cards
-            'programs_badge' => ['nullable', 'string', 'max:255'],
-            'programs_badge_en' => ['nullable', 'string', 'max:255'],
-            'programs_badge_de' => ['nullable', 'string', 'max:255'],
-            'programs_title' => ['nullable', 'string', 'max:255'],
-            'programs_title_en' => ['nullable', 'string', 'max:255'],
-            'programs_title_de' => ['nullable', 'string', 'max:255'],
-            'programs_subtitle' => ['nullable', 'string'],
-            'programs_subtitle_en' => ['nullable', 'string'],
-            'programs_subtitle_de' => ['nullable', 'string'],
-            'program_1_title' => ['nullable', 'string', 'max:100'],
-            'program_1_title_en' => ['nullable', 'string', 'max:100'],
-            'program_1_title_de' => ['nullable', 'string', 'max:100'],
-            'program_1_desc' => ['nullable', 'string', 'max:500'],
-            'program_1_desc_en' => ['nullable', 'string', 'max:500'],
-            'program_1_desc_de' => ['nullable', 'string', 'max:500'],
-            'program_2_title' => ['nullable', 'string', 'max:100'],
-            'program_2_title_en' => ['nullable', 'string', 'max:100'],
-            'program_2_title_de' => ['nullable', 'string', 'max:100'],
-            'program_2_desc' => ['nullable', 'string', 'max:500'],
-            'program_2_desc_en' => ['nullable', 'string', 'max:500'],
-            'program_2_desc_de' => ['nullable', 'string', 'max:500'],
-            'program_3_title' => ['nullable', 'string', 'max:100'],
-            'program_3_title_en' => ['nullable', 'string', 'max:100'],
-            'program_3_title_de' => ['nullable', 'string', 'max:100'],
-            'program_3_desc' => ['nullable', 'string', 'max:500'],
-            'program_3_desc_en' => ['nullable', 'string', 'max:500'],
-            'program_3_desc_de' => ['nullable', 'string', 'max:500'],
-
-            // Programs Section - Beginner Program
-            'program_beginner_title' => ['nullable', 'string', 'max:255'],
-            'program_beginner_title_en' => ['nullable', 'string', 'max:255'],
-            'program_beginner_title_de' => ['nullable', 'string', 'max:255'],
-            'program_beginner_level' => ['nullable', 'string', 'max:100'],
-            'program_beginner_badge' => ['nullable', 'string', 'max:255'],
-            'program_beginner_tagline' => ['nullable', 'string'],
-            'program_beginner_tagline_en' => ['nullable', 'string'],
-            'program_beginner_tagline_de' => ['nullable', 'string'],
-            'program_beginner_description' => ['nullable', 'string'],
-            'program_beginner_description_en' => ['nullable', 'string'],
-            'program_beginner_description_de' => ['nullable', 'string'],
-            'program_beginner_duration' => ['nullable', 'string', 'max:100'],
-            'program_beginner_total_hours' => ['nullable', 'string', 'max:100'],
-            'program_beginner_class_size' => ['nullable', 'string', 'max:100'],
-            'program_beginner_schedule' => ['nullable', 'string', 'max:255'],
-            'program_beginner_target_exam' => ['nullable', 'string', 'max:255'],
-            'program_beginner_career_path' => ['nullable', 'string'],
-            'program_beginner_career_path_en' => ['nullable', 'string'],
-            'program_beginner_career_path_de' => ['nullable', 'string'],
-
-            // Programs Section - Intermediate Program
-            'program_intermediate_title' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_title_en' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_title_de' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_level' => ['nullable', 'string', 'max:100'],
-            'program_intermediate_badge' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_tagline' => ['nullable', 'string'],
-            'program_intermediate_tagline_en' => ['nullable', 'string'],
-            'program_intermediate_tagline_de' => ['nullable', 'string'],
-            'program_intermediate_description' => ['nullable', 'string'],
-            'program_intermediate_description_en' => ['nullable', 'string'],
-            'program_intermediate_description_de' => ['nullable', 'string'],
-            'program_intermediate_duration' => ['nullable', 'string', 'max:100'],
-            'program_intermediate_total_hours' => ['nullable', 'string', 'max:100'],
-            'program_intermediate_class_size' => ['nullable', 'string', 'max:100'],
-            'program_intermediate_schedule' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_target_exam' => ['nullable', 'string', 'max:255'],
-            'program_intermediate_career_path' => ['nullable', 'string'],
-            'program_intermediate_career_path_en' => ['nullable', 'string'],
-            'program_intermediate_career_path_de' => ['nullable', 'string'],
-
-            // Programs Section - Advanced Program
-            'program_advanced_title' => ['nullable', 'string', 'max:255'],
-            'program_advanced_title_en' => ['nullable', 'string', 'max:255'],
-            'program_advanced_title_de' => ['nullable', 'string', 'max:255'],
-            'program_advanced_level' => ['nullable', 'string', 'max:100'],
-            'program_advanced_badge' => ['nullable', 'string', 'max:255'],
-            'program_advanced_tagline' => ['nullable', 'string'],
-            'program_advanced_tagline_en' => ['nullable', 'string'],
-            'program_advanced_tagline_de' => ['nullable', 'string'],
-            'program_advanced_description' => ['nullable', 'string'],
-            'program_advanced_description_en' => ['nullable', 'string'],
-            'program_advanced_description_de' => ['nullable', 'string'],
-            'program_advanced_duration' => ['nullable', 'string', 'max:100'],
-            'program_advanced_total_hours' => ['nullable', 'string', 'max:100'],
-            'program_advanced_class_size' => ['nullable', 'string', 'max:100'],
-            'program_advanced_schedule' => ['nullable', 'string', 'max:255'],
-            'program_advanced_target_exam' => ['nullable', 'string', 'max:255'],
-            'program_advanced_career_path' => ['nullable', 'string'],
-            'program_advanced_career_path_en' => ['nullable', 'string'],
-            'program_advanced_career_path_de' => ['nullable', 'string'],
-
-            // CTA Section
-            'cta_badge' => ['nullable', 'string', 'max:255'],
-            'cta_badge_en' => ['nullable', 'string', 'max:255'],
-            'cta_badge_de' => ['nullable', 'string', 'max:255'],
-            'cta_title' => ['nullable', 'string', 'max:255'],
-            'cta_title_en' => ['nullable', 'string', 'max:255'],
-            'cta_title_de' => ['nullable', 'string', 'max:255'],
-            'cta_subtitle' => ['nullable', 'string'],
-            'cta_subtitle_en' => ['nullable', 'string'],
-            'cta_subtitle_de' => ['nullable', 'string'],
-            'cta_button_text' => ['nullable', 'string', 'max:100'],
-            'cta_button_text_en' => ['nullable', 'string', 'max:100'],
-            'cta_button_text_de' => ['nullable', 'string', 'max:100'],
-            'cta_button_url' => ['nullable', 'string', 'max:255'],
-
-            // Footer Section
-            'footer_about' => ['nullable', 'string'],
-            'footer_about_en' => ['nullable', 'string'],
-            'footer_about_de' => ['nullable', 'string'],
-            'footer_copyright' => ['nullable', 'string', 'max:255'],
-            'footer_copyright_en' => ['nullable', 'string', 'max:255'],
-            'footer_copyright_de' => ['nullable', 'string', 'max:255'],
-
-            // Theme Colors
-            'theme_color_primary' => ['nullable', 'string', 'max:20'],
-            'theme_color_gold' => ['nullable', 'string', 'max:20'],
-            'theme_color_gold_hover' => ['nullable', 'string', 'max:20'],
-
+        $rules = [
             // Uploads
             'site_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
             'site_favicon' => ['nullable', 'file', 'mimes:ico,png,svg,jpg', 'max:1024'],
             'hero_bg_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:5120'],
             'hero_gate_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:4096'],
             'cta_bg_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:5120'],
-        ]);
+
+            // Specific format validations
+            'contact_email' => ['nullable', 'email', 'max:255'],
+        ];
+
+        // Allow any dynamic text/textarea/color setting keys from the customizer form
+        foreach ($request->keys() as $inputKey) {
+            if (! isset($rules[$inputKey]) && ! in_array($inputKey, ['_token'])) {
+                $rules[$inputKey] = ['nullable', 'string'];
+            }
+        }
+
+        $validated = $request->validate($rules);
 
         // File upload handling: site_logo
         if ($request->hasFile('site_logo')) {

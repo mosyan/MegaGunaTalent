@@ -119,10 +119,10 @@
             <!-- Action Buttons -->
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                 <a href="#profil-lembaga" class="btn-brand-double text-base sm:text-lg">
-                    {{ __('Institution Profile') }}
+                    {{ \App\Models\SiteSetting::getLocalized('about_story_badge', 'Profil Lembaga') }}
                 </a>
                 <a href="#galeri-fasilitas" class="px-6 py-3.5 rounded-none border-2 border-[#fdc04f] text-[#fdc04f] hover:bg-[#fdc04f] hover:text-[#321f47] font-bold transition-all duration-300">
-                    {{ __('View Facilities & Classrooms') }}
+                    {{ \App\Models\SiteSetting::getLocalized('about_fac_title', 'Lihat Fasilitas & Ruang Kelas') }}
                 </a>
             </div>
 
@@ -131,52 +131,52 @@
                 <!-- Card 1 -->
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 sm:p-6 rounded-lg hover:border-[#fdc04f] transition-all hover:-translate-y-1 group">
                     <div class="font-yeseva text-3xl sm:text-4xl text-[#fdc04f] mb-1 group-hover:scale-105 transition-transform">
-                        240+
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_1_val', '240+') }}
                     </div>
                     <div class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato uppercase tracking-wider">
-                        Kapasitas Siswa / Tahun
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_1_lbl', 'Kapasitas Siswa / Tahun') }}
                     </div>
                     <div class="text-[11px] text-[#fdc04f]/70 mt-2">
-                        4 Batch Intensif @ 60 Siswa
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_1_sub', '4 Batch Intensif @ 60 Siswa') }}
                     </div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 sm:p-6 rounded-lg hover:border-[#fdc04f] transition-all hover:-translate-y-1 group">
                     <div class="font-yeseva text-3xl sm:text-4xl text-[#fdc04f] mb-1 group-hover:scale-105 transition-transform">
-                        3 Ruang
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_2_val', '3 Ruang') }}
                     </div>
                     <div class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato uppercase tracking-wider">
-                        Kelas Multimedia Representatif
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_2_lbl', 'Kelas Multimedia Representatif') }}
                     </div>
                     <div class="text-[11px] text-[#fdc04f]/70 mt-2">
-                        AC, Smart Audio, Proyektor
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_2_sub', 'AC, Smart Audio, Proyektor') }}
                     </div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 sm:p-6 rounded-lg hover:border-[#fdc04f] transition-all hover:-translate-y-1 group">
                     <div class="font-yeseva text-3xl sm:text-4xl text-[#fdc04f] mb-1 group-hover:scale-105 transition-transform">
-                        100%
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_3_val', '100%') }}
                     </div>
                     <div class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato uppercase tracking-wider">
-                        Standar SKKNI & Goethe
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_3_lbl', 'Standar SKKNI & Goethe') }}
                     </div>
                     <div class="text-[11px] text-[#fdc04f]/70 mt-2">
-                        Level A1, A2 hingga B1
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_3_sub', 'Level A1, A2 hingga B1') }}
                     </div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="bg-black/30 backdrop-blur-md border border-[#fdc04f]/25 p-5 sm:p-6 rounded-lg hover:border-[#fdc04f] transition-all hover:-translate-y-1 group">
                     <div class="font-yeseva text-3xl sm:text-4xl text-[#fdc04f] mb-1 group-hover:scale-105 transition-transform">
-                        Bekasi
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_4_val', 'Bekasi') }}
                     </div>
                     <div class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato uppercase tracking-wider">
-                        Lokasi Villa Galaxy
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_4_lbl', 'Lokasi Villa Galaxy') }}
                     </div>
                     <div class="text-[11px] text-[#fdc04f]/70 mt-2">
-                        Akses Strategis & Nyaman
+                        {{ \App\Models\SiteSetting::getLocalized('about_metric_4_sub', 'Akses Strategis & Nyaman') }}
                     </div>
                 </div>
             </div>
@@ -200,21 +200,21 @@
             <!-- Left Column: Story & Identity -->
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Sekilas Tentang Kami
+                    {{ \App\Models\SiteSetting::getLocalized('about_story_badge', 'Sekilas Tentang Kami') }}
                 </div>
                 <h2 class="font-yeseva text-2xl sm:text-4xl text-white leading-snug">
-                    Dedikasi Penuh untuk Pelatihan Kerja & Penguasaan Bahasa Asing Berkualitas
+                    {{ \App\Models\SiteSetting::getLocalized('about_story_title', 'Dedikasi Penuh untuk Pelatihan Kerja & Penguasaan Bahasa Asing Berkualitas') }}
                 </h2>
                 
                 <div class="space-y-4 text-base sm:text-lg text-[#f2ebfd]/85 font-lato leading-relaxed">
                     <p>
-                        <strong class="text-[#fdc04f]">LPK Mega Guna Talent</strong> didirikan dengan tekad kuat untuk menjembatani generasi muda Indonesia dalam meraih kesempatan emas berkarier dan menempuh pendidikan vokasi (Ausbildung) di Republik Federal Jerman.
+                        {!! nl2br(e(\App\Models\SiteSetting::getLocalized('about_story_p1', 'LPK Mega Guna Talent didirikan dengan tekad kuat untuk menjembatani generasi muda Indonesia dalam meraih kesempatan emas berkarier dan menempuh pendidikan vokasi (Ausbildung) di Republik Federal Jerman.'))) !!}
                     </p>
                     <p>
-                        Berlokasi di kawasan prestisius <span class="text-white font-semibold">Villa Galaxy, Bekasi Selatan</span>, lembaga kami dirancang khusus dengan fasilitas gedung modern berkapasitas ratusan peserta didik. Kami memadukan pendekatan kurikulum interaktif berbasis <span class="text-[#fdc04f] font-semibold">SKKNI (Standar Kompetensi Kerja Nasional Indonesia)</span> dan silabus sertifikasi internasional <span class="text-[#fdc04f] font-semibold">Goethe-Institut (CEFR)</span>.
+                        {!! nl2br(e(\App\Models\SiteSetting::getLocalized('about_story_p2', 'Berlokasi di kawasan prestisius Villa Galaxy, Bekasi Selatan, lembaga kami dirancang khusus dengan fasilitas gedung modern berkapasitas ratusan peserta didik. Kami memadukan pendekatan kurikulum interaktif berbasis SKKNI dan silabus sertifikasi internasional Goethe-Institut (CEFR).'))) !!}
                     </p>
                     <p>
-                        Bukan sekadar mengajarkan tata bahasa, kami menanamkan kedisiplinan, pemahaman lintas budaya (<em class="italic">Interkulturelle Kompetenz</em>), etos kerja presisi, dan simulasi kehidupan nyata di Jerman agar setiap siswa berangkat dengan kepercayaan diri penuh.
+                        {!! nl2br(e(\App\Models\SiteSetting::getLocalized('about_story_p3', 'Bukan sekadar mengajarkan tata bahasa, kami menanamkan kedisiplinan, pemahaman lintas budaya (Interkulturelle Kompetenz), etos kerja presisi, dan simulasi kehidupan nyata di Jerman agar setiap siswa berangkat dengan kepercayaan diri penuh.'))) !!}
                     </p>
                 </div>
 
@@ -225,8 +225,8 @@
                             ✓
                         </div>
                         <div>
-                            <h4 class="font-bold text-white text-base">Berizin Resmi</h4>
-                            <p class="text-xs sm:text-sm text-[#f2ebfd]/70 font-lato mt-0.5">Sesuai UU Ketenagakerjaan No. 13/2003 & regulasi vokasi Kemnaker RI.</p>
+                            <h4 class="font-bold text-white text-base">{{ \App\Models\SiteSetting::getLocalized('about_story_h1_title', 'Berizin Resmi') }}</h4>
+                            <p class="text-xs sm:text-sm text-[#f2ebfd]/70 font-lato mt-0.5">{{ \App\Models\SiteSetting::getLocalized('about_story_h1_desc', 'Sesuai UU Ketenagakerjaan No. 13/2003 & regulasi vokasi Kemnaker RI.') }}</p>
                         </div>
                     </div>
 
@@ -235,8 +235,8 @@
                             ✓
                         </div>
                         <div>
-                            <h4 class="font-bold text-white text-base">Instruktur Bersertifikat</h4>
-                            <p class="text-xs sm:text-sm text-[#f2ebfd]/70 font-lato mt-0.5">Mentor lulusan internasional dengan sertifikasi kompetensi resmi BNSP & Goethe.</p>
+                            <h4 class="font-bold text-white text-base">{{ \App\Models\SiteSetting::getLocalized('about_story_h2_title', 'Instruktur Bersertifikat') }}</h4>
+                            <p class="text-xs sm:text-sm text-[#f2ebfd]/70 font-lato mt-0.5">{{ \App\Models\SiteSetting::getLocalized('about_story_h2_desc', 'Mentor lulusan internasional dengan sertifikasi kompetensi resmi BNSP & Goethe.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -254,21 +254,21 @@
                     <!-- Overlay Caption Badge -->
                     <div class="absolute bottom-0 inset-x-0 p-6 space-y-2">
                         <span class="inline-block px-3 py-1 bg-[#fdc04f] text-[#321f47] text-xs font-bold uppercase tracking-wider rounded">
-                            Gedung Kampus Utama
+                            {{ \App\Models\SiteSetting::getLocalized('about_campus_tag', 'Gedung Kampus Utama') }}
                         </span>
                         <h3 class="font-yeseva text-xl text-white">
-                            LPK Mega Guna Talent
+                            {{ \App\Models\SiteSetting::getLocalized('about_campus_title', 'LPK Mega Guna Talent') }}
                         </h3>
                         <p class="text-xs sm:text-sm text-[#f2ebfd]/90 font-lato">
-                            Jln Boulevard Raya A1 No. 16 Villa Galaxy, Jaka Setia, Bekasi Selatan.
+                            {{ \App\Models\SiteSetting::getLocalized('about_campus_desc', 'Jln Boulevard Raya A1 No. 16 Villa Galaxy, Jaka Setia, Bekasi Selatan.') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Floating Accent Box -->
                 <div class="hidden sm:block absolute -bottom-6 -left-6 bg-[#321f47] border border-[#fdc04f] p-4 rounded-lg shadow-xl max-w-[220px]">
-                    <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider">Lingkungan Belajar</p>
-                    <p class="text-sm text-white font-lato mt-1">Eksklusif, kondusif, dan dilengkapi sarana multimedia mutakhir.</p>
+                    <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider">{{ \App\Models\SiteSetting::getLocalized('about_campus_env_tag', 'Lingkungan Belajar') }}</p>
+                    <p class="text-sm text-white font-lato mt-1">{{ \App\Models\SiteSetting::getLocalized('about_campus_env_desc', 'Eksklusif, kondusif, dan dilengkapi sarana multimedia mutakhir.') }}</p>
                 </div>
             </div>
         </div>
@@ -280,13 +280,13 @@
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Arah & Fondasi Lembaga
+                    {{ \App\Models\SiteSetting::getLocalized('about_mv_badge', 'Arah & Fondasi Lembaga') }}
                 </div>
                 <h2 class="font-yeseva text-3xl sm:text-5xl text-[#fdc04f]">
-                    Visi & Misi Strategis
+                    {{ \App\Models\SiteSetting::getLocalized('about_mv_title', 'Visi & Misi Strategis') }}
                 </h2>
                 <p class="text-base sm:text-lg text-[#f2ebfd]/80 font-lato">
-                    Komitmen teguh LPK Mega Guna Talent dalam mewujudkan standar kompetensi kerja berkualitas tinggi yang diakui di panggung global.
+                    {{ \App\Models\SiteSetting::getLocalized('about_mv_subtitle', 'Komitmen teguh LPK Mega Guna Talent dalam mewujudkan standar kompetensi kerja berkualitas tinggi yang diakui di panggung global.') }}
                 </p>
             </div>
 
@@ -295,13 +295,13 @@
                 <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#fdc04f]/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10 text-center max-w-4xl mx-auto space-y-4">
                     <span class="inline-block px-4 py-1.5 rounded-full bg-[#fdc04f] text-[#321f47] font-bold text-xs sm:text-sm uppercase tracking-widest">
-                        {{ __('Our Main Vision') }}
+                        {{ \App\Models\SiteSetting::getLocalized('about_visi_badge', __('Our Main Vision')) }}
                     </span>
                     <blockquote class="font-yeseva text-xl sm:text-3xl md:text-4xl text-white leading-relaxed italic">
                         “{{ \App\Models\SiteSetting::getLocalized('about_visi', 'Menjadi Lembaga Pelatihan Kerja Yang Terdepan Dalam Membangun SDM Kompeten Sesuai Dengan Standar Kompetensi Kerja Nasional dan Internasional') }}”
                     </blockquote>
                     <p class="text-sm text-[#fdc04f]/90 font-lato">
-                        — Ditetapkan oleh Dewan Pembina & Manajemen LPK Mega Guna Talent
+                        {{ \App\Models\SiteSetting::getLocalized('about_visi_author', '— Ditetapkan oleh Dewan Pembina & Manajemen LPK Mega Guna Talent') }}
                     </p>
                 </div>
             </div>
@@ -310,10 +310,10 @@
             <div>
                 <div class="text-center mb-8">
                     <h3 class="font-yeseva text-2xl sm:text-3xl text-white">
-                        7 Pilar Misi & Rencana Strategis
+                        {{ \App\Models\SiteSetting::getLocalized('about_mission_title', '7 Pilar Misi & Rencana Strategis') }}
                     </h3>
                     <p class="text-sm sm:text-base text-[#f2ebfd]/70 font-lato mt-1">
-                        Pedoman operasional penyelenggaraan pelatihan kerja di LPK Mega Guna Talent
+                        {{ \App\Models\SiteSetting::getLocalized('about_mission_subtitle', 'Pedoman operasional penyelenggaraan pelatihan kerja di LPK Mega Guna Talent') }}
                     </p>
                 </div>
 
@@ -324,13 +324,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f]/20 text-[#fdc04f] flex items-center justify-center font-yeseva text-lg mb-4 group-hover:bg-[#fdc04f] group-hover:text-[#321f47] transition-colors">
                                 01
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Regulasi Pelatihan PBK</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_1_title', 'Regulasi Pelatihan PBK') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Menyelenggarakan pelatihan kerja berbasis kompetensi (PBK) yang patuh dan selaras dengan regulasi Kementerian Ketenagakerjaan Republik Indonesia.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_1_desc', 'Menyelenggarakan pelatihan kerja berbasis kompetensi (PBK) yang patuh dan selaras dengan regulasi Kementerian Ketenagakerjaan Republik Indonesia.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Kemnaker Standard
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_1_tag', 'Kemnaker Standard') }}
                         </div>
                     </div>
 
@@ -340,13 +340,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f]/20 text-[#fdc04f] flex items-center justify-center font-yeseva text-lg mb-4 group-hover:bg-[#fdc04f] group-hover:text-[#321f47] transition-colors">
                                 02
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Kurikulum Standar Industri</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_2_title', 'Kurikulum Standar Industri') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Mengembangkan kurikulum berstandar industri dan silabus resmi Goethe-Institut e.V. untuk menjamin relevansi keterampilan siswa.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_2_desc', 'Mengembangkan kurikulum berstandar industri dan silabus resmi Goethe-Institut e.V. untuk menjamin relevansi keterampilan siswa.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Goethe & CEFR Aligned
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_2_tag', 'Goethe & CEFR Aligned') }}
                         </div>
                     </div>
 
@@ -356,13 +356,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f]/20 text-[#fdc04f] flex items-center justify-center font-yeseva text-lg mb-4 group-hover:bg-[#fdc04f] group-hover:text-[#321f47] transition-colors">
                                 03
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Instruktur Bersertifikasi BNSP</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_3_title', 'Instruktur Bersertifikasi BNSP') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Meningkatkan kapasitas tenaga pelatih profesional yang memiliki sertifikat kompetensi metodologi pelatihan dan bahasa Jerman tingkat tinggi.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_3_desc', 'Meningkatkan kapasitas tenaga pelatih profesional yang memiliki sertifikat kompetensi metodologi pelatihan dan bahasa Jerman tingkat tinggi.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Certified Mentorship
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_3_tag', 'Certified Mentorship') }}
                         </div>
                     </div>
 
@@ -372,13 +372,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f]/20 text-[#fdc04f] flex items-center justify-center font-yeseva text-lg mb-4 group-hover:bg-[#fdc04f] group-hover:text-[#321f47] transition-colors">
                                 04
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Sarana Multimedia Modern</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_4_title', 'Sarana Multimedia Modern') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Menyediakan sarana dan prasarana multimedia interaktif berteknologi tinggi untuk menghadirkan pengalaman belajar yang imersif dan efektif.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_4_desc', 'Menyediakan sarana dan prasarana multimedia interaktif berteknologi tinggi untuk menghadirkan pengalaman belajar yang imersif dan efektif.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Smart Interactive Lab
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_4_tag', 'Smart Interactive Lab') }}
                         </div>
                     </div>
 
@@ -388,13 +388,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f]/20 text-[#fdc04f] flex items-center justify-center font-yeseva text-lg mb-4 group-hover:bg-[#fdc04f] group-hover:text-[#321f47] transition-colors">
                                 05
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Manajemen Mutu Terpadu</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_5_title', 'Manajemen Mutu Terpadu') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Mengimplementasikan sistem manajemen penjaminan mutu dan tata kelola digital terintegrasi demi transparansi proses pembelajaran.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_5_desc', 'Mengimplementasikan sistem manajemen penjaminan mutu dan tata kelola digital terintegrasi demi transparansi proses pembelajaran.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Quality Assurance
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_5_tag', 'Quality Assurance') }}
                         </div>
                     </div>
 
@@ -404,13 +404,13 @@
                             <div class="w-10 h-10 rounded-full bg-[#fdc04f] text-[#321f47] flex items-center justify-center font-yeseva text-lg mb-4 font-bold">
                                 06+
                             </div>
-                            <h4 class="font-bold text-lg text-white mb-2">Kemitraan Penempatan & GNIK</h4>
+                            <h4 class="font-bold text-lg text-white mb-2">{{ \App\Models\SiteSetting::getLocalized('about_mission_6_title', 'Kemitraan Penempatan & GNIK') }}</h4>
                             <p class="text-sm text-[#f2ebfd]/75 font-lato leading-relaxed">
-                                Membangun kemitraan strategis penempatan kerja vokasi di Jerman (Ausbildung) serta mendukung penuh Gerakan Nasional Indonesia Kompeten.
+                                {{ \App\Models\SiteSetting::getLocalized('about_mission_6_desc', 'Membangun kemitraan strategis penempatan kerja vokasi di Jerman (Ausbildung) serta mendukung penuh Gerakan Nasional Indonesia Kompeten.') }}
                             </p>
                         </div>
                         <div class="pt-4 text-xs text-[#fdc04f] font-semibold">
-                            Global Career Network
+                            {{ \App\Models\SiteSetting::getLocalized('about_mission_6_tag', 'Global Career Network') }}
                         </div>
                     </div>
                 </div>
@@ -436,13 +436,13 @@
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Kepemimpinan & Tenaga Pengajar
+                    {{ \App\Models\SiteSetting::getLocalized('about_team_badge', 'Kepemimpinan & Tenaga Pengajar') }}
                 </div>
                 <h2 class="font-yeseva text-3xl sm:text-5xl text-[#fdc04f]">
-                    Struktur Manajemen & Mentor
+                    {{ \App\Models\SiteSetting::getLocalized('about_team_title', 'Struktur Manajemen & Mentor') }}
                 </h2>
                 <p class="text-base sm:text-lg text-[#f2ebfd]/80 font-lato">
-                    Dipimpin oleh para profesional berwawasan global yang berdedikasi mengantarkan setiap siswa meraih masa depan cemerlang di Jerman.
+                    {{ \App\Models\SiteSetting::getLocalized('about_team_subtitle', 'Dipimpin oleh para profesional berwawasan global yang berdedikasi mengantarkan setiap siswa meraih masa depan cemerlang di Jerman.') }}
                 </p>
             </div>
 
@@ -457,19 +457,19 @@
                         </div>
                         <div class="absolute bottom-3 left-4 right-4 text-center">
                             <span class="inline-block px-3 py-1 bg-[#fdc04f] text-[#321f47] text-xs font-bold uppercase rounded-full">
-                                Kepala LPK & Founder
+                                {{ \App\Models\SiteSetting::getLocalized('about_team_1_role', 'Kepala LPK & Founder') }}
                             </span>
                         </div>
                     </div>
                     <div class="p-6 space-y-3">
                         <h3 class="font-yeseva text-2xl text-white group-hover:text-[#fdc04f] transition-colors">
-                            Moses Pasande
+                            {{ \App\Models\SiteSetting::get('about_team_1_name', 'Moses Pasande') }}
                         </h3>
                         <p class="text-xs uppercase tracking-wider text-[#fdc04f] font-bold">
-                            Founder & Head of Institution
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_1_subrole', 'Founder & Head of Institution') }}
                         </p>
                         <p class="text-sm text-[#f2ebfd]/80 font-lato leading-relaxed">
-                            Pemimpin visioner dalam ekosistem pelatihan vokasi internasional. Berkomitmen menghadirkan kurikulum berstandar industri dan tata kelola pendidikan yang berorientasi pada hasil kerja nyata.
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_1_bio', 'Pemimpin visioner dalam ekosistem pelatihan vokasi internasional. Berkomitmen menghadirkan kurikulum berstandar industri dan tata kelola pendidikan yang berorientasi pada hasil kerja nyata.') }}
                         </p>
                     </div>
                 </div>
@@ -483,19 +483,19 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#2C0B1E] via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-4 right-4 text-center">
                             <span class="inline-block px-3 py-1 bg-[#fdc04f] text-[#321f47] text-xs font-bold uppercase rounded-full">
-                                Kabid Kurikulum & Senior Mentor
+                                {{ \App\Models\SiteSetting::getLocalized('about_team_2_role', 'Kabid Kurikulum & Senior Mentor') }}
                             </span>
                         </div>
                     </div>
                     <div class="p-6 space-y-3">
                         <h3 class="font-yeseva text-2xl text-white group-hover:text-[#fdc04f] transition-colors">
-                            Ramona Novelia Wiyono
+                            {{ \App\Models\SiteSetting::get('about_team_2_name', 'Ramona Novelia Wiyono') }}
                         </h3>
                         <p class="text-xs uppercase tracking-wider text-[#fdc04f] font-bold">
-                            Head of Curriculum & Global Educator
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_2_subrole', 'Head of Curriculum & Global Educator') }}
                         </p>
                         <p class="text-sm text-[#f2ebfd]/80 font-lato leading-relaxed">
-                            Alumnus Raffles Shanghai & RMIT University Melbourne (Bachelor of Design). Pemegang sertifikasi 120-Hour TESOL/TEFL dan alumnus UIBE Beijing dengan pengalaman mengajar multibahasa tingkat internasional.
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_2_bio', 'Alumnus Raffles Shanghai & RMIT University Melbourne (Bachelor of Design). Pemegang sertifikasi 120-Hour TESOL/TEFL dan alumnus UIBE Beijing dengan pengalaman mengajar multibahasa tingkat internasional.') }}
                         </p>
                     </div>
                 </div>
@@ -509,19 +509,19 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#2C0B1E] via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-4 right-4 text-center">
                             <span class="inline-block px-3 py-1 bg-[#fdc04f] text-[#321f47] text-xs font-bold uppercase rounded-full">
-                                Instruktur Bahasa Jerman
+                                {{ \App\Models\SiteSetting::getLocalized('about_team_3_role', 'Instruktur Bahasa Jerman') }}
                             </span>
                         </div>
                     </div>
                     <div class="p-6 space-y-3">
                         <h3 class="font-yeseva text-2xl text-white group-hover:text-[#fdc04f] transition-colors">
-                            Muhammad Rafa Affansyah Purba
+                            {{ \App\Models\SiteSetting::get('about_team_3_name', 'Muhammad Rafa Affansyah Purba') }}
                         </h3>
                         <p class="text-xs uppercase tracking-wider text-[#fdc04f] font-bold">
-                            Goethe Deutsch B1 & SKKNI Level 4 Certified
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_3_subrole', 'Goethe Deutsch B1 & SKKNI Level 4 Certified') }}
                         </p>
                         <p class="text-sm text-[#f2ebfd]/80 font-lato leading-relaxed">
-                            Instruktur berlisensi BNSP SKKNI Level 4 dan pemegang Goethe-Zertifikat Deutsch B1. Menguasai pedagogi komunikatif aktif untuk mempersiapkan kelulusan ujian resmi bahasa Jerman.
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_3_bio', 'Instruktur berlisensi BNSP SKKNI Level 4 dan pemegang Goethe-Zertifikat Deutsch B1. Menguasai pedagogi komunikatif aktif untuk mempersiapkan kelulusan ujian resmi bahasa Jerman.') }}
                         </p>
                     </div>
                 </div>
@@ -534,10 +534,10 @@
                         H
                     </div>
                     <div>
-                        <h4 class="font-yeseva text-xl text-white">Henny</h4>
-                        <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider mt-0.5">Kabid Penjaminan Mutu & Sertifikasi</p>
+                        <h4 class="font-yeseva text-xl text-white">{{ \App\Models\SiteSetting::get('about_team_4_name', 'Henny') }}</h4>
+                        <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider mt-0.5">{{ \App\Models\SiteSetting::getLocalized('about_team_4_role', 'Kabid Penjaminan Mutu & Sertifikasi') }}</p>
                         <p class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato mt-1.5">
-                            Mengawal standarisasi mutu pembelajaran, audit kurikulum berkala, dan verifikasi sertifikasi kompetensi seluruh lulusan.
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_4_bio', 'Mengawal standarisasi mutu pembelajaran, audit kurikulum berkala, dan verifikasi sertifikasi kompetensi seluruh lulusan.') }}
                         </p>
                     </div>
                 </div>
@@ -547,10 +547,10 @@
                         SA
                     </div>
                     <div>
-                        <h4 class="font-yeseva text-xl text-white">Septarina Adinda Privari, S.H</h4>
-                        <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider mt-0.5">Kabid Administrasi & Keuangan</p>
+                        <h4 class="font-yeseva text-xl text-white">{{ \App\Models\SiteSetting::get('about_team_5_name', 'Septarina Adinda Privari, S.H') }}</h4>
+                        <p class="text-xs text-[#fdc04f] font-bold uppercase tracking-wider mt-0.5">{{ \App\Models\SiteSetting::getLocalized('about_team_5_role', 'Kabid Administrasi & Keuangan') }}</p>
                         <p class="text-xs sm:text-sm text-[#f2ebfd]/75 font-lato mt-1.5">
-                            Mengelola tata kelola hukum, legalitas dokumen kesiswaan, administrasi lembaga, dan transparansi keuangan operasional.
+                            {{ \App\Models\SiteSetting::getLocalized('about_team_5_bio', 'Mengelola tata kelola hukum, legalitas dokumen kesiswaan, administrasi lembaga, dan transparansi keuangan operasional.') }}
                         </p>
                     </div>
                 </div>
@@ -564,13 +564,13 @@
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Fasilitas Representatif
+                    {{ \App\Models\SiteSetting::getLocalized('about_fac_badge', 'Fasilitas Representatif') }}
                 </div>
                 <h2 class="font-yeseva text-3xl sm:text-5xl text-[#fdc04f]">
-                    Sarana & Prasarana Pembelajaran
+                    {{ \App\Models\SiteSetting::getLocalized('about_fac_title', 'Sarana & Prasarana Pembelajaran') }}
                 </h2>
                 <p class="text-base sm:text-lg text-[#f2ebfd]/80 font-lato">
-                    Setiap ruang belajar, ruang rapat, dan laboratorium dirancang ergonomis demi kenyamanan maksimal peserta didik selama proses intensif.
+                    {{ \App\Models\SiteSetting::getLocalized('about_fac_subtitle', 'Setiap ruang belajar, ruang rapat, dan laboratorium dirancang ergonomis demi kenyamanan maksimal peserta didik selama proses intensif.') }}
                 </p>
             </div>
 
@@ -579,120 +579,120 @@
                 <!-- Facility 1: Gedung Utama -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/building-exterior.jpg') }}"
-                     data-title="Gedung Utama LPK Mega Guna Talent"
-                     data-desc="Tampak depan gedung operasional di Villa Galaxy Bekasi Selatan dengan akses mudah dan lokasi prestisius.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_1_title', 'Gedung Utama LPK Mega Guna Talent') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_1_modal', 'Tampak depan gedung operasional di Villa Galaxy Bekasi Selatan dengan akses mudah dan lokasi prestisius.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/building-exterior.jpg') }}" 
-                             alt="Gedung Utama LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_1_title', 'Gedung Utama LPK Mega Guna Talent') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Gedung Kampus
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_1_badge', 'Gedung Kampus') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Tampak Depan Gedung</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Kawasan Villa Galaxy Blok A1 No. 16, Bekasi Selatan.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_1_title', 'Tampak Depan Gedung') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_1_desc', 'Kawasan Villa Galaxy Blok A1 No. 16, Bekasi Selatan.') }}</p>
                     </div>
                 </div>
 
                 <!-- Facility 2: Front Office & Resepsionis -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/front-office.jpg') }}"
-                     data-title="Front Office & Ruang Konsultasi"
-                     data-desc="Area resepsionis dan konsultasi terpadu bagi calon siswa dan orang tua untuk informasi program secara detail.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_2_title', 'Front Office & Ruang Konsultasi') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_2_modal', 'Area resepsionis dan konsultasi terpadu bagi calon siswa dan orang tua untuk informasi program secara detail.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/front-office.jpg') }}" 
-                             alt="Front Office LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_2_title', 'Front Office LPK Mega Guna Talent') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Pelayanan Siswa
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_2_badge', 'Pelayanan Siswa') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Front Office & Konsultasi</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Pusat informasi penerimaan dan pendampingan registrasi.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_2_title', 'Front Office & Konsultasi') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_2_desc', 'Pusat informasi penerimaan dan pendampingan registrasi.') }}</p>
                     </div>
                 </div>
 
                 <!-- Facility 3: Ruang Kelas Teori A -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/classroom-1.jpg') }}"
-                     data-title="Ruang Kelas Teori A (Multimedia)"
-                     data-desc="Kapasitas 20 peserta didik per kelas dengan perangkat multimedia, pendingin ruangan (AC), dan pencahayaan optimal.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_3_title', 'Ruang Kelas Teori A (Multimedia)') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_3_modal', 'Kapasitas 20 peserta didik per kelas dengan perangkat multimedia, pendingin ruangan (AC), dan pencahayaan optimal.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/classroom-1.jpg') }}" 
-                             alt="Ruang Kelas Teori A LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_3_title', 'Ruang Kelas Teori A LPK Mega Guna Talent') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Kelas Teori 30 m²
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_3_badge', 'Kelas Teori 30 m²') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Ruang Kelas Teori A</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Dilengkapi proyektor interaktif dan audio jernih untuk Hören.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_3_title', 'Ruang Kelas Teori A') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_3_desc', 'Dilengkapi proyektor interaktif dan audio jernih untuk Hören.') }}</p>
                     </div>
                 </div>
 
                 <!-- Facility 4: Ruang Kelas Teori B -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/classroom-2.jpg') }}"
-                     data-title="Ruang Kelas Teori B"
-                     data-desc="Penataan meja dan kursi ergonomis untuk memfasilitasi diskusi interaktif dan praktik Sprechen bahasa Jerman.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_4_title', 'Ruang Kelas Teori B') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_4_modal', 'Penataan meja dan kursi ergonomis untuk memfasilitasi diskusi interaktif dan praktik Sprechen bahasa Jerman.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/classroom-2.jpg') }}" 
-                             alt="Ruang Kelas Teori B LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_4_title', 'Ruang Kelas Teori B LPK Mega Guna Talent') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Kelas Interaktif
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_4_badge', 'Kelas Interaktif') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Ruang Kelas Teori B</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Suasana belajar kondusif dengan jumlah siswa terbatas.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_4_title', 'Ruang Kelas Teori B') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_4_desc', 'Suasana belajar kondusif dengan jumlah siswa terbatas.') }}</p>
                     </div>
                 </div>
 
                 <!-- Facility 5: Ruang Meeting & Evaluasi -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/meeting-room.jpg') }}"
-                     data-title="Ruang Rapat & Evaluasi Kurikulum"
-                     data-desc="Tempat koordinasi berkala pimpinan dan instruktur untuk evaluasi mutu dan kemajuan capaian belajar siswa.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_5_title', 'Ruang Rapat & Evaluasi Kurikulum') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_5_modal', 'Tempat koordinasi berkala pimpinan dan instruktur untuk evaluasi mutu dan kemajuan capaian belajar siswa.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/meeting-room.jpg') }}" 
-                             alt="Ruang Meeting LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_5_title', 'Ruang Meeting LPK Mega Guna Talent') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Manajemen
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_5_badge', 'Manajemen') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Ruang Rapat & Diskusi</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Pusat perencanaan strategis dan penjaminan mutu lembaga.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_5_title', 'Ruang Rapat & Diskusi') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_5_desc', 'Pusat perencanaan strategis dan penjaminan mutu lembaga.') }}</p>
                     </div>
                 </div>
 
                 <!-- Facility 6: Ruang Pimpinan / Kepala LPK -->
                 <div class="group relative rounded-xl overflow-hidden border border-[#fdc04f]/25 bg-black/40 hover:border-[#fdc04f] transition-all duration-300 hover:-translate-y-1 cursor-pointer gallery-card"
                      data-img="{{ asset('images/about/director-office.jpg') }}"
-                     data-title="Ruang Kepala Lembaga"
-                     data-desc="Ruang kerja pimpinan untuk supervisi menyeluruh operasional dan penerimaan tamu mitra kelembagaan.">
+                     data-title="{{ \App\Models\SiteSetting::getLocalized('about_fac_6_title', 'Ruang Kepala Lembaga') }}"
+                     data-desc="{{ \App\Models\SiteSetting::getLocalized('about_fac_6_modal', 'Ruang kerja pimpinan untuk supervisi menyeluruh operasional dan penerimaan tamu mitra kelembagaan.') }}">
                     <div class="relative h-56 overflow-hidden">
                         <img src="{{ asset('images/about/director-office.jpg') }}" 
-                             alt="Ruang Pimpinan LPK Mega Guna Talent" 
+                             alt="{{ \App\Models\SiteSetting::getLocalized('about_fac_6_title', 'Ruang Pimpinan LPK') }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#fdc04f] text-[#321f47] text-[11px] font-bold rounded">
-                            Kepala LPK
+                            {{ \App\Models\SiteSetting::getLocalized('about_fac_6_badge', 'Kepala LPK') }}
                         </span>
                     </div>
                     <div class="p-5 space-y-1">
-                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">Ruang Pimpinan LPK</h4>
-                        <p class="text-xs text-[#f2ebfd]/75 font-lato">Supervisi kebijakan mutu dan kerja sama bilateral.</p>
+                        <h4 class="font-bold text-lg text-white group-hover:text-[#fdc04f] transition-colors">{{ \App\Models\SiteSetting::getLocalized('about_fac_6_title', 'Ruang Pimpinan LPK') }}</h4>
+                        <p class="text-xs text-[#f2ebfd]/75 font-lato">{{ \App\Models\SiteSetting::getLocalized('about_fac_6_desc', 'Supervisi kebijakan mutu dan kerja sama bilateral.') }}</p>
                     </div>
                 </div>
             </div>
@@ -700,7 +700,7 @@
             <!-- Detailed Facility Specifications Table -->
             <div class="mt-8 bg-black/40 border border-[#fdc04f]/25 rounded-2xl p-6 sm:p-8">
                 <h3 class="font-yeseva text-xl sm:text-2xl text-white mb-6">
-                    Ringkasan Kapasitas & Sarana Prasarana
+                    {{ \App\Models\SiteSetting::getLocalized('about_table_title', 'Ringkasan Kapasitas & Sarana Prasarana') }}
                 </h3>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm text-[#f2ebfd]/90 font-lato">
@@ -768,13 +768,13 @@
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto space-y-4">
                 <div class="inline-block text-xs sm:text-sm uppercase tracking-widest text-[#fdc04f] font-bold pb-1 border-b border-[#fdc04f]">
-                    Legalitas & Kepatuhan
+                    {{ \App\Models\SiteSetting::getLocalized('about_legal_badge', 'Legalitas & Kepatuhan') }}
                 </div>
                 <h2 class="font-yeseva text-3xl sm:text-5xl text-[#fdc04f]">
-                    Landasan Hukum Penyelenggaraan
+                    {{ \App\Models\SiteSetting::getLocalized('about_legal_title', 'Landasan Hukum Penyelenggaraan') }}
                 </h2>
                 <p class="text-base sm:text-lg text-[#f2ebfd]/80 font-lato">
-                    Penyelenggaraan pelatihan kerja di LPK Mega Guna Talent beroperasi dengan izin resmi dan tunduk sepenuhnya pada peraturan perundang-undangan Republik Indonesia.
+                    {{ \App\Models\SiteSetting::getLocalized('about_legal_subtitle', 'Penyelenggaraan pelatihan kerja di LPK Mega Guna Talent beroperasi dengan izin resmi dan tunduk sepenuhnya pada peraturan perundang-undangan Republik Indonesia.') }}
                 </p>
             </div>
 
@@ -841,15 +841,15 @@
     <section class="relative py-16 sm:py-24 px-6 sm:px-12 md:px-16 border-t border-[#fdc04f]/15 overflow-hidden">
         <div class="max-w-5xl mx-auto relative z-10 bg-gradient-to-b from-black/80 to-[#2C0B1E]/90 border-2 border-[#fdc04f] p-8 sm:p-14 rounded-2xl shadow-2xl text-center space-y-8">
             <span class="inline-block px-4 py-1.5 rounded-full bg-[#fdc04f]/20 border border-[#fdc04f] text-[#fdc04f] text-xs font-bold uppercase tracking-widest">
-                Kunjungan Kampus & Pendaftaran
+                {{ \App\Models\SiteSetting::getLocalized('about_cta_badge', 'Kunjungan Kampus & Pendaftaran') }}
             </span>
 
             <h2 class="font-yeseva text-3xl sm:text-5xl text-white">
-                Siap Melangkah Menuju Masa Depan di Jerman?
+                {{ \App\Models\SiteSetting::getLocalized('about_cta_title', 'Siap Melangkah Menuju Masa Depan di Jerman?') }}
             </h2>
 
             <p class="max-w-2xl mx-auto text-base sm:text-lg text-[#f2ebfd]/90 font-lato leading-relaxed">
-                Kunjungi kampus LPK Mega Guna Talent di Villa Galaxy Bekasi untuk berkonsultasi langsung dengan tim akademik kami, atau daftar kelas intensif batch berikutnya hari ini.
+                {{ \App\Models\SiteSetting::getLocalized('about_cta_subtitle', 'Kunjungi kampus LPK Mega Guna Talent di Villa Galaxy Bekasi untuk berkonsultasi langsung dengan tim akademik kami, atau daftar kelas intensif batch berikutnya hari ini.') }}
             </p>
 
             <!-- Institution Coordinates & Schedule -->
@@ -883,7 +883,7 @@
             <!-- CTA Buttons -->
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2">
                 <a href="{{ route('enroll') }}" class="btn-brand-double text-lg sm:text-xl">
-                    {{ __('Enroll Now') }}
+                    {{ \App\Models\SiteSetting::getLocalized('about_cta_btn_enroll', __('Enroll Now')) }}
                 </a>
                 @php
                     $waLink = \App\Models\SiteSetting::get('social_whatsapp', 'https://wa.me/6281327788498');
@@ -893,7 +893,7 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.789.78 2.791.78h.005c3.18 0 5.767-2.587 5.768-5.766 0-1.54-.6-2.99-1.69-4.08-1.09-1.09-2.54-1.69-4.084-1.69zm5.214 7.271c-.22.618-1.08 1.139-1.503 1.18-.387.037-.878.077-2.836-.713-1.758-.709-2.91-2.457-3-2.576-.089-.12-1.842-2.452-1.842-4.676 0-2.224 1.164-3.318 1.579-3.763.415-.445.908-.557 1.211-.557.303 0 .606.003.87.016.28.013.655-.106 1.025.782.38 1.037.914 2.227 1.002 2.38.089.153.149.333.03.568-.119.235-.179.382-.358.591-.178.21-.375.469-.537.63-.178.178-.364.372-.157.727.207.355.92 1.516 1.974 2.456 1.357 1.21 2.502 1.586 2.857 1.764.355.178.563.148.77-.089.208-.237.89-1.036 1.127-1.392.237-.356.474-.297.792-.178.318.118 2.016.951 2.362 1.124.346.173.577.26.662.404.085.144.085.834-.135 1.452z"/>
                     </svg>
-                    <span>Konsultasi via WhatsApp</span>
+                    <span>{{ \App\Models\SiteSetting::getLocalized('about_cta_btn_wa', 'Konsultasi via WhatsApp') }}</span>
                 </a>
             </div>
         </div>
