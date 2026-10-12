@@ -120,4 +120,54 @@ class LocalizationTest extends TestCase
         $this->assertEquals('About Title EN', SiteSetting::get('about_hero_title_en'));
         $this->assertEquals('Anfänger Programm', SiteSetting::get('program_1_title_de'));
     }
+
+    public function test_it_safely_redirects_to_internal_return_url(): void
+    {
+        $response = $this->get('/lang/en?return=/programs');
+
+        $response->assertRedirect('/programs');
+        $response->assertSessionHas('locale', 'en');
+    }
+
+    public function test_it_prevents_open_redirect_attacks_in_return_param(): void
+    {
+        // Protocol-relative URL attempt
+        $res1 = $this->get('/lang/en?return=//evil.com');
+        $res1->assertRedirect(route('home'));
+
+        // Absolute external URL attempt
+        $res2 = $this->get('/lang/en?return=https://evil.com');
+        $res2->assertRedirect(route('home'));
+
+        // Backslash traversal attempt
+        $res3 = $this->get('/lang/en?return=/\evil.com');
+        $res3->assertRedirect(route('home'));
+    }
+
+    public function test_it_includes_hreflang_and_og_locale_tags_in_head(): void
+    {
+        $response = $this->get(route('home'));
+
+        $response->assertOk();
+        $response->assertSee('hreflang="id"', false);
+        $response->assertSee('hreflang="en"', false);
+        $response->assertSee('hreflang="de"', false);
+        $response->assertSee('hreflang="x-default"', false);
+        $response->assertSee('property="og:locale"', false);
+    }
+
+    public function test_enrollment_flash_message_is_localized_for_german(): void
+    {
+        $response = $this->withSession(['locale' => 'de'])->post(route('enroll.store'), [
+            'first_name' => 'Hans',
+            'last_name' => 'Müller',
+            'email' => 'hans@example.de',
+            'phone' => '+491701234567',
+            'program_level' => 'Beginner',
+            'message' => 'Ich möchte mich für den Kurs anmelden.',
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success', 'Vielen Dank! Wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen.');
+    }
 }

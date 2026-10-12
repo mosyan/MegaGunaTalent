@@ -17,11 +17,12 @@ class BlogController extends Controller
         $query = Blog::published()->with(['category', 'author'])->latest('published_at');
 
         if ($request->filled('search')) {
-            $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('excerpt', 'like', "%{$search}%")
-                    ->orWhere('tags', 'like', "%{$search}%");
+            $search = (string) $request->input('search');
+            $escaped = str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $search);
+            $query->where(function ($q) use ($escaped) {
+                $q->where('title', 'like', "%{$escaped}%")
+                    ->orWhere('excerpt', 'like', "%{$escaped}%")
+                    ->orWhere('tags', 'like', "%{$escaped}%");
             });
         }
 

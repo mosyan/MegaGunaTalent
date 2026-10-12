@@ -67,7 +67,7 @@ class GermanCourseController extends Controller
     {
         // Silent drop for automated spam bots triggering honeypot
         if ($request->filled('honeypot_website')) {
-            return redirect()->back()->with('success', "Thank you! We'll get in touch with you as soon as possible.");
+            return redirect()->back()->with('success', __("Thank you! We'll get in touch with you as soon as possible."));
         }
 
         $validated = $request->validate([
@@ -102,6 +102,6 @@ class GermanCourseController extends Controller
             // Log fallback if Redis is busy
         }
 
-        return redirect()->back()->with('success', "Thank you! We'll get in touch with you as soon as possible.");
+        return redirect()->back()->with('success', __("Thank you! We'll get in touch with you as soon as possible."));
     }
 }

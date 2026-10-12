@@ -177,12 +177,12 @@
                 {{ $blog->author?->name ?? 'Mega Guna Talent' }}
             </span>
             <span>&bull;</span>
-            <span>{{ $blog->published_at?->format('F d, Y') ?? 'Recently' }}</span>
+            <span>{{ $blog->published_at?->translatedFormat('d F Y') ?? __('Recently') }}</span>
             <span>&bull;</span>
             <span>{{ __(':min min read', ['min' => $blog->reading_time]) }}</span>
             @if($blog->view_count > 0)
                 <span>&bull;</span>
-                <span>{{ number_format($blog->view_count) }} views</span>
+                <span>{{ number_format($blog->view_count) }} {{ __('views') }}</span>
             @endif
         </div>
     </header>

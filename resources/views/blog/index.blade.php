@@ -80,7 +80,7 @@
                         <div class="flex items-center gap-4 text-xs text-[#fdc04f]/80 pt-2">
                             <span>{{ $featuredBlog->author?->name ?? 'Mega Guna Talent' }}</span>
                             <span>&bull;</span>
-                            <span>{{ $featuredBlog->published_at?->format('M d, Y') }}</span>
+                            <span>{{ $featuredBlog->published_at?->translatedFormat('d M Y') }}</span>
                             <span>&bull;</span>
                             <span>{{ __(':min min read', ['min' => $featuredBlog->reading_time]) }}</span>
                         </div>
@@ -130,7 +130,7 @@
                 <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div class="space-y-2">
                         <div class="flex items-center gap-2 text-xs text-slate-400">
-                            <span>{{ $blog->published_at?->format('M d, Y') }}</span>
+                            <span>{{ $blog->published_at?->translatedFormat('d M Y') }}</span>
                             <span>&bull;</span>
                             <span>{{ __(':min min read', ['min' => $blog->reading_time]) }}</span>
                         </div>
